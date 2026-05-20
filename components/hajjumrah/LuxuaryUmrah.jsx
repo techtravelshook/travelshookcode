@@ -30,7 +30,7 @@ export default function PackageGrid({
 Please share more details. Thanks!`;
     
     // FIXED: Added missing slash '/' between wa.me and whatsappNumber
-    window.open(`https://wa.me{whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank");
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank");
   };
 
   // Restricting the loop to show exactly 4 static cards
@@ -112,7 +112,7 @@ Please share more details. Thanks!`;
                   <div className="flex items-center gap-2">
                     <button 
                       onClick={(e) => handleWhatsApp(e, pkg)}
-                      className="p-2 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-xl transition-colors shadow-sm"
+                      className="p-2 bg-gradient-to-r from-[#E68213] to-[#0070A1] hover:bg-[#20ba5a] text-white rounded-xl transition-colors shadow-sm"
                       title="Quick WhatsApp Inquiry"
                     >
                       <MessageCircle size={16} fill="white" />
@@ -195,7 +195,7 @@ Please share more details. Thanks!`;
                   <div className="flex flex-col gap-2 w-full mt-2">
                     <button
                       onClick={() => handleWhatsApp()}
-                      className="w-full flex items-center justify-center gap-2 py-3 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-sm rounded-xl transition-all shadow-md active:scale-[0.98]"
+                      className="w-full flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-[#E68213] to-[#0070A1] hover:bg-[#20ba5a] text-white font-bold text-sm rounded-xl transition-all shadow-md active:scale-[0.98]"
                     >
                       <MessageCircle size={18} fill="white" />
                       Book via WhatsApp

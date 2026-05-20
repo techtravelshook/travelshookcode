@@ -77,13 +77,13 @@ const capeTownDeals = [
     dateRange: "21 May - 04 Jun"
   }
 ];
-function page() {
+function PortHarcourt() {
   return (
     <div>
      <FlightHeroLayout 
       title="Flights to"
-      highlightText="Cape Town"
-      description="Fly to Cape Town with luxury options and budget-friendly tickets custom tailored for your trip."
+      highlightText="Port Harcourt"
+      description="Fly to Port Harcourt with luxury options and budget-friendly tickets custom tailored for your trip."
       bgImage="/imgs/flights/capetow.jpg" 
     />
      <FlightsPlacesCards cityName="Cape Town" cardsData={capeTownPackages} />
@@ -93,5 +93,4 @@ function page() {
     </div>
   )
 }
-
-export default page
+export default PortHarcourt
