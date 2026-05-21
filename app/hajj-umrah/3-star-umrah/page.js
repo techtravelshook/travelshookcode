@@ -1,4 +1,8 @@
 "use client";
+import AboutChooseus from '@/components/aboutus/AboutChooseus';
+import BookingProcess from '@/components/hajjumrah/BookingProcess';
+import PackageBanner from '@/components/hajjumrah/packagedetails/PackageBanner';
+import PackageInformations from '@/components/hajjumrah/packagedetails/PackageInformations';
 import PackageSlider from '@/components/hajjumrah/packagedetails/PackageSlider'
 import ThreeStar from '@/components/hajjumrah/packagedetails/ThreeStar'
 import HolidayInquiryForms from '@/components/Holidays/HolidayInquryForms'
@@ -29,7 +33,7 @@ const page = () => {
         "Practical Budget Amenities",
         "Ideal for Senior Citizens"
       ],
-      btnText: "Explore Hotels"
+      btnText: "Explore 3 Star Hotels"
     },
     {
       tagline: "Best Value Deals",
@@ -51,10 +55,75 @@ const page = () => {
     }
   ];
 
-  const handleActionClick = (block) => {
-    console.log("User clicked action button inside block:", block.tagline);
-  };
-
+  // section 2 cards data for 3 star packages
+   const threeStarData = [
+    { 
+      id: 1, 
+      title: "7 Nights Economy 3 Star Deal", 
+      location: "Makkah & Madinah", 
+      advantage: "Perfect short-term package providing standard comfortable accommodations at competitive economy pricing.", 
+      meal: "Suhoor Included", 
+      price: "£599", 
+      days: 7, 
+      image: "/imgs/hajj/hajj3.jpg",
+      details: "Makkah: Emaar Al Khalil (4 Nights) | Madinah: Emaar Taibah (3 Nights)."
+    },
+     { 
+      id: 2, 
+      title: "7 Nights Economy 3 Star Deal", 
+      location: "Makkah & Madinah", 
+      advantage: "Perfect short-term package providing standard comfortable accommodations at competitive economy pricing.", 
+      meal: "Suhoor Included", 
+      price: "£599", 
+      days: 7, 
+      image: "/imgs/hajj/hajj3.jpg",
+      details: "Makkah: Emaar Al Khalil (4 Nights) | Madinah: Emaar Taibah (3 Nights)."
+    },
+     { 
+      id: 3, 
+      title: "7 Nights Economy 3 Star Deal", 
+      location: "Makkah & Madinah", 
+      advantage: "Perfect short-term package providing standard comfortable accommodations at competitive economy pricing.", 
+      meal: "Suhoor Included", 
+      price: "£599", 
+      days: 7, 
+      image: "/imgs/hajj/hajj3.jpg",
+      details: "Makkah: Emaar Al Khalil (4 Nights) | Madinah: Emaar Taibah (3 Nights)."
+    },
+     { 
+      id: 4, 
+      title: "7 Nights Economy 3 Star Deal", 
+      location: "Makkah & Madinah", 
+      advantage: "Perfect short-term package providing standard comfortable accommodations at competitive economy pricing.", 
+      meal: "Suhoor Included", 
+      price: "£599", 
+      days: 7, 
+      image: "/imgs/hajj/hajj1.jpg",
+      details: "Makkah: Emaar Al Khalil (4 Nights) | Madinah: Emaar Taibah (3 Nights)."
+    },
+     { 
+      id: 5, 
+      title: "5 Nights Economy 3 Star Deal", 
+      location: "Makkah & Madinah", 
+      advantage: "Perfect short-term package providing standard comfortable accommodations at competitive economy pricing.", 
+      meal: "Suhoor Included", 
+      price: "£599", 
+      days: 7, 
+      image: "/imgs/hajj/hajj5.jpg",
+      details: "Makkah: Emaar Al Khalil (4 Nights) | Madinah: Emaar Taibah (3 Nights)."
+    },
+     { 
+      id: 6, 
+      title: "13 Nights Economy 3 Star Deal", 
+      location: "Makkah & Madinah", 
+      advantage: "Perfect short-term package providing standard comfortable accommodations at competitive economy pricing.", 
+      meal: "Suhoor Included", 
+      price: "£599", 
+      days: 7, 
+      image: "/imgs/hajj/hajj6.jpg",
+      details: "Makkah: Emaar Al Khalil (4 Nights) | Madinah: Emaar Taibah (3 Nights)."
+    }
+  ];
   return (
     <div>
       {/* section 1 header with inquiry form */}
@@ -73,13 +142,19 @@ const page = () => {
       primaryBtnText="View Packages"
       formComponent={<HolidayInquiryForms formType="umrah"/>}
     />
-    {/* Section 2 About 3 start package */}.
-    
-    
+{/* Section 2 -> 3 stars packages */}
+<PackageInformations initialPackages={threeStarData} />
+    {/* Section 3-> About 3 start package */}.
     <ThreeStar blocks={pageDataBlocks}  />
-   
-/  
+     {/*  section 3-> why choose us */}
+  <AboutChooseus/>
+  {/* SECTION 4 */}
+  <PackageBanner/>
+  {/*  Section 5  */}
+  <BookingProcess/>
     </div>
+   
+ 
   )
 }
 export default page
