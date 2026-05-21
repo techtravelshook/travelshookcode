@@ -2,12 +2,14 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation"; 
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Utensils, MessageCircle, ArrowLeft, ArrowRight, Compass, Calendar, BadgePercent } from "lucide-react";
+import { X, Utensils, MessageCircle, ArrowLeft, ArrowRight, Compass, Calendar, BadgePercent, Eye } from "lucide-react";
 
 const packages = [
   { 
     id: 1, 
+    slug: "14-nights-5-star-ramadan", 
     title: "14 Nights 5 Star Ramadan Package", 
     location: "Makkah & Madinah", 
     advantage: "Experience the peak blessings of Ramadan with luxury stays near the holy mosques. Features direct transfers and guided support throughout your spiritual journey.", 
@@ -19,6 +21,7 @@ const packages = [
   },
   { 
     id: 2, 
+    slug: "14-nights-luxury-umrah", 
     title: "14 Nights Luxury Umrah Package", 
     location: "Makkah & Madinah", 
     advantage: "Embark on an elite, completely premium pilgrimage during the sacred month with top-tier elite hospitality services close to the holy sanctuaries.", 
@@ -30,6 +33,7 @@ const packages = [
   },
   { 
     id: 3, 
+    slug: "7-nights-3-star", 
     title: "7 Nights 3 Star Ramadan Package", 
     location: "Makkah & Madinah", 
     advantage: "A budget-friendly yet spiritually immersive short-stay package curated carefully for your seamless Taraweeh and spiritual sessions.", 
@@ -41,6 +45,7 @@ const packages = [
   },
   { 
     id: 4, 
+    slug: "10-nights-3-star", 
     title: "10 Nights 3 Star Ramadan Package", 
     location: "Makkah & Madinah", 
     advantage: "Spend a beautiful ten nights performing holy rituals in the sanctuary with an affordable itinerary structured for independent pilgrims or families.", 
@@ -52,6 +57,7 @@ const packages = [
   },
   { 
     id: 5, 
+    slug: "14-nights-3-star", 
     title: "14 Nights 3 Star Ramadan Package", 
     location: "Makkah & Madinah", 
     advantage: "An extended, value-packed economic itinerary ideal for spending half of the holy month within Makkah and Madinah's peaceful environment.", 
@@ -63,6 +69,7 @@ const packages = [
   },
   { 
     id: 6, 
+    slug: "3-star-7-nights-budget", 
     title: "3 Star 7 Nights Budget Umrah Deal", 
     location: "Makkah & Madinah", 
     advantage: "Perfect short-term express package providing standard comfortable accommodations at highly competitive economy pricing metrics.", 
@@ -77,11 +84,19 @@ const packages = [
 export default function HajjCards() {
   const [selected, setSelected] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
-  
   const sliderRef = useRef(null);
   const whatsappNumber = "923124928496"; 
+  const router = useRouter(); 
 
-  // Dynamic step width check function for smooth slide transitions
+  // FIXED: Ab yeh function user ko direct explicit route path par bhejega bina error ke
+  const handleExploreNow = (selectedPackage) => {
+    if (!selectedPackage || !selectedPackage.slug) return;
+    setSelected(null); 
+    
+    // Explicit fixed target definition setup
+    router.push(`/hajj-umrah/3-star-umrah/${selectedPackage.slug}`);
+  };
+
   const getScrollAmount = () => {
     if (sliderRef.current) {
       const card = sliderRef.current.querySelector(".package-card-item");
@@ -94,7 +109,6 @@ export default function HajjCards() {
     return 340;
   };
 
-  // 1. Automatic Autoplay Loop Hook Protocol
   useEffect(() => {
     if (isHovered) return;
 
@@ -114,7 +128,6 @@ export default function HajjCards() {
     return () => clearInterval(interval);
   }, [isHovered]);
 
-  // 2. Manual Navigation Slider Controls
   const handleScroll = (direction) => {
     if (sliderRef.current) {
       const scrollAmount = getScrollAmount();
@@ -136,10 +149,10 @@ Please share more details. Thanks!`;
   };
 
   return (
-    <section className="py-12 w-full bg-white dark:bg-[#01080C] text-slate-800 dark:text-slate-100 transition-colors duration-500">
+    <section className="py-12 w-full bg-white dark:bg-[#01080C] text-slate-800 dark:text-slate-100 transition-colors duration-500 overflow-hidden">
       <div className="w-full max-w-[100vw] mx-auto px-4 lg:px-12">
         
-        {/* ================= HEADER WITH CONNECTED CONTROLS ================= */}
+        {/* ================= HEADER CONTROLS ================= */}
         <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 mb-10">
           <div className="max-w-4xl text-left">
             <span className="mb-3 inline-flex rounded-full bg-[#F6931F]/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.25em] text-[#F6931F]">
@@ -157,157 +170,146 @@ Please share more details. Thanks!`;
           </div>
           
           <div className="flex gap-2 self-end sm:self-auto">
-            <button 
-              onClick={() => handleScroll("left")}
-              className="p-2.5 rounded-full border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 transition-all text-slate-400 hover:text-slate-800 dark:hover:text-white active:scale-90"
-            >
+            <button onClick={() => handleScroll("left")} className="p-2.5 rounded-full border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 transition-all text-slate-400 hover:text-slate-800 dark:hover:text-white active:scale-90">
               <ArrowLeft size={16} />
             </button>
-            <button 
-              onClick={() => handleScroll("right")}
-              className="p-2.5 rounded-full border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 transition-all text-slate-400 hover:text-slate-800 dark:hover:text-white active:scale-90"
-            >
+            <button onClick={() => handleScroll("right")} className="p-2.5 rounded-full border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 transition-all text-slate-400 hover:text-slate-800 dark:hover:text-white active:scale-90">
               <ArrowRight size={16} />
             </button>
           </div>
         </div>
 
-        {/* ================= RESPONSIVE AUTOPLAY SLIDER CAROUSEL ROW ================= */}
-        <div 
+        {/* ================= CAROUSEL ROW WITH SCROLL ANIMATION ================= */}
+        <motion.div 
           ref={sliderRef}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          className="flex w-full overflow-x-auto gap-4 pb-6 scrollbar-hide snap-x snap-mandatory px-1 sm:px-0"
+          className="flex gap-6 overflow-x-auto no-scrollbar pb-6 scroll-smooth snap-x snap-mandatory"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+          }}
         >
           {packages.map((pkg) => (
-            <div
-              key={pkg.id}
-              onClick={() => setSelected(pkg)}
-              className="package-card-item cursor-pointer group flex flex-col h-[470px] 
-              w-full min-w-[100%] sm:w-[320px] sm:min-w-[320px] lg:w-[340px] lg:min-w-[340px] 
-              shrink-0 snap-center rounded-[24px] overflow-hidden bg-white dark:bg-white/[0.02] 
-              border border-slate-200/80 dark:border-white/[0.06] shadow-md hover:shadow-2xl 
-              transition-all duration-300"
+            <motion.div 
+              key={pkg.id} 
+              className="package-card-item min-w-[290px] sm:min-w-[340px] max-w-[340px] snap-start group bg-slate-50 dark:bg-zinc-900/40 border border-slate-200/60 dark:border-white/5 rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col h-[480px]"
+              variants={{
+                hidden: { opacity: 0, x: -40 },
+                visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 65, damping: 15 } }
+              }}
             >
-              {/* Card Thumbnail Area */}
-              <div className="h-56 relative w-full overflow-hidden">
-                <Image
-                  src={pkg.image}
-                  alt={pkg.title}
+              {/* IMAGE SECTION */}
+              <div className="relative w-full h-48 overflow-hidden shrink-0">
+                <Image 
+                  src={pkg.image} 
+                  alt={pkg.title} 
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-w-340px) 100vw, 340px"
                 />
-                <div className="absolute top-3 right-3 backdrop-blur-md px-3 p-2 rounded-full border border-white/10 text-white text-[11px] font-black tracking-wide bg-gradient-to-r from-[#F6931F] to-[#0070A1]">
-                  {pkg.days} Days
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                <span className="absolute bottom-4 right-4 bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 rounded-full text-xs font-bold text-white flex items-center gap-1.5">
+                  <Calendar size={12} className="text-[#F6931F]" /> {pkg.days} Days
+                </span>
               </div>
 
-              {/* Card Description Data Block */}
-              <div className="p-5 flex flex-col flex-1 justify-between">
-                <div>
-                  <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#F6931F] flex items-center gap-1 mb-1">
+              {/* CARD DETAILS */}
+              <div className="p-5 flex flex-col justify-between flex-1">
+                <div className="space-y-2.5">
+                  <div className="flex items-center gap-2 text-[10px] uppercase font-bold tracking-widest text-[#F6931F]">
                     <Compass size={12} /> {pkg.location}
-                  </p>
-                  <h3 className="text-lg font-black text-slate-900 dark:text-white mb-2 tracking-tight whitespace-normal group-hover:text-[#0070A1] transition-colors leading-snug h-[44px] line-clamp-2">
+                  </div>
+                  <h3 className="font-black text-base sm:text-lg tracking-tight uppercase text-slate-900 dark:text-white line-clamp-1">
                     {pkg.title}
                   </h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-3 leading-relaxed whitespace-normal">
+                  <p className="text-xs text-slate-500 dark:text-zinc-400 font-medium line-clamp-3 leading-relaxed">
                     {pkg.advantage}
                   </p>
                 </div>
 
-                <div className="flex items-center justify-between border-t border-slate-100 dark:border-white/5 pt-3 mt-3">
-                  <div>
-                    <span className="text-[10px] text-slate-400 uppercase tracking-wider block">From</span>
-                    <span className="text-xl font-black text-[#0070A1] dark:text-white">{pkg.price}</span>
+                <div className="space-y-4 pt-4 border-t border-slate-200/60 dark:border-white/10 shrink-0">
+                  <div className="flex items-center justify-between text-xs font-semibold text-slate-600 dark:text-zinc-300">
+                    <span className="flex items-center gap-1.5"><Utensils size={13} className="text-slate-400" /> {pkg.meal}</span>
+                    <span className="text-[#0070A1] font-bold bg-[#0070A1]/5 dark:bg-[#0070A1]/10 px-2.5 py-1 rounded-md flex items-center gap-1"><BadgePercent size={13} /> Special</span>
                   </div>
-                  <span className="text-xs font-bold px-3 py-2 rounded-xl bg-gradient-to-r from-[#F6931F] to-[#0070A1] dark:bg-white/5 text-white dark:text-white/80 group-hover:bg-[#0070A1] group-hover:text-white transition-colors">
-                    View Plan
-                  </span>
+
+                  <div className="flex items-center justify-between gap-2">
+                    <div>
+                      <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 block mb-0.5">From Pricing</span>
+                      <span className="text-xl font-black text-slate-900 dark:text-white">{pkg.price}</span>
+                    </div>
+                    <button 
+                      onClick={() => setSelected(pkg)}
+                      className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#F6931F] to-[#0070A1] dark:bg-white text-white dark:text-black font-bold text-xs uppercase tracking-wider hover:bg-[#F6931F] dark:hover:bg-[#F6931F] hover:text-white dark:hover:text-white transition-colors"
+                    >
+                      View Package
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* ================= MODAL POPUP SYSTEM ================= */}
+        {/* ================= DETAILED MODAL OVERLAY ================= */}
         <AnimatePresence>
           {selected && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="relative w-full max-w-2xl overflow-hidden bg-white dark:bg-[#020d14] rounded-[32px] border border-slate-200 dark:border-white/10 shadow-2xl flex flex-col md:flex-row"
-              >
-                <div className="relative w-full h-48 md:h-auto md:w-1/2 min-h-[260px]">
-                  <Image src={selected.image} alt={selected.title} fill className="object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/90 via-black/40 to-transparent" />
-                  <div className="absolute bottom-4 left-4 text-white p-2 right-4">
-                    <span className="bg-[#F6931F] text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
-                      {selected.location}
-                    </span>
-                    <h3 className="text-xl font-black mt-2 uppercase tracking-wide drop-shadow-md whitespace-normal leading-snug">
-                      {selected.title}
-                    </h3>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+              <motion.div initial={{ scale: 0.95, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.95, y: 20 }} className="relative w-full max-w-lg bg-white dark:bg-zinc-950 border border-slate-200 dark:border-white/10 rounded-3xl p-6 shadow-2xl text-left space-y-5 overflow-hidden">
+                <button onClick={() => setSelected(null)} className="absolute top-4 right-4 p-1.5 rounded-full border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 transition-all text-slate-400 hover:text-slate-900 dark:hover:text-white">
+                  <X size={16} />
+                </button>
+
+                <div className="space-y-2">
+                  <span className="inline-flex rounded-full bg-[#F6931F]/10 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-[#F6931F]">
+                    {selected.location} • {selected.days} Days
+                  </span>
+                  <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight pr-6">
+                    {selected.title}
+                  </h3>
+                </div>
+
+                <div className="relative w-full h-44 rounded-2xl overflow-hidden">
+                  <Image src={selected.image} alt={selected.title} fill className="object-cover object-center" sizes="(max-w-512px) 100vw, 512px" />
+                </div>
+
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="text-[10px] font-bold uppercase tracking-wider text-[#0070A1] mb-1">Itinerary / Overview</h4>
+                    <p className="text-xs text-slate-600 dark:text-zinc-300 font-medium leading-relaxed">{selected.advantage}</p>
+                  </div>
+                  <div>
+                    <h4 className="text-[10px] font-bold uppercase tracking-wider text-[#0070A1] mb-1">Hotel & Logistics Data</h4>
+                    <p className="text-xs text-slate-600 dark:text-zinc-300 font-medium leading-relaxed bg-slate-50 dark:bg-white/5 p-3 rounded-xl border border-slate-200/50 dark:border-white/5">{selected.details}</p>
                   </div>
                 </div>
 
-                <div className="w-full md:w-1/2 p-6 flex flex-col justify-between bg-white dark:bg-[#020d14]">
-                  <button onClick={() => setSelected(null)} className="absolute top-4 right-4 p-2 rounded-full bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-slate-500 dark:text-white transition-colors">
-                    <X size={18} />
-                  </button>
-
-                  <div className="mt-2">
-                    <h4 className="text-xs uppercase font-bold text-[#0070A1] tracking-wider mb-2">Package Overview</h4>
-                    <p className="text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-white/70 font-medium mb-4 whitespace-normal">
-                      {selected.advantage}
-                    </p>
-
-                    <div className="space-y-3 mb-5 bg-slate-50 dark:bg-white/[0.02] p-4 rounded-2xl border border-slate-100 dark:border-white/5 text-left">
-                      <div className="flex items-start gap-3 text-slate-700 dark:text-white/90">
-                        <Calendar size={16} className="text-[#F6931F] shrink-0 mt-0.5" />
-                        <span className="text-xs font-semibold whitespace-normal">Duration: {selected.days} Days / {selected.days - 1} Nights</span>
-                      </div>
-                      <div className="flex items-start gap-3 text-slate-700 dark:text-white/90">
-                        <Utensils size={16} className="text-[#F6931F] shrink-0 mt-0.5" />
-                        <span className="text-xs font-semibold whitespace-normal">Meal Option: {selected.meal}</span>
-                      </div>
-                      {selected.details && (
-                        <div className="flex items-start gap-3 text-slate-700 dark:text-white/90">
-                          <Compass size={16} className="text-[#0070A1] shrink-0 mt-0.5" />
-                          <p className="text-[11px] text-slate-500 dark:text-white/60 leading-relaxed whitespace-normal">
-                            {selected.details}
-                          </p>
-                        </div>
-                      )}
-                      <div className="flex items-center gap-3 text-slate-700 dark:text-white/90 border-t border-slate-200/60 dark:border-white/5 pt-2.5 mt-1">
-                        <BadgePercent size={16} className="text-[#0070A1]" />
-                        <span className="text-xs font-bold">Total Price: <span className="text-sm font-black text-[#0070A1] dark:text-[#F6931F]">{selected.price}</span> <span className="text-[10px] font-normal text-slate-400">/ person</span></span>
-                      </div>
-                    </div>
+                <div className="pt-4 border-t border-slate-200/60 dark:border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+                  <div>
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 block">Total Cost</span>
+                    <span className="text-2xl font-black text-[#F6931F]">{selected.price}</span>
                   </div>
-
-                  <div className="flex flex-col gap-2 w-full mt-2">
-                    <button
-                      onClick={handleWhatsApp}
-                      className="w-full flex items-center justify-center gap-2 py-3 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-sm rounded-xl transition-all shadow-md active:scale-[0.98]"
+                  
+                  <div className="flex flex-col sm:flex-row gap-2.5">
+                    <button 
+                      onClick={() => handleExploreNow(selected)}
+                      className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl border border-slate-300 dark:border-white/20 bg-gradient-to-r from-[#F6931F] to-[#0070A1] dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-white dark:text-white font-bold text-xs uppercase tracking-wider transition-colors"
                     >
-                      <MessageCircle size={18} fill="white" />
-                      Book via WhatsApp
+                      <Eye size={14} className="text-[#0070A1]" /> Explore Now
                     </button>
-                    
-                    <button
-                      onClick={() => alert(`Redirecting to Full Explore View of ${selected.title}...`)}
-                      className="w-full py-3 bg-[#0070A1] hover:bg-[#005e88] text-white font-bold text-sm rounded-xl transition-all text-center active:scale-[0.98]"
-                    >
-                      Explore Full Package Details
+
+                    <button onClick={handleWhatsApp} className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#25D366] hover:bg-emerald-600 text-white font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all">
+                      <MessageCircle size={15} /> Book WhatsApp
                     </button>
                   </div>
                 </div>
               </motion.div>
-            </div>
+            </motion.div>
           )}
         </AnimatePresence>
 

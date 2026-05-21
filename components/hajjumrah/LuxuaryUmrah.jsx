@@ -117,7 +117,7 @@ Please share more details. Thanks!`;
                     >
                       <MessageCircle size={16} fill="white" />
                     </button>
-                    <span className="text-xs font-bold px-3 py-2 rounded-xl bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-white/80 group-hover:bg-[#0070A1] group-hover:text-white transition-colors">
+                    <span className="text-xs font-bold px-3 py-2 rounded-xl bg-gradient-to-r from-[#F6931F] to-[#0070A1] dark:bg-white/5 text-white dark:text-white/80 group-hover:bg-[#0070A1] group-hover:text-white transition-colors">
                       View Plan
                     </span>
                   </div>
