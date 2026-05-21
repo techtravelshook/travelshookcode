@@ -198,7 +198,7 @@ Please share more details. Thanks!`;
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute top-3 right-3 backdrop-blur-md px-3 p-2 rounded-full border border-white/10 text-white text-[11px] font-black tracking-wide bg-[#F6931F]">
+                <div className="absolute top-3 right-3 backdrop-blur-md px-3 p-2 rounded-full border border-white/10 text-white text-[11px] font-black tracking-wide bg-gradient-to-r from-[#F6931F] to-[#0070A1]">
                   {pkg.days} Days
                 </div>
               </div>
@@ -222,7 +222,7 @@ Please share more details. Thanks!`;
                     <span className="text-[10px] text-slate-400 uppercase tracking-wider block">From</span>
                     <span className="text-xl font-black text-[#0070A1] dark:text-white">{pkg.price}</span>
                   </div>
-                  <span className="text-xs font-bold px-3 py-2 rounded-xl bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-white/80 group-hover:bg-[#0070A1] group-hover:text-white transition-colors">
+                  <span className="text-xs font-bold px-3 py-2 rounded-xl bg-gradient-to-r from-[#F6931F] to-[#0070A1] dark:bg-white/5 text-white dark:text-white/80 group-hover:bg-[#0070A1] group-hover:text-white transition-colors">
                     View Plan
                   </span>
                 </div>

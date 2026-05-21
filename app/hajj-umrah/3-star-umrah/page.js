@@ -59,6 +59,7 @@ const page = () => {
   const threeStarData = [
   { 
     id: 1, 
+    slug: "7-nights-3-star", // FIXED: Added unique router slug parameter
     title: "7 Nights 3 Star Umrah Package", 
     location: "Makkah & Madinah", 
     advantage: "A perfectly balanced express itinerary designed for short spiritual getaways, ensuring proximity to holy sites on a budget.", 
@@ -70,6 +71,7 @@ const page = () => {
   },
   { 
     id: 2, 
+    slug: "10-nights-3-star", // FIXED: Added unique router slug parameter
     title: "10 Nights 3 Star Umrah Package", 
     location: "Makkah & Madinah", 
     advantage: "Our most popular budget itinerary allowing comfortable pace progression between both holy sanctuaries for worship sessions.", 
@@ -81,6 +83,7 @@ const page = () => {
   },
   { 
     id: 3, 
+    slug: "12-nights-3-star", // FIXED: Added unique router slug parameter
     title: "12 Nights 3 Star Umrah Package", 
     location: "Makkah & Madinah", 
     advantage: "An optimal extended itinerary curated specifically for families and senior pilgrims seeking ample time for dynamic Ziyarah tours.", 
@@ -92,6 +95,7 @@ const page = () => {
   },
   { 
     id: 4, 
+    slug: "14-nights-3-star", // FIXED: Added unique router slug parameter
     title: "14 Nights 3 Star Umrah Package", 
     location: "Makkah & Madinah", 
     advantage: "Spend a beautiful two full weeks immersing your heart and soul into worship with maximum economy savings throughout the trip.", 
@@ -121,19 +125,22 @@ const page = () => {
       primaryBtnText="View Packages"
       formComponent={<HolidayInquiryForms formType="umrah"/>}
     />
-{/* Section 2 -> 3 stars packages */}
-<PackageInformations initialPackages={threeStarData} />
-    {/* Section 3-> About 3 start package */}.
+    
+    {/* Section 2 -> 3 stars packages */}
+    <PackageInformations initialPackages={threeStarData} />
+    
+    {/* Section 3-> About 3 start package */}
     <ThreeStar blocks={pageDataBlocks}  />
-     {/*  section 3-> why choose us */}
-  <AboutChooseus/>
-  {/* SECTION 4 */}
-  <PackageBanner/>
-  {/*  Section 5  */}
-  <BookingProcess/>
+    
+    {/* section 3-> why choose us */}
+    <AboutChooseus/>
+    
+    {/* SECTION 4 */}
+    <PackageBanner/>
+    
+    {/* Section 5 */}
+    <BookingProcess/>
     </div>
-   
- 
   )
 }
-export default page
+export default page;

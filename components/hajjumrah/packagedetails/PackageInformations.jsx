@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation"; 
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Utensils, MessageCircle, ArrowLeft, ArrowRight, Compass, Calendar, BadgePercent } from "lucide-react";
+import { X, Utensils, MessageCircle, ArrowLeft, ArrowRight, Compass, Calendar, BadgePercent, Eye } from "lucide-react";
 
 export default function PackageInformations({
   initialPackages = [], 
@@ -16,6 +17,16 @@ export default function PackageInformations({
   const [selected, setSelected] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
   const sliderRef = useRef(null);
+  const router = useRouter(); 
+
+  // Dynamic path router function
+  const handleExploreNow = (selectedPackage) => {
+    if (!selectedPackage || !selectedPackage.slug) return;
+    setSelected(null); 
+    
+    const currentActivePath = window.location.pathname;
+    router.push(`${currentActivePath}/${selectedPackage.slug}`);
+  };
 
   // Dynamic step width check function for smooth slide transitions
   const getScrollAmount = () => {
@@ -30,7 +41,7 @@ export default function PackageInformations({
     return 340;
   };
 
-  // 1. Automatic Autoplay Loop Hook Protocol
+  // Autoplay Logic Hook
   useEffect(() => {
     if (isHovered || !initialPackages || initialPackages.length === 0) return;
 
@@ -50,7 +61,7 @@ export default function PackageInformations({
     return () => clearInterval(interval);
   }, [isHovered, initialPackages]);
 
-  // 2. Manual Navigation Slider Controls
+  // Slider Arrows Navigation
   const handleScroll = (direction) => {
     if (sliderRef.current) {
       const scrollAmount = getScrollAmount();
@@ -68,17 +79,16 @@ export default function PackageInformations({
 💰 Price: ${selected.price}
 
 Please share more details. Thanks!`;
-    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank");
+    window.open(`https://wa.me{whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank");
   };
 
-  // SAFE ZONE: Early return check moved AFTER all hooks declarations
   if (!initialPackages || initialPackages.length === 0) return null;
 
   return (
-    <section className="py-12 w-full bg-white dark:bg-[#01080C] text-slate-800 dark:text-slate-100 transition-colors duration-500">
+    <section className="py-12 w-full bg-white dark:bg-[#01080C] text-slate-800 dark:text-slate-100 transition-colors duration-500 overflow-hidden">
       <div className="w-full max-w-[100vw] mx-auto px-4 lg:px-12">
         
-        {/* ================= HEADER WITH CONNECTED CONTROLS ================= */}
+        {/* ================= HEADER CONTROLS ================= */}
         <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 mb-10">
           <div className="max-w-4xl text-left">
             <span className="mb-3 inline-flex rounded-full bg-[#F6931F]/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.25em] text-[#F6931F]">
@@ -98,47 +108,62 @@ Please share more details. Thanks!`;
           </div>
           
           <div className="flex gap-2 self-end sm:self-auto">
-            <button 
-              onClick={() => handleScroll("left")}
-              className="p-2.5 rounded-full border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 transition-all text-slate-400 hover:text-slate-800 dark:hover:text-white active:scale-90"
-            >
+            <button onClick={() => handleScroll("left")} className="p-2.5 rounded-full border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 transition-all text-slate-400 hover:text-slate-800 dark:hover:text-white active:scale-90">
               <ArrowLeft size={16} />
             </button>
-            <button 
-              onClick={() => handleScroll("right")}
-              className="p-2.5 rounded-full border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 transition-all text-slate-400 hover:text-slate-800 dark:hover:text-white active:scale-90"
-            >
+            <button onClick={() => handleScroll("right")} className="p-2.5 rounded-full border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 transition-all text-slate-400 hover:text-slate-800 dark:hover:text-white active:scale-90">
               <ArrowRight size={16} />
             </button>
           </div>
         </div>
 
-        {/* ================= RESPONSIVE SLIDER CAROUSEL ROW ================= */}
-        <div 
+        {/* ================= CAROUSEL CARDS ROW WITH VIEWPORT SCROLL ANIMATION ================= */}
+        <motion.div 
           ref={sliderRef}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           className="flex gap-6 overflow-x-auto no-scrollbar pb-6 scroll-smooth snap-x snap-mandatory"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.12 }
+            }
+          }}
         >
           {initialPackages.map((pkg) => (
-            <div 
-              key={pkg.id}
+            <motion.div 
+              key={pkg.id} 
               className="package-card-item min-w-[290px] sm:min-w-[340px] max-w-[340px] snap-start group bg-slate-50 dark:bg-zinc-900/40 border border-slate-200/60 dark:border-white/5 rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col h-[480px]"
+              variants={{
+                hidden: { opacity: 0, x: -50 },
+                visible: { 
+                  opacity: 1, 
+                  x: 0,
+                  transition: { type: "spring", stiffness: 60, damping: 15 }
+                }
+              }}
             >
+              {/* CARD IMAGE SECTION */}
               <div className="relative w-full h-48 overflow-hidden shrink-0">
                 <Image 
                   src={pkg.image} 
                   alt={pkg.title} 
-                  fill 
+                  fill
                   className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-w-340px) 100vw, 340px"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 <span className="absolute bottom-4 right-4 bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 rounded-full text-xs font-bold text-white flex items-center gap-1.5">
                   <Calendar size={12} className="text-[#F6931F]" /> {pkg.days} Days
                 </span>
               </div>
 
+              {/* CARD BODY TEXT */}
               <div className="p-5 flex flex-col justify-between flex-1">
                 <div className="space-y-2.5">
                   <div className="flex items-center gap-2 text-[10px] uppercase font-bold tracking-widest text-[#F6931F]">
@@ -163,38 +188,26 @@ Please share more details. Thanks!`;
                       <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 block mb-0.5">From Pricing</span>
                       <span className="text-xl font-black text-slate-900 dark:text-white">{pkg.price}</span>
                     </div>
+                    {/* RESTORED ORIGINAL BUTTON DESIGN */}
                     <button 
                       onClick={() => setSelected(pkg)}
-                      className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#F6931F] to-[#0070A1]  dark:bg-white text-white dark:text-black font-bold text-xs uppercase tracking-wider hover:bg-[#F6931F] dark:hover:bg-[#F6931F] hover:text-white dark:hover:text-white transition-colors"
+                      className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#F6931F] to-[#0070A1] dark:bg-white text-white dark:text-black font-bold text-xs uppercase tracking-wider hover:bg-[#F6931F] dark:hover:bg-[#F6931F] hover:text-white dark:hover:text-white transition-colors"
                     >
                       View Package
                     </button>
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* ================= MODAL DETAILED OVERLAY ================= */}
         <AnimatePresence>
           {selected && (
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
-            >
-              <motion.div 
-                initial={{ scale: 0.95, y: 20 }}
-                animate={{ scale: 1, y: 0 }}
-                exit={{ scale: 0.95, y: 20 }}
-                className="relative w-full max-w-lg bg-white dark:bg-zinc-950 border border-slate-200 dark:border-white/10 rounded-3xl p-6 shadow-2xl text-left space-y-5 overflow-hidden"
-              >
-                <button 
-                  onClick={() => setSelected(null)}
-                  className="absolute top-4 right-4 p-1.5 rounded-full border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 transition-all text-slate-400 hover:text-slate-900 dark:hover:text-white"
-                >
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+              <motion.div initial={{ scale: 0.95, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.95, y: 20 }} className="relative w-full max-w-lg bg-white dark:bg-zinc-950 border border-slate-200 dark:border-white/10 rounded-3xl p-6 shadow-2xl text-left space-y-5 overflow-hidden">
+                <button onClick={() => setSelected(null)} className="absolute top-4 right-4 p-1.5 rounded-full border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 transition-all text-slate-400 hover:text-slate-900 dark:hover:text-white">
                   <X size={16} />
                 </button>
 
@@ -208,7 +221,7 @@ Please share more details. Thanks!`;
                 </div>
 
                 <div className="relative w-full h-44 rounded-2xl overflow-hidden">
-                  <Image src={selected.image} alt={selected.title} fill className="object-cover object-center" />
+                  <Image src={selected.image} alt={selected.title} fill className="object-cover object-center" sizes="(max-w-512px) 100vw, 512px" />
                 </div>
 
                 <div className="space-y-4">
@@ -222,23 +235,25 @@ Please share more details. Thanks!`;
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-slate-200/60 dark:border-white/10 flex items-center justify-between gap-4">
+                <div className="pt-4 border-t border-slate-200/60 dark:border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
                   <div>
                     <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 block">Total Cost</span>
                     <span className="text-2xl font-black text-[#F6931F]">{selected.price}</span>
                   </div>
-                  <button 
-                    onClick={handleWhatsApp}
-                    className="flex items-center gap-2 px-5 py-3 rounded-xl bg-[#25D366] hover:bg-emerald-600 text-white font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all"
-                  >
-                    <MessageCircle size={16} /> Book via WhatsApp
-                  </button>
-                  <button 
-                   
-                    className="flex items-center gap-1 px-4 py-3 rounded-xl bg-gradient-to-r from-[#F6931F] to-[#0070A1]  hover:bg-emerald-600 text-white font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all"
-                  >
-                    <MessageCircle size={16} /> Explore Now
-                  </button>
+                  
+                  <div className="flex flex-col sm:flex-row gap-2.5">
+                    {/* RESTORED ORIGINAL BUTTON DESIGN FOR MODAL AS WELL */}
+                    <button 
+                      onClick={() => handleExploreNow(selected)}
+                      className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl border border-slate-300 dark:border-white/20 bg-gradient-to-r from-[#F6931F] to-[#0070A1] dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-white dark:text-white font-bold text-xs uppercase tracking-wider transition-colors"
+                    >
+                      <Eye size={14} className="text-white" /> Explore Now
+                    </button>
+
+                    <button onClick={handleWhatsApp} className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#25D366] hover:bg-emerald-600 text-white font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all">
+                      <MessageCircle size={15} /> Book WhatsApp
+                    </button>
+                  </div>
                 </div>
               </motion.div>
             </motion.div>

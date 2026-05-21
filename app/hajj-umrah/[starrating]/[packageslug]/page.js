@@ -1,7 +1,8 @@
 import { umrahPackagesData } from "@/data/packages";
 import PackageSlider from "@/components/hajjumrah/packagedetails/PackageSlider";
 import ThreeStar from "@/components/hajjumrah/packagedetails/ThreeStar";
-import TravelInquiryForm from "@/components/Holidays/TravelInquiryForm";
+
+import HolidayInquiryForms from '@/components/Holidays/HolidayInquryForms'
 import { notFound } from "next/navigation";
 
 export default async function MasterPackageDetailPage({ params }) {
@@ -46,7 +47,7 @@ export default async function MasterPackageDetailPage({ params }) {
         }
         description={`Secure bookings starting at ${currentPackage.price}. Tailored specifically from your nearest UK airport terminal hub.`}
         primaryBtnText="Instant Reservation"
-        formComponent={<TravelInquiryForm formType="umrah"/>}
+        formComponent={<HolidayInquiryForms formType="umrah"/>}
       />
 
       <ThreeStar blocks={pageDataBlocks} />
