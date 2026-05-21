@@ -3,7 +3,36 @@
 import React, { useState } from "react";
 import { Send, User, Mail, Phone, MapPin, Calendar, Compass, Layers, Home, Users } from "lucide-react";
 
-export default function HolidayInquiryForms() {
+// Dropdown configuration map for easy updates
+const CATEGORY_OPTIONS = {
+  holidays: [
+    { value: "f1-holidays", label: "F1 Holidays" },
+    { value: "last-minute-holidays", label: "Last-Minute Holidays" },
+    { value: "overwater-villa-holidays", label: "Overwater Villa Holidays" },
+    { value: "luxury-holidays", label: "Luxury Holidays" },
+    { value: "beach-holidays", label: "Beach Holidays" },
+    { value: "ski-holidays", label: "Ski Holidays" },
+    { value: "theme-park-holidays", label: "Theme Park Holidays" },
+    { value: "escorted-holidays", label: "Escorted Holidays" },
+    { value: "adults-only-holidays", label: "Adults-Only Holidays" },
+    { value: "honeymoon-holidays", label: "Honeymoon Holidays" },
+    { value: "family-holidays", label: "Family Holidays" },
+    { value: "city-breaks", label: "City Breaks" },
+    { value: "all-inclusive-holidays", label: "All-Inclusive Holidays" },
+    { value: "safari-holidays", label: "Safari Holidays" },
+  ],
+  umrah: [
+    { value: "economy-umrah", label: "Economy Umrah Packages" },
+    { value: "3-star-umrah", label: "3 Star Umrah Packages" },
+    { value: "4-star-umrah", label: "4 Star Umrah Packages" },
+    { value: "5-star-umrah", label: "5 Star Luxury Umrah" },
+    { value: "ramadan-umrah", label: "Ramadan Umrah Packages" },
+    { value: "shaban-umrah", label: "Shaban Umrah Packages" },
+    { value: "tailor-made-umrah", label: "Custom Tailor-Made Umrah" },
+  ],
+};
+
+export default function TravelInquiryForm({ formType = "holidays" }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,8 +51,8 @@ export default function HolidayInquiryForms() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Inquiry Submitted Full Data:", formData);
-    alert("Thank you! Your inquiry with complete structural filters has been submitted.");
+    console.log(`Inquiry Submitted (${formType}):`, formData);
+    alert(`Thank you! Your ${formType} inquiry has been submitted successfully.`);
     setFormData({
       name: "",
       email: "",
@@ -37,24 +66,34 @@ export default function HolidayInquiryForms() {
     });
   };
 
+  // Select option configuration based on prop
+  const currentOptions = CATEGORY_OPTIONS[formType] || CATEGORY_OPTIONS.holidays;
+
   return (
-    /* FIXED: Restructured broken class lines into clean single-line strings to avoid SSR mismatches */
     <div className="w-full max-w-md rounded-2xl border border-slate-200/80 dark:border-white/10 bg-white dark:bg-slate-950/40 backdrop-blur-md p-4 sm:p-5 shadow-2xl text-slate-900 dark:text-white mx-auto transition-colors duration-300">
       
-      <div className="mb-8 text-center">
+      {/* HEADER SECTION - TEXT DYNAMICALLY ADJUSTS */}
+      <div className="mb-6 text-center">
         <h2 className="text-xl font-black text-slate-900 dark:text-white tracking-tight uppercase">
-          Quick Travel <span className="text-[#F7931E]">Inquiry</span>
+          {formType === "umrah" ? (
+            <>Umrah Booking <span className="text-[#F7931E]">Inquiry</span></>
+          ) : (
+            <>Quick Travel <span className="text-[#F7931E]">Inquiry</span></>
+          )}
         </h2>
         <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5 font-medium">
-          Fill the details below to get a customized budget quote within minutes.
+          {formType === "umrah" 
+            ? "Fill details below to get a custom Umrah package quote within minutes."
+            : "Fill details below to get a customized budget holiday quote within minutes."
+          }
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         
-        {/* Row 1: Full Name & Email Address */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-          <div className="relative">
+        {/* Row 1: Full Name & Email */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
             <label className="text-[10px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 block mb-1">Full Name</label>
             <div className="relative">
               <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
@@ -67,12 +106,12 @@ export default function HolidayInquiryForms() {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Enter Your Name"
-                className="w-full pl-9 pr-3 py-2 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 text-xs focus:outline-none focus:border-[#F7931E] focus:ring-1 focus:ring-[#F7931E] transition-all"
+                className="w-full pl-9 pr-3 py-2 rounded-xl bg-slate-50 dark:bg-zinc-900/90 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 text-xs focus:outline-none focus:border-[#F7931E] focus:ring-1 focus:ring-[#F7931E] transition-all"
               />
             </div>
           </div>
 
-          <div className="relative">
+          <div>
             <label className="text-[10px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 block mb-1">Email Address</label>
             <div className="relative">
               <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
@@ -85,15 +124,15 @@ export default function HolidayInquiryForms() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="example@mail.com"
-                className="w-full pl-9 pr-3 py-2 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 text-xs focus:outline-none focus:border-[#F7931E] focus:ring-1 focus:ring-[#F7931E] transition-all"
+                className="w-full pl-9 pr-3 py-2 rounded-xl bg-slate-50 dark:bg-zinc-900/90 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 text-xs focus:outline-none focus:border-[#F7931E] focus:ring-1 focus:ring-[#F7931E] transition-all"
               />
             </div>
           </div>
         </div>
 
-        {/* Row 2: Phone Number & Your Location */}
+        {/* Row 2: Phone & Location */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div className="relative">
+          <div>
             <label className="text-[10px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 block mb-1">Phone Number</label>
             <div className="relative">
               <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
@@ -106,12 +145,12 @@ export default function HolidayInquiryForms() {
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="+44 7123 456789"
-                className="w-full pl-9 pr-3 py-2 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 text-xs focus:outline-none focus:border-[#F7931E] focus:ring-1 focus:ring-[#F7931E] transition-all"
+                className="w-full pl-9 pr-3 py-2 rounded-xl bg-slate-50 dark:bg-zinc-900/90 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 text-xs focus:outline-none focus:border-[#F7931E] focus:ring-1 focus:ring-[#F7931E] transition-all"
               />
             </div>
           </div>
 
-          <div className="relative">
+          <div>
             <label className="text-[10px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 block mb-1">Your Location</label>
             <div className="relative">
               <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
@@ -124,7 +163,7 @@ export default function HolidayInquiryForms() {
                 value={formData.currentLocation}
                 onChange={handleChange}
                 placeholder="London, Manchester"
-                className="w-full pl-9 pr-3 py-2 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 text-xs focus:outline-none focus:border-[#F7931E] focus:ring-1 focus:ring-[#F7931E] transition-all"
+                className="w-full pl-9 pr-3 py-2 rounded-xl bg-slate-50 dark:bg-zinc-900/90 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 text-xs focus:outline-none focus:border-[#F7931E] focus:ring-1 focus:ring-[#F7931E] transition-all"
               />
             </div>
           </div>
@@ -132,8 +171,10 @@ export default function HolidayInquiryForms() {
 
         {/* Row 3: Destination & Trip Days */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div className="relative">
-            <label className="text-[10px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 block mb-1">Where to go?</label>
+          <div>
+            <label className="text-[10px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 block mb-1">
+              {formType === "umrah" ? "Ziyarat Destination" : "Where to go?"}
+            </label>
             <div className="relative">
               <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
                 <MapPin size={14} />
@@ -144,13 +185,13 @@ export default function HolidayInquiryForms() {
                 required
                 value={formData.destination}
                 onChange={handleChange}
-                placeholder="e.g. Dubai, Turkey"
-                className="w-full pl-9 pr-3 py-2 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 text-xs focus:outline-none focus:border-[#F7931E] focus:ring-1 focus:ring-[#F7931E] transition-all"
+                placeholder={formType === "umrah" ? "Makkah, Madinah" : "Dubai, Maldives, etc."}
+                className="w-full pl-9 pr-3 py-2 rounded-xl bg-slate-50 dark:bg-zinc-900/90 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 text-xs focus:outline-none focus:border-[#F7931E] focus:ring-1 focus:ring-[#F7931E] transition-all"
               />
             </div>
           </div>
 
-          <div className="relative">
+          <div>
             <label className="text-[10px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 block mb-1">Trip Days</label>
             <div className="relative">
               <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
@@ -163,57 +204,18 @@ export default function HolidayInquiryForms() {
                 min="1"
                 value={formData.days}
                 onChange={handleChange}
-                placeholder="e.g. 7"
-                className="w-full pl-9 pr-3 py-2 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 text-xs focus:outline-none focus:border-[#F7931E] focus:ring-1 focus:ring-[#F7931E] transition-all"
+                placeholder="7, 10, 14 Days"
+                className="w-full pl-9 pr-3 py-2 rounded-xl bg-slate-50 dark:bg-zinc-900/90 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 text-xs focus:outline-none focus:border-[#F7931E] focus:ring-1 focus:ring-[#F7931E] transition-all"
               />
             </div>
           </div>
         </div>
 
-        {/* Row 4: Rooms & Travellers */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div className="relative">
-            <label className="text-[10px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 block mb-1">No. of Rooms</label>
-            <div className="relative">
-              <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
-                <Home size={14} />
-              </span>
-              <input
-                type="number"
-                name="rooms"
-                required
-                min="1"
-                value={formData.rooms}
-                onChange={handleChange}
-                placeholder="1"
-                className="w-full pl-9 pr-3 py-2 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 text-xs focus:outline-none focus:border-[#F7931E] focus:ring-1 focus:ring-[#F7931E] transition-all"
-              />
-            </div>
-          </div>
-
-          <div className="relative">
-            <label className="text-[10px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 block mb-1">No. of People</label>
-            <div className="relative">
-              <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
-                <Users size={14} />
-              </span>
-              <input
-                type="number"
-                name="travellers"
-                required
-                min="1"
-                value={formData.travellers}
-                onChange={handleChange}
-                placeholder="1"
-                className="w-full pl-9 pr-3 py-2 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 text-xs focus:outline-none focus:border-[#F7931E] focus:ring-1 focus:ring-[#F7931E] transition-all"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Choose Category Select Field */}
-        <div className="relative">
-          <label className="text-[10px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 block mb-1">Choose Category</label>
+        {/* Row 4: DYNAMIC CATEGORY DROPDOWN CONTAINER */}
+        <div>
+          <label className="text-[10px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 block mb-1">
+            {formType === "umrah" ? "Select Package Type" : "Select Holiday Category"}
+          </label>
           <div className="relative">
             <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
               <Layers size={14} />
@@ -225,39 +227,66 @@ export default function HolidayInquiryForms() {
               onChange={handleChange}
               className="w-full pl-9 pr-9 py-2 rounded-xl bg-slate-50 dark:bg-zinc-900/90 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white text-xs focus:outline-none focus:border-[#F7931E] focus:ring-1 focus:ring-[#F7931E] transition-all appearance-none cursor-pointer"
             >
-              <option value="" disabled>Any / Choose Category</option>
-              <option value="f1-holidays">F1 Holidays</option>
-              <option value="last-minute-holidays">Last-Minute Holidays</option>
-              <option value="overwater-villa-holidays">Overwater Villa Holidays</option>
-              <option value="luxury-holidays">Luxury Holidays</option>
-              <option value="beach-holidays">Beach Holidays</option>
-              <option value="ski-holidays">Ski Holidays</option>
-              <option value="theme-park-holidays">Theme Theme Park Holidays</option>
-              <option value="escorted-holidays">Escorted Holidays</option>
-              <option value="adults-only-holidays">Adults-Only Holidays</option>
-              <option value="honeymoon-holidays">Honeymoon Holidays</option>
-              <option value="family-holidays">Family Holidays</option>
-              <option value="city-breaks">City Breaks</option>
-              <option value="all-inclusive-holidays">All-Inclusive Holidays</option>
-              <option value="safari-holidays">Safari Holidays</option>
+              <option value="" disabled>
+                {formType === "umrah" ? "Choose Umrah Category" : "Any / Choose Holiday Category"}
+              </option>
+              {currentOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
             </select>
-            
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400">
-              <svg className="fill-current h-3 w-3" xmlns="http://w3.org" viewBox="0 0 20 20">
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
-              </svg>
+            <span className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-slate-400 text-[10px]">▼</span>
+          </div>
+        </div>
+
+        {/* Row 5: Rooms & Travellers Counter Fields */}
+        <div className="grid grid-cols-2 gap-3">
+          <div>
+            <label className="text-[10px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 block mb-1">Total Rooms</label>
+            <div className="relative">
+              <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
+                <Home size={14} />
+              </span>
+              <input
+                type="number"
+                name="rooms"
+                required
+                min="1"
+                value={formData.rooms}
+                onChange={handleChange}
+                className="w-full pl-9 pr-3 py-2 rounded-xl bg-slate-50 dark:bg-zinc-900/90 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white text-xs focus:outline-none focus:border-[#F7931E] focus:ring-1 focus:ring-[#F7931E] transition-all"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="text-[10px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 block mb-1">Travellers</label>
+            <div className="relative">
+              <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
+                <Users size={14} />
+              </span>
+              <input
+                type="number"
+                name="travellers"
+                required
+                min="1"
+                value={formData.travellers}
+                onChange={handleChange}
+                className="w-full pl-9 pr-3 py-2 rounded-xl bg-slate-50 dark:bg-zinc-900/90 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white text-xs focus:outline-none focus:border-[#F7931E] focus:ring-1 focus:ring-[#F7931E] transition-all"
+              />
             </div>
           </div>
         </div>
 
-        {/* Submit Button */}
+        {/* SUBMIT BUTTON */}
         <button
           type="submit"
-          className="w-full mt-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#F7931E] hover:bg-orange-500 text-white text-xs font-bold uppercase tracking-widest shadow-lg shadow-[#F7931E]/20 transition-all duration-200"
+          className="w-full mt-2 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#F7931E] hover:bg-orange-500 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md hover:shadow-lg"
         >
-          Submit Inquiry
-          <Send size={12} />
+          <Send size={14} /> Send Inquiry
         </button>
+
       </form>
     </div>
   );

@@ -84,7 +84,7 @@ function page() {
 slides={sliderImages}
         badgeText="2026 Umrah Packages are officially LIVE"
         description="Book your spiritual journey now and experience the sacred rituals of Umrah with us. Don't miss out on this opportunity to embark on a transformative pilgrimage. Reserve your spot today!"
-        formComponent={<HolidayInquiryForms />}
+        formComponent={<HolidayInquiryForms formType="umrah"/>}
         autoPlayInterval={5000}
 />
 <HajjCards/>
@@ -114,7 +114,7 @@ slides={sliderImages}
   description="Discover the world with our top-rated holiday packages. We design all-inclusive travel offers featuring flights, hotels, tours, and transfers under one seamless booking."
   whatsappNumber="923124928496"
 />
-<BookingProcess/>
+<BookingProcess />
     </div>
   )
 }
