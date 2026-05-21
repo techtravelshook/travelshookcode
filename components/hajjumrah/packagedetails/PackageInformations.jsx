@@ -165,7 +165,7 @@ Please share more details. Thanks!`;
                     </div>
                     <button 
                       onClick={() => setSelected(pkg)}
-                      className="px-4 py-2.5 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-black font-bold text-xs uppercase tracking-wider hover:bg-[#F6931F] dark:hover:bg-[#F6931F] hover:text-white dark:hover:text-white transition-colors"
+                      className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#F6931F] to-[#0070A1]  dark:bg-white text-white dark:text-black font-bold text-xs uppercase tracking-wider hover:bg-[#F6931F] dark:hover:bg-[#F6931F] hover:text-white dark:hover:text-white transition-colors"
                     >
                       View Package
                     </button>
@@ -232,6 +232,12 @@ Please share more details. Thanks!`;
                     className="flex items-center gap-2 px-5 py-3 rounded-xl bg-[#25D366] hover:bg-emerald-600 text-white font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all"
                   >
                     <MessageCircle size={16} /> Book via WhatsApp
+                  </button>
+                  <button 
+                   
+                    className="flex items-center gap-1 px-4 py-3 rounded-xl bg-gradient-to-r from-[#F6931F] to-[#0070A1]  hover:bg-emerald-600 text-white font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all"
+                  >
+                    <MessageCircle size={16} /> Explore Now
                   </button>
                 </div>
               </motion.div>
