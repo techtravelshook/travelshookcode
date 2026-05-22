@@ -220,9 +220,11 @@ export default function Navbar() {
             rounded-xl flex items-center justify-center shadow-lg shadow-[#F7931E]/20">
               <PlaneTakeoff className="text-white" size={18} />
             </div>
+            <Link href="/" className="hidden md:block">
             <span className="text-lg font-bold dark:text-white text-slate-900">
               TRAVELS<span className="text-[#F7931E]">HOOK</span>
             </span>
+            </Link>
           </div>
 
           {/* DESKTOP MENU - header ke neeche dropdown */}

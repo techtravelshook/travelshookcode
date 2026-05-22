@@ -42,7 +42,7 @@ const DynamicPackageDetailPage = () => {
         <div className="bg-zinc-900 border border-zinc-800 p-8 rounded-2xl max-w-sm shadow-2xl">
           <p className="text-xl text-orange-500 font-black tracking-wide mb-2">Package Not Found</p>
           <p className="text-xs text-zinc-400">The requested dynamic content route node has failed matching matrix targets.</p>
-          <div className="mt-4 bg-zinc-800 p-3 rounded font-mono text-xs text-zinc-300">Slug: "{currentSlug}"</div>
+          <div className="mt-4 bg-zinc-800 p-3 rounded font-mono text-xs text-zinc-300">Slug: {currentSlug}</div>
         </div>
       </div>
     );

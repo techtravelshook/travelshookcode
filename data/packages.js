@@ -290,54 +290,57 @@ export const ramdanUmrahPackage = {
   ],
 
   // ✅ FIXED KEY
+  // src/data/packages.js ke andar "5-star-ramdan-umrah" ko isse replace karein:
+
   "5-star-ramdan-umrah": [
     { 
       id: 105, 
-      slug: "7-nights-5-star-ramdan",
-      title: "7 Nights 5 Star Executive Package", 
+      slug: "14-nights-5-star", 
+      title: "14 Nights 5 Star Ramadan Package", 
       location: "Makkah & Madinah", 
-      advantage: "Luxury stay near Haram.", 
-      meal: "Breakfast Buffet", 
-      price: "£1,150", 
-      days: 7, 
+      advantage: "Experience the peak blessings of Ramadan with luxury stays near the holy mosques.", 
+      meal: "Suhoor & Iftar Included", 
+      price: "£1,280", 
+      days: 14, 
       image: "/imgs/hajj/hajj1.jpg",
-      details: "Millennium Makkah + Al Eiman Royal."
+      details: "Makkah Hotel: Pullman ZamZam Makkah (7 Nights) | Madinah Hotel: Crowne Plaza Madinah (7 Nights)."
     },
     { 
       id: 106, 
-      slug: "10-nights-5-star-ramdan",
-      title: "10 Nights 5 Star Umrah Deal", 
+      slug: "14-nights-luxury-umrah-deal", 
+      title: "14 Nights Luxury Umrah Package", 
       location: "Makkah & Madinah", 
-      advantage: "Premium luxury experience.", 
-      meal: "Half Board", 
-      price: "£1,320", 
-      days: 10, 
-      image: "/imgs/hajj/hajj5.jpg",
-      details: "Elaf Kinda + Leader Al Muna Kareem."
+      advantage: "Embark on an elite, completely premium pilgrimage during the sacred month.", 
+      meal: "Full Board Premium", 
+      price: "£970", 
+      days: 14, 
+      image: "/imgs/hajj/hajj2.jpg",
+      details: "Makkah Hotel: Dorrar Aleiman Royal (7 Nights) | Madinah Hotel: Madinah Hilton (7 Nights)."
     },
     { 
       id: 107, 
-      slug: "12-nights-5-star-ramdan",
-      title: "12 Nights 5 Star Premium Package", 
+      slug: "7-nights-luxury-umrah-deal", 
+      title: "7 Nights Luxury Umrah Package", 
       location: "Makkah & Madinah", 
-      advantage: "High-end spiritual journey.", 
-      meal: "Full Board", 
-      price: "£1,450", 
-      days: 12, 
+      advantage: "Embark on an elite, completely premium pilgrimage during the sacred month.", 
+      meal: "Full Board Premium", 
+      price: "£570", 
+      days: 7, 
       image: "/imgs/hajj/hajj2.jpg",
-      details: "Hilton Makkah + Pullman Madinah."
+      details: "Makkah Hotel: Dorrar Aleiman Royal (7 Nights) | Madinah Hotel: Madinah Hilton (7 Nights)."
     },
     { 
       id: 108, 
-      slug: "14-nights-5-star-ramdan",
-      title: "14 Nights 5 Star Deluxe Package", 
+      slug: "10-nights-luxury-umrah-deal", 
+      title: "10 Nights Luxury Umrah Package", 
       location: "Makkah & Madinah", 
-      advantage: "Ultimate luxury Umrah experience.", 
-      meal: "Breakfast & Dinner", 
-      price: "£1,599", 
-      days: 14, 
-      image: "/imgs/hajj/hajj6.jpg",
-      details: "Swissôtel Makkah + Al Aqeeq Madinah."
+      advantage: "Embark on an elite, completely premium pilgrimage during the sacred month.", 
+      meal: "Full Board Premium", 
+      price: "£750", 
+      days: 10, 
+      image: "/imgs/hajj/hajj2.jpg",
+      details: "Makkah Hotel: Dorrar Aleiman Royal (7 Nights) | Madinah Hotel: Madinah Hilton (7 Nights)."
     }
   ]
+
 };
