@@ -7,14 +7,16 @@ import { motion } from "framer-motion";
 import { Calendar, Utensils, MessageCircle, Sparkles, Compass } from "lucide-react";
 
 // 1. DUMMY DATA OBJECT
+
 const holidaysData = {
-  "dubai-luxury": {
+  "dubai": {
     title: "Dubai Luxury Holiday Tour",
     days: 5,
     price: "£804",
     meal: "Breakfast Included",
     location: "Dubai, UAE",
-    image: "imgs/holidays/dubai.jpg", 
+    // Shuru mein leading slash (/) add kar diya hai
+    image: "/imgs/holidays/dubai.jpg", 
     advantage: "Experience premium skyscrapers, private desert safari, and luxury marina cruise with VIP access."
   },
   "spain": {
@@ -23,10 +25,22 @@ const holidaysData = {
     price: "£345",
     meal: "All Inclusive",
     location: "Barcelona, Spain",
-    image: "imgs/holidays/spain.jpg",
+    // Shuru mein leading slash (/) add kar diya hai
+    image: "/imgs/holidays/spain.jpg",
     advantage: "Relax at premium beach resorts, enjoy local cuisines, and explore historic Antoni Gaudí architecture."
-  }
+  },
+   "greece": {
+    title: "Greece Islands & Culture Tour",
+    days: 7,
+    price: "£450",
+    meal: "All Inclusive",
+    location: "Athens, Greece",
+    // Shuru mein leading slash (/) add kar diya hai
+    image: "/imgs/holidays/greece.jpg",
+    advantage: "Relax at premium beach resorts, enjoy local cuisines, and explore historic Antoni Gaudí architecture."
+  },
 };
+
 
 export default function HolidayDetailPage({ params }) {
   // Next.js 15 params unwrap hook logic applied here
