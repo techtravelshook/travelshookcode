@@ -151,3 +151,193 @@ export const umrahPackagesData = {
     }
   ],
 };
+
+// for monthly packages page
+export const monthlyBlocksData = [
+  {
+    monthSlug: "january", 
+    tagline: "JANUARY DEPARTURES",
+    title: <>January <span className="text-[#F6931F]">Umrah Packages</span></>,
+   
+    btnText: "Explore January Packages"
+  },
+  {
+    monthSlug: "february", 
+    tagline: "FEBRUARY DEPARTURES",
+    title: <>February <span className="bg-gradient-to-r from-[#F6931F] to-[#0070A1] bg-clip-text text-transparent">Umrah Packages</span></>,
+   
+    btnText: "Explore February Packages"
+  },
+   {
+    monthSlug: "march", 
+    tagline: "MARCH DEPARTURES",
+    title: <>March <span className="text-[#F6931F]">Umrah Packages</span></>,
+   
+    btnText: "Explore March Packages"
+  },
+   {
+    monthSlug: "april", 
+    tagline: "APRIL DEPARTURES",
+    title: <>April <span className="bg-gradient-to-r from-[#F6931F] to-[#0070A1] bg-clip-text text-transparent">Umrah Packages</span></>,
+   
+    btnText: "Explore February Packages"
+  },
+];
+// for ramadan packages page
+export const ramdanUmrahPackage = {
+  // ✅ FIXED: spelling corrected (ramdan ➜ ramadan)
+  "3-star-ramdan-umrah": [
+    { 
+      id: 1,
+      slug: "7-nights-3-star-ramdan",
+      title: "7 Nights 3 Star Umrah Package", 
+      location: "Makkah & Madinah",
+      advantage: "A perfectly balanced express itinerary designed for short spiritual getaways, ensuring proximity to holy sites on a budget.", 
+      meal: "Breakfast Buffet Included", 
+      price: "£649", 
+      days: 7, 
+      image: "/imgs/hajj/hajj3.jpg",
+      details: "Makkah Hotel: Emaar Al Khalil (4 Nights) | Madinah Hotel: Al Mukhtara International (3 Nights)."
+    },
+    { 
+      id: 2,
+      slug: "10-nights-3-star-ramadan",
+      title: "10 Nights 3 Star Umrah Package", 
+      location: "Makkah & Madinah", 
+      advantage: "Our most popular budget itinerary allowing comfortable pace progression between both holy sanctuaries.", 
+      meal: "Suhoor & Breakfast Buffet", 
+      price: "£799", 
+      days: 10, 
+      image: "/imgs/hajj/hajj1.jpg",
+      details: "Makkah Hotel: Dar Al Eiman Al Sud (5 Nights) | Madinah Hotel: Wefadah Al Zahra (5 Nights)."
+    },
+    { 
+      id: 3,
+      slug: "12-nights-3-star-ramadan",
+      title: "12 Nights 3 Star Umrah Package", 
+      location: "Makkah & Madinah", 
+      advantage: "Extended itinerary for families and senior pilgrims.", 
+      meal: "Daily Breakfast Buffet", 
+      price: "£889", 
+      days: 12, 
+      image: "/imgs/hajj/hajj5.jpg",
+      details: "Makkah Hotel: Al Azhar Hotel Makkah (7 Nights) | Madinah Hotel: Al Eiman Ohud (5 Nights)."
+    },
+    { 
+      id: 4,
+      slug: "14-nights-3-star-ramadan",
+      title: "14 Nights 3 Star Umrah Package", 
+      location: "Makkah & Madinah", 
+      advantage: "Two-week spiritual journey at budget price.", 
+      meal: "Suhoor / Breakfast Buffet", 
+      price: "£949", 
+      days: 14, 
+      image: "/imgs/hajj/hajj4.jpg",
+      details: "Makkah Hotel: Al Aseel Ajyad Hotel (7 Nights) | Madinah Hotel: Zaha Al Madinah Hotel (7 Nights)."
+    }
+  ],
+
+  // ✅ FIXED KEY
+  "4-star-ramadan-umrah": [
+    { 
+      id: 101, 
+      slug: "7-nights-4-star-ramadan",
+      title: "7 Nights 4 Star Executive Package", 
+      location: "Makkah & Madinah", 
+      advantage: "Premium comfort near Haram with guided support.", 
+      meal: "Breakfast Buffet Included", 
+      price: "£1,150", 
+      days: 7, 
+      image: "/imgs/hajj/hajj1.jpg",
+      details: "Makkah Hotel: Millennium Makkah | Madinah Hotel: Al Eiman Royal."
+    },
+    { 
+      id: 102, 
+      slug: "10-nights-4-star-ramadan",
+      title: "10 Nights 4 Star Umrah Deal", 
+      location: "Makkah & Madinah", 
+      advantage: "Mid-range premium package with transport.", 
+      meal: "Half Board", 
+      price: "£1,320", 
+      days: 10, 
+      image: "/imgs/hajj/hajj5.jpg",
+      details: "Makkah Hotel: Elaf Kinda | Madinah Hotel: Leader Al Muna Kareem."
+    },
+    { 
+      id: 103, 
+      slug: "12-nights-4-star-ramadan",
+      title: "12 Nights 4 Star Premium Package", 
+      location: "Makkah & Madinah", 
+      advantage: "Extended spiritual stay.", 
+      meal: "Full Board", 
+      price: "£1,450", 
+      days: 12, 
+      image: "/imgs/hajj/hajj2.jpg",
+      details: "Hilton Makkah + Pullman Madinah."
+    },
+    { 
+      id: 104, 
+      slug: "14-nights-4-star-ramadan",
+      title: "14 Nights 4 Star Deluxe Package", 
+      location: "Makkah & Madinah", 
+      advantage: "Luxury + comfort combined.", 
+      meal: "Breakfast & Dinner", 
+      price: "£1,599", 
+      days: 14, 
+      image: "/imgs/hajj/hajj6.jpg",
+      details: "Swissôtel Makkah + Al Aqeeq Madinah."
+    }
+  ],
+
+  // ✅ FIXED KEY
+  "5-star-ramdan-umrah": [
+    { 
+      id: 105, 
+      slug: "7-nights-5-star-ramdan",
+      title: "7 Nights 5 Star Executive Package", 
+      location: "Makkah & Madinah", 
+      advantage: "Luxury stay near Haram.", 
+      meal: "Breakfast Buffet", 
+      price: "£1,150", 
+      days: 7, 
+      image: "/imgs/hajj/hajj1.jpg",
+      details: "Millennium Makkah + Al Eiman Royal."
+    },
+    { 
+      id: 106, 
+      slug: "10-nights-5-star-ramdan",
+      title: "10 Nights 5 Star Umrah Deal", 
+      location: "Makkah & Madinah", 
+      advantage: "Premium luxury experience.", 
+      meal: "Half Board", 
+      price: "£1,320", 
+      days: 10, 
+      image: "/imgs/hajj/hajj5.jpg",
+      details: "Elaf Kinda + Leader Al Muna Kareem."
+    },
+    { 
+      id: 107, 
+      slug: "12-nights-5-star-ramdan",
+      title: "12 Nights 5 Star Premium Package", 
+      location: "Makkah & Madinah", 
+      advantage: "High-end spiritual journey.", 
+      meal: "Full Board", 
+      price: "£1,450", 
+      days: 12, 
+      image: "/imgs/hajj/hajj2.jpg",
+      details: "Hilton Makkah + Pullman Madinah."
+    },
+    { 
+      id: 108, 
+      slug: "14-nights-5-star-ramdan",
+      title: "14 Nights 5 Star Deluxe Package", 
+      location: "Makkah & Madinah", 
+      advantage: "Ultimate luxury Umrah experience.", 
+      meal: "Breakfast & Dinner", 
+      price: "£1,599", 
+      days: 14, 
+      image: "/imgs/hajj/hajj6.jpg",
+      details: "Swissôtel Makkah + Al Aqeeq Madinah."
+    }
+  ]
+};

@@ -1,146 +1,224 @@
 "use client";
+
+import React from 'react';
 import AboutChooseus from '@/components/aboutus/AboutChooseus';
 import BookingProcess from '@/components/hajjumrah/BookingProcess';
 import PackageBanner from '@/components/hajjumrah/packagedetails/PackageBanner';
-import PackageInformations from '@/components/hajjumrah/packagedetails/PackageInformations';
-import PackageSlider from '@/components/hajjumrah/packagedetails/PackageSlider'
-import ThreeStar from '@/components/hajjumrah/packagedetails/ThreeStar'
-import HolidayInquiryForms from '@/components/Holidays/HolidayInquryForms'
-import React from 'react'
+import PackageSlider from '@/components/hajjumrah/packagedetails/PackageSlider';
+import ThreeStar from '@/components/hajjumrah/packagedetails/ThreeStar';
+import HolidayInquiryForms from '@/components/Holidays/HolidayInquryForms';
+import { useRouter } from "next/navigation";
 
-const page = () => {
-  // Sample data for the ThreeStar component
-   const pageDataBlocks = [
+const Page = () => {
+  const router = useRouter();
+
+  const handleMonthClick = (blockData) => {
+    if (!blockData.monthSlug) return;
+    // Yeh automatic user ko correct dynamic link par le jayega
+    router.push(`/hajj-umrah/monthly-package/${blockData.monthSlug}`);
+  };
+
+  // 12 MONTHS INDIVIDUAL VERTICAL BLOCKS DATA ENGINE
+  const monthlyBlocksData = [
     {
-      tagline: "Convenience Without Compromise",
-      title: <>Choosing A <span className="text-[#F6931F]">Monthly Umrah</span> Packages</>,
+      monthSlug: "january", // FIXED: Added unique URL mapping key
+      tagline: "JANUARY DEPARTURES",
+      title: <>January <span className="text-[#F6931F]">Umrah Packages</span></>,
       imageSrc: "/imgs/hajj/hajj1.jpg",
-      imageAlt: "Umrah Hotel Stays",
+      imageAlt: "January Umrah Deals",
       description: (
         <>
           <p>
-            A 4-star package is highly sought after, as it helps save on expenses while still providing budget-friendly 
-            packages. Our packages include stays in quality 4-star hotels in Makkah and Madinah, which are conveniently located near the holy sites.
+            Start the new year with intense spiritual energy. January offers beautiful, crisp weather in Saudi Arabia, making your walking rituals and holy site visits incredibly comfortable.
           </p>
-          <p>
-            Senior citizens, students, and families enjoy affordable upkeep spending while receiving practical amenities, daily room cleaning, and close proximity to Haram.
+          <p className="mt-3">
+            Our packages combine low early-year airfares with top-tier budget hotel alliances to provide maximum spiritual value without stretching your wallet.
           </p>
         </>
       ),
       listItems: [
-        "Proximity to Holy Haram",
-        "Daily Room Cleaning",
-        "Practical Budget Amenities",
-        "Ideal for Senior Citizens"
+        "7 Nights Express Budget Tiers",
+        "10 Nights Balanced Family Plans",
+        "14 Nights Extended Worship Deals",
+        "Flights From All Major UK Hubs"
       ],
-      btnText: "Explore 4 Star Hotels"
+      btnText: "Explore January Packages"
     },
     {
-      tagline: "Best Value Deals",
-      title: <>Travelshook Best Value <span className="bg-gradient-to-r from-[#F6931F] to-[#0070A1] bg-clip-text text-transparent">4-Star Deals</span> for 2026</>,
-      imageSrc: "/imgs/hajj/hajj5.jpg",
-      imageAlt: "UK Flights to Umrah",
+      monthSlug: "february", // FIXED: Added unique URL mapping key
+      tagline: "FEBRUARY DEPARTURES",
+      title: <>February <span className="bg-gradient-to-r from-[#F6931F] to-[#0070A1] bg-clip-text text-transparent">Umrah Packages</span></>,
+      imageSrc: "/imgs/hajj/hajj3.jpg",
+      imageAlt: "February Umrah Deals",
       description: (
-        <p>
-          Our Umrah 2026 packages reflect our meticulous attention to detail through cost-effective arrangements for your flights, visas, hotels, and ground transport. Our deals for UK residents guarantee convenience whether you’re flying from Heathrow Airport, Gatwick, Manchester, or Birmingham.
-        </p>
+        <>
+          <p>
+            February is highly recommended for school mid-term breaks and senior citizens who want to perform pilgrimage in pleasant, mild outdoor climates before peak seasons.
+          </p>
+          <p className="mt-3">
+            We handle fast-track electronic visa processing and tailored multicity luxury transport transfers for maximum independent comfort.
+          </p>
+        </>
       ),
       listItems: [
-        "Flights from Major UK Hubs",
-        "Visa & Entrance Legal Formalities",
-        "Optional Guided Tours Included",
-        "Private Transfer Tiers Available"
+        "School Mid-Term Family Breaks",
+        "Senior Citizen Specialized Care",
+        "Close Proximity Haram Stays",
+        "Group Guide Support Programs"
       ],
-      btnText: "Check Departure Dates"
+      btnText: "Explore February Packages"
+    },
+    {
+      monthSlug: "march", // FIXED: Added unique URL mapping key
+      tagline: "MARCH DEPARTURES",
+      title: <>March <span className="text-[#F6931F]">Umrah Packages</span></>,
+      imageSrc: "/imgs/hajj/hajj4.jpg",
+      imageAlt: "March Umrah Deals",
+      description: (
+        <>
+          <p>
+            Immerse yourself into peak spiritual energy with our March packages, specifically synchronized to capture early Ramadan blessings and Taraweeh sessions.
+          </p>
+          <p className="mt-3">
+            Enjoy carefully chosen accommodations situated within short walking distances to allow seamless navigation during high-occupancy months.
+          </p>
+        </>
+      ),
+      listItems: [
+        "Early Ramadan Special Tiers",
+        "Taraweeh Centric Hotel Choices",
+        "Pre-Booked High-Speed Rail Tickets",
+        "Fully Inclusive ATOL Protections"
+      ],
+      btnText: "Explore March Packages"
+    },
+    {
+      monthSlug: "april", // FIXED: Added unique URL mapping key
+      tagline: "APRIL DEPARTURES",
+      title: <>April <span className="bg-gradient-to-r from-[#F6931F] to-[#0070A1] bg-clip-text text-transparent">Umrah Packages</span></>,
+      imageSrc: "/imgs/hajj/hajj5.jpg",
+      imageAlt: "April Umrah Deals",
+      description: (
+        <>
+          <p>
+            April brings beautiful spring climates ideal for exploring the historic sites of Makkah and Madinah through structured Ziyarah tours with expert guides.
+          </p>
+          <p className="mt-3">
+            Perfect for post-Ramadan pilgrims who prefer lower crowds and peaceful, independent environments inside the holy sanctuaries.
+          </p>
+        </>
+      ),
+      listItems: [
+        "Spring Break Holiday Special",
+        "Low-Crowd Post Ramadan Tiers",
+        "Comprehensive Guided City Tours",
+        "Flexible Hub Airport Departures"
+      ],
+      btnText: "Explore April Packages"
+    },
+    {
+      monthSlug: "may", // FIXED: Added unique URL mapping key
+      tagline: "MAY DEPARTURES",
+      title: <>May <span className="bg-gradient-to-r from-[#F6931F] to-[#0070A1] bg-clip-text text-transparent">Umrah Packages</span></>,
+      imageSrc: "/imgs/hajj/hajj5.jpg",
+      imageAlt: "May Umrah Deals",
+      description: (
+        <>
+          <p>
+            May brings warm and pleasant weather, making it an ideal time for Umrah pilgrims to explore the historic sites of Makkah and Madinah through structured Ziyarah tours with expert guides.
+          </p>
+          <p className="mt-3">
+            Perfect for post-Ramadan pilgrims who prefer lower crowds and peaceful, independent environments inside the holy sanctuaries.
+          </p>
+        </>
+      ),
+      listItems: [
+        "Spring Break Holiday Special",
+        "Low-Crowd Post Ramadan Tiers",
+        "Comprehensive Guided City Tours",
+        "Flexible Hub Airport Departures"
+      ],
+      btnText: "Explore May Packages"
+    },
+    {
+      monthSlug: "june", // FIXED: Added unique URL mapping key
+      tagline: "JUNE DEPARTURES",
+      title: <>June <span className="bg-gradient-to-r from-[#F6931F] to-[#0070A1] bg-clip-text text-transparent">Umrah Packages</span></>,
+      imageSrc: "/imgs/hajj/hajj5.jpg",
+      imageAlt: "June Umrah Deals",
+      description: (
+        <>
+          <p>
+            June offers warm and sunny weather, making it an excellent time for Umrah pilgrims to visit the historic sites of Makkah and Madinah with structured Ziyarah tours led by expert guides.
+          </p>
+          <p className="mt-3">
+            Perfect for post-Ramadan pilgrims who prefer lower crowds and peaceful, independent environments inside the holy sanctuaries.
+          </p>
+        </>
+      ),
+      listItems: [
+        "Spring Break Holiday Special",
+        "Low-Crowd Post Ramadan Tiers",
+        "Comprehensive Guided City Tours",
+        "Flexible Hub Airport Departures"
+      ],
+      btnText: "Explore June Packages"
+    },
+    {
+      monthSlug: "july", // FIXED: Added unique URL mapping key
+      tagline: "JULY DEPARTURES",
+      title: <>July <span className="bg-gradient-to-r from-[#F6931F] to-[#0070A1] bg-clip-text text-transparent">Umrah Packages</span></>,
+      imageSrc: "/imgs/hajj/hajj5.jpg",
+      imageAlt: "July Umrah Deals",
+      description: (
+        <>
+          <p>
+            July offers warm and sunny weather, making it an excellent time for Umrah pilgrims to visit the historic sites of Makkah and Madinah with structured Ziyarah tours led by expert guides.
+          </p>
+          <p className="mt-3">
+            Perfect for post-Ramadan pilgrims who prefer lower crowds and peaceful, independent environments inside the holy sanctuaries.
+          </p>
+        </>
+      ),
+      listItems: [
+        "Spring Break Holiday Special",
+        "Low-Crowd Post Ramadan Tiers",
+        "Comprehensive Guided City Tours",
+        "Flexible Hub Airport Departures"
+      ],
+      btnText: "Explore July Packages"
     }
   ];
 
-  // section 2 cards data for 4 star packages
-  const fourStarData = [
-  { 
-    id: 1, 
-    slug: "7-nights-4-star", // FIXED: Added unique router slug parameter
-    title: "7 Nights 4 Star Umrah Package", 
-    location: "Makkah & Madinah", 
-    advantage: "A perfectly balanced express itinerary designed for short spiritual getaways, ensuring proximity to holy sites on a budget.", 
-    meal: "Breakfast Buffet Included", 
-    price: "£649", 
-    days: 7, 
-    image: "/imgs/hajj/hajj3.jpg",
-    details: "Makkah Hotel: Emaar Al Khalil (4 Nights) | Madinah Hotel: Al Mukhtara International (3 Nights). Flights & Visa included."
-  },
-  { 
-    id: 2, 
-    slug: "10-nights-4-star", // FIXED: Added unique router slug parameter
-    title: "10 Nights 4 Star Umrah Package", 
-    location: "Makkah & Madinah", 
-    advantage: "Our most popular budget itinerary allowing comfortable pace progression between both holy sanctuaries for worship sessions.", 
-    meal: "Suhoor & Breakfast Buffet", 
-    price: "£799", 
-    days: 10, 
-    image: "/imgs/hajj/hajj1.jpg",
-    details: "Makkah Hotel: Dar Al Eiman Al Sud (5 Nights) | Madinah Hotel: Wefadah Al Zahra (5 Nights). Includes full multi-city transport."
-  },
-  { 
-    id: 3, 
-    slug: "12-nights-4-star", // FIXED: Added unique router slug parameter
-    title: "12 Nights 4 Star Umrah Package", 
-    location: "Makkah & Madinah", 
-    advantage: "An optimal extended itinerary curated specifically for families and senior pilgrims seeking ample time for dynamic Ziyarah tours.", 
-    meal: "Daily Breakfast Buffet", 
-    price: "£889", 
-    days: 12, 
-    image: "/imgs/hajj/hajj5.jpg",
-    details: "Makkah Hotel: Al Azhar Hotel Makkah (7 Nights) | Madinah Hotel: Al Eiman Ohud (5 Nights). Complete ground logistics support."
-  },
-  { 
-    id: 4, 
-    slug: "14-nights-4-star", // FIXED: Added unique router slug parameter
-    title: "14 Nights 4 Star Umrah Package", 
-    location: "Makkah & Madinah", 
-    advantage: "Spend a beautiful two full weeks immersing your heart and soul into worship with maximum economy savings throughout the trip.", 
-    meal: "Suhoor / Breakfast Buffet", 
-    price: "£949", 
-    days: 14, 
-    image: "/imgs/hajj/hajj6.jpg",
-    details: "Makkah Hotel: Al Aseel Ajyad Hotel (7 Nights) | Madinah Hotel: Zaha Al Madinah Hotel (7 Nights). Fully inclusive air ticket deals."
-  }
-];
-
   return (
     <div>
-      {/* section 1 header with inquiry form */}
-        <PackageSlider 
-      imageSrc="/imgs/hajj/hajj2.jpg"
-      imageAlt="Makkah Banner"
-      badgeText="Our Monthly Umrah Packages"
-      mainTitle={
-        <>
-        Explore Our <br />
-      <span className="bg-gradient-to-r from-[#F6931F] to-[#0070A1] bg-clip-text text-transparent font-black">Monthly Packages
-</span>
-        </>
-      }
-      description="Book your premium Ramadan Umrah package early with 5-star hotel accommodations right next to the Haram."
-      primaryBtnText="View Packages"
-      formComponent={<HolidayInquiryForms formType="umrah"/>}
-    />
-    
-    {/* Section 2 -> 4 stars packages */}
-    <PackageInformations initialPackages={fourStarData} />
-    
-    {/* Section 3-> About 3 start package */}
-    <ThreeStar blocks={pageDataBlocks}  />
-    
-    {/* section 3-> why choose us */}
-    <AboutChooseus/>
-    
-    {/* SECTION 4 */}
-    <PackageBanner/>
-    
-    {/* Section 5 */}
-    <BookingProcess/>
+      {/* SECTION 1: MASTER HERO BANNER */}
+      <PackageSlider 
+        imageSrc="/imgs/hajj/hajj2.jpg"
+        imageAlt="Makkah Banner"
+        badgeText="Our Monthly Umrah Packages"
+        mainTitle={
+          <>
+            Explore Our <br />
+            <span className="bg-gradient-to-r from-[#F6931F] to-[#0070A1] bg-clip-text text-transparent font-black">
+              Monthly Packages
+            </span>
+          </>
+        }
+        description="Book your premium Ramadan Umrah package early with hotel accommodations right next to the Haram."
+        primaryBtnText="View Packages"
+        formComponent={<HolidayInquiryForms formType="umrah"/>}
+      />
+
+      {/* SECTION 2: VERTICAL MONTH BLOCKS WITH THE CLICK REDIRECTION ATTACHED */}
+      <ThreeStar blocks={monthlyBlocksData} onBlockClick={handleMonthClick} />
+
+      {/* SECTION 3: SHARED MARKETING TEMPLATE BLOCKS */}
+      <AboutChooseus />
+      <PackageBanner />
+      <BookingProcess />
     </div>
-  )
-}
-export default page;
+  );
+};
+
+export default Page;

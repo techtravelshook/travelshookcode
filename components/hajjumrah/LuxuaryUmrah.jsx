@@ -1,13 +1,64 @@
 "use client";
-
+import { useRouter } from "next/navigation"; 
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Utensils, MessageCircle, Compass, Calendar, BadgePercent } from "lucide-react";
+const luxuryUmrahData = [
+  { 
+    id: 105, 
+    slug: "7-nights-5-star", // Matches the exact slug string in data.js
+    title: "7 Nights 5 Star Executive Package", 
+    location: "Makkah & Madinah", 
+    advantage: "Experience premium comfort with selected 5-star hotels positioned close to the holy sanctuaries.", 
+    meal: "Breakfast Buffet Included", 
+    price: "£1,150", 
+    days: 7, 
+    image: "/imgs/hajj/hajj1.jpg",
+    details: "Makkah Hotel: Millennium Makkah (4 Nights) | Madinah Hotel: Al Eiman Royal (3 Nights)."
+  },
+  { 
+    id: 106, 
+    slug: "10-nights-5-star", // Matches the exact slug string in data.js
+    title: "10 Nights 5 Star Umrah Deal", 
+    location: "Makkah & Madinah", 
+    advantage: "A beautifully curated mid-range premium package with dedicated transport and executive logistics.", 
+    meal: "Half Board (Breakfast & Dinner)", 
+    price: "£1,320", 
+    days: 10, 
+    image: "/imgs/hajj/hajj5.jpg",
+    details: "Makkah Hotel: Elaf Kinda Hotel (5 Nights) | Madinah Hotel: Leader Al Muna Kareem (5 Nights)."
+  },
+  { 
+    id: 107, 
+    slug: "12-nights-5-star", // Matches the exact slug string in data.js
+    title: "12 Nights 5 Star Premium Package", 
+    location: "Makkah & Madinah", 
+    advantage: "An optimal extended itinerary curated specifically for senior pilgrims and families.", 
+    meal: "Full Board Meals Included", 
+    price: "£1,450", 
+    days: 12, 
+    image: "/imgs/hajj/hajj2.jpg",
+    details: "Makkah Hotel: Hilton Makkah Convention (7 Nights) | Madinah Hotel: Pullman Zamzam Madinah (5 Nights)."
+  },
+  { 
+    id: 108, 
+    slug: "14-nights-5-star", // Matches the exact slug string in data.js
+    title: "14 Nights 5 Star Deluxe Package", 
+    location: "Makkah & Madinah", 
+    advantage: "Spend a beautiful two full weeks immersing your heart and soul into worship with maximum luxury savings.", 
+    meal: "Breakfast & Dinner Buffet", 
+    price: "£1,599", 
+    days: 14, 
+    image: "/imgs/hajj/hajj6.jpg",
+    details: "Makkah Hotel: Swissôtel Makkah (7 Nights) | Madinah Hotel: Al Aqeeq Madinah Hotel (7 Nights)."
+  }
+];
 
 export default function PackageGrid({
   packages = [],
+  folderSlug = "5-star-umrah", // ⚠️ NEW PROP: Controls structural redirection paths
   badgeText = "Exclusive Offers",
   mainTitlePrefix = "Luxury Premium",
   mainTitleGradient = "Umrah Packages 2026",
@@ -15,9 +66,19 @@ export default function PackageGrid({
   whatsappNumber = "923124928496"
 }) {
   const [selected, setSelected] = useState(null);
+  const router = useRouter(); 
+
+  // Dynamic path router handling deep structural links redirection
+  const handleExploreNow = (selectedPackage) => {
+    if (!selectedPackage || !selectedPackage.slug) return;
+    setSelected(null); // Close active popup modal view
+    
+    // Pushes seamlessly to: /hajj-umrah/5-star-umrah/slug OR /hajj-umrah/cheap-umrah/slug
+    router.push(`/hajj-umrah/${folderSlug}/${selectedPackage.slug}`);
+  };
 
   const handleWhatsApp = (e, pkg) => {
-    e.stopPropagation(); // Card click handler se event isolate karne ke liye
+    e.stopPropagation(); // Prevents layout bubbling from triggering card click handlers
     const activePkg = pkg || selected;
     if (!activePkg) return;
 
@@ -29,11 +90,10 @@ export default function PackageGrid({
 
 Please share more details. Thanks!`;
     
-    // FIXED: Added missing slash '/' between wa.me and whatsappNumber
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank");
   };
 
-  // Restricting the loop to show exactly 4 static cards
+  // Restricting loop execution block to render exactly 4 static grid cards
   const displayPackages = packages.slice(0, 4);
 
   if (!packages || packages.length === 0) return null;
