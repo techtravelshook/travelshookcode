@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/header/Header";
 import SmoothScroll from "@/components/smoothScroll";
 import Providers from "./provider/providers";
+import Footer from "@/components/footer/Footer";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -64,6 +65,7 @@ export default function RootLayout({ children }) {
             <Header />
             <main>
               {children}
+              <Footer/>
             </main>
           </SmoothScroll>
         </Providers>
