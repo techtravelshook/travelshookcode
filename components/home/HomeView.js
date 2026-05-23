@@ -2,10 +2,9 @@ import React from 'react';
 import HomeSlider from './slider';
 import DynamicSlider from '../DynamicSlider/DynamicSlider';
 import UmrahPackage from "@/components/umrah/UmrahPackage";
-import HolidayPackages from "@/components/Holidays/Holidays";
-import LuxuryTestimonials from "@/components/home/Testmonials";
 import FlightsInfo from './FlightsInfo';
 import HolidayDeals from '@/components/Holidays/Holidays';
+
 
 // 1. Destinations Data Array
 const destinations = [
