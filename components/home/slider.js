@@ -21,21 +21,21 @@ const slides = [
     title: "Sacred Spiritual Journeys",
     subtitle: "Luxury Umrah Experience",
     desc: "Experience 5-star luxury at the heart of Makkah and Madinah with exclusive travel experiences.",
-    img: "/imgs/hajj.jpg",
+    img: "/imgs/slider01.jpg",
     accent: "#E68213",
   },
   {
     title: "Discover European Wonders",
     subtitle: "Explore The Alps",
     desc: "Explore breathtaking landscapes, premium stays, and unforgettable moments across Europe.",
-    img: "/imgs/travel.jpg",
+    img: "/imgs/slider02.jpg",
     accent: "#0070A1",
   },
   {
     title: "Fly Across Africa",
     subtitle: "50+ Destinations",
-    desc: "Connecting you to Africa’s most iconic destinations with comfort, elegance, and adventure.",
-    img: "/imgs/destinations.jpg",
+    desc: "Connecting you to Africa's most iconic destinations with comfort, elegance, and adventure.",
+    img: "/imgs/slider03.jpg",
     accent: "#E68213",
   },
 ];
@@ -89,7 +89,8 @@ export default function HomeSlider() {
   return (
     <section
       onMouseMove={handleMouseMove}
-      className="relative min-h-screen lg:h-screen w-full overflow-hidden bg-black font-mulish flex flex-col justify-center py-16 lg:py-0"
+      className="relative w-full overflow-hidden bg-black font-mulish"
+      style={{ minHeight: "100svh" }}
     >
       {/* ================= BACKGROUND ================= */}
       <AnimatePresence mode="wait">
@@ -197,9 +198,22 @@ export default function HomeSlider() {
       </div>
 
       {/* ================= CONTENT ================= */}
-      <div className="relative z-40 w-full pt-16 lg:pt-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-16">
-          
+      {/*
+        KEY FIX: This wrapper is position:relative z-40 and uses flex-col
+        so the text block and the flight widget stack predictably.
+        We give it padding-top for the navbar and padding-bottom so the
+        widget never gets clipped at the bottom.
+        No height constraint here — the section grows to fit on small screens.
+      */}
+      <div
+        className="relative z-40 w-full flex flex-col items-center"
+        style={{
+          paddingTop: "clamp(5rem, 12vw, 8rem)",
+          paddingBottom: "clamp(2rem, 5vw, 4rem)",
+        }}
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-16 w-full">
+
           {/* CENTERED CONTENT */}
           <div className="max-w-6xl w-full mx-auto flex flex-col items-center text-center gap-6 sm:gap-8">
 
@@ -212,7 +226,7 @@ export default function HomeSlider() {
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
-                className="mb-4 flex items-center justify-center gap-4 mt-20 lg:mt-32"
+                className="mb-4 flex items-center justify-center gap-4"
               >
                 <motion.div
                   initial={{ width: 0 }}
@@ -251,32 +265,23 @@ export default function HomeSlider() {
                     }}
                     className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-[1.1] text-white tracking-tight"
                   >
-                    {current.title
-                      .split(" ")
-                      .map((word, i) => (
+                    {current.title.split(" ").map((word, i) => {
+                      const isHighlight = i === current.title.split(" ").length - 1;
+
+                      return (
                         <motion.span
                           key={i}
-                          initial={{
-                            opacity: 0,
-                            y: 30,
-                          }}
-                          animate={{
-                            opacity: 1,
-                            y: 0,
-                          }}
-                          transition={{
-                            delay: i * 0.05,
-                            duration: 0.5,
-                          }}
+                          initial={{ opacity: 0, y: 30 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: i * 0.05, duration: 0.5 }}
                           className={`mr-3 inline-block ${
-                            i % 2 === 0
-                              ? "text-white"
-                              : "text-[#E68213]"
+                            isHighlight ? "text-[#E68213]" : "text-white"
                           }`}
                         >
                           {word}
                         </motion.span>
-                      ))}
+                      );
+                    })}
                   </motion.h1>
                 </AnimatePresence>
               </div>
@@ -288,8 +293,13 @@ export default function HomeSlider() {
             </div>
 
             {/* ================= FLIGHT FILTER ================= */}
-            <div className="w-full flex justify-center mt-10 mb-14  px-4">
-              <div className="w-full max-w-5xl">
+            {/*
+              KEY FIX: Removed sm:mt-10 / mb-10 / sm:mb-14 margin that
+              caused reflow when the pax popup opened. The gap on the
+              parent flex handles spacing consistently across slides.
+            */}
+            <div className="w-full flex justify-center px-2 sm:px-4">
+              <div className="w-full max-w-5xl px-1 sm:px-0">
                 <FlightSearchWidget />
               </div>
             </div>
@@ -297,45 +307,6 @@ export default function HomeSlider() {
           </div>
         </div>
       </div>
-
-      {/* ================= SLIDER CONTROLS ================= */}
-      {/* 
-      
-      
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-center gap-4">
-        
-        <button
-          onClick={prev}
-          className="h-12 w-12 rounded-full border border-white/20 bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#E68213] transition-all duration-300"
-        >
-          <ChevronLeft size={22} />
-        </button>
-
-        <div className="flex items-center gap-2">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setIndex(i)}
-              className={`transition-all duration-300 rounded-full ${
-                i === index
-                  ? "w-10 h-2 bg-[#E68213]"
-                  : "w-2 h-2 bg-white/40"
-              }`}
-            />
-          ))}
-        </div>
-
-        <button
-          onClick={next}
-          className="h-12 w-12 rounded-full border border-white/20 bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#0070A1] transition-all duration-300"
-        >
-          <ChevronRight size={22} />
-        </button>
-      </div>
-      
-      
-      
-      */}
     </section>
   );
 }

@@ -55,24 +55,22 @@ export default function FlightHeroLayout({
           </div>
 
           {/* SEARCH FORM */}
-          <div className="mt-8 w-full">
+         {/* SEARCH FORM */}
+<div className="mt-8 w-full px-2 sm:px-0">
 
-            {/* MOBILE SAFE WRAPPER */}
-            <div className="mx-auto w-full max-w-6xl rounded-3xl bg-white/5 p-2 backdrop-blur-md sm:p-4">
+  <div className="mx-auto w-full max-w-6xl rounded-3xl bg-white/5 p-2 backdrop-blur-md sm:p-4">
 
-              {/* IMPORTANT:
-                  overflow-x-auto prevents form cutoff on mobile
-              */}
-              <div className="w-full overflow-x-auto">
+    {/* FIX: remove overflow-x-auto and use responsive scaling */}
+    <div className="w-full">
 
-                {/* MIN WIDTH HELPS LARGE FORM STAY CLEAN */}
-                <div className="min-w-[320px]">
-                  <FlightSearchWidget />
-                </div>
+      {/* KEY FIX: allow internal component to shrink properly */}
+      <div className="w-full min-w-0">
+        <FlightSearchWidget />
+      </div>
 
-              </div>
-            </div>
-          </div>
+    </div>
+  </div>
+</div>
 
         </div>
       </section>
