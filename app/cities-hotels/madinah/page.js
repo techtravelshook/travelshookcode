@@ -233,7 +233,13 @@ export default function MadinahHotelsPage() {
                 className="h-11 px-4 rounded-xl bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 text-sm appearance-none pr-10"
               >
                 {SORT_OPTIONS.map((option) => (
-                  <option key={option}>{option}</option>
+                  <option
+    key={option}
+    value={option}
+    className="bg-[#01080C] text-white"
+  >
+                    {option}
+                  </option>
                 ))}
               </select>
 

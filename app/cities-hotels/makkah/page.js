@@ -238,7 +238,11 @@ export default function MakkahHotelsPage() {
               className="appearance-none rounded-xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/[0.07] dark:border-white/[0.07] pl-4 pr-9 py-2.5 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-[#E68213]/50 transition-colors cursor-pointer"
             >
               {SORT_OPTIONS.map((o) => (
-                <option key={o} value={o}>
+                <option
+    key={o}
+    value={o}
+    className="bg-[#01080C] text-white"
+  >
                   {o}
                 </option>
               ))}
@@ -276,13 +280,14 @@ export default function MakkahHotelsPage() {
             </span>
             {FILTER_STARS.map((s) => (
               <button
-                key={s}
-                onClick={() => toggleStar(s)}
-                className={`flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-bold transition-colors ${
-                  filterStars.includes(s)
-                    ? "border-[#E68213] bg-[#E68213]/10 text-[#E68213]"
-                    : "border-black/10 dark:border-white/10 text-slate-500 dark:text-white/50 hover:border-[#E68213]/40"
-                }`}
+  key={s}
+  onClick={() => toggleStar(s)}
+  className={`flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-bold transition-colors ${
+    filterStars.includes(s)
+      ? "border-[#E68213] bg-[#E68213]/10 text-white"
+      : "border-black/10 dark:border-white/10 text-slate-500 dark:text-slate-300 hover:border-[#E68213]/40"
+  }`}
+
               >
                 <Star
                   size={10}
