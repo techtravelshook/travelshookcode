@@ -194,7 +194,7 @@ export default function MakkahHotelsPage() {
             href="/umrah"
             className="mb-4 flex items-center gap-2 text-white/60 hover:text-white text-xs font-semibold uppercase tracking-widest transition-colors w-fit"
           >
-            <ArrowLeft size={13} /> Back to Umrah
+            <ArrowLeft size={13} /> View Umrah Packages
           </Link>
           <div className="flex items-end gap-4 flex-wrap">
             <div>
@@ -271,7 +271,7 @@ export default function MakkahHotelsPage() {
         {/* Expandable filter row */}
         {showFilters && (
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-3 flex items-center gap-3">
-            <span className="text-[11px] text-slate-400 dark:text-white/40 uppercase font-bold tracking-wider">
+            <span className="text-[11px] text-white dark:text-white uppercase font-bold tracking-wider">
               Star Rating
             </span>
             {FILTER_STARS.map((s) => (
