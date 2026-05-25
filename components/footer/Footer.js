@@ -16,13 +16,39 @@ import {
   Video,
   Send
 } from "lucide-react";
+// Custom SVG icon component matching lucide-react's style
+const IconInstagram = ({ size = 24, ...props }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+    <circle cx="12" cy="12" r="4"/>
+    <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+  </svg>
+);
 
+const IconFacebook = ({ size = 24, ...props }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+  </svg>
+);
+
+const IconYouTube = ({ size = 24, ...props }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+    <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/>
+  </svg>
+);
+
+const IconTikTok = ({ size = 24, ...props }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="none" {...props}>
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
+  </svg>
+);
 const footerLinks = {
   company: [
+    { name: "Home", href: "/" },
     { name: "About Us", href: "/Aboutus" },
-    { name: "Contact", href: "/contact" },
-    { name: "Careers", href: "/careers" },
-    { name: "Blog", href: "/blogs" },
+    { name: "Contact Us", href: "/contact" },
+    { name: "WhatsApp Us", href: "https://wa.me/923124928496?text=Hello%2C%20I%27d%20like%20to%20enquire%20about%20a%20booking" },   
   ],
    links: [
     { name: "Flights", href: "/flights" },
@@ -40,10 +66,10 @@ const footerLinks = {
 
 // FIXED: Swapped out named brand icons for ultra-safe generic lucide shape exports
 const socialLinks = [
-  { icon: Globe, href: "https://instagram.com", label: "Instagram" },
-  { icon: Share2, href: "https://facebook.com", label: "Facebook" },
-  { icon: Send, href: "https://twitter.com", label: "Twitter" },
-  { icon: Video, href: "https://youtube.com", label: "YouTube" },
+  { icon: IconInstagram, href: "https://www.instagram.com/travels_hook?igshid=bmNubHl4N2JhaTB4", label: "Instagram" },
+  { icon: IconFacebook, href: "https://www.facebook.com/Travelshookukumrah", label: "Facebook" },
+  { icon: IconTikTok, href: "https://www.tiktok.com/@travels_hook?lang=en", label: "TikTok" },
+  { icon: IconYouTube, href: "https://www.youtube.com/channel/UCuobu9V9rkVOaJKrhXQzsnQ", label: "YouTube" },
 ];
 
 const containerVariants = {
