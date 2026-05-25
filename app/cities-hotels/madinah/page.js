@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,12 +9,10 @@ import {
   SlidersHorizontal,
   Search,
   ChevronDown,
-  ArrowRight,
-  Sparkles,
 } from "lucide-react";
-
 import HotelDetailModal from "@/components/hotels/HotelDetailModal";
 
+// ── Full hotel data for Makkah ─────────────────────────────────
 const MADINAH_HOTELS = [
   {
     id: 1,
@@ -93,275 +90,290 @@ const MADINAH_HOTELS = [
     amenities: ["WiFi", "Breakfast", "Air Conditioning"],
   },
 ];
-
-const SORT_OPTIONS = [
-  "Recommended",
-  "Price: Low to High",
-  "Price: High to Low",
-  "Star Rating",
-];
-
+const SORT_OPTIONS = ["Recommended", "Price: Low to High", "Price: High to Low", "Star Rating", "Distance"];
 const FILTER_STARS = [5, 4, 3];
 
-export default function MadinahHotelsPage() {
+export default function MakkahHotelsPage() {
   const [selectedHotel, setSelectedHotel] = useState(null);
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState("Recommended");
   const [filterStars, setFilterStars] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
 
-  // Filter hotels
-  let filtered = MADINAH_HOTELS.filter((hotel) => {
+  // ── Filter + sort logic
+  let filtered = MADINAH_HOTELS.filter((h) => {
     const matchSearch =
-      hotel.name.toLowerCase().includes(search.toLowerCase()) ||
-      hotel.desc.toLowerCase().includes(search.toLowerCase());
-
+      h.name.toLowerCase().includes(search.toLowerCase()) ||
+      h.desc.toLowerCase().includes(search.toLowerCase());
     const matchStars =
-      filterStars.length === 0 ||
-      filterStars.includes(hotel.stars);
-
+      filterStars.length === 0 || filterStars.includes(h.stars);
     return matchSearch && matchStars;
   });
 
-  // Sorting
-  if (sortBy === "Price: Low to High") {
-    filtered = [...filtered].sort(
-      (a, b) =>
-        parseInt(a.price.replace(/\D/g, "")) -
-        parseInt(b.price.replace(/\D/g, ""))
-    );
-  }
-
-  if (sortBy === "Price: High to Low") {
-    filtered = [...filtered].sort(
-      (a, b) =>
-        parseInt(b.price.replace(/\D/g, "")) -
-        parseInt(a.price.replace(/\D/g, ""))
-    );
-  }
-
-  if (sortBy === "Star Rating") {
+  if (sortBy === "Price: Low to High")
+    filtered = [...filtered].sort((a, b) => parseInt(a.price.replace(/\D/g, "")) - parseInt(b.price.replace(/\D/g, "")));
+  if (sortBy === "Price: High to Low")
+    filtered = [...filtered].sort((a, b) => parseInt(b.price.replace(/\D/g, "")) - parseInt(a.price.replace(/\D/g, "")));
+  if (sortBy === "Star Rating")
     filtered = [...filtered].sort((a, b) => b.stars - a.stars);
-  }
 
-  const toggleStar = (star) => {
+  const toggleStar = (s) =>
     setFilterStars((prev) =>
-      prev.includes(star)
-        ? prev.filter((s) => s !== star)
-        : [...prev, star]
+      prev.includes(s) ? prev.filter((x) => x !== s) : [...prev, s]
     );
-  };
 
   return (
-    <div className="bg-white dark:bg-[#01080C] text-slate-900 dark:text-white min-h-screen pb-24">
-      
-      {/* Hero Section */}
+    <div className="bg-white dark:bg-[#01080C] text-slate-900 dark:text-white min-h-screen">
+      {/* ── Hero Banner */}
       <div className="relative w-full h-64 sm:h-80 overflow-hidden">
         <Image
-          src="/imgs/hotels/makkah_hotel2.jpg"
-          alt="Madinah Hotels"
+          src="/imgs/hotels/makkah_hotel.jpg"
+          alt="Makkah Hotels"
           fill
-          priority
           className="object-cover"
+          priority
+        />
+        {/* Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/80" />
+
+        {/* Decorative ring */}
+        <div
+          className="absolute -bottom-20 -right-20 w-72 h-72 rounded-full border border-[#E68213]/20 opacity-40"
+          style={{ boxShadow: "0 0 80px 10px rgba(230,130,19,0.12)" }}
         />
 
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/80" />
-
-        <div className="relative z-10 h-full flex flex-col justify-end pb-8 px-4 sm:px-6 lg:px-8">
+        {/* Content */}
+        <div className="relative z-10 h-full flex flex-col justify-end pb-8 px-6 sm:px-10 max-w-7xl mx-auto">
           <Link
-            href="/hajj-umrah"
-            className="mb-4 flex items-center gap-2 text-white/70 hover:text-white text-xs uppercase tracking-widest"
+            href="/umrah"
+            className="mb-4 flex items-center gap-2 text-white/60 hover:text-white text-xs font-semibold uppercase tracking-widest transition-colors w-fit"
           >
-            <ArrowLeft size={14} />
-            Back to Umrah
+            <ArrowLeft size={13} /> View Umrah Packages
           </Link>
-
-          <p className="text-[#E68213] text-xs font-bold uppercase tracking-widest mb-2 flex items-center gap-2">
-            <Sparkles size={12} />
-            Saudi Arabia Accommodations
-          </p>
-
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-white">
-            Madinah Al Munawwarah Hotels
-          </h1>
+          <div className="flex items-end gap-4 flex-wrap">
+            <div>
+              <p className="text-[#E68213] text-xs font-bold uppercase tracking-widest mb-1">
+                Saudi Arabia
+              </p>
+              <h1 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-none">
+                Madinah Hotels
+              </h1>
+            </div>
+            <div className="mb-1 rounded-full bg-white/10 border border-white/15 px-4 py-1.5 text-xs text-white/70 font-semibold backdrop-blur-sm">
+              {MADINAH_HOTELS.length} properties
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
-        
-        {/* Search + Sort */}
-        <div className="flex flex-col md:flex-row gap-4 justify-between items-center mb-8 bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 p-4 rounded-3xl">
-          
-          {/* Search */}
-          <div className="relative w-full md:w-96">
-            <Search
-              size={16}
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
-            />
+      {/* ── Sticky Toolbar ──────────────────────────────────── */}
+      <div className="sticky top-0 z-40 bg-white/95 dark:bg-[#01080C]/95 backdrop-blur border-b border-black/[0.06] dark:border-white/[0.06]">
+  
+  {/* MAIN TOOLBAR */}
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-3">
 
-            <input
-              type="text"
-              placeholder="Search Madinah hotels..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-full h-11 pl-11 pr-4 rounded-xl bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 text-sm focus:outline-none focus:border-[#E68213]/40"
-            />
-          </div>
+    {/* Search */}
+    <div className="relative w-full sm:flex-1">
+      <Search
+        size={14}
+        className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-white/30"
+      />
+      <input
+        type="text"
+        placeholder="Search hotels…"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className="w-full rounded-xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/[0.07] dark:border-white/[0.07] pl-9 pr-4 py-2.5 text-sm text-slate-900 dark:text-white"
+      />
+    </div>
 
-          {/* Controls */}
-          <div className="flex items-center gap-3 w-full md:w-auto">
-            
-            {/* Filter Button */}
-            <button
-              onClick={() => setShowFilters(!showFilters)}
-              className={`h-11 px-4 rounded-xl text-xs font-bold uppercase tracking-wider border transition-all flex items-center gap-2 ${
-                showFilters || filterStars.length > 0
-                  ? "border-[#E68213] bg-[#E68213]/10 text-[#E68213]"
-                  : "border-black/10 dark:border-white/10"
-              }`}
-            >
-              <SlidersHorizontal size={14} />
-              Filters
-            </button>
+    {/* Right controls row */}
+    <div className="flex w-full sm:w-auto items-center gap-2 sm:gap-3">
 
-            {/* Sort Dropdown */}
-            <div className="relative">
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="h-11 px-4 rounded-xl bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 text-sm appearance-none pr-10"
-              >
-                {SORT_OPTIONS.map((option) => (
-                  <option
-    key={option}
-    value={option}
-    className="bg-[#01080C] text-white"
-  >
-                    {option}
-                  </option>
-                ))}
-              </select>
-
-              <ChevronDown
-                size={16}
-                className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Filters */}
-        {showFilters && (
-          <div className="mb-8 flex flex-wrap gap-3">
-            {FILTER_STARS.map((star) => (
-              <button
-                key={star}
-                onClick={() => toggleStar(star)}
-                className={`px-4 py-2 rounded-xl border text-sm font-medium transition-all ${
-                  filterStars.includes(star)
-                    ? "bg-[#E68213] text-white border-[#E68213]"
-                    : "border-black/10 dark:border-white/10"
-                }`}
-              >
-                {star} Star
-              </button>
-            ))}
-
-            {filterStars.length > 0 && (
-              <button
-                onClick={() => setFilterStars([])}
-                className="text-sm text-[#E68213] underline"
-              >
-                Clear All
-              </button>
-            )}
-          </div>
-        )}
-
-        {/* Hotels Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-          {filtered.map((hotel) => (
-            <div
-              key={hotel.id}
-              className="group rounded-3xl overflow-hidden border border-black/5 dark:border-white/10 bg-white dark:bg-white/[0.03] hover:-translate-y-1 transition-all duration-300"
-            >
-              
-              {/* Image */}
-              <div className="relative h-56 overflow-hidden">
-                <Image
-                  src={hotel.img}
-                  alt={hotel.name}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-
-                {/* Rating */}
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-slate-900 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
-                  <Star size={12} className="fill-yellow-400 text-yellow-400" />
-                  {hotel.rating}
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-5">
-                
-                <div className="flex items-center gap-2 text-xs text-slate-500 mb-2">
-                  <MapPin size={13} />
-                  {hotel.distanceFromHaram}
-                </div>
-
-                <h2 className="text-lg font-bold mb-2 line-clamp-1">
-                  {hotel.name}
-                </h2>
-
-                <p className="text-sm text-slate-600 dark:text-slate-300 line-clamp-3 mb-5">
-                  {hotel.desc}
-                </p>
-
-                {/* Footer */}
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-xs text-slate-500">From</p>
-                    <h3 className="text-2xl font-extrabold text-[#E68213]">
-                      {hotel.price}
-                    </h3>
-                    <p className="text-xs text-slate-500">/night</p>
-                  </div>
-
-                  <button
-                    onClick={() => setSelectedHotel(hotel)}
-                    className="flex items-center gap-2 bg-[#E68213] hover:bg-[#d47205] text-white px-4 py-2 rounded-xl text-sm font-semibold transition-all"
-                  >
-                    Details
-                    <ArrowRight size={15} />
-                  </button>
-                </div>
-              </div>
-            </div>
+      {/* Sort */}
+      <div className="relative flex-1 sm:flex-none">
+        <select
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+          className="w-full sm:w-auto appearance-none rounded-xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/[0.07] dark:border-white/[0.07] pl-4 pr-9 py-2.5 text-sm text-slate-900 dark:text-white"
+        >
+          {SORT_OPTIONS.map((o) => (
+            <option key={o} value={o} className="bg-[#01080C] text-white">
+              {o}
+            </option>
           ))}
-        </div>
+        </select>
 
-        {/* Empty State */}
-        {filtered.length === 0 && (
-          <div className="text-center py-20">
-            <h3 className="text-2xl font-bold mb-2">
-              No Hotels Found
-            </h3>
-            <p className="text-slate-500">
-              Try changing your filters or search query.
+        <ChevronDown
+          size={13}
+          className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400"
+        />
+      </div>
+
+      {/* Filter button */}
+      <button
+        onClick={() => setShowFilters((p) => !p)}
+        className={`whitespace-nowrap flex items-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-semibold transition-colors ${
+          showFilters || filterStars.length > 0
+            ? "border-[#E68213]/40 bg-[#E68213]/10 text-[#E68213]"
+            : "border-black/[0.07] dark:border-white/[0.07] bg-black/[0.03] dark:bg-white/[0.04] text-slate-700 dark:text-white"
+        }`}
+      >
+        <SlidersHorizontal size={14} />
+        Filters
+        {filterStars.length > 0 && (
+          <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[#E68213] text-[9px] font-black text-white">
+            {filterStars.length}
+          </span>
+        )}
+      </button>
+    </div>
+  </div>
+
+  {/* FILTER ROW */}
+  {showFilters && (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-3 flex flex-wrap items-center gap-2 sm:gap-3">
+      
+      <span className="text-[11px] text-slate-500 dark:text-white/60 uppercase font-bold tracking-wider">
+        Star Rating
+      </span>
+
+      {FILTER_STARS.map((s) => (
+        <button
+          key={s}
+          onClick={() => toggleStar(s)}
+          className={`flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-bold transition-colors ${
+            filterStars.includes(s)
+              ? "border-[#E68213] bg-[#E68213]/10 text-[#E68213]"
+              : "border-black/10 dark:border-white/10 text-slate-500 dark:text-slate-300 hover:border-[#E68213]/40"
+          }`}
+        >
+          <Star
+            size={10}
+            fill={filterStars.includes(s) ? "#E68213" : "none"}
+            stroke={filterStars.includes(s) ? "none" : "currentColor"}
+          />
+          {s} Stars
+        </button>
+      ))}
+
+      {filterStars.length > 0 && (
+        <button
+          onClick={() => setFilterStars([])}
+          className="text-[11px] text-slate-400 hover:text-[#E68213] underline"
+        >
+          Clear
+        </button>
+      )}
+    </div>
+  )}
+</div>
+
+      {/* ── Hotel Grid ──────────────────────────────────────── */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        {/* Results count */}
+        <p className="text-xs text-slate-400 dark:text-white/40 font-semibold mb-6">
+          Showing{" "}
+          <span className="text-slate-700 dark:text-white">{filtered.length}</span> of{" "}
+          {MADINAH_HOTELS.length} hotels in Madinah
+        </p>
+
+        {filtered.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-24 text-center">
+            <div className="text-5xl mb-4">🕌</div>
+            <p className="text-lg font-bold text-slate-700 dark:text-white">
+              No hotels found
             </p>
+            <p className="text-sm text-slate-400 dark:text-white/40 mt-1">
+              Try adjusting your search or filters
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {filtered.map((hotel) => (
+              <HotelCard
+                key={hotel.id}
+                hotel={hotel}
+                onViewDetails={() => setSelectedHotel(hotel)}
+              />
+            ))}
           </div>
         )}
       </main>
 
-      {/* Modal */}
+      {/* ── Modal ───────────────────────────────────────────── */}
       {selectedHotel && (
         <HotelDetailModal
           hotel={selectedHotel}
           onClose={() => setSelectedHotel(null)}
         />
       )}
+    </div>
+  );
+}
+
+// ── Shared Hotel Card ──────────────────────────────────────────
+function HotelCard({ hotel, onViewDetails }) {
+  return (
+    <div className="group relative flex flex-col rounded-[24px] border border-black/5 dark:border-white/5 bg-black/[0.02] dark:bg-white/[0.02] overflow-hidden p-3.5 transition-all duration-200 hover:border-[#E68213]/25 hover:bg-orange-400/5 dark:hover:bg-orange-400/[0.02] h-full">
+      {/* Image */}
+      <div className="relative w-full h-44 rounded-xl overflow-hidden flex-shrink-0 mb-3">
+        <Image
+          src={hotel.img}
+          alt={hotel.name}
+          fill
+          sizes="(max-width:768px) 100vw, (max-width:1024px) 50vw, (max-width:1280px) 33vw, 25vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        {/* Star badge */}
+        <div className="absolute top-2.5 right-2.5 flex items-center gap-0.5 rounded-full bg-black/40 backdrop-blur-sm border border-white/10 px-2 py-1">
+          <Star size={9} fill="#E68213" stroke="none" />
+          <span className="text-[10px] font-bold text-white">{hotel.rating}</span>
+        </div>
+      </div>
+
+      {/* Details */}
+      <div className="flex flex-col flex-grow justify-between">
+        <div>
+          <div className="flex items-center gap-1 text-[10px] text-slate-400 dark:text-white/40 font-semibold uppercase tracking-wider mb-1.5">
+            <MapPin size={11} className="text-[#E68213]" />
+            <span>{hotel.location}</span>
+            <span className="mx-1 text-slate-300 dark:text-white/20">·</span>
+            <span>{hotel.distanceFromHaram?.split(" ")[0]}</span>
+          </div>
+          <h2 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-[#E68213] transition-colors line-clamp-1">
+            {hotel.name}
+          </h2>
+          <p className="text-[11px] text-slate-500 dark:text-white/60 mt-1 line-clamp-3 leading-relaxed">
+            {hotel.desc}
+          </p>
+        </div>
+
+        {/* Footer */}
+        <div className="mt-5 flex flex-col gap-3 border-t border-black/[0.04] dark:border-white/[0.04] pt-3">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] text-slate-400 dark:text-white/40 uppercase font-bold tracking-wider">
+              from
+            </span>
+            <div className="flex items-baseline gap-0.5">
+              <span className="font-mono text-xl font-black text-slate-900 dark:text-white">
+                {hotel.price}
+              </span>
+              <span className="text-[10px] text-slate-400 dark:text-white/40">/night</span>
+            </div>
+          </div>
+          <button
+            onClick={onViewDetails}
+            className="w-full flex items-center justify-center gap-1.5 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-white/5 py-2.5 text-xs font-bold text-slate-700 dark:text-slate-200 group-hover:bg-[#E68213] group-hover:text-white group-hover:border-[#E68213] transition-all duration-200 cursor-pointer"
+          >
+            <span>View Details</span>
+            <ArrowLeft
+              size={13}
+              className="rotate-180 transition-transform duration-200 group-hover:translate-x-0.5"
+            />
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
