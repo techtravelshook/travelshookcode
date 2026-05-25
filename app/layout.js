@@ -55,7 +55,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    /* Fix 1: suppressHydrationWarning add kiya takay browser extensions ya dark mode theme crash na kare */
+  
     <html lang="en" className={`${jakarta.variable} ${mulish.variable} ${jost.variable}`} suppressHydrationWarning>
       <body className="bg-white dark:bg-[#01080C] text-slate-900 dark:text-white antialiased">
         

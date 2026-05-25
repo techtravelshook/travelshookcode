@@ -131,11 +131,7 @@ export default function HolidayCards() {
             <div
               key={pkg.id}
               onClick={() => setSelected(pkg)}
-              className="cursor-pointer group flex flex-col h-[460px] w-[85vw] 
-              min-w-[290px] sm:w-[320px] sm:min-w-[320px] lg:w-[340px] lg:min-w-[340px] 
-              shrink-0 snap-center rounded-[24px] overflow-hidden bg-white dark:bg-white/[0.02] 
-              border border-slate-200/80 dark:border-white/[0.06] shadow-md hover:shadow-2xl 
-              transition-all duration-300"
+              className="cursor-pointer group flex flex-col h-[460px] w-[85vw]  min-w-[290px] sm:w-[320px] sm:min-w-[320px] lg:w-[340px] lg:min-w-[340px]  shrink-0 snap-center rounded-[24px] overflow-hidden bg-white dark:bg-white/[0.02]  border border-slate-200/80 dark:border-white/[0.06] shadow-md hover:shadow-2xl  transition-all duration-300"
             >
               {/* Card Thumbnail Area */}
               <div className="h-60 relative w-full overflow-hidden">
@@ -145,8 +141,7 @@ export default function HolidayCards() {
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute top-3 right-3  backdrop-blur-md px-3 p-2
-                rounded-full border border-white/10 text-white text-[11px] font-black tracking-wide bg-[#f6931f] ">
+                <div className="absolute top-3 right-3  backdrop-blur-md px-3 p-2 rounded-full border border-white/10 text-white text-[11px] font-black tracking-wide bg-[#f6931f] ">
                   {pkg.days}
                 </div>
               </div>

@@ -42,11 +42,20 @@ const hajjUmrahPackages = [
   { name: '5 Star Umrah', code: '5ST', price: '£1,050', tag: 'Luxury' },
   { name: 'Monthly Package', code: 'RAM', price: '£1,200', tag: 'Special' },
 ];
+// cities & hotels
+const cityHotels = [
+  { name: 'Makkah', code: 'MAK', price: '£250', tag: 'Saudi Arabia' },
+  { name: 'Madinah', code: 'MED', price: '£200', tag: 'Saudi Arabia' },
+];
+
+
+
 
 const menuData = {
   flights: { items: africanDestinations, icon: PlaneTakeoff, title: 'Flights', color: '#3B82F6' },
   holidays: { items: holidayDeals, icon: Globe, title: 'Holidays', color: '#E0F2F1' },
   'hajj-umrah': { items: hajjUmrahPackages, icon: Moon, title: 'Hajj & Umrah', color: '#E68213' },
+  'cities-hotels': { items: cityHotels, icon: User, title: 'Cities & Hotels', color: '#3B82F6' }
 };
 
 function DestinationGrid({ items, basePath }) {
@@ -56,10 +65,7 @@ function DestinationGrid({ items, basePath }) {
         <Link
           key={item.code}
           href={`/${basePath}/${item.name.toLowerCase().replace(/\s+/g, '-')}`}
-          className="group relative flex-col gap-0.5
-           rounded-2xl border-black/5 dark:border-white/5
-            bg-black/[0.03] dark:bg-white/[0.03] p-4 transition-all 
-            duration-200 hover:border-[#E68213]/25 hover:hover:bg-orange-400/10"
+          className="group relative flex-col gap-0.5 rounded-2xl border-black/5 dark:border-white/5 bg-black/[0.03] dark:bg-white/[0.03] p-4 transition-all  duration-200 hover:border-[#E68213]/25 hover:hover:bg-orange-400/10"
         >
 
           <span className="text-[13px] font-semibold text-slate-900 dark:text-white">{item.name}</span>
@@ -199,7 +205,7 @@ export default function Navbar() {
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', isDarkMode);
-    // FIX 2: '#fcfc' was an invalid 4-character hex color — corrected to '#fcfcfc'
+   
     document.body.style.backgroundColor = isDarkMode? '#0a0a0a' : '#fcfcfc';
   }, [isDarkMode]);
 
