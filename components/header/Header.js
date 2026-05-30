@@ -261,10 +261,12 @@ export default function Navbar() {
             </button>
 
             {/* Book Now - Desktop only */}
-            <Link href="/book" className="hidden md:flex
-             items-center gap-2 bg-[#F7931E] hover:bg-[#0070A1] 
-             text-white px-6 py-3 rounded-full text-xs font-bold uppercase 
-             tracking-widest transition-all shadow-lg shadow-[#F7931E]/20">
+            <Link 
+  href="https://api.whatsapp.com/send/?phone=923124928496&text=Hello%2C+I%27d+like+to+enquire+about+a+booking&type=phone_number&app_absent=0" 
+  target="_blank" // 1. Naye tab me open karne ke liye lazmi hai
+  rel="noopener noreferrer" // 2. Original tab ke crash control system ko secure karne ke liye
+  className="hidden md:flex items-center gap-2 bg-[#F6931F] hover:bg-[#0070A1] text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-lg shadow-[#F6931F]/20 hover:shadow-[#0070A1]/20 transform active:scale-[0.98]"
+>
               Book Now <ArrowRight size={14} />
             </Link>
 

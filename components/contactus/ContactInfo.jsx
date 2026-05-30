@@ -13,7 +13,7 @@ const ContactInfo = () => {
         {/* RIGHT SIDE: Banner Image Container */}
         <div className="relative min-h-[350px] md:min-h-full w-full rounded-2xl overflow-hidden">
           <Image
-            src="/imgs/contact_us.jpg" // Replace with your actual image path or state variable
+            src="/imgs/contact_us.jpg" 
             alt="Contact Us Visual"
             fill
             priority
@@ -65,12 +65,16 @@ const ContactInfo = () => {
           </div>
 
           {/* Submit Button (Positioned Below the Form Inputs) */}
-          <button 
-            type="submit" 
-            className="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 shadow-sm"
-          >
-            Send Message
-          </button>
+         <button 
+  type="submit" 
+  className="relative overflow-hidden w-full bg-gradient-to-r from-[#F6931F] via-[#ffb347] to-[#0070A1] mt-6 hover:from-[#F6931F] hover:to-[#da7d14] text-white font-bold text-xs uppercase tracking-[0.15em] py-3.5 px-4 rounded-xl shadow-md shadow-[#0070A1]/10 hover:shadow-[#F6931F]/10 transform active:scale-[0.99] transition-all duration-500 ease-out group"
+>
+  <span className="relative z-10 " >Send Message</span>
+  
+  {/* Elegant Hover Overlay Shimmer Layer */}
+  <div className="absolute inset-0    bg-clip-text text-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+</button>
+
         </div>
 
       </div>

@@ -14,6 +14,7 @@ import AboutStats from "@/components/aboutus/AboutStats";
 import PilgrimageFeatures from "@/components/aboutus/AboutContent";
 import AboutChooseus from "@/components/aboutus/AboutChooseus";
 import AboutServices from "@/components/aboutus/AboutServices";
+import OurPartners from "@/components/aboutus/AboutPartners";
 
 // ================= DATA ARRAYS LOGS =================
 const stats = [
@@ -49,7 +50,8 @@ export default function AboutPage() {
       {/* ================= 4. WHY CHOOSE US ================= */}
      <AboutChooseus/>
 
-     
+    {/*  Our Partners  */}
+    <OurPartners/>
 
     </main>
   );

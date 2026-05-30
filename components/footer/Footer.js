@@ -166,6 +166,8 @@ export default function Footer() {
                       <Link
                         href={link.href}
                         className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 hover:text-[#F6931F] transition-colors inline-flex items-center gap-1 group font-medium"
+                        target="_black"
+                          rel="noopener noreferrer"
                       >
                         {link.name}
                         <ArrowUpRight size={12} className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[#0070A1]" />
