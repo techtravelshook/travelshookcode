@@ -8,7 +8,7 @@ export default function ContactBanner({
   title = "Contact ",
   highlightText = "TravelsHook",
   description = "Discover premium destinations, unbeatable airfare deals, and seamless travel experiences worldwide.",
-  bgImage = "/imgs/hajj/AboutusBanner.jpg",
+  bgImage = "/imgs/hajj/AboutUsBanner.jpg",
 }) {
   return (
     <main className="font-mulish overflow-hidden bg-white text-slate-900 transition-colors duration-300 dark:bg-[#01080C] dark:text-white">
