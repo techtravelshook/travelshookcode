@@ -1,5 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+
+import { useTheme } from 'next-themes';
 import Link from 'next/link';
 import { motion, AnimatePresence, useDragControls } from 'framer-motion';
 import {
@@ -200,22 +202,25 @@ function MobileAccordion({ menuKey, onClose }) {
 export default function Navbar() {
   const [activeMenu, setActiveMenu] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  const { theme, setTheme } = useTheme();
+
   const dragControls = useDragControls();
 
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', isDarkMode);
-   
-    document.body.style.backgroundColor = isDarkMode? '#0a0a0a' : '#fcfcfc';
-  }, [isDarkMode]);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    document.body.style.overflow = isSidebarOpen? 'hidden' : 'unset';
-    return () => { document.body.style.overflow = 'unset'; };
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isSidebarOpen ? "hidden" : "unset";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
   }, [isSidebarOpen]);
 
   const closeMenu = () => setIsSidebarOpen(false);
-
   return (
     <>
       <nav className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 w-[92%] md:w-[95%] max-w-7xl z-50">
@@ -256,9 +261,18 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-2">
-            <button onClick={() => setIsDarkMode(!isDarkMode)} className="p-2.5 rounded-2xl bg-black/5 dark:bg-white/5">
-              {isDarkMode? <Sun size={18} /> : <Moon size={18} />}
-            </button>
+           {mounted && (
+  <button
+    onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+    className="p-2.5 rounded-2xl bg-black/5 dark:bg-white/5"
+  >
+    {theme === "dark" ? (
+      <Sun size={18} />
+    ) : (
+      <Moon size={18} />
+    )}
+  </button>
+)}
 
             {/* Book Now - Desktop only */}
             <Link 
