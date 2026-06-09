@@ -25,16 +25,24 @@ export default function PackageSlider({
     <section className="relative h-auto min-h-screen md:h-[95vh] w-full flex items-center overflow-hidden bg-zinc-950">
       
       {/* BACKGROUND IMAGE WITH MOBILE OPTIMIZATION */}
+             {/* BACKGROUND IMAGE WITH MOBILE OPTIMIZATION */}
       <div className="absolute inset-0 z-0">
         <Image
-          src={imageSrc}
-          alt={imageAlt}
+          src={
+            imageSrc && typeof imageSrc === 'string' && imageSrc.trim() !== ''
+              ? imageSrc.startsWith('/') || imageSrc.startsWith('http')
+                ? imageSrc
+                : `/${imageSrc}` // ✅ Automatically fixes paths missing the leading slash
+              : "/imgs/hajj/hajj2.jpg" // Fallback if imageSrc is completely empty
+          }
+          alt={imageAlt || "Banner Image"}
           fill
           className="object-cover object-center pointer-events-none"
           priority
           sizes="100vw"
         />
       </div>
+
 
       {/* OVERLAYS FOR ENHANCED CONTRAST AND READABILITY */}
       <div className="absolute inset-0 bg-black/70 md:bg-black/65 z-10" />

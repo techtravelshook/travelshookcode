@@ -1,9 +1,10 @@
 import React from 'react';
 import HomeSlider from './slider';
 import DynamicSlider from '../DynamicSlider/DynamicSlider';
-import UmrahPackage from "@/components/umrah/UmrahPackage";
 import FlightsInfo from './FlightsInfo';
-import HolidayDeals from '@/components/Holidays/Holidays';
+import UmrahPackage from "../umrah/UmrahPackage";
+import HolidayDeals from '../Holidays/Holidays';
+
 
 
 // 1. Destinations Data Array

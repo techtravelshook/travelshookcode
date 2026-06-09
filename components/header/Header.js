@@ -25,17 +25,17 @@ const africanDestinations = [
 ];
 
 const holidayDeals = [
-  { name: 'Spain', price: '£235', code: 'ES', tag: 'Europe' },
-  { name: 'Greece', price: '£201', code: 'GR', tag: 'Europe' },
-  { name: 'Italy', price: '£333', code: 'IT', tag: 'Europe' },
-  { name: 'France', price: '£277', code: 'FR', tag: 'Europe' },
-  { name: 'Dubai', price: '£804', code: 'DXB', tag: 'Middle East' },
-  { name: 'Thailand', price: '£804', code: 'TH', tag: 'Southeast Asia' },
-  { name: 'Bali', price: '£1,097', code: 'ID', tag: 'Southeast Asia' },
-  { name: 'Morocco', price: '£372', code: 'MA', tag: 'North Africa' },
-  { name: 'Dalaman', price: '£200', code: 'TR', tag: 'Turkey' },
-  { name: 'Vietnam', price: '£321', code: 'VN', tag: 'Southeast Asia' },
+  { name: 'umrah-birmingham', price: '£836',  code: 'BHM', tag: 'Europe' },
+  { name: 'umrah-london',     price: '£753',  code: 'LON', tag: 'Europe' },
+  { name: 'umrah-bolton',     price: '£1140', code: 'BOL', tag: 'Europe' },
+  { name: 'umrah-manchester', price: '£836',  code: 'MAN', tag: 'Europe' },
+  { name: 'Inclusive Holidays', price: '£699',  code: 'MAN', tag: 'Europe' },
+  { name: 'Beach Holidays', price: '£1350',  code: 'MAN', tag: 'Europe' },
+  { name: 'City Breaks', price: '£940',  code: 'MAN', tag: 'Europe' },
+  { name: 'Family Holidays', price: '£940',  code: 'MAN', tag: 'Europe' },
+  { name: 'Last Minute Holidays', price: '£1280',  code: 'MAN', tag: 'Europe' },
 ];
+
 
 const hajjUmrahPackages = [
   { name: 'Ramdan Package', code: 'UMR', price: '£650', tag: 'Full Guided' },

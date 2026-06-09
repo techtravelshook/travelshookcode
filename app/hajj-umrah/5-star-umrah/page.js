@@ -6,10 +6,16 @@ import PackageInformations from '@/components/hajjumrah/packagedetails/PackageIn
 import PackageSlider from '@/components/hajjumrah/packagedetails/PackageSlider'
 import ThreeStar from '@/components/hajjumrah/packagedetails/ThreeStar'
 import HolidayInquiryForms from '@/components/Holidays/HolidayInquryForms'
+import { usePackages } from '@/hooks/usePackage';
 import React from 'react'
+import axios from 'axios';
 
 const page = () => {
-  // Sample data for the ThreeStar component
+
+ const { packages: fiveStarPackages, loading: fiveStarLoading, error: fiveStarError } = usePackages({ type: "NORMAL", star: "STAR_5" });
+    if (fiveStarError) {
+    return <div>Failed to load 5-star packages: {fiveStarError}</div>;
+  }
    const pageDataBlocks = [
     {
       tagline: "Convenience Without Compromise",
@@ -127,7 +133,7 @@ const page = () => {
     />
     
     {/* Section 2 -> 5 stars packages */}
-    <PackageInformations initialPackages={fiveStarData} />
+    <PackageInformations initialPackages={fiveStarPackages} />
     
     {/* Section 3-> About 3 start package */}
     <ThreeStar blocks={pageDataBlocks}  />

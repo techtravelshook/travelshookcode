@@ -11,32 +11,41 @@ import OtherPackages from "@/components/Holidays/HolidayPlaces/OtherPackages";
 import PopularHolidays from "@/components/Holidays/HolidayPlaces/PopularHoliday";
 import BookingProcess from "@/components/hajjumrah/BookingProcess";
 import FlightFaqs from "@/components/flightservice/flightsplaces/FlightFaqs";
-
+import HolidaysSec from '@/components/Holidays/HolidaysSec'
+import { useParams } from "next/navigation";
 const sliderImages = [
   {
     id: 1,
-    src: "/imgs/dubai.jpg",
-    alt: "Dubai Luxury Holiday",
-    title: "Luxury Dubai Escapes",
-    subtitle: "Premium UAE Experiences",
+    src: "/imgs/holidays/bolton.jpg",
+    alt: "bolton Holiday",
+    title: "Elite Bolton experiences",
+    subtitle: "Premium Bolton Experiences",
   },
   {
-    id: 2,
-    src: "/imgs/nepal.jpg",
-    alt: "Nepal Adventure Tour",
-    title: "Adventure In Nepal",
-    subtitle: "Explore Mountains & Nature",
+   id: 2,
+    src: "/imgs/holidays/LondonBanner1.jpg",
+    alt: "London Holiday",
+    title: "Elite London experiences",
+    subtitle: "Premium London Experiences",
   },
   {
-    id: 3,
-    src: "/imgs/crete.jpg",
-    alt: "Crete Premium Beach Escape",
-    title: "Crete Beach Holidays",
-    subtitle: "Mediterranean Luxury Retreats",
+   id: 3,
+    src: "/imgs/holidays/Manchester.jpg",
+    alt: "Manchester Holiday",
+    title: "Elite holiday experiences",
+    subtitle: "Premium Manchester Experiences",
+  },
+  {
+   id: 4,
+    src: "/imgs/holidays/Birmingham.jpg",
+    alt: "Birmingham Holiday",
+    title: "Elite Birmingham experiences",
+    subtitle: "Premium Birmingham Experiences",
   },
 ];
-
-export default function HolidaysListingPage() {
+export default function HolidaysListingPage({params}) {
+  const params1 = useParams();
+  const slug1 = params1?.holidayslug;
   return (
     <main className="bg-white dark:bg-[#030712] text-slate-800 dark:text-slate-100 transition-colors duration-300">
       <HeroSlider 
@@ -46,9 +55,10 @@ export default function HolidaysListingPage() {
         formComponent={<HolidayInquiryForms />}
         autoPlayInterval={5000}
       />
-    <SearchedPackages />
-    <PopularHolidays/>
-    <OtherPackages/>
+  {/*   <SearchedPackages /> */}
+    <HolidaysSec slug={params.holidayslug} />
+    <PopularHolidays slug={slug1}/>
+    {/* <OtherPackages/> */}
     <FlightFaqs/>
     <BookingProcess/>
     </main>

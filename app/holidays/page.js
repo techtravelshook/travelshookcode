@@ -12,29 +12,35 @@ import React from 'react'
 const sliderImages = [
   {
     id: 1,
-    src: "/imgs/dubai.jpg",
-    alt: "Dubai Luxury Holiday",
-    title: "Luxury Dubai Escapes",
-    subtitle: "Premium UAE Experiences",
+    src: "/imgs/holidays/bolton.jpg",
+    alt: "bolton Holiday",
+    title: "Elite Bolton experiences",
+    subtitle: "Premium Bolton Experiences",
   },
   {
-    id: 2,
-    src: "/imgs/nepal.jpg",
-    alt: "Nepal Adventure Tour",
-    title: "Adventure In Nepal",
-    subtitle: "Explore Mountains & Nature",
+   id: 2,
+    src: "/imgs/holidays/LondonBanner1.jpg",
+    alt: "London Holiday",
+    title: "Elite London experiences",
+    subtitle: "Premium London Experiences",
   },
   {
-    id: 3,
-    src: "/imgs/crete.jpg",
-    alt: "Crete Premium Beach Escape",
-    title: "Crete Beach Holidays",
-    subtitle: "Mediterranean Luxury Retreats",
+   id: 3,
+    src: "/imgs/holidays/Manchester.jpg",
+    alt: "Manchester Holiday",
+    title: "Elite holiday experiences",
+    subtitle: "Premium Manchester Experiences",
+  },
+  {
+   id: 4,
+    src: "/imgs/holidays/Birmingham.jpg",
+    alt: "Birmingham Holiday",
+    title: "Elite Birmingham experiences",
+    subtitle: "Premium Birmingham Experiences",
   },
 ];
 
-
-export default function HolidaysPage() { // Capital letter se start karein
+export default function HolidaysPage() {
   return (
     <main>
       <HeroSlider 
@@ -42,9 +48,10 @@ export default function HolidaysPage() { // Capital letter se start karein
         badgeText="Premium Holiday Packages"
         description="Discover luxury destinations, curated travel experiences, and unforgettable journeys tailored for you."
         formComponent={<HolidayInquiryForms />}
-        autoPlayInterval={5000}
+        autoPlayInterval={8000}
       />
       <div className="mt-8 md:mt-0">
+        {/*  */}
         <HolidayCards />
          <HolidayPackages />   
          <HolidaysInfo />  

@@ -1,4 +1,6 @@
-import HomeView from '@/components/home/HomeView'
+
+import HomeView from "../components/home/HomeView";
+
 import React from 'react'
 
 const page = () => {

@@ -3,20 +3,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, MapPin, Utensils, Send, MessageCircle, ArrowLeft, ArrowRight, Compass } from "lucide-react";
-
-const packages = [
-  { id: 1, title: "Nepal Trip", location: "Nepal", advantage: "Trek through the majestic Himalayas on a once in a lifetime journey.", meal: "Breakfast Included", price: "£465", days: 7, image: "/imgs/nepal.jpg" },
-  { id: 2, title: "Makkah Umrah", location: "Saudi Arabia", advantage: "Embark on a spiritual journey to the holiest city in Islam.", meal: "Full Board", price: "£299", days: 5, image: "/imgs/makkah.jpg" },
-  { id: 3, title: "Paris Tour", location: "France", advantage: "Discover the city of love - art, cuisine and iconic landmarks await.", meal: "All Inclusive", price: "£446", days: 4, image: "/imgs/paris.jpg" },
-  { id: 4, title: "Turkey Cruise", location: "Turkey", advantage: "Explore the rich history and stunning landscapes of Istanbul.", meal: "Breakfast + Dinner", price: "£332", days: 6, image: "/imgs/turkey.jpg" },
-  { id: 5, title: "Dubai Luxury", location: "Dubai, UAE", advantage: "Experience ultra-modern skyscrapers and a thrilling desert safari experience.", meal: "Breakfast Included", price: "£799", days: 8, image: "/imgs/dubai.jpg" },
-  { id: 6, title: "Crete Retreat", location: "Crete, Greece", advantage: "Relax at pristine sandy beaches with world class premium spa services.", meal: "All Inclusive", price: "£899", days: 5, image: "/imgs/crete.jpg" },
-  { id: 7, title: "Swiss Alps", location: "Switzerland", advantage: "Breathtaking snowy peaks and luxury train tours across scenic valleys.", meal: "Half Board", price: "£950", days: 7, image: "/imgs/paris.jpg" },
-  { id: 8, title: "Malaysia Oasis", location: "Malaysia", advantage: "Explore dense emerald tropical rainforests and modern city towers.", meal: "Full Board", price: "£550", days: 5, image: "/imgs/turkey.jpg" },
-];
+import { X, MapPin, Utensils, Send, MessageCircle, ArrowLeft, ArrowRight, Compass, Star, FileText, Hotel } from "lucide-react";
+import { useHolidayPackages } from "@/hooks/useHolidayPackages"; 
 
 export default function HolidayCards() {
+   const { packages, loading, error } = useHolidayPackages({ type: "HOLIDAY" });
   const [selected, setSelected] = useState(null);
   const [form, setForm] = useState({ name: "", phone: "", message: "" });
   const [isHovered, setIsHovered] = useState(false);
@@ -84,9 +75,9 @@ export default function HolidayCards() {
   </span>
 
   {/* MAIN TITLE WITH SEAMLESS 2026-2027 GRADIENT */}
-  <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight uppercase leading-tight">
-    Most Searched Holiday{" "}
-    <span className="bg-gradient-to-r from-[#F6931F] to-[#0070A1] bg-clip-text text-transparent italic ml-1 font-serif">
+  <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight  leading-tight">
+    Our Featured {" "}
+    <span className="text-2xl sm:text-4xl bg-gradient-to-r from-[#F6931F] to-[#0070A1] bg-clip-text text-transparent   font-mono">
       Packages 2026 - 2027
     </span>
   </h2>
@@ -136,13 +127,12 @@ export default function HolidayCards() {
               {/* Card Thumbnail Area */}
               <div className="h-60 relative w-full overflow-hidden">
                 <Image
-                  src={pkg.image}
-                  alt={pkg.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+  src={pkg.images?.[0]?.url? `/${pkg.images[0].url.replace(/^\/+/, "")}`: "/placeholder.jpg"}
+  alt={pkg.title}
+  fill
+/>
                 <div className="absolute top-3 right-3  backdrop-blur-md px-3 p-2 rounded-full border border-white/10 text-white text-[11px] font-black tracking-wide bg-[#f6931f] ">
-                  {pkg.days}
+                  {pkg.duration} DAYS
                 </div>
               </div>
 
@@ -156,7 +146,7 @@ export default function HolidayCards() {
                     {pkg.title}
                   </h3>
                   <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-medium line-clamp-3">
-                    {pkg.advantage}
+                    {pkg.shortDesc}
                   </p>
                 </div>
 
@@ -172,97 +162,138 @@ export default function HolidayCards() {
       </div>
 
       {/* ================= SYMMETRIC POPUP INQUIRY MODAL ================= */}
-      <AnimatePresence>
-        {selected && (
-          <motion.div
-            className="fixed inset-0 bg-black/75 flex items-center justify-center z-50 p-4 backdrop-blur-sm"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+     <AnimatePresence>
+  {selected && (
+    <motion.div
+      className="fixed inset-0 bg-black/75 flex items-center justify-center z-50 p-4 backdrop-blur-sm"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={() => setSelected(null)}
+    >
+      <motion.div
+        initial={{ scale: 0.95, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.95, opacity: 0 }}
+        onClick={(e) => e.stopPropagation()}
+        className="w-full max-w-3xl grid grid-cols-1 md:grid-cols-2 bg-white dark:bg-[#080E12] border border-slate-200 dark:border-white/10 rounded-2xl overflow-hidden shadow-2xl max-h-[90vh] overflow-y-auto"
+      >
+        <div className="relative h-48 md:h-full min-h-[240px]">
+          <Image
+            src={
+              selected?.images?.[0]?.url
+                ? `/${selected.images[0].url.replace(/^\/+/, "")}`
+                : "/placeholder.jpg"
+            }
+            alt={selected?.title || "image"}
+            fill
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
+          <button
             onClick={() => setSelected(null)}
+            className="absolute top-3 right-3 bg-black/50 p-1.5 rounded-full text-white z-20"
           >
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-3xl grid grid-cols-1 md:grid-cols-2 bg-white dark:bg-[#080E12] border border-slate-200 dark:border-white/10 rounded-2xl overflow-hidden shadow-2xl max-h-[90vh] overflow-y-auto"
-            >
-              <div className="relative h-48 md:h-full min-h-[240px]">
-                <Image src={selected.image} alt={selected.title} fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
-                <button
-                  onClick={() => setSelected(null)}
-                  className="absolute top-3 right-3 bg-black/50 p-1.5 rounded-full text-white z-20"
-                >
-                  <X size={18} />
-                </button>
-              </div>
+            <X size={18} />
+          </button>
+        </div>
 
-              <div className="p-5 sm:p-6 space-y-4 flex flex-col justify-between bg-white dark:bg-[#01080C]">
-                <div>
-                  <span className="bg-[#0070A1]/10 text-[#0070A1] dark:bg-white/10 dark:text-white text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full">
-                    Exclusive Packages Route Details
-                  </span>
-                  <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight mt-2">
-                    {selected.title}
-                  </h2>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 font-medium flex items-center gap-1.5 mt-1">
-                    <MapPin size={14} className="text-[#0070A1]" /> {selected.location}
-                  </p>
-                  <div className="mt-3 p-3 rounded-xl bg-slate-50 dark:bg-white/[0.02] border border-slate-100 dark:border-white/[0.05] space-y-1">
-                    <p className="text-xs font-semibold text-slate-700 dark:text-white/80">{selected.advantage}</p>
-                    <p className="text-[11px] flex items-center gap-1 text-slate-500 dark:text-white/60">
-                      <Utensils size={12} className="text-[#F6931F]" /> {selected.meal}
-                    </p>
-                  </div>
-                  <div className="flex items-baseline gap-1 mt-3">
-                    <span className="text-[11px] font-medium text-slate-400">Starting From:</span>
-                    <p className="text-2xl font-black text-[#F6931F]">{selected.price}</p>
-                  </div>
+        <div className="p-5 sm:p-6 space-y-4 flex flex-col justify-between bg-white dark:bg-[#01080C]">
+          <div>
+            <span className="bg-[#0070A1]/10 text-[#0070A1] dark:bg-white/10 dark:text-white text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full">
+              Exclusive Packages Route Details
+            </span>
+            <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight mt-2">
+              {selected.title}
+            </h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400 font-medium flex items-center gap-1.5 mt-1">
+              <MapPin size={14} className="text-[#0070A1]" /> {selected.title}
+            </p>
+            <p className="text-xs text-slate-500 dark:text-slate-400 font-medium flex items-center gap-1.5 mt-1">
+              <MapPin size={14} className="text-[#0070A1]" /> {selected.shortDesc}
+            </p>
+            
+            {/* Added Attractive Perks Section */}
+            <div className="mt-3 grid grid-cols-2 gap-2 bg-slate-50/50 dark:bg-white/[0.01] border border-slate-100 dark:border-white/[0.04] p-3 rounded-xl">
+              <div className="flex items-center gap-2 bg-white dark:bg-white/[0.03] p-2 rounded-lg border border-slate-100 dark:border-white/[0.05] shadow-sm">
+                <div className="p-1 rounded-md bg-[#0070A1]/10 dark:bg-white/10 text-[#0070A1] dark:text-white">
+                  <FileText size={14} />
                 </div>
-
-                <form onSubmit={handleSubmit} className="space-y-2.5 border-t border-slate-100 dark:border-white/[0.05] pt-3">
-                  <input
-                    type="text"
-                    name="name"
-                    required
-                    placeholder="Your Full Name"
-                    value={form.name}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 text-xs rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white focus:outline-none focus:border-[#F6931F]"
-                  />
-                  <input
-                    type="tel"
-                    name="phone"
-                    required
-                    placeholder="Phone Number (WhatsApp preferred)"
-                    value={form.phone}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 text-xs rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white focus:outline-none focus:border-[#F6931F]"
-                  />
-                  <textarea
-                    name="message"
-                    rows={2}
-                    placeholder="Any special request?"
-                    value={form.message}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 text-xs rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white focus:outline-none focus:border-[#F6931F] resize-none"
-                  />
-                  <div className="grid grid-cols-2 gap-2 pt-1">
-                    <button type="submit" className="flex items-center justify-center gap-1.5 py-2 rounded-xl bg-[#F6931F] hover:bg-orange-500 text-white text-xs font-bold uppercase tracking-wider transition-colors">
-                      <Send size={12} /> Email
-                    </button>
-                    <button type="button" onClick={handleWhatsApp} className="flex items-center justify-center gap-1.5 py-2 rounded-xl bg-[#25D366] hover:bg-green-600 text-white text-xs font-bold uppercase tracking-wider transition-colors">
-                      <MessageCircle size={12} /> WhatsApp
-                    </button>
-                  </div>
-                </form>
+                <span className="text-[11px] font-bold text-slate-700 dark:text-slate-300">Visa Assistance</span>
               </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              <div className="flex items-center gap-2 bg-white dark:bg-white/[0.03] p-2 rounded-lg border border-slate-100 dark:border-white/[0.05] shadow-sm">
+                <div className="p-1 rounded-md bg-[#0070A1]/10 dark:bg-white/10 text-[#0070A1] dark:text-white">
+                  <Compass size={14} />
+                </div>
+                <span className="text-[11px] font-bold text-slate-700 dark:text-slate-300">Travel Guide</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white dark:bg-white/[0.03] p-2 rounded-lg border border-slate-100 dark:border-white/[0.05] shadow-sm">
+                <div className="p-1 rounded-md bg-[#F6931F]/10 text-[#F6931F]">
+                  <Utensils size={14} />
+                </div>
+                <span className="text-[11px] font-bold text-slate-700 dark:text-slate-300">Meals Included</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white dark:bg-white/[0.03] p-2 rounded-lg border border-slate-100 dark:border-white/[0.05] shadow-sm">
+                <div className="p-1 rounded-md bg-[#F6931F]/10 text-[#F6931F]">
+                  <Hotel size={14} />
+                </div>
+                <span className="text-[11px] font-bold text-slate-700 dark:text-slate-300">Hotel Provided</span>
+              </div>
+            </div>
+
+            <div className="mt-3 p-3 rounded-xl bg-slate-50 dark:bg-white/[0.02] border border-slate-100 dark:border-white/[0.05] space-y-1">
+              <p className="text-xs font-semibold text-slate-700 dark:text-white/80">{selected.advantage}</p>
+              <p className="text-[11px] flex items-center gap-1 text-slate-500 dark:text-white/60">
+                <Star size={12} className="text-[#F6931F]" /> {selected.star}
+              </p>
+            </div>
+            <div className="flex items-baseline gap-1 mt-3">
+              <span className="text-[11px] font-medium text-slate-400">Starting From:</span>
+              <p className="text-2xl font-black text-[#F6931F]">£{selected.price}</p>
+            </div>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-2.5 border-t border-slate-100 dark:border-white/[0.05] pt-3">
+            <input
+              type="text"
+              name="name"
+              required
+              placeholder="Your Full Name"
+              value={form.name}
+              onChange={handleChange}
+              className="w-full px-3 py-2 text-xs rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white focus:outline-none focus:border-[#F6931F]"
+            />
+            <input
+              type="tel"
+              name="phone"
+              required
+              placeholder="Phone Number (WhatsApp preferred)"
+              value={form.phone}
+              onChange={handleChange}
+              className="w-full px-3 py-2 text-xs rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white focus:outline-none focus:border-[#F6931F]"
+            />
+            <textarea
+              name="message"
+              rows={2}
+              placeholder="Any special request?"
+              value={form.message}
+              onChange={handleChange}
+              className="w-full px-3 py-2 text-xs rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white focus:outline-none focus:border-[#F6931F] resize-none"
+            />
+            <div className="grid grid-cols-2 gap-2 pt-1">
+              <button type="submit" className="flex items-center justify-center gap-1.5 py-2 rounded-xl bg-[#F6931F] hover:bg-orange-500 text-white text-xs font-bold uppercase tracking-wider transition-colors">
+                <Send size={12} /> Email
+              </button>
+              <button type="button" onClick={handleWhatsApp} className="flex items-center justify-center gap-1.5 py-2 rounded-xl bg-[#25D366] hover:bg-green-600 text-white text-xs font-bold uppercase tracking-wider transition-colors">
+                <MessageCircle size={12} /> WhatsApp
+              </button>
+            </div>
+          </form>
+        </div>
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
+
     </section>
   );
 }

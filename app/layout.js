@@ -1,9 +1,9 @@
 import { Jost, Plus_Jakarta_Sans, Mulish } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/header/Header";
-import SmoothScroll from "@/components/smoothScroll";
 import Providers from "./provider/providers";
-import Footer from "@/components/footer/Footer";
+import Header from "../components/header/Header";
+import SmoothScroll from "../components/smoothScroll";
+import Footer from "../components/footer/Footer";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],

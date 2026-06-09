@@ -6,9 +6,15 @@ import PackageInformations from '@/components/hajjumrah/packagedetails/PackageIn
 import PackageSlider from '@/components/hajjumrah/packagedetails/PackageSlider'
 import ThreeStar from '@/components/hajjumrah/packagedetails/ThreeStar'
 import HolidayInquiryForms from '@/components/Holidays/HolidayInquryForms'
+import { usePackages } from '@/hooks/usePackage';
 import React from 'react'
+import axios from 'axios';
 
 const page = () => {
+    const { packages: threeStarPackages, loading: threeStarLoading, error: threeStarError } =usePackages({ type: "NORMAL", star: "STAR_3" })
+    if (threeStarError) {
+    return <div>Failed to load packages: {threeStarError}</div>;
+  }
   // Sample data for the ThreeStar component
    const pageDataBlocks = [
     {
@@ -127,7 +133,8 @@ const page = () => {
     />
     
     {/* Section 2 -> 3 stars packages */}
-    <PackageInformations initialPackages={threeStarData} />
+/
+     <PackageInformations initialPackages={threeStarPackages} />
     
     {/* Section 3-> About 3 start package */}
     <ThreeStar blocks={pageDataBlocks}  />

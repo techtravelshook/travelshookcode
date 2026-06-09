@@ -10,9 +10,15 @@ import {
 } from "lucide-react";
 import { otherPackages } from "./HolidayData";
 import { AmenityPill } from "./Holidayui";
+import { useHolidayPackages } from "@/hooks/useHolidayPackages";
 
 
 export default function OtherPackages() {
+   const { packages } = useHolidayPackages({ type: "HOLIDAY" });
+    const imageMap = packages.reduce((acc, pkg) => {
+    acc[pkg.slug] = pkg.images || [];
+    return acc;
+  }, {});
   return (
     <section className="relative py-20 sm:py-28 overflow-hidden bg-white dark:bg-[#030712]">
 

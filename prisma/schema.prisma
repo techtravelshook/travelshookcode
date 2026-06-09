@@ -1,0 +1,159 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// model for umrah
+model UmrahPackage {
+  id           Int                @id @default(autoincrement())
+  title        String
+  slug         String             @unique
+  shortDesc    String             @db.Text
+  description  String             @db.Text
+  star         PackageStar
+  type         PackageType
+  month        String?
+  duration     Int
+  makkahHotel  String
+  madinahHotel String
+  price        Float
+  isFeatured   Boolean            @default(false)
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+  images       PackageImage[]
+  inclusions   PackageInclusion[]
+  exclusions   PackageExclusion[]
+}
+
+// aother model
+model PackageImage {
+  id        Int          @id @default(autoincrement())
+  url       String
+  packageId Int
+  package   UmrahPackage @relation(fields: [packageId], references: [id])
+}
+
+model PackageInclusion {
+  id        Int          @id @default(autoincrement())
+  title     String
+  packageId Int
+  package   UmrahPackage @relation(fields: [packageId], references: [id])
+}
+
+model PackageExclusion {
+  id        Int          @id @default(autoincrement())
+  title     String
+  packageId Int
+  package   UmrahPackage @relation(fields: [packageId], references: [id])
+}
+
+enum PackageStar {
+  STAR_1
+  STAR_2
+  STAR_3
+  STAR_4
+  STAR_5
+}
+
+enum PackageType {
+  RAMADAN
+  MONTHLY
+  NORMAL
+  WOMEN
+  LUXURY
+  CHEAP
+  
+}
+
+enum HolidayType {
+ HOLIDAY
+  CITY_BREAK
+  INCLUSIVE_HOLIDAY
+  BEACH_HOLIDAY
+  FAMILY_HOLIDAY
+  Last_Minute_Holidays
+}
+// FOR HOLIDAY'S
+model HolidayPackage {
+  id           Int                   @id @default(autoincrement())
+  title        String
+  slug         String                @unique
+  shortDesc    String                @db.Text
+  description  String                @db.Text
+  star         PackageStar
+  type         HolidayType
+  month        String?
+  duration     Int
+  makkahHotel  String?
+  madinahHotel String?
+  price        Float
+  isFeatured   Boolean               @default(false)
+  createdAt    DateTime              @default(now())
+  updatedAt    DateTime              @updatedAt
+  packages     HolidayPackageItem[]
+  images       HolidayPackageImage[]
+}
+
+// model for Holiday Images
+model HolidayPackageImage {
+  id               Int            @id @default(autoincrement())
+  url              String
+  slideTitle       String?
+  slideDesc        String?
+  holidayPackageId Int
+  holidayPackage   HolidayPackage @relation(fields: [holidayPackageId], references: [id])
+}
+
+model HolidayPackageItem {
+  id               Int            @id @default(autoincrement())
+  holidayPackageId Int
+  holidayPackage   HolidayPackage @relation(fields: [holidayPackageId], references: [id])
+  title            String
+  subtitle         String?
+  description      String?        @db.Text
+  image            String?
+  price            Float
+  originalPrice    Float?
+  rating           Float?
+  reviews          Int?
+  duration         String?
+  accent           String?
+}
+
+model HolidayBreaks {
+  id        Int         @id @default(autoincrement())
+  title     String
+  category  String
+  shortDesc String      @db.Text
+  rating    PackageStar
+  type      HolidayType
+  month     String?
+  duration  Int
+  price     Float
+
+  images   HolidayBreakImage[]
+  features HolidayBreakFeatures[]
+}
+
+model HolidayBreakImage {
+  id  Int    @id @default(autoincrement())
+  url String
+
+  holidayBreakId Int
+  holidayBreak   HolidayBreaks @relation(fields: [holidayBreakId], references: [id])
+}
+
+model HolidayBreakFeatures {
+  id             Int           @id @default(autoincrement())
+  name           String
+  holidayBreakId Int
+  holidayBreak   HolidayBreaks @relation(fields: [holidayBreakId], references: [id])
+}

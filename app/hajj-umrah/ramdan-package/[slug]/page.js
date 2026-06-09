@@ -1,6 +1,7 @@
 "use client";
+import React,{ useState, useEffect } from "react";
+import axios from "axios";
 
-import React from 'react';
 import { useParams } from 'next/navigation';
 // Apni package.js file se pure master object structure ko import kar rahe hain
 import { ramdanUmrahPackage } from '@/data/packages'; 
@@ -12,90 +13,101 @@ import PackageInformations from '@/components/hajjumrah/packagedetails/PackageIn
 import PackageSlider from '@/components/hajjumrah/packagedetails/PackageSlider';
 import ThreeStar from '@/components/hajjumrah/packagedetails/ThreeStar';
 import HolidayInquiryForms from '@/components/Holidays/HolidayInquryForms';
-
+import PackageTabsBlock from "@/components/hajjumrah/packagedetails/TabsPackages";
 const DynamicPackageDetailPage = () => {
   const params = useParams();
-  
-  // 1. URL parameter se active component unique slug cleanly track karna safely
-  const rawSlug = params?.slug || "";
-  const currentSlug = decodeURIComponent(rawSlug).trim().toLowerCase().replace(/\s+/g, '-');
+  const slug = params?.slug;
 
-  // 2. Pure multi-tier object arrays ko flatten bundle array structure banana searching ke liye
-  const allPackagesArray = Object.values(ramdanUmrahPackage || {}).flat();
-  
-  // 3. Current URL slug variable match framework block logic run karna
-  const activePackage = allPackagesArray.find((pkg) => {
-    if (!pkg.slug) return false;
-    const cleanPkgSlug = pkg.slug.trim().toLowerCase();
-    if (cleanPkgSlug === currentSlug) return true;
+  const [activePackage, setActivePackage] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-    // String normalization logic patch for handling spelling edge-cases smoothly
-    const normalizedPkg = cleanPkgSlug.replace('ramadan', 'ramdan');
-    const normalizedCurrent = currentSlug.replace('ramadan', 'ramdan');
-    return normalizedPkg === normalizedCurrent;
-  });
+ useEffect(() => {
+  if (!slug) return;
 
-  // 4. Default fallback protection view layout in case routing context breaks down
-  if (!activePackage) {
+
+
+  const fetchPackage = async () => {
+    try {
+      const res = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/packages/${slug}`
+      );
+
+      setActivePackage(res.data.data);
+    } catch (error) {
+      console.error("Package Fetch Error:", error);
+      setActivePackage(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchPackage();
+}, [slug]);
+
+  if (loading) {
     return (
-      <div className="w-full min-h-screen bg-black flex flex-col items-center justify-center p-6 text-center">
-        <div className="bg-zinc-900 border border-zinc-800 p-8 rounded-2xl max-w-sm shadow-2xl">
-          <p className="text-xl text-orange-500 font-black tracking-wide mb-2">Package Not Found</p>
-          <p className="text-xs text-zinc-400">The requested dynamic content route node has failed matching matrix targets.</p>
-          <div className="mt-4 bg-zinc-800 p-3 rounded font-mono text-xs text-zinc-300">Slug: {currentSlug}</div>
-        </div>
+      <div className="min-h-screen flex items-center justify-center">
+        Loading Package...
       </div>
     );
   }
 
-  // 5. Instantly generating identical informative side block text components inside the layout schema
-  const dynamicPageDataBlocks = [
+  if (!activePackage) {
+    return (
+      <div className="w-full min-h-screen bg-black flex flex-col items-center justify-center p-6 text-center">
+        <div className="bg-zinc-900 border border-zinc-800 p-8 rounded-2xl max-w-sm shadow-2xl">
+          <p className="text-xl text-orange-500 font-black mb-2">
+            Package Not Found
+          </p>
+          <p className="text-xs text-zinc-400">
+            No package found for this slug.
+          </p>
+        </div>
+      </div>
+    );
+  }
+ const dynamicPageDataBlocks = [
     {
-      tagline: "Convenience Without Compromise",
-      title: <>Choosing A <span className="text-[#F6931F]">{activePackage.title}</span> to Perform Umrah</>,
-      imageSrc: activePackage.image || "/imgs/hajj/hajj1.jpg",
-      imageAlt: "Umrah Hotel Stays",
+      tagline: `${activePackage.star} Package`,
+      title: (
+        <>
+          Perform Umrah With Our{" "}
+          <span className="text-[#F6931F]">
+            {activePackage.title}
+          </span>
+        </>
+      ),
+
+      imageSrc:
+        activePackage.images?.[0]?.url
+          ? `/${activePackage.images[0].url}`
+          : "/imgs/hajj/hajj1.jpg",
+
+      imageAlt: activePackage.title,
+
       description: (
         <>
-          <p>
-            This customized layout package is highly sought after, as it helps save on expenses while still providing budget-friendly 
-            packages. Our selection includes stays in quality hotels across Makkah and Madinah, which are conveniently located near the holy sites.
-          </p>
+          <p>{activePackage.description}</p>
+
           <p className="mt-3">
-            {activePackage.advantage} Senior citizens, students, and independent families enjoy affordable upkeep spending while receiving premium room cleaning services.
+            Stay comfortably in{" "}
+            <strong>{activePackage.makkahHotel}</strong> in Makkah and{" "}
+            <strong>{activePackage.madinahHotel}</strong> in Madinah.
           </p>
         </>
       ),
+
       listItems: [
-        `Duration: ${activePackage.days} Days Total Stay`,
-        `Location Target: ${activePackage.location}`,
-        `Included Logistics: ${activePackage.meal}`,
-        "Practical Budget Amenities Enabled"
+        `${activePackage.duration} Nights Package`,
+        `Makkah Hotel: ${activePackage.makkahHotel}`,
+        `Madinah Hotel: ${activePackage.madinahHotel}`,
+        `Starting From £${activePackage.price}`,
       ],
-      btnText: `Reserve For ${activePackage.price}`
+
+      btnText: "Reserve Your Package",
     },
-    {
-      tagline: "Best Value Deals",
-      title: <>Travelshook Best Value <span className="bg-gradient-to-r from-[#F6931F] to-[#0070A1] bg-clip-text text-transparent font-black">Deal Elements</span> for 2026</>,
-      imageSrc: "/imgs/hajj/hajj5.jpg",
-      imageAlt: "UK Flights to Umrah",
-      description: (
-        <p>
-          Our Umrah 2026 dynamic packaging setups reflect our meticulous attention to detail through cost-effective arrangements for your flights, visas, hotels, and ground transport. {activePackage.details} Our premium deals for UK residents guarantee total convenience whether flying from Heathrow Airport, Gatwick, Manchester, or Birmingham.
-        </p>
-      ),
-      listItems: [
-        "Flights from Major UK Hubs",
-        "Visa & Entrance Legal Formalities",
-        "Optional Guided Tours Included",
-        "Private Transfer Tiers Available"
-      ],
-      btnText: "Check Departure Dates"
-    }
   ];
 
-  // Wrapping single selected product element into a flat list array context so map() loops inside child components don't crash
-  const dataPassingWrapperList = [activePackage];
 
   return (
     <div className="w-full bg-slate-50 dark:bg-black transition-colors duration-300">
@@ -117,22 +129,14 @@ const DynamicPackageDetailPage = () => {
         primaryBtnText={`Lock Package Rate: ${activePackage.price}`}
         formComponent={<HolidayInquiryForms formType="umrah" />}
       />
-      
-      {/* SECTION 2: THE CARD ROW BLOCK DISPENSING SELECTION DATA VALUES */}
-     
-      
-      {/* SECTION 3: EDITORIAL TWO-GRID ROW ABOUT CURRENT CHOSEN TIER DETAILS */}
+      <div className="container mx-auto px-4 py-12">
+  
+</div>
       <ThreeStar blocks={dynamicPageDataBlocks} />
-      
-      {/* SECTION 4: WHY CHOOSE BRAND MODULE ADVANTAGES COMPONENT ROW */}
-      <AboutChooseus />
-      
-      {/* SECTION 5: ACCENT GOLD BANNER GRAPHIC SECTION SEPARATOR STRIP */}
+      <PackageTabsBlock pkg={activePackage} />
+      <AboutChooseus />      
       <PackageBanner />
-      
-      {/* SECTION 6: THE PIPELINE STEP GRAPH BOOKING WORKFLOW GRID AREA */}
       <BookingProcess />
-
     </div>
   );
 };

@@ -34,13 +34,13 @@ export default function HeroSlider({
       {/* ================= BACKGROUND SLIDER ================= */}
       <AnimatePresence mode="wait">
         <motion.div
-          key={currentSlide}
-          initial={{ opacity: 0, scale: 1.2 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 1.1 }}
-          transition={{ duration: 1 }}
-          className="absolute inset-0"
-        >
+  key={currentSlide}
+  initial={{ opacity: 0, scale: 1.05 }}
+  animate={{ opacity: 1, scale: 1 }}
+  exit={{ opacity: 0, scale: 1.05 }}
+  transition={{ duration: 0.8 }}
+  className="absolute inset-0"
+>
           <Image
             src={current.src}
             alt={current.alt || "Slider Image"}

@@ -185,7 +185,7 @@ export const monthlyBlocksData = [
 ];
 // for ramadan packages page
 export const ramdanUmrahPackage = {
-  // ✅ FIXED: spelling corrected (ramdan ➜ ramadan)
+ 
   "3-star-ramdan-umrah": [
     { 
       id: 1,

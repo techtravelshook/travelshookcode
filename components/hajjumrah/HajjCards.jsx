@@ -4,96 +4,54 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation"; 
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Utensils, MessageCircle, ArrowLeft, ArrowRight, Compass, Calendar, BadgePercent, Eye } from "lucide-react";
+import { X, Utensils, MessageCircle, ArrowLeft, ArrowRight, Compass, Calendar, BadgePercent, Eye, Plane, Bus, Hotel, CheckCircle } from "lucide-react";
+import axios from "axios";
 
-const packages = [
-  { 
-    id: 1, 
-    slug: "14-nights-5-star-ramadan", 
-    title: "14 Nights 5 Star Ramadan Package", 
-    location: "Makkah & Madinah", 
-    advantage: "Experience the peak blessings of Ramadan with luxury stays near the holy mosques. Features direct transfers and guided support throughout your spiritual journey.", 
-    meal: "Suhoor & Iftar Included", 
-    price: "£1,280", 
-    days: 14, 
-    image: "/imgs/hajj/hajj1.jpg",
-    details: "Makkah Hotel: Pullman ZamZam Makkah (7 Nights) | Madinah Hotel: Crowne Plaza Madinah (7 Nights). Fully inclusive of private transport, visa documentation processing, and religious guides."
-  },
-  { 
-    id: 2, 
-    slug: "14-nights-luxury-umrah", 
-    title: "14 Nights Luxury Umrah Package", 
-    location: "Makkah & Madinah", 
-    advantage: "Embark on an elite, completely premium pilgrimage during the sacred month with top-tier elite hospitality services close to the holy sanctuaries.", 
-    meal: "Full Board Premium", 
-    price: "£970", 
-    days: 14, 
-    image: "/imgs/hajj/hajj2.jpg",
-    details: "Makkah Hotel: Dorrar Aleiman Royal (7 Nights) | Madinah Hotel: Madinah Hilton (7 Nights). Includes full round-trip transport logistics, dedicated guide assistance, and flight booking adjustments."
-  },
-  { 
-    id: 3, 
-    slug: "7-nights-3-star", 
-    title: "7 Nights 3 Star Ramadan Package", 
-    location: "Makkah & Madinah", 
-    advantage: "A budget-friendly yet spiritually immersive short-stay package curated carefully for your seamless Taraweeh and spiritual sessions.", 
-    meal: "Suhoor Included", 
-    price: "£899", 
-    days: 7, 
-    image: "/imgs/hajj/hajj3.jpg",
-    details: "Makkah Hotel: Emaar Al Manar Hotel Makkah (4 Nights) | Madinah Hotel: Hayah Al Waha Hotel (3 Nights). Includes group airport transfers, visa tracking updates, and flights."
-  },
-  { 
-    id: 4, 
-    slug: "10-nights-3-star", 
-    title: "10 Nights 3 Star Ramadan Package", 
-    location: "Makkah & Madinah", 
-    advantage: "Spend a beautiful ten nights performing holy rituals in the sanctuary with an affordable itinerary structured for independent pilgrims or families.", 
-    meal: "Breakfast Buffet", 
-    price: "£960", 
-    days: 10, 
-    image: "/imgs/hajj/hajj4.jpg",
-    details: "Makkah Hotel: Emaar Al Khalil Hotel (5 Nights) | Madinah Hotel: Golden Tulip Al Shakreen (5 Nights). Includes standard transport transfers, fast-track electronic visa, and airfare support."
-  },
-  { 
-    id: 5, 
-    slug: "14-nights-3-star", 
-    title: "14 Nights 3 Star Ramadan Package", 
-    location: "Makkah & Madinah", 
-    advantage: "An extended, value-packed economic itinerary ideal for spending half of the holy month within Makkah and Madinah's peaceful environment.", 
-    meal: "Suhoor / Breakfast", 
-    price: "£1,060", 
-    days: 14, 
-    image: "/imgs/hajj/hajj4.jpg",
-    details: "Makkah Hotel: Elaf Ajyad Hotel Makkah (7 Nights) | Madinah Hotel: Mirage Al Salam Hotel (7 Nights). Fully inclusive of multi-city ground transportation, professional tour guides, and air tickets."
-  },
-  { 
-    id: 6, 
-    slug: "3-star-7-nights-budget", 
-    title: "3 Star 7 Nights Budget Umrah Deal", 
-    location: "Makkah & Madinah", 
-    advantage: "Perfect short-term express package providing standard comfortable accommodations at highly competitive economy pricing metrics.", 
-    meal: "Meals Available On-Demand", 
-    price: "£599", 
-    days: 7, 
-    image: "/imgs/hajj/hajj5.jpg",
-    details: "Makkah Hotel: Emaar Al Khalil Hotel (4 Nights) | Madinah Hotel: Emaar Taibah Hotel (3 Nights). Standard economy package detailing basic ground logistics setup, flights, and travel visas."
+
+const getImage = (pkg) => {
+  const img = pkg?.image || pkg?.images?.[0]?.url;
+  if (!img || typeof img !== "string" || img.trim() === "") {
+    return "/imgs/hajj/hajj1.jpg";
   }
-];
+  return img.startsWith("/") ? img : `/${img}`;
+};
+
+// ✅ Hardcoded fallbacks for fields not in API
+const MEAL_PLAN = "Bed & Breakfast";
+const TRANSPORT = "Private AC Transfers";
+const FLIGHTS = "Return Flights Included";
 
 export default function HajjCards() {
+  const [packages, setPackages] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const fetchFeaturedPackages = async () => {
+      try {
+        const res = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_BASE}/api/featurespackage`
+        );
+        setPackages(res.data.data || []);
+      } catch (error) {
+        console.error("Error fetching featured packages:", error);
+      } finally {
+        setLoading(false);
+        setMounted(true);
+      }
+    };
+    fetchFeaturedPackages();
+  }, []);
+
   const sliderRef = useRef(null);
   const whatsappNumber = "923124928496"; 
   const router = useRouter(); 
 
-  // FIXED: Ab yeh function user ko direct explicit route path par bhejega bina error ke
   const handleExploreNow = (selectedPackage) => {
     if (!selectedPackage || !selectedPackage.slug) return;
     setSelected(null); 
-    
-    // Explicit fixed target definition setup
     router.push(`/hajj-umrah/3-star-umrah/${selectedPackage.slug}`);
   };
 
@@ -111,12 +69,10 @@ export default function HajjCards() {
 
   useEffect(() => {
     if (isHovered) return;
-
     const interval = setInterval(() => {
       if (sliderRef.current) {
         const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
         const scrollAmount = getScrollAmount();
-        
         if (scrollLeft + clientWidth >= scrollWidth - 20) {
           sliderRef.current.scrollTo({ left: 0, behavior: "smooth" });
         } else {
@@ -124,7 +80,6 @@ export default function HajjCards() {
         }
       }
     }, 4000);
-
     return () => clearInterval(interval);
   }, [isHovered]);
 
@@ -139,14 +94,19 @@ export default function HajjCards() {
   const handleWhatsApp = () => {
     if (!selected) return;
     const msg = `Hi, I am interested in booking the "${selected.title}" package.
-📍 Location: ${selected.location}
-⏳ Duration: ${selected.days} Days
-🍽️ Meal Plan: ${selected.meal}
-💰 Price: ${selected.price}
+🕌 Makkah Hotel: ${selected.makkahHotel}
+🕌 Madinah Hotel: ${selected.madinahHotel}
+⏳ Duration: ${selected.duration} Nights
+✈️ Flights: ${FLIGHTS}
+🚌 Transport: ${TRANSPORT}
+🍽️ Meal Plan: ${MEAL_PLAN}
+💰 Price: £${selected.price} per person
 
 Please share more details. Thanks!`;
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank");
   };
+
+  if (!mounted || loading) return null;
 
   return (
     <section className="py-12 w-full bg-white dark:bg-[#01080C] text-slate-800 dark:text-slate-100 transition-colors duration-500 overflow-hidden">
@@ -158,9 +118,9 @@ Please share more details. Thanks!`;
             <span className="mb-3 inline-flex rounded-full bg-[#F6931F]/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.25em] text-[#F6931F]">
               Popular Packages
             </span>
-            <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight uppercase leading-tight whitespace-normal">
-              Most Searched Hajj{" "}
-              <span className="bg-gradient-to-r from-[#F6931F] to-[#0070A1] bg-clip-text text-transparent italic ml-1 font-serif normal-case">
+            <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight  leading-tight whitespace-normal">
+              Our Featured {" "}
+              <span className="text-2xl sm:text-4xl bg-gradient-to-r from-[#F6931F] to-[#0070A1] bg-clip-text text-transparent  ml-1 font-serif normal-case">
                 Packages 2026 - 2027
               </span>
             </h2>
@@ -179,7 +139,7 @@ Please share more details. Thanks!`;
           </div>
         </div>
 
-        {/* ================= CAROUSEL ROW WITH SCROLL ANIMATION ================= */}
+        {/* ================= CAROUSEL ================= */}
         <motion.div 
           ref={sliderRef}
           onMouseEnter={() => setIsHovered(true)}
@@ -203,45 +163,53 @@ Please share more details. Thanks!`;
                 visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 65, damping: 15 } }
               }}
             >
-              {/* IMAGE SECTION */}
+              {/* IMAGE */}
               <div className="relative w-full h-48 overflow-hidden shrink-0">
-                <Image 
-                  src={pkg.image} 
-                  alt={pkg.title} 
+                <Image
+                  src={getImage(pkg)}
+                  alt={pkg.title}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-w-340px) 100vw, 340px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 <span className="absolute bottom-4 right-4 bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 rounded-full text-xs font-bold text-white flex items-center gap-1.5">
-                  <Calendar size={12} className="text-[#F6931F]" /> {pkg.days} Days
+                  <Calendar size={12} className="text-[#F6931F]" /> {pkg.duration} Nights
                 </span>
               </div>
 
               {/* CARD DETAILS */}
               <div className="p-5 flex flex-col justify-between flex-1">
                 <div className="space-y-2.5">
+                  {/* ✅ Shows Makkah hotel as location */}
                   <div className="flex items-center gap-2 text-[10px] uppercase font-bold tracking-widest text-[#F6931F]">
-                    <Compass size={12} /> {pkg.location}
+                    <Compass size={12} /> {pkg.makkahHotel || "Makkah & Madinah"}
                   </div>
                   <h3 className="font-black text-base sm:text-lg tracking-tight uppercase text-slate-900 dark:text-white line-clamp-1">
                     {pkg.title}
                   </h3>
+                  {/* ✅ shortDesc instead of advantage */}
                   <p className="text-xs text-slate-500 dark:text-zinc-400 font-medium line-clamp-3 leading-relaxed">
-                    {pkg.advantage}
+                    {pkg.shortDesc}
                   </p>
                 </div>
 
                 <div className="space-y-4 pt-4 border-t border-slate-200/60 dark:border-white/10 shrink-0">
                   <div className="flex items-center justify-between text-xs font-semibold text-slate-600 dark:text-zinc-300">
-                    <span className="flex items-center gap-1.5"><Utensils size={13} className="text-slate-400" /> {pkg.meal}</span>
-                    <span className="text-[#0070A1] font-bold bg-[#0070A1]/5 dark:bg-[#0070A1]/10 px-2.5 py-1 rounded-md flex items-center gap-1"><BadgePercent size={13} /> Special</span>
+                    {/* ✅ Hardcoded meal plan */}
+                    <span className="flex items-center gap-1.5">
+                      <Utensils size={13} className="text-slate-400" /> {MEAL_PLAN}
+                    </span>
+                    <span className="text-[#0070A1] font-bold bg-[#0070A1]/5 dark:bg-[#0070A1]/10 px-2.5 py-1 rounded-md flex items-center gap-1">
+                      <BadgePercent size={13} /> Special
+                    </span>
                   </div>
 
                   <div className="flex items-center justify-between gap-2">
                     <div>
                       <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 block mb-0.5">From Pricing</span>
-                      <span className="text-xl font-black text-slate-900 dark:text-white">{pkg.price}</span>
+                      {/* ✅ price from API with £ sign */}
+                      <span className="text-xl font-black text-slate-900 dark:text-white">£{pkg.price}</span>
                     </div>
                     <button 
                       onClick={() => setSelected(pkg)}
@@ -256,62 +224,153 @@ Please share more details. Thanks!`;
           ))}
         </motion.div>
 
-        {/* ================= DETAILED MODAL OVERLAY ================= */}
-        <AnimatePresence>
-          {selected && (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-              <motion.div initial={{ scale: 0.95, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.95, y: 20 }} className="relative w-full max-w-lg bg-white dark:bg-zinc-950 border border-slate-200 dark:border-white/10 rounded-3xl p-6 shadow-2xl text-left space-y-5 overflow-hidden">
-                <button onClick={() => setSelected(null)} className="absolute top-4 right-4 p-1.5 rounded-full border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 transition-all text-slate-400 hover:text-slate-900 dark:hover:text-white">
-                  <X size={16} />
-                </button>
+      
+{/* ================= COMPACT MODAL ================= */}
+<AnimatePresence>
+  {selected && (
+    <motion.div 
+      initial={{ opacity: 0 }} 
+      animate={{ opacity: 1 }} 
+      exit={{ opacity: 0 }} 
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-xl p-4"
+    >
+      <motion.div 
+        initial={{ scale: 0.95, y: 30, opacity: 0 }}
+        animate={{ scale: 1, y: 0, opacity: 1 }}
+        exit={{ scale: 0.95, y: 30, opacity: 0 }}
+        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+        className="relative w-full max-w-md bg-white dark:bg-zinc-950 border border-slate-200 dark:border-white/10 rounded-3xl shadow-2xl overflow-hidden max-h-[88vh] flex flex-col"
+      >
+        {/* Close Button */}
+        <button 
+          onClick={() => setSelected(null)} 
+          className="absolute top-3 right-3 z-20 p-2 rounded-full bg-white/90 dark:bg-zinc-900/90 hover:bg-white dark:hover:bg-zinc-900 border border-slate-200 dark:border-white/20 shadow-md transition-all"
+        >
+          <X size={17} className="text-slate-500 dark:text-slate-400" />
+        </button>
 
-                <div className="space-y-2">
-                  <span className="inline-flex rounded-full bg-[#F6931F]/10 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-[#F6931F]">
-                    {selected.location} • {selected.days} Days
-                  </span>
-                  <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight pr-6">
-                    {selected.title}
-                  </h3>
+        {/* Compact Hero Image */}
+        <div className="relative h-48 w-full shrink-0">
+          <Image 
+            src={getImage(selected)}
+            alt={selected.title}
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+          
+          <div className="absolute bottom-0 left-0 right-0 p-5">
+            <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-md border border-white/20 px-3 py-0.5 rounded-full text-[10px] font-bold text-white">
+              <Calendar size={13} /> {selected.duration} Nights
+            </span>
+            <h3 className="text-xl font-black text-white mt-2 leading-tight tracking-tight">
+              {selected.title}
+            </h3>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="flex-1 overflow-y-auto p-5 space-y-6">
+
+          {/* Highlights - More Compact */}
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              { icon: Plane, label: "Flights", value: FLIGHTS },
+              { icon: Bus, label: "Transport", value: TRANSPORT },
+              { icon: Utensils, label: "Meals", value: MEAL_PLAN },
+              { icon: Calendar, label: "Duration", value: `${selected.duration} Nights` },
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-3 bg-slate-50 dark:bg-zinc-900 border border-slate-100 dark:border-white/5 rounded-2xl p-3.5">
+                <div className="w-8 h-8 rounded-xl bg-white dark:bg-zinc-800 flex items-center justify-center shrink-0">
+                  <item.icon size={16} className="text-[#0070A1]" />
                 </div>
-
-                <div className="relative w-full h-44 rounded-2xl overflow-hidden">
-                  <Image src={selected.image} alt={selected.title} fill className="object-cover object-center" sizes="(max-w-512px) 100vw, 512px" />
+                <div>
+                  <p className="text-[9px] font-semibold uppercase tracking-widest text-slate-400">{item.label}</p>
+                  <p className="text-xs font-semibold text-slate-800 dark:text-white line-clamp-1">{item.value}</p>
                 </div>
+              </div>
+            ))}
+          </div>
 
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="text-[10px] font-bold uppercase tracking-wider text-[#0070A1] mb-1">Itinerary / Overview</h4>
-                    <p className="text-xs text-slate-600 dark:text-zinc-300 font-medium leading-relaxed">{selected.advantage}</p>
-                  </div>
-                  <div>
-                    <h4 className="text-[10px] font-bold uppercase tracking-wider text-[#0070A1] mb-1">Hotel & Logistics Data</h4>
-                    <p className="text-xs text-slate-600 dark:text-zinc-300 font-medium leading-relaxed bg-slate-50 dark:bg-white/5 p-3 rounded-xl border border-slate-200/50 dark:border-white/5">{selected.details}</p>
-                  </div>
+          {/* Hotels - Compact */}
+          <div>
+            <h4 className="text-xs font-bold text-[#0070A1] mb-2.5">Hotel Accommodation</h4>
+            <div className="space-y-2.5">
+              <div className="flex gap-3 bg-slate-50 dark:bg-zinc-900/70 border border-slate-100 dark:border-white/5 rounded-2xl p-3">
+                <Hotel size={17} className="text-[#F6931F] shrink-0 mt-0.5" />
+                <div>
+                  <p className="text-[10px] text-slate-400">Makkah</p>
+                  <p className="text-sm font-medium text-slate-800 dark:text-white">{selected.makkahHotel}</p>
                 </div>
+              </div>
 
-                <div className="pt-4 border-t border-slate-200/60 dark:border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
-                  <div>
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 block">Total Cost</span>
-                    <span className="text-2xl font-black text-[#F6931F]">{selected.price}</span>
-                  </div>
-                  
-                  <div className="flex flex-col sm:flex-row gap-2.5">
-                    <button 
-                      onClick={() => handleExploreNow(selected)}
-                      className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl border border-slate-300 dark:border-white/20 bg-gradient-to-r from-[#F6931F] to-[#0070A1] dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-white dark:text-white font-bold text-xs uppercase tracking-wider transition-colors"
-                    >
-                      <Eye size={14} className="text-[#0070A1]" /> Explore Now
-                    </button>
-
-                    <button onClick={handleWhatsApp} className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#25D366] hover:bg-emerald-600 text-white font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all">
-                      <MessageCircle size={15} /> Book WhatsApp
-                    </button>
-                  </div>
+              <div className="flex gap-3 bg-slate-50 dark:bg-zinc-900/70 border border-slate-100 dark:border-white/5 rounded-2xl p-3">
+                <Hotel size={17} className="text-[#F6931F] shrink-0 mt-0.5" />
+                <div>
+                  <p className="text-[10px] text-slate-400">Madinah</p>
+                  <p className="text-sm font-medium text-slate-800 dark:text-white">{selected.madinahHotel}</p>
                 </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              </div>
+            </div>
+          </div>
+
+          {/* Overview */}
+          <div>
+            <h4 className="text-xs font-bold text-[#0070A1] mb-1.5">Package Overview</h4>
+            <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-300 line-clamp-4">
+              {selected.description}
+            </p>
+          </div>
+
+          {/* What's Included */}
+          <div>
+            <h4 className="text-xs font-bold text-[#0070A1] mb-2">What&apos;s Included</h4>
+            <div className="grid grid-cols-1 gap-1.5 text-xs">
+              {[
+                "Return Flights from UK",
+                "Hotel Accommodation (Makkah & Madinah)",
+                "All Airport & City Transfers",
+                "Bed & Breakfast Meal Plan",
+                "Ziyarah Guide Included",
+                "24/7 Support & Assistance",
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-2">
+                  <CheckCircle size={14} className="text-emerald-500 shrink-0" />
+                  <span className="text-slate-600 dark:text-slate-300">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="p-5 border-t border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-950">
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <p className="text-[10px] uppercase tracking-widest text-slate-400">Price Per Person</p>
+              <p className="text-2xl font-black text-[#F6931F]">£{selected.price}</p>
+            </div>
+
+            <div className="flex gap-2">
+              <button 
+                onClick={() => handleExploreNow(selected)}
+                className="px-5 py-3 rounded-2xl bg-gradient-to-r from-[#F6931F] to-[#0070A1] text-white font-bold text-xs tracking-wider hover:brightness-110 transition-all"
+              >
+                Explore Now
+              </button>
+              <button 
+                onClick={handleWhatsApp}
+                className="px-5 py-3 rounded-2xl bg-[#25D366] hover:bg-[#20b557] text-white font-bold text-xs tracking-wider transition-all"
+              >
+                WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
 
       </div>
     </section>
