@@ -6,6 +6,7 @@ import HajjCards from '@/components/hajjumrah/HajjCards';
 import BookingProcess from '@/components/hajjumrah/BookingProcess';
 import HeroSlider from '@/components/Holidays/HolidayHero';
 import HolidayInquiryForms from '@/components/Holidays/HolidayInquryForms';
+import { ImSpinner9 } from "react-icons/im";
 
 function Page() {
   const sliderImages = [
@@ -35,8 +36,14 @@ function Page() {
   const { packages: womenPackages,  loading: womenLoading,  error: womenError  } = usePackages("WOMEN");
   const { packages: luxuryPackages, loading: luxuryLoading, error: luxuryError } = usePackages("LUXURY");
   if (cheapLoading || womenLoading || luxuryLoading) {
-    return <div>Loading...</div>;
-  }
+  return (
+    <div className='mt-60 flex flex-col items-center justify-center gap-2 text-center'>
+      <ImSpinner9 className='animate-spin text-4xl text-orange-600' />
+      <p>Loading Umrah Packages...</p>
+    </div>
+  );
+}
+
   if (cheapError) {
     return <div>Failed to load packages: {cheapError}</div>;
   }

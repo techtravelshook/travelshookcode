@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, MapPin, Utensils, Send, MessageCircle, ArrowLeft, ArrowRight, Compass, Star, FileText, Hotel } from "lucide-react";
 import { useHolidayPackages } from "@/hooks/useHolidayPackages"; 
-
+import { ImSpinner9 } from "react-icons/im";
 export default function HolidayCards() {
    const { packages, loading, error } = useHolidayPackages({ type: "HOLIDAY" });
   const [selected, setSelected] = useState(null);
@@ -61,6 +61,27 @@ export default function HolidayCards() {
     setForm({ name: "", phone: "", message: "" });
     setSelected(null);
   };
+
+   if (loading) {
+    return (
+      <div className="w-full min-h-[400px] flex flex-col items-center justify-center gap-4 bg-white dark:bg-[#01080C] text-slate-800 dark:text-slate-100 transition-colors duration-500">
+        
+        <p className="text-sm font-semibold tracking-wide text-slate-500 dark:text-slate-400 animate-pulse">
+        <ImSpinner9 className='animate-spin text-4xl text-orange-600 text-center' />
+          Loading Holiday Packages...
+        </p>
+      </div>
+    );
+  }
+
+  // ================= ERROR STATE HANDLER =================
+  if (error) {
+    return (
+      <div className="w-full min-h-[400px] flex items-center justify-center bg-white dark:bg-[#01080C] text-red-500 font-medium">
+        Error loading packages. Please try again later.
+      </div>
+    );
+  }
 
   return (
     <section className="py-12 w-full bg-white dark:bg-[#01080C] text-slate-800 dark:text-slate-100 transition-colors duration-500">

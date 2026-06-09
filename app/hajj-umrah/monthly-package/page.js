@@ -255,31 +255,21 @@ const FilterBar = ({
   );
 };
 
-/* ─────────────────────────────────────────────
-   Monthly Package Grid Section
-   ✅ All filter state & logic lives HERE
-───────────────────────────────────────────── */
+
 const MonthlyPackageGrid = ({ packages, onCardClick }) => {
-  // ── Filter state ────────────────────────────
+  
   const [selectedMonth, setSelectedMonth] = useState("All");
   const [selectedStar, setSelectedStar] = useState("All");
   const [selectedDuration, setSelectedDuration] = useState("All");
-
-  // ── Derive unique filter options from data ──
-  // The API uses "star" (enum: STAR_3, STAR_4, STAR_5) and "duration" (number of nights)
   const filterOptions = useMemo(() => {
     const months = new Set();
     const stars = new Set();
     const durations = new Set();
-
     packages.forEach((pkg) => {
       if (pkg.month) months.add(pkg.month);
-      // Convert "STAR_4" → "4" for display
       if (pkg.star) stars.add(pkg.star.replace("STAR_", ""));
-      // Only add duration if it's a positive number
       if (pkg.duration && pkg.duration > 0) durations.add(String(pkg.duration));
     });
-
     return {
       months: ["All", ...Array.from(months).sort()],
       stars: ["All", ...Array.from(stars).sort((a, b) => Number(b) - Number(a))],
@@ -338,9 +328,9 @@ const MonthlyPackageGrid = ({ packages, onCardClick }) => {
             </span>
           </h2>
           
-          <div className="flex items-center justify-center gap-3 mt-6">
+          <div className="flex items-center  gap-3 mt-6">
             <div className="h-[1px] w-16 bg-gradient-to-r from-transparent to-[#C47A1E]" />
-            
+          
             <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-[#C47A1E]" />
           </div>
         </div>
