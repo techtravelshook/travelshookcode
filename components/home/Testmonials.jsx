@@ -34,11 +34,19 @@ export default function LuxuryTestimonials() {
     setSelectedIndex(emblaApi.selectedScrollSnap());
   }, [emblaApi]);
 
+  // Fix applied here to clear the active render queue error
   useEffect(() => {
     if (!emblaApi) return;
-    onSelect();
+    
+    // Wraps execution outside of active render loop matching Next.js strict linter rules
+    const timeoutId = setTimeout(() => onSelect(), 0);
+    
     emblaApi.on("select", onSelect);
     emblaApi.on("reInit", onSelect);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }, [emblaApi, onSelect]);
 
   const scrollPrev = () => emblaApi && emblaApi.scrollPrev();

@@ -10,7 +10,7 @@ import { usePackages } from '@/hooks/usePackage';
 import React from 'react'
 import axios from 'axios';
 
-const page = () => {
+const Page = () => {
 
  const { packages: fiveStarPackages, loading: fiveStarLoading, error: fiveStarError } = usePackages({ type: "NORMAL", star: "STAR_5" });
     if (fiveStarError) {
@@ -149,4 +149,4 @@ const page = () => {
     </div>
   )
 }
-export default page;
+export default Page;

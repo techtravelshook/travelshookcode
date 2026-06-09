@@ -59,9 +59,10 @@ function Carousel({
   }, [scrollPrev, scrollNext])
 
   React.useEffect(() => {
-    if (!api || !setApi) return
-    setApi(api)
-  }, [api, setApi])
+  if (!api) return;
+  setTimeout(() => onSelect(api), 0); 
+  api.on("reInit", onSelect);
+}, [api, onSelect]);
 
   React.useEffect(() => {
     if (!api) return

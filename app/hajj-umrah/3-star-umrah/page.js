@@ -10,7 +10,7 @@ import { usePackages } from '@/hooks/usePackage';
 import React from 'react'
 import axios from 'axios';
 
-const page = () => {
+const Page = () => {
     const { packages: threeStarPackages, loading: threeStarLoading, error: threeStarError } =usePackages({ type: "NORMAL", star: "STAR_3" })
     if (threeStarError) {
     return <div>Failed to load packages: {threeStarError}</div>;
@@ -150,4 +150,4 @@ const page = () => {
     </div>
   )
 }
-export default page;
+export default Page;

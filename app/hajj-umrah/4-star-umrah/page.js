@@ -10,7 +10,7 @@ import React from 'react'
 import { usePackages } from '@/hooks/usePackage';
 import axios from 'axios';
 
-const page = () => {
+const Page = () => {
    const { packages: fourStarPackages, loading: fourStarLoading, error: fourStarError } =usePackages({ type: "NORMAL", star: "STAR_4" })
   // Sample data for the ThreeStar component
   const pageDataBlocks = [
@@ -190,4 +190,4 @@ const fourStarDifferentiators = [
     </div>
   )
 }
-export default page;
+export default Page;
