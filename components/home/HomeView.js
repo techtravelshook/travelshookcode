@@ -4,6 +4,8 @@ import DynamicSlider from '../DynamicSlider/DynamicSlider';
 import FlightsInfo from './FlightsInfo';
 import UmrahPackage from "../umrah/UmrahPackage";
 import HolidayDeals from '../Holidays/Holidays';
+import HolidayCards from '../Holidays/HolidayCards';
+import HolidayPackages from '../Holidays/HolidayPackages';
 
 
 
@@ -97,6 +99,8 @@ function HomeView() {
         badge="Best Holidays Deals"
         data={holidayDestinations} 
       />
+        
+         <HolidayPackages />   
       <HolidayDeals 
       badge="Top Booked Routes"
       titleMain="Holiday Deals &"
