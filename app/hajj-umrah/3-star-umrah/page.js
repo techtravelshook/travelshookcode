@@ -133,7 +133,7 @@ const Page = () => {
     />
     
     {/* Section 2 -> 3 stars packages */}
-/
+
      <PackageInformations initialPackages={threeStarPackages} />
     
     {/* Section 3-> About 3 start package */}

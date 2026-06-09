@@ -3,7 +3,10 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { AlertCircle, Clock, Star, Plane, FileCheck, Bus, Hotel, Utensils, Headphones, CheckCircle2, XCircle } from "lucide-react";
+import {
+  AlertCircle, Clock, Star, Plane, FileCheck, Bus,
+  Hotel, Utensils, Headphones, CheckCircle2, XCircle,
+} from "lucide-react";
 import { useHolidayPackages } from "@/hooks/useHolidayPackages";
 
 /* ── Star label helper ─────────────────────────────────────── */
@@ -12,14 +15,14 @@ function starLabel(star) {
   return map[star] || null;
 }
 
-/* ── Fixed features — shown on every card ─────────────────── */
+/* ── Fixed features ─────────────────────────────────────────── */
 const FIXED_FEATURES = [
-  { icon: Plane,       label: "Return Flights"      },
-  { icon: FileCheck,   label: "Visa Processing"      },
-  { icon: Bus,         label: "Airport Transfers"    },
-  { icon: Hotel,       label: "Hotel Accommodation"  },
-  { icon: Utensils,    label: "Meals Included"       },
-  { icon: Headphones,  label: "24/7 Support"         },
+  { icon: Plane,      label: "Return Flights"     },
+  { icon: FileCheck,  label: "Visa Processing"    },
+  { icon: Bus,        label: "Airport Transfers"  },
+  { icon: Hotel,      label: "Hotel Stay"         },
+  { icon: Utensils,   label: "Meals Included"     },
+  { icon: Headphones, label: "24/7 Support"       },
 ];
 
 /* ── ZigzagCard ─────────────────────────────────────────────── */
@@ -32,8 +35,6 @@ function ZigzagCard({ pkg, index }) {
     : "/imgs/placeholder.jpg";
 
   const starText = starLabel(pkg.star);
-
-  // Dynamic inclusions/exclusions from API (once backend returns them)
   const inclusions = pkg.inclusions || [];
   const exclusions = pkg.exclusions || [];
 
@@ -41,47 +42,55 @@ function ZigzagCard({ pkg, index }) {
     <motion.div
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-      className="group grid grid-cols-3 rounded-[12px] p-3 md:grid-cols-2 overflow-hidden bg-white dark:bg-white/[0.02] border border-slate-200/80 dark:border-white/[0.06] shadow-md hover:shadow-2xl hover:border-[#F6931F]/30 transition-all duration-500"
+      className="group flex flex-col md:grid md:grid-cols-2 rounded-2xl overflow-hidden bg-white dark:bg-white/[0.02] border border-slate-200/80 dark:border-white/[0.06] shadow-md hover:shadow-2xl hover:border-[#F6931F]/30 transition-all duration-500"
     >
-      {/* ── Image side ── */}
-      <div className={`relative h-64 md:h-auto min-h-[420px] overflow-hidden ${isEven ? "md:order-1" : "md:order-2"}`}>
+      {/* ── Image ── */}
+      <div
+        className={`relative w-full h-56 sm:h-72 md:h-auto md:min-h-[420px] overflow-hidden shrink-0 ${
+          isEven ? "md:order-1" : "md:order-2"
+        }`}
+      >
         <Image
           src={imageSrc}
           alt={pkg.title}
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-700"
+          sizes="(max-width: 768px) 100vw, 50vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
 
         {pkg.duration && (
-          <div className="absolute top-4 left-4 bg-[#F6931F] text-white text-[10px] font-black uppercase tracking-wider px-3 py-1.5 rounded-full shadow-md flex items-center gap-1.5">
+          <div className="absolute top-3 left-3 bg-[#F6931F] text-white text-[10px] font-black uppercase tracking-wider px-3 py-1.5 rounded-full shadow-md flex items-center gap-1.5">
             <Clock size={11} />
             {pkg.duration} Days
           </div>
         )}
 
         {starText && (
-          <div className="absolute bottom-4 left-4 bg-black/50 backdrop-blur-md text-white text-[11px] px-3 py-1.5 rounded-full flex items-center gap-1.5 border border-white/10 font-bold">
+          <div className="absolute bottom-3 left-3 bg-black/50 backdrop-blur-md text-white text-[11px] px-3 py-1.5 rounded-full flex items-center gap-1.5 border border-white/10 font-bold">
             <Star size={11} className="text-[#F6931F]" fill="#F6931F" />
             {starText}
           </div>
         )}
       </div>
 
-      {/* ── Content side ── */}
-      <div className={`flex flex-col p-7 md:p-10 bg-white dark:bg-[#01080C] ${isEven ? "md:order-2" : "md:order-1"}`}>
-
-        {/* Badge + title + descs */}
-        <div className="space-y-3">
+      {/* ── Content ── */}
+      <div
+        className={`flex flex-col p-5 sm:p-7 md:p-10 bg-white dark:bg-[#01080C] ${
+          isEven ? "md:order-2" : "md:order-1"
+        }`}
+      >
+        {/* Badge + title + desc */}
+        <div className="space-y-2.5">
           {pkg.type && (
             <span className="inline-block text-[10px] uppercase tracking-[0.2em] font-bold text-[#0070A1] bg-[#0070A1]/10 dark:bg-white/[0.05] px-3 py-1 rounded-full border border-[#0070A1]/20">
               {pkg.type}
             </span>
           )}
 
-          <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight leading-tight group-hover:text-[#F6931F] transition-colors duration-300">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight leading-tight group-hover:text-[#F6931F] transition-colors duration-300">
             {pkg.title}
           </h3>
 
@@ -98,7 +107,7 @@ function ZigzagCard({ pkg, index }) {
           )}
         </div>
 
-        {/* ── Fixed Features Grid ── */}
+        {/* Fixed Features Grid */}
         <div className="mt-5">
           <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-400 dark:text-slate-500 mb-3">
             What&apos;s Included
@@ -107,12 +116,12 @@ function ZigzagCard({ pkg, index }) {
             {FIXED_FEATURES.map(({ icon: Icon, label }) => (
               <div
                 key={label}
-                className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-100 dark:border-white/[0.05]"
+                className="flex items-center gap-2 px-2.5 py-2 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-100 dark:border-white/[0.05]"
               >
-                <div className="shrink-0 w-7 h-7 rounded-lg bg-[#0070A1]/10 dark:bg-white/[0.06] flex items-center justify-center">
-                  <Icon size={13} className="text-[#0070A1] dark:text-[#5fb8e0]" />
+                <div className="shrink-0 w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-[#0070A1]/10 dark:bg-white/[0.06] flex items-center justify-center">
+                  <Icon size={12} className="text-[#0070A1] dark:text-[#5fb8e0]" />
                 </div>
-                <span className="text-[11px] font-bold text-slate-700 dark:text-slate-300 leading-tight">
+                <span className="text-[10px] sm:text-[11px] font-bold text-slate-700 dark:text-slate-300 leading-tight">
                   {label}
                 </span>
               </div>
@@ -120,9 +129,9 @@ function ZigzagCard({ pkg, index }) {
           </div>
         </div>
 
-        {/* ── Dynamic inclusions/exclusions (shows when API returns them) ── */}
+        {/* Dynamic inclusions/exclusions */}
         {(inclusions.length > 0 || exclusions.length > 0) && (
-          <div className="mt-5 grid grid-cols-2 gap-4 pt-4 border-t border-slate-100 dark:border-white/[0.05]">
+          <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-100 dark:border-white/[0.05]">
             {inclusions.length > 0 && (
               <div>
                 <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-green-600 dark:text-green-400 mb-2">
@@ -156,8 +165,8 @@ function ZigzagCard({ pkg, index }) {
           </div>
         )}
 
-        {/* ── Price + CTA ── */}
-        <div className="flex items-end justify-between mt-6 pt-5 border-t border-slate-100 dark:border-white/[0.05]">
+        {/* Price + CTA */}
+        <div className="flex flex-col xs:flex-row items-start xs:items-end justify-between gap-4 mt-6 pt-5 border-t border-slate-100 dark:border-white/[0.05]">
           <div>
             <p className="text-[10px] font-medium text-slate-400 uppercase tracking-wider mb-0.5">
               Starting from
@@ -171,8 +180,8 @@ function ZigzagCard({ pkg, index }) {
           </div>
 
           <Link
-            href={'/contact'}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#D57E1B] to-[#00618C] hover:from-[#F6931F] hover:to-[#0070A1] text-white text-[11px] font-black uppercase tracking-widest shadow-md transition-all duration-300 hover:scale-105"
+            href="/contact"
+            className="w-full xs:w-auto flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-[#D57E1B] to-[#00618C] hover:from-[#F6931F] hover:to-[#0070A1] text-white text-[11px] font-black uppercase tracking-widest shadow-md transition-all duration-300 hover:scale-105 active:scale-95"
           >
             BOOK NOW
             <CheckCircle2 size={13} />
@@ -186,14 +195,22 @@ function ZigzagCard({ pkg, index }) {
 /* ── Skeleton ───────────────────────────────────────────────── */
 function SkeletonCard({ flip }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 rounded-[24px] overflow-hidden border border-slate-100 dark:border-white/[0.05] animate-pulse">
-      <div className={`h-64 md:h-72 bg-slate-200 dark:bg-white/[0.05] ${flip ? "md:order-2" : "md:order-1"}`} />
-      <div className={`p-8 space-y-4 bg-white dark:bg-[#01080C] ${flip ? "md:order-1" : "md:order-2"}`}>
+    <div className="flex flex-col md:grid md:grid-cols-2 rounded-2xl overflow-hidden border border-slate-100 dark:border-white/[0.05] animate-pulse">
+      <div
+        className={`h-56 sm:h-72 md:h-80 bg-slate-200 dark:bg-white/[0.05] ${
+          flip ? "md:order-2" : "md:order-1"
+        }`}
+      />
+      <div
+        className={`p-5 sm:p-8 space-y-4 bg-white dark:bg-[#01080C] ${
+          flip ? "md:order-1" : "md:order-2"
+        }`}
+      >
         <div className="h-4 w-20 bg-slate-200 dark:bg-white/[0.05] rounded-full" />
         <div className="h-8 w-3/4 bg-slate-200 dark:bg-white/[0.05] rounded-xl" />
         <div className="h-4 w-full bg-slate-100 dark:bg-white/[0.03] rounded-lg" />
         <div className="h-4 w-5/6 bg-slate-100 dark:bg-white/[0.03] rounded-lg" />
-        <div className="grid grid-cols-3 gap-2 pt-2">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-2">
           {[...Array(6)].map((_, i) => (
             <div key={i} className="h-10 bg-slate-100 dark:bg-white/[0.03] rounded-xl" />
           ))}
@@ -209,15 +226,15 @@ export default function HolidaysSec({ slug }) {
   const filtered = slug ? packages.filter((p) => p.slug === slug) : packages;
 
   return (
-    <section className="w-full py-8 bg-slate-50 dark:bg-[#01080C] transition-colors duration-500">
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="w-full py-8 sm:py-12 bg-slate-50 dark:bg-[#01080C] transition-colors duration-500">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="mb-12">
+        <div className="mb-8 sm:mb-12">
           <span className="inline-flex rounded-full bg-[#E68213]/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.25em] text-[#E68213] mb-3">
             Explore the World
           </span>
-          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight uppercase leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight uppercase leading-tight">
             Holiday{" "}
             <span className="bg-gradient-to-r from-[#F6931F] to-[#0070A1] bg-clip-text text-transparent font-serif">
               Places
@@ -229,26 +246,26 @@ export default function HolidaysSec({ slug }) {
         </div>
 
         {loading && (
-          <div className="space-y-6">
+          <div className="space-y-5 sm:space-y-6">
             {[0, 1, 2].map((i) => <SkeletonCard key={i} flip={i % 2 !== 0} />)}
           </div>
         )}
 
         {!loading && error && (
-          <div className="flex flex-col items-center justify-center py-20 gap-3 text-center">
+          <div className="flex flex-col items-center justify-center py-16 gap-3 text-center">
             <AlertCircle size={36} className="text-rose-400" />
             <p className="text-sm font-semibold text-slate-500 dark:text-slate-400">{error}</p>
           </div>
         )}
 
         {!loading && !error && filtered.length === 0 && (
-          <div className="py-20 text-center">
+          <div className="py-16 text-center">
             <p className="text-sm font-semibold text-slate-400">No holiday packages found.</p>
           </div>
         )}
 
         {!loading && !error && filtered.length > 0 && (
-          <div className="space-y-8">
+          <div className="space-y-5 sm:space-y-8">
             {filtered.map((pkg, i) => (
               <ZigzagCard key={pkg.id} pkg={pkg} index={i} />
             ))}

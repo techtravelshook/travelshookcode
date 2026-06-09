@@ -41,12 +41,11 @@ function ContentPanel({ pkg, slideTitle, slideDesc, index, total, accent }) {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -28 }}
         transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-        className="flex flex-col justify-center h-full max-w-xl"
+        className="flex flex-col justify-center h-full max-w-xl mx-auto lg:mx-0 px-4 sm:px-0"
       >
-        {/* Index + rating */}
         <div className="flex items-center gap-4 mb-6">
           <span
-            className="text-[11px] font-black uppercase tracking-[0.3em] px-3 py-1.5 rounded-full border"
+            className="text-[11px] font-black uppercase tracking-[0.3em] px-3 py-1.5 rounded-full border text-sm"
             style={{ color: accent, borderColor: `${accent}55`, background: `${accent}18` }}
           >
             {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
@@ -57,7 +56,6 @@ function ContentPanel({ pkg, slideTitle, slideDesc, index, total, accent }) {
           </div>
         </div>
 
-        {/* Duration */}
         <div className="flex items-center gap-2 mb-4">
           <Clock size={13} style={{ color: accent }} />
           <span className="text-xs font-bold uppercase tracking-widest text-white/70">
@@ -65,32 +63,28 @@ function ContentPanel({ pkg, slideTitle, slideDesc, index, total, accent }) {
           </span>
         </div>
 
-        {/* Slide title — changes per image */}
         <h3
-          className="text-[clamp(2rem,4vw,4rem)] font-black leading-[0.95] tracking-tight text-white mb-5"
+          className="text-[clamp(1.75rem,7vw,3.8rem)] font-black leading-[0.95] tracking-tight text-white mb-5"
           style={{ textShadow: "0 4px 24px rgba(0,0,0,0.6)" }}
         >
           {slideTitle}
         </h3>
 
-        {/* Divider */}
         <div className="flex items-center gap-3 mb-5">
           <div className="h-[3px] w-14 rounded-full" style={{ background: accent }} />
           <div className="h-[3px] w-4 rounded-full opacity-40" style={{ background: accent }} />
         </div>
 
-        {/* Slide desc — changes per image */}
         <p className="text-[15px] text-white/75 leading-relaxed mb-8 font-light">
           {slideDesc}
         </p>
 
-        {/* Price + CTA */}
-        <div className="flex items-center gap-6 flex-wrap">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 flex-wrap">
           <div>
             <p className="text-xs text-white/40 uppercase tracking-widest mb-1">From</p>
             <div className="flex items-end gap-2">
               <span
-                className="text-5xl font-black leading-none"
+                className="text-5xl sm:text-6xl font-black leading-none"
                 style={{ color: accent, filter: `drop-shadow(0 0 16px ${accent}80)` }}
               >
                 £{pkg.price}
@@ -99,11 +93,11 @@ function ContentPanel({ pkg, slideTitle, slideDesc, index, total, accent }) {
             </div>
           </div>
 
-          <Link href={`/holidays/${pkg.slug}`}>
+          <Link href={`/holidays/${pkg.slug}`} className="mt-2 sm:mt-0">
             <motion.div
               whileHover={{ scale: 1.06 }}
               whileTap={{ scale: 0.96 }}
-              className="group relative inline-flex items-center gap-2.5 px-7 py-4 rounded-2xl overflow-hidden cursor-pointer shadow-2xl text-white font-bold text-sm"
+              className="group relative inline-flex items-center gap-2.5 px-7 py-4 rounded-2xl overflow-hidden cursor-pointer shadow-2xl text-white font-bold text-sm w-full sm:w-auto justify-center"
               style={{ background: `linear-gradient(135deg, ${accent}, ${accent}cc)` }}
             >
               <span className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 bg-gradient-to-r from-transparent via-white/25 to-transparent" />
@@ -130,7 +124,7 @@ function ImagePanel({ imageUrl, pkgTitle, pkgDuration, accent, id }) {
         className="relative w-full h-full rounded-[32px] overflow-hidden shadow-[0_32px_80px_rgba(0,0,0,0.5)]"
       >
         {imageUrl ? (
-          <Image src={imageUrl} alt={pkgTitle} fill className="object-cover" sizes="45vw" />
+          <Image src={imageUrl} alt={pkgTitle} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 45vw" />
         ) : (
           <div className="absolute inset-0 bg-slate-800" />
         )}
@@ -140,10 +134,10 @@ function ImagePanel({ imageUrl, pkgTitle, pkgDuration, accent, id }) {
         <div className="absolute bottom-0 left-0 right-0 p-6 flex items-center justify-between">
           <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/20">
             <MapPin size={12} style={{ color: accent }} />
-            <span className="text-white text-[11px] font-bold">{pkgTitle}</span>
+            <span className="text-white text-[11px] font-bold truncate max-w-[140px]">{pkgTitle}</span>
           </div>
           <div
-            className="px-3 py-1.5 rounded-full text-white text-[11px] font-black backdrop-blur-md border"
+            className="px-3 py-1.5 rounded-full text-white text-[11px] font-black backdrop-blur-md border whitespace-nowrap"
             style={{ background: `${accent}30`, borderColor: `${accent}60` }}
           >
             {pkgDuration}N / {pkgDuration + 1}D
@@ -211,7 +205,10 @@ export default function LocationPackagesSection({ slug }) {
       const rect = section.getBoundingClientRect();
       const scrolled = -rect.top;
       const scrollable = section.offsetHeight - window.innerHeight;
-      if (scrolled < 0 || scrollable <= 0) { setActiveIndex(0); return; }
+      if (scrolled < 0 || scrollable <= 0) {
+        setActiveIndex(0);
+        return;
+      }
       const progress = Math.min(Math.max(scrolled / scrollable, 0), 1);
       setActiveIndex(Math.min(Math.floor(progress * total), total - 1));
     };
@@ -236,7 +233,6 @@ export default function LocationPackagesSection({ slug }) {
   const currentImage = images[activeIndex];
   const currentImageUrl = currentImage?.url ? `/${currentImage.url}` : null;
 
-  // Per-slide title/desc with fallback to package-level fields
   const slideTitle = currentImage?.slideTitle ?? pkg.title;
   const slideDesc = currentImage?.slideDesc ?? pkg.shortDesc;
 
@@ -249,7 +245,6 @@ export default function LocationPackagesSection({ slug }) {
       >
         <div className="sticky top-0 h-screen w-full overflow-hidden">
 
-          {/* BG image */}
           <AnimatePresence mode="sync">
             <motion.div
               key={`bg-${activeIndex}`}
@@ -274,25 +269,21 @@ export default function LocationPackagesSection({ slug }) {
             </motion.div>
           </AnimatePresence>
 
-          {/* Overlays */}
           <div className="absolute inset-0 z-10 bg-black/65" />
           <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/80 via-black/40 to-black/20" />
           <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
           <div className="relative z-20 h-full flex flex-col">
 
-            {/* Top bar */}
-            <div className="flex items-center justify-between px-6 sm:px-10 lg:px-16 pt-8">
+            <div className="flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-16 pt-6 sm:pt-8">
               <motion.div
                 initial={{ opacity: 0, y: -12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-black/50 border border-white/20 backdrop-blur-md"
+                className="flex items-center gap-2 px-4 py-2 rounded-full bg-black/50 border border-white/20 backdrop-blur-md text-sm"
               >
                 <MapPin size={13} className="text-amber-400" />
-                <span className="text-white text-xs font-extrabold uppercase tracking-[0.25em]">
-                  {pkg.title}
-                </span>
+                <span className="text-white text-xs font-extrabold uppercase tracking-[0.25em]">{pkg.title}</span>
                 <span className="text-white/30 text-xs">·</span>
                 <span className="text-white/60 text-xs font-medium">
                   Photo {activeIndex + 1} of {total}
@@ -309,8 +300,7 @@ export default function LocationPackagesSection({ slug }) {
               </motion.div>
             </div>
 
-            {/* Progress bar */}
-            <div className="mx-6 sm:mx-10 lg:mx-16 mt-3 h-[2px] bg-white/10 rounded-full overflow-hidden">
+            <div className="mx-4 sm:mx-6 md:mx-10 lg:mx-16 mt-3 h-[2px] bg-white/10 rounded-full overflow-hidden">
               <motion.div
                 animate={{ width: `${progressPct}%` }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
@@ -319,10 +309,8 @@ export default function LocationPackagesSection({ slug }) {
               />
             </div>
 
-            {/* Main grid */}
-            <div className="flex-1 grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-0 items-center px-6 sm:px-10 lg:px-16 py-6">
+            <div className="flex-1 grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-0 items-center px-4 sm:px-6 md:px-10 lg:px-16 py-6">
 
-              {/* LEFT — content */}
               <div className="h-full flex items-center">
                 <ContentPanel
                   pkg={pkg}
@@ -334,12 +322,10 @@ export default function LocationPackagesSection({ slug }) {
                 />
               </div>
 
-              {/* CENTER — dots */}
               <div className="hidden lg:flex items-center justify-center px-8">
                 <ProgressDots total={total} active={activeIndex} accent={accent} />
               </div>
 
-              {/* RIGHT — image card */}
               <div className="hidden lg:flex items-center justify-end">
                 <div className="w-full max-w-sm xl:max-w-md h-[65vh]">
                   <ImagePanel
@@ -353,9 +339,8 @@ export default function LocationPackagesSection({ slug }) {
               </div>
             </div>
 
-            {/* Mobile image strip */}
-            <div className="lg:hidden px-6 pb-6">
-              <div className="relative h-52 rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+            <div className="lg:hidden px-4 sm:px-6 pb-8">
+              <div className="relative h-64 sm:h-72 rounded-3xl overflow-hidden shadow-2xl border border-white/10">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={`mob-img-${activeIndex}`}
@@ -368,11 +353,11 @@ export default function LocationPackagesSection({ slug }) {
                     {currentImageUrl && (
                       <Image src={currentImageUrl} alt={pkg.title} fill className="object-cover" sizes="100vw" />
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   </motion.div>
                 </AnimatePresence>
-                <div className="absolute bottom-3 left-3 right-3 flex justify-between">
-                  <span className="text-white text-xs font-bold px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-sm border border-white/15">
+                <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center">
+                  <span className="text-white text-xs font-bold px-3 py-1 rounded-full bg-black/60 backdrop-blur-sm border border-white/20">
                     {pkg.duration}N / {pkg.duration + 1}D
                   </span>
                   <div className="flex gap-1.5">
@@ -381,9 +366,9 @@ export default function LocationPackagesSection({ slug }) {
                         key={i}
                         className="block rounded-full transition-all duration-300"
                         style={{
-                          width: i === activeIndex ? 20 : 6,
-                          height: 6,
-                          background: i === activeIndex ? accent : "rgba(255,255,255,0.3)",
+                          width: i === activeIndex ? 22 : 7,
+                          height: 7,
+                          background: i === activeIndex ? accent : "rgba(255,255,255,0.35)",
                         }}
                       />
                     ))}
