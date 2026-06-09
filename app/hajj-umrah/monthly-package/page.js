@@ -161,7 +161,7 @@ const FilterBar = ({
     selectedMonth !== "All" || selectedStar !== "All" || selectedDuration !== "All";
 
   return (
-    <div className="mb-10 w-full bg-white border border-[#E8E0D0] shadow-[0_10px_30px_-15px_rgba(196,122,30,0.15)] rounded-2xl p-5 sm:p-6">
+    <div className=" mb-10 w-full bg-white border border-[#E8E0D0] shadow-[0_10px_30px_-15px_rgba(196,122,30,0.15)] rounded-2xl p-5 sm:p-6">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
 
         {/* Month Dropdown */}
@@ -313,7 +313,7 @@ const MonthlyPackageGrid = ({ packages, onCardClick }) => {
         {/* Section header */}
         <div className=" mb-10">
           <SectionLabel>Our Umrah Packages</SectionLabel>
-          <h2 className="text-4xl sm:text-5xl font-black text-[#1A1208] leading-tight tracking-tight">
+          <h2 className="text-4xl sm:text-5xl font-black text-[#1A1208] leading-tight tracking-tight dark:text-white">
             Explore Our{" "}
             <span
               className="relative inline-block"
@@ -488,7 +488,10 @@ const Page = () => {
 
       {/* ── Grid with filters ── */}
       {loading ? (
-        <LoadingGrid />
+       <div>
+         <LoadingGrid />
+        <p>Loading packages</p>
+       </div>
       ) : (
         !error &&
         allPackages?.length > 0 && (
