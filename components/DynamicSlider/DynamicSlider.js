@@ -46,12 +46,25 @@ export default function DynamicSlider({
     setSelectedSnap(emblaApi.selectedScrollSnap());
   }, [emblaApi]);
 
-  useEffect(() => {
-    if (!emblaApi) return;
+  // Change your useEffect to initialize inside a callback function:
+useEffect(() => {
+  if (!emblaApi) return;
+
+  const initSlider = () => {
     setScrollSnaps(emblaApi.scrollSnapList());
-    emblaApi.on("select", onSelect);
-    return () => emblaApi.off("select", onSelect);
-  }, [emblaApi, onSelect]);
+    onSelect();
+  };
+
+  initSlider(); // Run once API is ready
+  emblaApi.on("select", onSelect);
+  emblaApi.on("reInit", initSlider); // Handle dynamic changes safely
+
+  return () => {
+    emblaApi.off("select", onSelect);
+    emblaApi.off("reInit", initSlider);
+  };
+}, [emblaApi, onSelect]);
+
 
   return (
     <>
@@ -429,7 +442,7 @@ function PackageModal({ item, onClose, onBook, onCallUs }) {
             {/* ── INCLUDED ── */}
             {item.tags?.length > 0 && (
               <div>
-                <p className="text-[10px] uppercase tracking-widest text-slate-400 dark:text-zinc-500 mb-2.5">What's Included</p>
+                <p className="text-[10px] uppercase tracking-widest text-slate-400 dark:text-zinc-500 mb-2.5">What&apos;s Included</p>
                 <div className="grid grid-cols-2 gap-2">
                   {item.tags.map((tag, i) => {
                     const Icon = TAG_ICONS[tag] || Check;
