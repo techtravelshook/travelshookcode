@@ -1675,6 +1675,8 @@ isFeatured:true,
   },
    
       },
+      
     ];
+    
 
 export default umrahPackages;

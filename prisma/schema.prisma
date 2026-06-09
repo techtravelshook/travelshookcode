@@ -31,6 +31,11 @@ model UmrahPackage {
   images       PackageImage[]
   inclusions   PackageInclusion[]
   exclusions   PackageExclusion[]
+
+  
+  @@index([type])
+  @@index([star])
+  @@index([type, star])
 }
 
 // aother model
