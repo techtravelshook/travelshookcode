@@ -233,10 +233,10 @@ export default function BookingProcess() {
           </div>
           <div className="flex items-center gap-4">
             <Link href="/packages" className="text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-[#0070A1] dark:hover:text-[#F6931F] transition-colors">
-              View Packages
+              Let&apos;s Customize Package
             </Link>
             <Link href="/contact" className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#F6931F] to-orange-500 hover:opacity-90 transition-all font-bold text-xs text-white shadow-md shadow-orange-500/10">
-              Get Started Now
+             Contact Our Agent
             </Link>
           </div>
         </motion.div>

@@ -37,11 +37,7 @@ const SkeletonCard = () => (
   </div>
 );
 
-/* ─────────────────────────────────────────────
-   Package Card
-   NOTE: No filter state here — state lives in
-   MonthlyPackageGrid (the correct scope).
-───────────────────────────────────────────── */
+
 const PackageCard = ({ pkg, index, onClick }) => {
   const imgSrc = getImageSrc(pkg.images?.[0]?.url);
 
@@ -143,9 +139,7 @@ const PackageCard = ({ pkg, index, onClick }) => {
   );
 };
 
-/* ─────────────────────────────────────────────
-   Filter Bar
-───────────────────────────────────────────── */
+
 const FilterBar = ({
   filterOptions,
   selectedMonth,

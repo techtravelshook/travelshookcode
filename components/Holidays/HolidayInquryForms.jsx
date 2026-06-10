@@ -49,22 +49,67 @@ export default function TravelInquiryForm({ formType = "holidays" }) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(`Inquiry Submitted (${formType}):`, formData);
-    alert(`Thank you! Your ${formType} inquiry has been submitted successfully.`);
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      destination: "",
-      days: "",
-      currentLocation: "",
-      category: "",
-      rooms: "1",
-      travellers: "1"
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch("/api/forminquiry", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        formType,
+        ...formData,
+      }),
     });
-  };
+
+    const result = await response.json();
+
+    if (result.success) {
+      alert(
+        `Thank you! Your ${formType} inquiry has been submitted successfully.`
+      );
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        destination: "",
+        days: "",
+        currentLocation: "",
+        category: "",
+        rooms: "1",
+        travellers: "1",
+      });
+    } else {
+      alert("Failed to submit inquiry.");
+    }
+  } catch (error) {
+    console.error(error);
+    alert("Something went wrong.");
+  }
+};
+
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(`Inquiry Submitted by : (${formType}):`, formData);
+  //   alert(`Thank you! Your ${formType} inquiry has been submitted successfully.`);
+  //   setFormData({
+  //     name: "",
+  //     email: "",
+  //     phone: "",
+  //     destination: "",
+  //     days: "",
+  //     currentLocation: "",
+  //     category: "",
+  //     rooms: "1",
+  //     travellers: "1"
+  //   });
+  // };
+  
 
   // Select option configuration based on prop
   const currentOptions = CATEGORY_OPTIONS[formType] || CATEGORY_OPTIONS.holidays;
