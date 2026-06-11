@@ -3,6 +3,7 @@ import umrahPackages from './seeds/umrahseed.js';
 import ramadanPackagesData from "./seeds/ramdanseed.js";
 import holidayPackagesData from "./seeds/holidayseed.js";
 import { cityBreaksData, inclusiveHolidaysData, BeachHolidays, FamilyHolidays,lastMinuteHolidaysData } from "./seeds/holidaybreakseed.js";
+import flightData from './seeds/flightseed.js';
 
 const prisma = new PrismaClient();
 
@@ -170,8 +171,27 @@ async function main() {
   for (const item of lastMinuteHolidaysData) await upsertBreak(item, 2000, "Last_Minute_Holidays");
   console.log('✅ Seeding complete!');
 }
+// ----- --FLIGHTS SEEDING ------
 
-// ─── Run ─────────────────────────────────────────────────────────────────────
+
+console.log("✈️ Starting flight seeding...");
+  
+  // Clean out existing flights to prevent duplicates
+  await prisma.flight.deleteMany({});
+  
+  // Ensure flightData exists before running loop block
+  if (typeof flightData !== 'undefined' && Array.isArray(flightData)) {
+    for (const item of flightData) {
+      await prisma.flight.create({
+        data: item,
+      });
+    }
+    console.log(`Successfully seeded ${flightData.length} mock flights.`);
+  } else {
+    console.warn("⚠️ flightData array is empty or undefined. Skipping flight loop.");
+  }
+
+// ─── Run ────────────────────────────────────────────────────────────────────
 
 main()
   .catch((e) => { console.error(e); process.exit(1); })

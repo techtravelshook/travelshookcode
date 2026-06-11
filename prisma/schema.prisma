@@ -162,3 +162,19 @@ model HolidayBreakFeatures {
   holidayBreakId Int
   holidayBreak   HolidayBreaks @relation(fields: [holidayBreakId], references: [id])
 }
+
+//*********FLIGHTS SCHEMA*************//
+
+model Flight {
+  id              Int      @id @default(autoincrement())
+  tripType        String   // "one-way" or "return"
+  airlineName     String
+  airlineLogo     String   // Path or URL to logo
+  departureCode   String   // e.g., "MAN", "LHR"
+  departureCity   String   // e.g., "Manchester", "London"
+  destinationCode String   // e.g., "ACC"
+  destinationCity String   // e.g., "Accra"
+  price           Float
+  dates           String   // e.g., "17 Oct 2026" or "11 Jun - 10 Jul"
+  createdAt       DateTime @default(now())
+}

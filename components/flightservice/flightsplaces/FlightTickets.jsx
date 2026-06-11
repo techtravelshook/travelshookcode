@@ -5,6 +5,10 @@ import { ArrowRight, PlaneTakeoff, ShieldCheck, Tag, Search, Flame, SlidersHoriz
 
 export default function FlightDealsGrid({ cityName, dealsData = [] }) {
 
+  // components/flightservice/flightsplaces/FlightTickets.jsx
+
+
+
   const [query, setQuery] = useState("");
   const [sortBy, setSortBy] = useState("default");
 
@@ -18,12 +22,14 @@ export default function FlightDealsGrid({ cityName, dealsData = [] }) {
   };
 
   // Find cheapest deal (for BEST DEAL badge)
-  const cheapestPrice = useMemo(() => {
-    if (dealsData.length === 0) return 0;
-    return Math.min(
-      ...dealsData.map(d => parseInt(d.price.replace(/[^0-9]/g, ""), 10))
-    );
-  }, [dealsData]);
+ // New safe code (Keeps your exact logic, stops the crash)
+const cheapestPrice = useMemo(() => {
+  if (!dealsData || dealsData.length === 0) return 0;
+  return Math.min(
+    ...dealsData.map(d => parseInt(String(d.price).replace(/[^0-9]/g, ""), 10))
+  );
+}, [dealsData]);
+
 
   // Filter + Sort
   const filteredDeals = useMemo(() => {
@@ -37,12 +43,14 @@ export default function FlightDealsGrid({ cityName, dealsData = [] }) {
       );
     }
 
-    if (sortBy === "cheap") {
-      data.sort((a, b) =>
-        parseInt(a.price.replace(/[^0-9]/g, ""), 10) -
-        parseInt(b.price.replace(/[^0-9]/g, ""), 10)
-      );
-    }
+  if (sortBy === "cheap") {
+  data.sort((a, b) =>
+    parseInt(String(a.price).replace(/[^0-9]/g, ""), 10) -
+    parseInt(String(b.price).replace(/[^0-9]/g, ""), 10)
+  );
+}
+
+
 
     return data;
   }, [query, sortBy, dealsData]);
@@ -133,7 +141,8 @@ export default function FlightDealsGrid({ cityName, dealsData = [] }) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {filteredDeals.map((deal, index) => {
               const route = `${deal.fromCode} → ${deal.toCode}`;
-              const priceNumber = parseInt(deal.price.replace(/[^0-9]/g, ""), 10);
+              const priceNumber = parseInt(String(deal.price).replace(/[^0-9]/g, ""), 10);
+
               const isBest = priceNumber === cheapestPrice;
 
               return (
