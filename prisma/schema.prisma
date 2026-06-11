@@ -167,8 +167,10 @@ model HolidayBreakFeatures {
 
 model Flight {
   id              Int      @id @default(autoincrement())
+  slug         String             @unique
   tripType        String   // "one-way" or "return"
   airlineName     String
+  apiType          String
   airlineLogo     String   // Path or URL to logo
   departureCode   String   // e.g., "MAN", "LHR"
   departureCity   String   // e.g., "Manchester", "London"

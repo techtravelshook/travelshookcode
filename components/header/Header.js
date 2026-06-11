@@ -9,20 +9,23 @@ import {
   Moon, Sun, Search, Phone, User
 } from 'lucide-react';
 
+
 const africanDestinations = [
-  { name: 'Accra', code: 'ACC', price: '£500', tag: 'West Africa' },
-  { name: 'Port Harcourt', code: 'PHC', price: '£479', tag: 'Nigeria' },
-  { name: 'Johannesburg', code: 'JNB', price: '£364', tag: 'South Africa' },
-  { name: 'Lagos', code: 'LOS', price: '£349', tag: 'Nigeria' },
-  { name: 'Addis Ababa', code: 'ADD', price: '£347', tag: 'Ethiopia' },
-  { name: 'Harare', code: 'HRE', price: '£463', tag: 'Zimbabwe' },
-  { name: 'Nairobi', code: 'NBO', price: '£287', tag: 'Kenya' },
-  { name: 'Cape Town', code: 'CPT', price: '£453', tag: 'South Africa' },
-  { name: 'Kigali', code: 'KGL', price: '£362', tag: 'Rwanda' },
-  { name: 'Casablanca', code: 'CMN', price: '£246', tag: 'Morocco' },
-  { name: 'Cairo', code: 'CAI', price: '£340', tag: 'Egypt' },
-  { name: 'Luanda', code: 'LAD', price: '£419', tag: 'Angola' },
+
+  { name: 'Australia', code: 'SYD', price: '£899', tag: 'Oceania' },
+  { name: 'India', code: 'DEL', price: '£450', tag: 'Asia' },
+  { name: 'Ghana', code: 'ACC', price: '£500', tag: 'West Africa' },
+  { name: 'Nigeria', code: 'LOS', price: '£349', tag: 'West Africa' },
+  { name: 'Pakistan', code: 'ISB', price: '£490', tag: 'Asia' },
+  { name: 'Philippines', code: 'MNL', price: '£650', tag: 'Asia' },
+  { name: 'South Africa', code: 'JNB', price: '£364', tag: 'Southern Africa' },
+  { name: 'Zimbabwe', code: 'HRE', price: '£463', tag: 'Southern Africa' },
+  { name: 'Canada', code: 'YYZ', price: '£420', tag: 'North America' },
+  { name: 'Jamaica', code: 'KIN', price: '£580', tag: 'Caribbean' },
+  { name: 'Kenya', code: 'NBO', price: '£287', tag: 'East Africa' }
 ];
+
+
 
 const holidayDeals = [
   { name: 'umrah-birmingham', price: '£836',  code: 'BHM', tag: 'Europe' },
