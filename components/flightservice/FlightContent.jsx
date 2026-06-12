@@ -7,15 +7,15 @@ import DynamicSlider from "../DynamicSlider/DynamicSlider";
 
 // Cleaned & symmetric item count (9 items are perfect for a 3-column grid layout)
 const bargainFlights = [
-  { id: 1, country: "Dubai",  price: "269.79", image: "/imgs/dubai.jpg" },
-  { id: 2, country: "Nepal",  price: "465.29", image: "/imgs/nepal.jpg" },
-  { id: 3, country: "Makkah", price: "299.50", image: "/imgs/makkah.jpg" },
-  { id: 4, country: "Paris",  price: "446.67", image: "/imgs/paris.jpg" },
-  { id: 5, country: "Turkey", price: "332.18", image: "/imgs/turkey.jpg" },
-  { id: 6, country: "Nepal",  price: "465.29", image: "/imgs/nepal.jpg" },
-  { id: 7, country: "Makkah", price: "299.50", image: "/imgs/makkah.jpg" },
-  { id: 8, country: "India",  price: "446.67", image: "/imgs/paris.jpg" },
-  { id: 9, country: "Pakistan", price: "332.18", image: "/imgs/turkey.jpg" },
+  { id: 1, country: "Australia",  price: "450", image: "/imgs/flights/australia.jpg" },
+  { id: 2, country: "India",  price: "855", image: "/imgs/flights/india.jpg" },
+  { id: 3, country: "Ghana", price: "500", image: "/imgs/flights/accra.jpg" },
+  { id: 4, country: "Nigeria",  price: "349", image: "/imgs/flights/Nigeria.jpg" },
+  { id: 5, country: "Pakistan", price: "490", image: "/imgs/flights/Pakistan.jpg" },
+  { id: 6, country: "Usa",  price: "338", image: "/imgs/flights/usa.jpg" },
+  { id: 7, country: "Philippines", price: "450", image: "/imgs/flights/philippines.jpg" },
+  { id: 8, country: "Zimbabwe",  price: "463", image: "/imgs/flights/zimbabwe.jpg" },
+  { id: 9, country: "Brazil", price: "552", image: "/imgs/flights/brazil.jpg" },
 ];
 
 const destinations = [

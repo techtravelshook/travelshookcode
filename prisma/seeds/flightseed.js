@@ -11,7 +11,7 @@ const flightData = [
     destinationCode: "BNE",
     destinationCity: "Brisbane",
     price: 563.99,
-    dates: "01 Jul 2026"
+    dates: "01 Jul 2026",
   },
   {
     slug: "one-way-xiamen-manchester-to-sydney-oct-2026",
@@ -24,7 +24,7 @@ const flightData = [
     destinationCode: "SYD",
     destinationCity: "Sydney",
     price: 614.46,
-    dates: "19 Oct 2026"
+    dates: "19 Oct 2026",
   },
   {
     slug: "one-way-turkish-edinburgh-to-perth-dec-2026",
@@ -37,7 +37,7 @@ const flightData = [
     destinationCode: "PER",
     destinationCity: "Perth",
     price: 697.49,
-    dates: "02 Dec 2026"
+    dates: "02 Dec 2026",
   },
   {
     slug: "one-way-qantas-belfast-to-perth-feb-2027",
@@ -50,7 +50,7 @@ const flightData = [
     destinationCode: "PER",
     destinationCity: "Perth",
     price: 700.93,
-    dates: "24 Feb 2027"
+    dates: "24 Feb 2027",
   },
   {
     slug: "one-way-chinasouthern-london-to-sydney-jun-2026",
@@ -63,7 +63,7 @@ const flightData = [
     destinationCode: "SYD",
     destinationCity: "Sydney",
     price: 799.28,
-    dates: "21 Jun 2026"
+    dates: "21 Jun 2026",
   },
   {
     slug: "one-way-turkish-london-stansted-to-sydney-jun-2026",
@@ -76,7 +76,7 @@ const flightData = [
     destinationCode: "SYD",
     destinationCity: "Sydney",
     price: 802.88,
-    dates: "21 Jun 2026"
+    dates: "21 Jun 2026",
   },
   {
     slug: "one-way-malaysia-glasgow-to-perth-nov-2026",
@@ -89,7 +89,7 @@ const flightData = [
     destinationCode: "PER",
     destinationCity: "Perth",
     price: 820.68,
-    dates: "01 Nov 2026"
+    dates: "01 Nov 2026",
   },
   {
     slug: "return-tianjin-london-to-sydney-jun-2026",
@@ -102,7 +102,7 @@ const flightData = [
     destinationCode: "SYD",
     destinationCity: "Sydney",
     price: 840.01,
-    dates: "13 Jun - 23 Jun"
+    dates: "13 Jun - 23 Jun",
   },
   {
     slug: "return-singapore-london-to-melbourne-jun-2026",
@@ -115,7 +115,7 @@ const flightData = [
     destinationCode: "MEL",
     destinationCity: "Melbourne",
     price: 845.39,
-    dates: "15 Jun - 20 Jul"
+    dates: "15 Jun - 20 Jul",
   },
   {
     slug: "return-chinaeastern-london-to-goldcoast-sep-2026",
@@ -127,8 +127,8 @@ const flightData = [
     departureCity: "London",
     destinationCode: "OOL",
     destinationCity: "Gold Coast",
-    price: 914.40,
-    dates: "06 Sep - 16 Sep"
+    price: 914.4,
+    dates: "06 Sep - 16 Sep",
   },
   {
     slug: "return-chinasouthern-london-to-brisbane-jun-2026",
@@ -141,7 +141,7 @@ const flightData = [
     destinationCode: "BNE",
     destinationCity: "Brisbane",
     price: 917.82,
-    dates: "13 Jun - 27 Jun"
+    dates: "13 Jun - 27 Jun",
   },
   {
     slug: "return-etihad-london-to-melbourne-jun-2026",
@@ -154,7 +154,7 @@ const flightData = [
     destinationCode: "MEL",
     destinationCity: "Melbourne",
     price: 922.29,
-    dates: "15 Jun - 20 Jul"
+    dates: "15 Jun - 20 Jul",
   },
   {
     slug: "return-chinasouthern-london-to-adelaide-jun-2026",
@@ -167,7 +167,7 @@ const flightData = [
     destinationCode: "ADL",
     destinationCity: "Adelaide",
     price: 944.32,
-    dates: "14 Jun - 16 Aug"
+    dates: "14 Jun - 16 Aug",
   },
   {
     slug: "return-chinaairlines-london-to-sydney-jun-2026",
@@ -180,7 +180,7 @@ const flightData = [
     destinationCode: "SYD",
     destinationCity: "Sydney",
     price: 949.89,
-    dates: "15 Jun - 29 Jun"
+    dates: "15 Jun - 29 Jun",
   },
 
   // NIGERIA FLIGHTS
@@ -194,8 +194,8 @@ const flightData = [
     departureCity: "London",
     destinationCode: "LOS",
     destinationCity: "Lagos",
-    price: 347.80,
-    dates: "18 Jun 2026"
+    price: 347.8,
+    dates: "18 Jun 2026",
   },
   {
     slug: "one-way-egyptair-london-to-abuja-jun-2026",
@@ -208,7 +208,7 @@ const flightData = [
     destinationCode: "ABV",
     destinationCity: "Abuja",
     price: 423.49,
-    dates: "15 Jun 2026"
+    dates: "15 Jun 2026",
   },
   {
     slug: "one-way-egyptair-manchester-to-lagos-dec-2026",
@@ -221,7 +221,7 @@ const flightData = [
     destinationCode: "LOS",
     destinationCity: "Lagos",
     price: 461.87,
-    dates: "15 Dec 2026"
+    dates: "15 Dec 2026",
   },
   {
     slug: "return-royalairmaroc-london-to-abuja-jun-2026",
@@ -233,8 +233,8 @@ const flightData = [
     departureCity: "London",
     destinationCode: "ABV",
     destinationCity: "Abuja",
-    price: 523.30,
-    dates: "13 Jun - 28 Jun"
+    price: 523.3,
+    dates: "13 Jun - 28 Jun",
   },
   {
     slug: "return-egyptair-manchester-to-lagos-jun-2026",
@@ -247,7 +247,7 @@ const flightData = [
     destinationCode: "LOS",
     destinationCity: "Lagos",
     price: 561.53,
-    dates: "12 Jun - 12 Jul"
+    dates: "12 Jun - 12 Jul",
   },
   {
     slug: "return-royalairmaroc-manchester-to-lagos-jun-2026",
@@ -260,7 +260,7 @@ const flightData = [
     destinationCode: "LOS",
     destinationCity: "Lagos",
     price: 571.33,
-    dates: "12 Jun - 12 Jul"
+    dates: "12 Jun - 12 Jul",
   },
   {
     slug: "one-way-lufthansa-london-to-abuja-jun-2026",
@@ -273,7 +273,7 @@ const flightData = [
     destinationCode: "ABV",
     destinationCity: "Abuja",
     price: 606.07,
-    dates: "15 Jun 2026"
+    dates: "15 Jun 2026",
   },
   {
     slug: "one-way-emirates-london-to-lagos-jun-2026",
@@ -285,8 +285,8 @@ const flightData = [
     departureCity: "London",
     destinationCode: "LOS",
     destinationCity: "Lagos",
-    price: 652.80,
-    dates: "28 Jun 2026"
+    price: 652.8,
+    dates: "28 Jun 2026",
   },
   {
     slug: "return-turkish-london-to-abuja-jun-2026",
@@ -298,8 +298,8 @@ const flightData = [
     departureCity: "London",
     destinationCode: "ABV",
     destinationCity: "Abuja",
-    price: 668.20,
-    dates: "13 Jun - 28 Jun"
+    price: 668.2,
+    dates: "13 Jun - 28 Jun",
   },
   {
     slug: "return-saudia-london-to-kano-oct-2026",
@@ -312,7 +312,7 @@ const flightData = [
     destinationCode: "KAN",
     destinationCity: "Kano",
     price: 709.19,
-    dates: "30 Oct - 07 Nov"
+    dates: "30 Oct - 07 Nov",
   },
   {
     slug: "return-qatar-manchester-to-portharcourt-jun-2026",
@@ -325,7 +325,7 @@ const flightData = [
     destinationCode: "PHC",
     destinationCity: "Port Harcourt",
     price: 713.63,
-    dates: "17 Jun - 29 Jun"
+    dates: "17 Jun - 29 Jun",
   },
   {
     slug: "return-airpeace-london-to-enugu-jun-2026",
@@ -337,8 +337,8 @@ const flightData = [
     departureCity: "London",
     destinationCode: "ENU",
     destinationCity: "Enugu",
-    price: 775.90,
-    dates: "17 Jun - 31 Jul"
+    price: 775.9,
+    dates: "17 Jun - 31 Jul",
   },
   {
     slug: "return-airpeace-london-to-kano-jun-2026",
@@ -351,7 +351,7 @@ const flightData = [
     destinationCode: "KAN",
     destinationCity: "Kano",
     price: 865.49,
-    dates: "14 Jun - 26 Jun"
+    dates: "14 Jun - 26 Jun",
   },
   {
     slug: "return-rwandair-london-to-portharcourt-nov-2026",
@@ -364,14 +364,14 @@ const flightData = [
     destinationCode: "PHC",
     destinationCity: "Port Harcourt",
     price: 886.19,
-    dates: "26 Nov - 01 Dec"
+    dates: "26 Nov - 01 Dec",
   },
 
   // GHANA FLIGHTS
   {
     slug: "one-way-tap-london-heathrow-to-accra-jun-2026",
     tripType: "one-way",
-    apiType: "ghana",  // ← fixed from "accra"
+    apiType: "ghana", // ← fixed from "accra"
     airlineName: "TAP Portugal",
     airlineLogo: "imgs/airlines/tap.png",
     departureCode: "LHR",
@@ -379,12 +379,12 @@ const flightData = [
     destinationCode: "ACC",
     destinationCity: "Accra",
     price: 278.25,
-    dates: "13 Jun 2026"
+    dates: "13 Jun 2026",
   },
   {
     slug: "one-way-tap-manchester-to-accra-oct-2026",
     tripType: "one-way",
-    apiType: "ghana",  // ← fixed from "accra"
+    apiType: "ghana", // ← fixed from "accra"
     airlineName: "TAP Portugal",
     airlineLogo: "imgs/airlines/tap.png",
     departureCode: "MAN",
@@ -392,12 +392,12 @@ const flightData = [
     destinationCode: "ACC",
     destinationCity: "Accra",
     price: 450.73,
-    dates: "17 Oct 2026"
+    dates: "17 Oct 2026",
   },
   {
     slug: "one-way-turkish-london-stansted-to-accra-jun-2026",
     tripType: "one-way",
-    apiType: "ghana",  // ← fixed from "accra"
+    apiType: "ghana", // ← fixed from "accra"
     airlineName: "Turkish Airlines",
     airlineLogo: "imgs/airlines/turkish.png",
     departureCode: "STN",
@@ -405,12 +405,12 @@ const flightData = [
     destinationCode: "ACC",
     destinationCity: "Accra",
     price: 455.66,
-    dates: "13 Jun 2026"
+    dates: "13 Jun 2026",
   },
   {
     slug: "one-way-klm-bristol-to-accra-oct-2026",
     tripType: "one-way",
-    apiType: "ghana",  // ← fixed from "accra"
+    apiType: "ghana", // ← fixed from "accra"
     airlineName: "KLM",
     airlineLogo: "imgs/airlines/klm.png",
     departureCode: "BRS",
@@ -418,12 +418,12 @@ const flightData = [
     destinationCode: "ACC",
     destinationCity: "Accra",
     price: 482.02,
-    dates: "21 Oct 2026"
+    dates: "21 Oct 2026",
   },
   {
     slug: "one-way-klm-london-city-to-accra-jun-2026",
     tripType: "one-way",
-    apiType: "ghana",  // ← fixed from "accra"
+    apiType: "ghana", // ← fixed from "accra"
     airlineName: "KLM",
     airlineLogo: "imgs/airlines/klm.png",
     departureCode: "LCY",
@@ -431,12 +431,12 @@ const flightData = [
     destinationCode: "ACC",
     destinationCity: "Accra",
     price: 512.91,
-    dates: "13 Jun 2026"
+    dates: "13 Jun 2026",
   },
   {
     slug: "one-way-airfrance-london-gatwick-to-accra-jun-2026",
     tripType: "one-way",
-    apiType: "ghana",  // ← fixed from "accra"
+    apiType: "ghana", // ← fixed from "accra"
     airlineName: "Air France",
     airlineLogo: "imgs/airlines/airfrance.png",
     departureCode: "LGW",
@@ -444,12 +444,12 @@ const flightData = [
     destinationCode: "ACC",
     destinationCity: "Accra",
     price: 565.67,
-    dates: "13 Jun 2026"
+    dates: "13 Jun 2026",
   },
   {
     slug: "return-egyptair-london-heathrow-to-accra-jun-2026",
     tripType: "return",
-    apiType: "ghana",  // ← fixed from "accra"
+    apiType: "ghana", // ← fixed from "accra"
     airlineName: "EgyptAir",
     airlineLogo: "imgs/airlines/egyptair.png",
     departureCode: "LHR",
@@ -457,12 +457,12 @@ const flightData = [
     destinationCode: "ACC",
     destinationCity: "Accra",
     price: 647.09,
-    dates: "12 Jun - 24 Jun"
+    dates: "12 Jun - 24 Jun",
   },
   {
     slug: "return-royalairmaroc-london-heathrow-to-accra-jun-2026",
     tripType: "return",
-    apiType: "ghana",  // ← fixed from "accra"
+    apiType: "ghana", // ← fixed from "accra"
     airlineName: "Royal Air Maroc",
     airlineLogo: "imgs/airlines/maroc.png",
     departureCode: "LHR",
@@ -470,12 +470,12 @@ const flightData = [
     destinationCode: "ACC",
     destinationCity: "Accra",
     price: 715.39,
-    dates: "12 Jun - 27 Jun"
+    dates: "12 Jun - 27 Jun",
   },
   {
     slug: "return-brussels-london-heathrow-to-accra-jun-2026",
     tripType: "return",
-    apiType: "ghana",  // ← fixed from "accra"
+    apiType: "ghana", // ← fixed from "accra"
     airlineName: "Brussels Airlines",
     airlineLogo: "imgs/airlines/brussels.png",
     departureCode: "LHR",
@@ -483,12 +483,12 @@ const flightData = [
     destinationCode: "ACC",
     destinationCity: "Accra",
     price: 756.85,
-    dates: "12 Jun - 14 Jul"
+    dates: "12 Jun - 14 Jul",
   },
   {
     slug: "return-rwandair-london-heathrow-to-accra-jun-2026",
     tripType: "return",
-    apiType: "ghana",  // ← fixed from "accra"
+    apiType: "ghana", // ← fixed from "accra"
     airlineName: "RwandAir",
     airlineLogo: "imgs/airlines/rwandair.png",
     departureCode: "LHR",
@@ -496,12 +496,12 @@ const flightData = [
     destinationCode: "ACC",
     destinationCity: "Accra",
     price: 761.29,
-    dates: "14 Jun - 24 Jun"
+    dates: "14 Jun - 24 Jun",
   },
   {
     slug: "return-tap-london-heathrow-to-accra-jun-2026",
     tripType: "return",
-    apiType: "ghana",  // ← fixed from "accra"
+    apiType: "ghana", // ← fixed from "accra"
     airlineName: "TAP Portugal",
     airlineLogo: "imgs/airlines/tap.png",
     departureCode: "LHR",
@@ -509,12 +509,12 @@ const flightData = [
     destinationCode: "ACC",
     destinationCity: "Accra",
     price: 764.85,
-    dates: "12 Jun - 24 Jun"
+    dates: "12 Jun - 24 Jun",
   },
   {
     slug: "one-way-emirates-leeds-to-accra-jul-2026",
     tripType: "one-way",
-    apiType: "ghana",  // ← fixed from "accra"
+    apiType: "ghana", // ← fixed from "accra"
     airlineName: "Emirates",
     airlineLogo: "imgs/airlines/emirates.png",
     departureCode: "LBA",
@@ -522,12 +522,12 @@ const flightData = [
     destinationCode: "ACC",
     destinationCity: "Accra",
     price: 879.77,
-    dates: "25 Jul 2026"
+    dates: "25 Jul 2026",
   },
   {
     slug: "one-way-klm-belfast-city-to-accra-aug-2026",
     tripType: "one-way",
-    apiType: "ghana",  // ← fixed from "accra"
+    apiType: "ghana", // ← fixed from "accra"
     airlineName: "KLM",
     airlineLogo: "imgs/airlines/klm.png",
     departureCode: "BHD",
@@ -535,12 +535,12 @@ const flightData = [
     destinationCode: "ACC",
     destinationCity: "Accra",
     price: 907.87,
-    dates: "03 Aug 2026"
+    dates: "03 Aug 2026",
   },
   {
     slug: "one-way-airfrance-birmingham-to-accra-jul-2026",
     tripType: "one-way",
-    apiType: "ghana",  // ← fixed from "accra"
+    apiType: "ghana", // ← fixed from "accra"
     airlineName: "Air France",
     airlineLogo: "imgs/airlines/airfrance.png",
     departureCode: "BHX",
@@ -548,7 +548,7 @@ const flightData = [
     destinationCode: "ACC",
     destinationCity: "Accra",
     price: 1026.11,
-    dates: "17 Jul 2026"
+    dates: "17 Jul 2026",
   },
   // INDIA FLIGHTS
   {
@@ -561,8 +561,8 @@ const flightData = [
     departureCity: "London",
     destinationCode: "BLR",
     destinationCity: "Bangalore",
-    price: 328.00,
-    dates: "21 Jun 2026"
+    price: 328.0,
+    dates: "21 Jun 2026",
   },
   {
     slug: "one-way-qatar-manchester-to-ahmedabad-jun-2026",
@@ -575,7 +575,7 @@ const flightData = [
     destinationCode: "AMD",
     destinationCity: "Ahmedabad",
     price: 333.83,
-    dates: "18 Jun 2026"
+    dates: "18 Jun 2026",
   },
   {
     slug: "one-way-etihad-aberdeen-to-mumbai-dec-2026",
@@ -588,7 +588,7 @@ const flightData = [
     destinationCode: "BOM",
     destinationCity: "Mumbai",
     price: 344.21,
-    dates: "10 Dec 2026"
+    dates: "10 Dec 2026",
   },
   {
     slug: "one-way-qatar-edinburgh-to-hyderabad-sep-2026",
@@ -601,7 +601,7 @@ const flightData = [
     destinationCode: "HYD",
     destinationCity: "Hyderabad",
     price: 360.84,
-    dates: "29 Sep 2026"
+    dates: "29 Sep 2026",
   },
   {
     slug: "one-way-omanair-newcastle-to-bangalore-aug-2026",
@@ -614,7 +614,7 @@ const flightData = [
     destinationCode: "BLR",
     destinationCity: "Bangalore",
     price: 388.95,
-    dates: "19 Aug 2026"
+    dates: "19 Aug 2026",
   },
   {
     slug: "return-saudia-london-to-delhi-jun-2026",
@@ -627,7 +627,7 @@ const flightData = [
     destinationCode: "DEL",
     destinationCity: "Delhi",
     price: 378.09,
-    dates: "14 Jun - 22 Jun"
+    dates: "14 Jun - 22 Jun",
   },
   {
     slug: "one-way-gulfair-london-to-ahmedabad-aug-2026",
@@ -639,8 +639,8 @@ const flightData = [
     departureCity: "London",
     destinationCode: "AMD",
     destinationCity: "Ahmedabad",
-    price: 399.80,
-    dates: "10 Aug 2026"
+    price: 399.8,
+    dates: "10 Aug 2026",
   },
   {
     slug: "one-way-qatar-birmingham-to-amritsar-jun-2026",
@@ -653,7 +653,7 @@ const flightData = [
     destinationCode: "ATQ",
     destinationCity: "Amritsar",
     price: 414.88,
-    dates: "18 Jun 2026"
+    dates: "18 Jun 2026",
   },
   {
     slug: "return-omanair-london-to-bangalore-jun-2026",
@@ -666,7 +666,7 @@ const flightData = [
     destinationCode: "BLR",
     destinationCity: "Bangalore",
     price: 425.33,
-    dates: "13 Jun - 22 Jun"
+    dates: "13 Jun - 22 Jun",
   },
   {
     slug: "return-turkish-london-to-delhi-jun-2026",
@@ -679,7 +679,7 @@ const flightData = [
     destinationCode: "DEL",
     destinationCity: "Delhi",
     price: 447.25,
-    dates: "23 Jun 2026"
+    dates: "23 Jun 2026",
   },
   {
     slug: "one-way-lufthansa-glasgow-to-delhi-jun-2026",
@@ -692,7 +692,7 @@ const flightData = [
     destinationCode: "DEL",
     destinationCity: "Delhi",
     price: 467.51,
-    dates: "20 Jun 2026"
+    dates: "20 Jun 2026",
   },
   {
     slug: "return-saudia-london-to-hyderabad-jun-2026",
@@ -705,7 +705,7 @@ const flightData = [
     destinationCode: "HYD",
     destinationCity: "Hyderabad",
     price: 470.09,
-    dates: "13 Jun - 27 Jun"
+    dates: "13 Jun - 27 Jun",
   },
   {
     slug: "return-gulfair-london-to-chennai-jun-2026",
@@ -718,7 +718,7 @@ const flightData = [
     destinationCode: "MAA",
     destinationCity: "Chennai",
     price: 484.09,
-    dates: "15 Jun - 21 Jun"
+    dates: "15 Jun - 21 Jun",
   },
   {
     slug: "return-etihad-london-to-mumbai-jun-2026",
@@ -731,7 +731,7 @@ const flightData = [
     destinationCode: "BOM",
     destinationCity: "Mumbai",
     price: 482.79,
-    dates: "13 Jun - 27 Jun"
+    dates: "13 Jun - 27 Jun",
   },
   {
     slug: "return-gulfair-london-to-chennai-jun-2026-v2",
@@ -744,7 +744,7 @@ const flightData = [
     destinationCode: "MAA",
     destinationCity: "Chennai",
     price: 495.42,
-    dates: "19 Jun - 21 Jun"
+    dates: "19 Jun - 21 Jun",
   },
   {
     slug: "return-klm-london-to-ahmedabad-aug-2026",
@@ -757,7 +757,7 @@ const flightData = [
     destinationCode: "AMD",
     destinationCity: "Ahmedabad",
     price: 498.73,
-    dates: "10 Aug 2026"
+    dates: "10 Aug 2026",
   },
   {
     slug: "return-gulfair-london-to-bangalore-jun-2026",
@@ -769,8 +769,8 @@ const flightData = [
     departureCity: "London",
     destinationCode: "BLR",
     destinationCity: "Bangalore",
-    price: 504.90,
-    dates: "12 Jun - 22 Jun"
+    price: 504.9,
+    dates: "12 Jun - 22 Jun",
   },
   {
     slug: "return-gulfair-london-to-delhi-jun-2026",
@@ -783,7 +783,7 @@ const flightData = [
     destinationCode: "DEL",
     destinationCity: "Delhi",
     price: 512.59,
-    dates: "14 Jun - 22 Jun"
+    dates: "14 Jun - 22 Jun",
   },
   {
     slug: "return-kuwait-london-to-ahmedabad-jul-2026",
@@ -795,8 +795,8 @@ const flightData = [
     departureCity: "London",
     destinationCode: "AMD",
     destinationCity: "Ahmedabad",
-    price: 518.50,
-    dates: "23 Jul - 24 Jul"
+    price: 518.5,
+    dates: "23 Jul - 24 Jul",
   },
   {
     slug: "return-gulfair-london-to-hyderabad-jun-2026",
@@ -809,7 +809,7 @@ const flightData = [
     destinationCode: "HYD",
     destinationCity: "Hyderabad",
     price: 528.82,
-    dates: "21 Jun - 27 Jun"
+    dates: "21 Jun - 27 Jun",
   },
   {
     slug: "return-srilankan-london-to-mumbai-jun-2026",
@@ -822,7 +822,7 @@ const flightData = [
     destinationCode: "BOM",
     destinationCity: "Mumbai",
     price: 533.79,
-    dates: "13 Jun - 27 Jun"
+    dates: "13 Jun - 27 Jun",
   },
   {
     slug: "return-gulfair-manchester-to-ahmedabad-jun-2026",
@@ -834,8 +834,8 @@ const flightData = [
     departureCity: "Manchester",
     destinationCode: "AMD",
     destinationCity: "Ahmedabad",
-    price: 542.00,
-    dates: "18 Jun - 28 Jun"
+    price: 542.0,
+    dates: "18 Jun - 28 Jun",
   },
   {
     slug: "return-gulfair-manchester-to-trivandrum-jun-2026",
@@ -848,7 +848,7 @@ const flightData = [
     destinationCode: "TRV",
     destinationCity: "Trivandrum",
     price: 555.43,
-    dates: "14 Jun - 30 Jun"
+    dates: "14 Jun - 30 Jun",
   },
   {
     slug: "return-gulfair-london-to-goa-jun-2026",
@@ -861,7 +861,7 @@ const flightData = [
     destinationCode: "GOI",
     destinationCity: "Goa",
     price: 594.39,
-    dates: "12 Jun - 24 Jun"
+    dates: "12 Jun - 24 Jun",
   },
   {
     slug: "return-etihad-birmingham-to-cochin-jun-2026",
@@ -874,7 +874,7 @@ const flightData = [
     destinationCode: "COK",
     destinationCity: "Cochin",
     price: 594.72,
-    dates: "12 Jun - 30 Jun"
+    dates: "12 Jun - 30 Jun",
   },
   {
     slug: "return-omanair-london-to-kolkata-jun-2026",
@@ -887,7 +887,7 @@ const flightData = [
     destinationCode: "CCU",
     destinationCity: "Kolkata",
     price: 597.89,
-    dates: "12 Jun - 12 Jul"
+    dates: "12 Jun - 12 Jul",
   },
   {
     slug: "return-omanair-birmingham-to-cochin-jun-2026",
@@ -900,10 +900,10 @@ const flightData = [
     destinationCode: "COK",
     destinationCity: "Cochin",
     price: 611.49,
-    dates: "12 Jun - 30 Jun"
+    dates: "12 Jun - 30 Jun",
   },
   //------PAKISTAN------
- {
+  {
     slug: "one-way-gulfair-manchester-to-islamabad-jun-2026",
     tripType: "one-way",
     apiType: "pakistan",
@@ -1021,17 +1021,17 @@ const flightData = [
     dates: "15 Jun - 29 Jul"
   },
   {
-    slug: "return-turkish-london-to-lahore-jun-2026",
+    slug: "return-etihad-london-to-islamabad-jun-2026",
     tripType: "return",
     apiType: "pakistan",
-    airlineName: "Turkish Airlines",
-    airlineLogo: "imgs/airlines/turkish.png",
-    departureCode: "STN",
+    airlineName: "Etihad Airways",
+    airlineLogo: "imgs/airlines/etihad.png",
+    departureCode: "LHR",
     departureCity: "London",
-    destinationCode: "LHE",
-    destinationCity: "Lahore",
-    price: 577.28,
-    dates: "23 Jun - 23 Jul"
+    destinationCode: "ISB",
+    destinationCity: "Islamabad",
+    price: 566.49,
+    dates: "12 Jun - 27 Jun"
   },
   {
     slug: "return-qatar-manchester-to-multan-jun-2026",
@@ -1060,6 +1060,19 @@ const flightData = [
     dates: "21 Jun 2026"
   },
   {
+    slug: "return-turkish-london-to-islamabad-jun-2026",
+    tripType: "return",
+    apiType: "pakistan",
+    airlineName: "Turkish Airlines",
+    airlineLogo: "imgs/airlines/turkish.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "ISB",
+    destinationCity: "Islamabad",
+    price: 613.29,
+    dates: "12 Jun - 27 Jun"
+  },
+  {
     slug: "return-gulfair-london-to-lahore-jun-2026",
     tripType: "return",
     apiType: "pakistan",
@@ -1069,8 +1082,8 @@ const flightData = [
     departureCity: "London",
     destinationCode: "LHE",
     destinationCity: "Lahore",
-    price: 614.30,
-    dates: "15 Jun - 09 Jul"
+    price: 614.10,
+    dates: "14 Jun - 09 Jul"
   },
   {
     slug: "return-saudia-birmingham-to-multan-oct-2026",
@@ -1086,30 +1099,17 @@ const flightData = [
     dates: "18 Oct - 04 Nov"
   },
   {
-    slug: "return-pia-london-to-islamabad-jun-2026",
+    slug: "return-virgin-london-to-lahore-jun-2026",
     tripType: "return",
     apiType: "pakistan",
-    airlineName: "PIA",
-    airlineLogo: "imgs/airlines/pia.png",
+    airlineName: "Virgin Atlantic",
+    airlineLogo: "imgs/airlines/virgin.png",
     departureCode: "LHR",
     departureCity: "London",
-    destinationCode: "ISB",
-    destinationCity: "Islamabad",
-    price: 624.89,
-    dates: "12 Jun - 07 Jul"
-  },
-  {
-    slug: "return-gulfair-london-to-islamabad-jun-2026",
-    tripType: "return",
-    apiType: "pakistan",
-    airlineName: "Gulf Air",
-    airlineLogo: "imgs/airlines/gulfair.png",
-    departureCode: "LGW",
-    departureCity: "London",
-    destinationCode: "ISB",
-    destinationCity: "Islamabad",
-    price: 624.90,
-    dates: "12 Jun - 07 Jul"
+    destinationCode: "LHE",
+    destinationCity: "Lahore",
+    price: 638.39,
+    dates: "15 Jun - 09 Jul"
   },
   {
     slug: "one-way-klm-london-to-islamabad-jun-2026",
@@ -1174,7 +1174,7 @@ const flightData = [
     destinationCode: "PEW",
     destinationCity: "Peshawar",
     price: 1173.03,
-    dates: "08 Jul - 09 Aug"
+    dates: "25 Jul - 09 Aug"
   },
   {
     slug: "return-emirates-manchester-to-quetta-jul-2026",
@@ -1215,7 +1215,7 @@ const flightData = [
     destinationCode: "MNL",
     destinationCity: "Manila",
     price: 380.29,
-    dates: "18 Jun 2026"
+    dates: "18 Jun 2026",
   },
   {
     slug: "one-way-swiss-manchester-to-manila-sep-2026",
@@ -1228,7 +1228,7 @@ const flightData = [
     destinationCode: "MNL",
     destinationCity: "Manila",
     price: 512.63,
-    dates: "13 Sep 2026"
+    dates: "13 Sep 2026",
   },
   {
     slug: "one-way-swiss-london-to-manila-jun-2026",
@@ -1240,8 +1240,8 @@ const flightData = [
     departureCity: "London",
     destinationCode: "MNL",
     destinationCity: "Manila",
-    price: 565.70,
-    dates: "24 Jun 2026"
+    price: 565.7,
+    dates: "24 Jun 2026",
   },
   {
     slug: "one-way-lufthansa-london-to-manila-jun-2026",
@@ -1254,7 +1254,7 @@ const flightData = [
     destinationCode: "MNL",
     destinationCity: "Manila",
     price: 576.27,
-    dates: "24 Jun 2026"
+    dates: "24 Jun 2026",
   },
   {
     slug: "one-way-omanair-southampton-to-manila-jun-2026",
@@ -1267,7 +1267,7 @@ const flightData = [
     destinationCode: "MNL",
     destinationCity: "Manila",
     price: 577.99,
-    dates: "18 Jun 2026"
+    dates: "18 Jun 2026",
   },
   {
     slug: "one-way-malaysia-leeds-to-cebu-sep-2026",
@@ -1280,7 +1280,7 @@ const flightData = [
     destinationCode: "CEB",
     destinationCity: "Cebu",
     price: 585.79,
-    dates: "30 Sep 2026"
+    dates: "30 Sep 2026",
   },
   {
     slug: "one-way-emirates-london-to-manila-jun-2026",
@@ -1292,8 +1292,8 @@ const flightData = [
     departureCity: "London",
     destinationCode: "MNL",
     destinationCity: "Manila",
-    price: 656.40,
-    dates: "24 Jun 2026"
+    price: 656.4,
+    dates: "24 Jun 2026",
   },
   {
     slug: "return-brunei-london-to-manila-jun-2026",
@@ -1306,7 +1306,7 @@ const flightData = [
     destinationCode: "MNL",
     destinationCity: "Manila",
     price: 666.49,
-    dates: "14 Jun - 04 Jul"
+    dates: "14 Jun - 04 Jul",
   },
   {
     slug: "return-malaysia-london-to-manila-jun-2026",
@@ -1319,7 +1319,7 @@ const flightData = [
     destinationCode: "MNL",
     destinationCity: "Manila",
     price: 670.79,
-    dates: "12 Jun - 14 Jul"
+    dates: "12 Jun - 14 Jul",
   },
   {
     slug: "return-gulfair-london-to-manila-jun-2026",
@@ -1332,7 +1332,7 @@ const flightData = [
     destinationCode: "MNL",
     destinationCity: "Manila",
     price: 681.69,
-    dates: "12 Jun - 27 Jun"
+    dates: "12 Jun - 27 Jun",
   },
   {
     slug: "one-way-emirates-newcastle-to-manila-jun-2026",
@@ -1345,7 +1345,7 @@ const flightData = [
     destinationCode: "MNL",
     destinationCity: "Manila",
     price: 698.22,
-    dates: "21 Jun 2026"
+    dates: "21 Jun 2026",
   },
   {
     slug: "one-way-qatar-edinburgh-to-cebu-jun-2026",
@@ -1358,7 +1358,7 @@ const flightData = [
     destinationCode: "CEB",
     destinationCity: "Cebu",
     price: 721.25,
-    dates: "22 Jun 2026"
+    dates: "22 Jun 2026",
   },
   {
     slug: "return-swiss-london-to-clark-jun-2026",
@@ -1371,7 +1371,7 @@ const flightData = [
     destinationCode: "CRK",
     destinationCity: "Clark International",
     price: 721.58,
-    dates: "15 Jun - 07 Jul"
+    dates: "15 Jun - 07 Jul",
   },
   {
     slug: "return-swiss-london-to-davao-jun-2026",
@@ -1384,7 +1384,7 @@ const flightData = [
     destinationCode: "DVO",
     destinationCity: "Davao",
     price: 739.95,
-    dates: "14 Jun - 05 Jul"
+    dates: "14 Jun - 05 Jul",
   },
   {
     slug: "return-chinaeastern-london-to-cebu-jun-2026",
@@ -1397,7 +1397,7 @@ const flightData = [
     destinationCode: "CEB",
     destinationCity: "Cebu",
     price: 777.49,
-    dates: "12 Jun - 03 Jul"
+    dates: "12 Jun - 03 Jul",
   },
   {
     slug: "return-singapore-london-to-davao-jun-2026",
@@ -1410,7 +1410,7 @@ const flightData = [
     destinationCode: "DVO",
     destinationCity: "Davao",
     price: 801.59,
-    dates: "14 Jun - 05 Jul"
+    dates: "14 Jun - 05 Jul",
   },
   {
     slug: "return-singapore-london-to-cebu-jun-2026",
@@ -1423,7 +1423,7 @@ const flightData = [
     destinationCode: "CEB",
     destinationCity: "Cebu",
     price: 813.99,
-    dates: "12 Jun - 03 Jul"
+    dates: "12 Jun - 03 Jul",
   },
   {
     slug: "return-malaysia-london-to-cebu-jun-2026",
@@ -1436,7 +1436,7 @@ const flightData = [
     destinationCode: "CEB",
     destinationCity: "Cebu",
     price: 840.99,
-    dates: "12 Jun - 12 Jul"
+    dates: "12 Jun - 12 Jul",
   },
   {
     slug: "return-lufthansa-london-to-davao-jun-2026",
@@ -1449,7 +1449,7 @@ const flightData = [
     destinationCode: "DVO",
     destinationCity: "Davao",
     price: 852.05,
-    dates: "14 Jun - 05 Jul"
+    dates: "14 Jun - 05 Jul",
   },
   {
     slug: "return-singapore-london-to-clark-jun-2026",
@@ -1462,7 +1462,7 @@ const flightData = [
     destinationCode: "CRK",
     destinationCity: "Clark International",
     price: 868.28,
-    dates: "12 Jun - 11 Jul"
+    dates: "12 Jun - 11 Jul",
   },
   {
     slug: "return-saudia-london-to-clark-jun-2026",
@@ -1475,11 +1475,11 @@ const flightData = [
     destinationCode: "CRK",
     destinationCity: "Clark International",
     price: 924.79,
-    dates: "12 Jun - 11 Jul"
+    dates: "12 Jun - 11 Jul",
   },
 
-// South Africa...
-{
+  // South Africa...
+  {
     slug: "return-airalgerie-london-to-johannesburg-jun-2026",
     tripType: "return",
     apiType: "south-africa",
@@ -1490,7 +1490,7 @@ const flightData = [
     destinationCode: "JNB",
     destinationCity: "Johannesburg",
     price: 446.29,
-    dates: "12 Jun - 20 Jun"
+    dates: "12 Jun - 20 Jun",
   },
   {
     slug: "one-way-egyptair-manchester-to-johannesburg-jul-2026",
@@ -1503,7 +1503,7 @@ const flightData = [
     destinationCode: "JNB",
     destinationCity: "Johannesburg",
     price: 453.73,
-    dates: "02 Jul 2026"
+    dates: "02 Jul 2026",
   },
   {
     slug: "one-way-turkish-london-to-johannesburg-jun-2026",
@@ -1516,7 +1516,7 @@ const flightData = [
     destinationCode: "JNB",
     destinationCity: "Johannesburg",
     price: 480.08,
-    dates: "15 Jun 2026"
+    dates: "15 Jun 2026",
   },
   {
     slug: "one-way-qatar-london-to-port-elizabeth-jun-2026",
@@ -1528,8 +1528,8 @@ const flightData = [
     departureCity: "London",
     destinationCode: "PLZ",
     destinationCity: "Port Elizabeth",
-    price: 522.80,
-    dates: "13 Jun 2026"
+    price: 522.8,
+    dates: "13 Jun 2026",
   },
   {
     slug: "one-way-qatar-london-to-port-elizabeth-jun-2026-v2",
@@ -1542,7 +1542,7 @@ const flightData = [
     destinationCode: "PLZ",
     destinationCity: "Port Elizabeth",
     price: 529.19,
-    dates: "13 Jun 2026"
+    dates: "13 Jun 2026",
   },
   {
     slug: "return-egyptair-london-to-johannesburg-jun-2026",
@@ -1555,7 +1555,7 @@ const flightData = [
     destinationCode: "JNB",
     destinationCity: "Johannesburg",
     price: 535.29,
-    dates: "13 Jun - 22 Jun"
+    dates: "13 Jun - 22 Jun",
   },
   {
     slug: "one-way-taag-luton-to-cape-town-sep-2026",
@@ -1568,7 +1568,7 @@ const flightData = [
     destinationCode: "CPT",
     destinationCity: "Cape Town",
     price: 575.09,
-    dates: "06 Sep 2026"
+    dates: "06 Sep 2026",
   },
   {
     slug: "one-way-klm-london-to-cape-town-jun-2026",
@@ -1581,7 +1581,7 @@ const flightData = [
     destinationCode: "CPT",
     destinationCity: "Cape Town",
     price: 623.22,
-    dates: "14 Jun 2026"
+    dates: "14 Jun 2026",
   },
   {
     slug: "return-ethiopian-london-to-cape-town-jun-2026",
@@ -1594,7 +1594,7 @@ const flightData = [
     destinationCode: "CPT",
     destinationCity: "Cape Town",
     price: 649.88,
-    dates: "12 Jun - 17 Jun"
+    dates: "12 Jun - 17 Jun",
   },
   {
     slug: "return-qatar-london-to-cape-town-jun-2026",
@@ -1606,8 +1606,8 @@ const flightData = [
     departureCity: "London",
     destinationCode: "CPT",
     destinationCity: "Cape Town",
-    price: 650.20,
-    dates: "12 Jun - 17 Jun"
+    price: 650.2,
+    dates: "12 Jun - 17 Jun",
   },
   {
     slug: "one-way-emirates-edinburgh-to-johannesburg-jun-2026",
@@ -1619,8 +1619,8 @@ const flightData = [
     departureCity: "Edinburgh",
     destinationCode: "JNB",
     destinationCity: "Johannesburg",
-    price: 662.70,
-    dates: "25 Jun 2026"
+    price: 662.7,
+    dates: "25 Jun 2026",
   },
   {
     slug: "one-way-klm-birmingham-to-cape-town-aug-2026",
@@ -1633,7 +1633,7 @@ const flightData = [
     destinationCode: "CPT",
     destinationCity: "Cape Town",
     price: 663.73,
-    dates: "05 Aug 2026"
+    dates: "05 Aug 2026",
   },
   {
     slug: "one-way-emirates-glasgow-to-johannesburg-jul-2026",
@@ -1645,8 +1645,8 @@ const flightData = [
     departureCity: "Glasgow",
     destinationCode: "JNB",
     destinationCity: "Johannesburg",
-    price: 733.50,
-    dates: "11 Jul 2026"
+    price: 733.5,
+    dates: "11 Jul 2026",
   },
   {
     slug: "return-ethiopian-london-to-port-elizabeth-jun-2026",
@@ -1659,8 +1659,1092 @@ const flightData = [
     destinationCode: "PLZ",
     destinationCity: "Port Elizabeth",
     price: 831.42,
+    dates: "12 Jun - 20 Jun",
+  },
+  // ZIMBABAW...
+  {
+    slug: "one-way-qatar-london-to-harare-jun-2026",
+    tripType: "one-way",
+    apiType: "zimbabwe",
+    airlineName: "Qatar Airways",
+    airlineLogo: "imgs/airlines/qatar.png",
+    departureCode: "LGW",
+    departureCity: "London",
+    destinationCode: "HRE",
+    destinationCity: "Harare",
+    price: 367.9,
+    dates: "14 Jun 2026",
+  },
+  {
+    slug: "one-way-qatar-london-to-harare-jun-2026-v2",
+    tripType: "one-way",
+    apiType: "zimbabwe",
+    airlineName: "Qatar Airways",
+    airlineLogo: "imgs/airlines/qatar.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "HRE",
+    destinationCity: "Harare",
+    price: 396.29,
+    dates: "14 Jun 2026",
+  },
+  {
+    slug: "one-way-qatar-manchester-to-victoria-falls-aug-2026",
+    tripType: "one-way",
+    apiType: "zimbabwe",
+    airlineName: "Qatar Airways",
+    airlineLogo: "imgs/airlines/qatar.png",
+    departureCode: "MAN",
+    departureCity: "Manchester",
+    destinationCode: "VFA",
+    destinationCity: "Victoria Falls",
+    price: 564.13,
+    dates: "13 Aug 2026",
+  },
+  {
+    slug: "one-way-qatar-birmingham-to-bulawayo-jun-2026",
+    tripType: "one-way",
+    apiType: "zimbabwe",
+    airlineName: "Qatar Airways",
+    airlineLogo: "imgs/airlines/qatar.png",
+    departureCode: "BHX",
+    departureCity: "Birmingham",
+    destinationCode: "BUQ",
+    destinationCity: "Bulawayo",
+    price: 568.82,
+    dates: "28 Jun 2026",
+  },
+  {
+    slug: "one-way-emirates-london-to-harare-jun-2026",
+    tripType: "one-way",
+    apiType: "zimbabwe",
+    airlineName: "Emirates",
+    airlineLogo: "imgs/airlines/emirates.png",
+    departureCode: "STN",
+    departureCity: "London",
+    destinationCode: "HRE",
+    destinationCity: "Harare",
+    price: 596.4,
+    dates: "14 Jun 2026",
+  },
+  {
+    slug: "one-way-britishairways-edinburgh-to-harare-jul-2026",
+    tripType: "one-way",
+    apiType: "zimbabwe",
+    airlineName: "British Airways",
+    airlineLogo: "imgs/airlines/britishairways.png",
+    departureCode: "EDI",
+    departureCity: "Edinburgh",
+    destinationCode: "HRE",
+    destinationCity: "Harare",
+    price: 640.74,
+    dates: "12 Jul 2026",
+  },
+  {
+    slug: "one-way-klm-london-to-bulawayo-jun-2026",
+    tripType: "one-way",
+    apiType: "zimbabwe",
+    airlineName: "KLM",
+    airlineLogo: "imgs/airlines/klm.png",
+    departureCode: "LCY",
+    departureCity: "London",
+    destinationCode: "BUQ",
+    destinationCity: "Bulawayo",
+    price: 772.23,
+    dates: "15 Jun 2026",
+  },
+  {
+    slug: "one-way-qatar-newcastle-to-harare-jul-2026",
+    tripType: "one-way",
+    apiType: "zimbabwe",
+    airlineName: "Qatar Airways",
+    airlineLogo: "imgs/airlines/qatar.png",
+    departureCode: "NCL",
+    departureCity: "Newcastle",
+    destinationCode: "HRE",
+    destinationCity: "Harare",
+    price: 806.05,
+    dates: "19 Jul 2026",
+  },
+  {
+    slug: "return-airalgerie-london-to-harare-jun-2026",
+    tripType: "return",
+    apiType: "zimbabwe",
+    airlineName: "Air Algérie",
+    airlineLogo: "imgs/airlines/airalgerie.png",
+    departureCode: "LGW",
+    departureCity: "London",
+    destinationCode: "HRE",
+    destinationCity: "Harare",
+    price: 831.39,
+    dates: "14 Jun - 22 Jun",
+  },
+  {
+    slug: "return-aerlingus-leeds-to-harare-jun-2026",
+    tripType: "return",
+    apiType: "zimbabwe",
+    airlineName: "Aer Lingus",
+    airlineLogo: "imgs/airlines/aerlingus.png",
+    departureCode: "LBA",
+    departureCity: "Leeds",
+    destinationCode: "HRE",
+    destinationCity: "Harare",
+    price: 844.88,
+    dates: "17 Jun - 30 Jun",
+  },
+  {
+    slug: "return-ethiopian-london-to-harare-jun-2026",
+    tripType: "return",
+    apiType: "zimbabwe",
+    airlineName: "Ethiopian Airlines",
+    airlineLogo: "imgs/airlines/ethiopian.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "HRE",
+    destinationCity: "Harare",
+    price: 870.09,
+    dates: "13 Jun - 30 Jun",
+  },
+  {
+    slug: "return-sas-aberdeen-to-harare-aug-2026",
+    tripType: "return",
+    apiType: "zimbabwe",
+    airlineName: "Scandinavian Airlines",
+    airlineLogo: "imgs/airlines/sas.png",
+    departureCode: "ABZ",
+    departureCity: "Aberdeen",
+    destinationCode: "HRE",
+    destinationCity: "Harare",
+    price: 900.59,
+    dates: "25 Aug - 11 Sep",
+  },
+  {
+    slug: "return-emirates-newcastle-to-bulawayo-jun-2026",
+    tripType: "return",
+    apiType: "zimbabwe",
+    airlineName: "Emirates",
+    airlineLogo: "imgs/airlines/emirates.png",
+    departureCode: "NCL",
+    departureCity: "Newcastle",
+    destinationCode: "BUQ",
+    destinationCity: "Bulawayo",
+    price: 1024.52,
+    dates: "13 Jun - 27 Jun",
+  },
+  {
+    slug: "return-qatar-birmingham-to-victoria-falls-jun-2026",
+    tripType: "return",
+    apiType: "zimbabwe",
+    airlineName: "Qatar Airways",
+    airlineLogo: "imgs/airlines/qatar.png",
+    departureCode: "BHX",
+    departureCity: "Birmingham",
+    destinationCode: "VFA",
+    destinationCity: "Victoria Falls",
+    price: 1052.98,
+    dates: "12 Jun - 18 Jun",
+  },
+  // USA..
+  {
+    slug: "one-way-norwegian-london-to-orlando-jun-2026",
+    tripType: "one-way",
+    apiType: "usa",
+    airlineName: "Norse Atlantic Airways",
+    airlineLogo: "imgs/airlines/norse.png",
+    departureCode: "LGW",
+    departureCity: "London",
+    destinationCode: "MCO",
+    destinationCity: "Orlando",
+    price: 338.2,
+    dates: "24 Jun 2026",
+  },
+  {
+    slug: "one-way-american-manchester-to-new-york-jun-2026",
+    tripType: "one-way",
+    apiType: "usa",
+    airlineName: "American Airlines",
+    airlineLogo: "imgs/airlines/american.png",
+    departureCode: "MAN",
+    departureCity: "Manchester",
+    destinationCode: "JFK",
+    destinationCity: "New York",
+    price: 347.38,
+    dates: "30 Jun 2026",
+  },
+  {
+    slug: "one-way-icelandair-edinburgh-to-boston-jun-2026",
+    tripType: "one-way",
+    apiType: "usa",
+    airlineName: "Icelandair",
+    airlineLogo: "imgs/airlines/icelandair.png",
+    departureCode: "EDI",
+    departureCity: "Edinburgh",
+    destinationCode: "BOS",
+    destinationCity: "Boston",
+    price: 355.24,
+    dates: "15 Jun 2026",
+  },
+  {
+    slug: "one-way-american-glasgow-to-new-york-jul-2026",
+    tripType: "one-way",
+    apiType: "usa",
+    airlineName: "American Airlines",
+    airlineLogo: "imgs/airlines/american.png",
+    departureCode: "GLA",
+    departureCity: "Glasgow",
+    destinationCode: "JFK",
+    destinationCity: "New York",
+    price: 369.34,
+    dates: "08 Jul 2026",
+  },
+  {
+    slug: "one-way-american-london-to-new-york-jun-2026",
+    tripType: "one-way",
+    apiType: "usa",
+    airlineName: "American Airlines",
+    airlineLogo: "imgs/airlines/american.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "JFK",
+    destinationCity: "New York",
+    price: 391.59,
+    dates: "26 Jun 2026",
+  },
+  {
+    slug: "one-way-lufthansa-london-to-san-francisco-jun-2026",
+    tripType: "one-way",
+    apiType: "usa",
+    airlineName: "Lufthansa",
+    airlineLogo: "imgs/airlines/lufthansa.png",
+    departureCode: "LCY",
+    departureCity: "London",
+    destinationCode: "SFO",
+    destinationCity: "San Francisco",
+    price: 415.37,
+    dates: "24 Jun 2026",
+  },
+  {
+    slug: "return-aircanada-london-to-tampa-jun-2026",
+    tripType: "return",
+    apiType: "usa",
+    airlineName: "Air Canada",
+    airlineLogo: "imgs/airlines/aircanada.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "TPA",
+    destinationCity: "Tampa",
+    price: 455.89,
+    dates: "19 Jun - 03 Jul",
+  },
+  {
+    slug: "return-american-london-to-san-jose-aug-2026",
+    tripType: "return",
+    apiType: "usa",
+    airlineName: "American Airlines",
+    airlineLogo: "imgs/airlines/american.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "SJC",
+    destinationCity: "San Jose",
+    price: 463.39,
+    dates: "08 Aug - 25 Aug",
+  },
+  {
+    slug: "one-way-american-newcastle-to-boston-oct-2026",
+    tripType: "one-way",
+    apiType: "usa",
+    airlineName: "American Airlines",
+    airlineLogo: "imgs/airlines/american.png",
+    departureCode: "NCL",
+    departureCity: "Newcastle",
+    destinationCode: "BOS",
+    destinationCity: "Boston",
+    price: 468.8,
+    dates: "28 Oct 2026",
+  },
+  {
+    slug: "return-american-london-to-tampa-jun-2026",
+    tripType: "return",
+    apiType: "usa",
+    airlineName: "American Airlines",
+    airlineLogo: "imgs/airlines/american.png",
+    departureCode: "LGW",
+    departureCity: "London",
+    destinationCode: "TPA",
+    destinationCity: "Tampa",
+    price: 471.28,
+    dates: "19 Jun - 03 Jul",
+  },
+  {
+    slug: "return-virgin-london-to-atlanta-jun-2026",
+    tripType: "return",
+    apiType: "usa",
+    airlineName: "Virgin Atlantic",
+    airlineLogo: "imgs/airlines/virgin.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "ATL",
+    destinationCity: "Atlanta",
+    price: 491.89,
+    dates: "12 Jun - 26 Jun",
+  },
+  {
+    slug: "return-delta-london-to-atlanta-jun-2026",
+    tripType: "return",
+    apiType: "usa",
+    airlineName: "Delta Air Lines",
+    airlineLogo: "imgs/airlines/delta.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "ATL",
+    destinationCity: "Atlanta",
+    price: 491.89,
+    dates: "12 Jun - 26 Jun",
+  },
+  {
+    slug: "return-britishairways-london-to-los-angeles-jun-2026",
+    tripType: "return",
+    apiType: "usa",
+    airlineName: "British Airways",
+    airlineLogo: "imgs/airlines/britishairways.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "LAX",
+    destinationCity: "Los Angeles",
+    price: 508.7,
+    dates: "13 Jun - 27 Jun",
+  },
+  {
+    slug: "return-klm-london-to-los-angeles-jun-2026",
+    tripType: "return",
+    apiType: "usa",
+    airlineName: "KLM",
+    airlineLogo: "imgs/airlines/klm.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "LAX",
+    destinationCity: "Los Angeles",
+    price: 509.29,
+    dates: "13 Jun - 27 Jun",
+  },
+  // thailand...
+  {
+    slug: "one-way-qatar-london-to-bangkok-jun-2026",
+    tripType: "one-way",
+    apiType: "thailand",
+    airlineName: "Qatar Airways",
+    airlineLogo: "imgs/airlines/qatar.png",
+    departureCode: "LGW",
+    departureCity: "London",
+    destinationCode: "BKK",
+    destinationCity: "Bangkok",
+    price: 342.07,
+    dates: "23 Jun 2026"
+  },
+  {
+    slug: "one-way-scandinavian-glasgow-to-bangkok-nov-2026",
+    tripType: "one-way",
+    apiType: "thailand",
+    airlineName: "Scandinavian Airlines",
+    airlineLogo: "imgs/airlines/sas.png",
+    departureCode: "GLA",
+    departureCity: "Glasgow",
+    destinationCode: "BKK",
+    destinationCity: "Bangkok",
+    price: 384.88,
+    dates: "23 Nov 2026"
+  },
+  {
+    slug: "one-way-scandinavian-edinburgh-to-bangkok-nov-2026",
+    tripType: "one-way",
+    apiType: "thailand",
+    airlineName: "Scandinavian Airlines",
+    airlineLogo: "imgs/airlines/sas.png",
+    departureCode: "EDI",
+    departureCity: "Edinburgh",
+    destinationCode: "BKK",
+    destinationCity: "Bangkok",
+    price: 387.25,
+    dates: "23 Nov 2026"
+  },
+  {
+    slug: "one-way-malaysia-london-to-phuket-aug-2026",
+    tripType: "one-way",
+    apiType: "thailand",
+    airlineName: "Malaysia Airlines",
+    airlineLogo: "imgs/airlines/malaysia.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "HKT",
+    destinationCity: "Phuket",
+    price: 422.72,
+    dates: "22 Aug 2026"
+  },
+  {
+    slug: "one-way-swiss-london-to-koh-samui-nov-2026",
+    tripType: "one-way",
+    apiType: "thailand",
+    airlineName: "Swiss International Air Lines",
+    airlineLogo: "imgs/airlines/swiss.png",
+    departureCode: "LCY",
+    departureCity: "London",
+    destinationCode: "USM",
+    destinationCity: "Koh Samui",
+    price: 465.77,
+    dates: "23 Nov 2026"
+  },
+  {
+    slug: "one-way-saudia-manchester-to-bangkok-aug-2026",
+    tripType: "one-way",
+    apiType: "thailand",
+    airlineName: "Saudia",
+    airlineLogo: "imgs/airlines/saudia.png",
+    departureCode: "MAN",
+    departureCity: "Manchester",
+    destinationCode: "BKK",
+    destinationCity: "Bangkok",
+    price: 473.00,
+    dates: "09 Aug 2026"
+  },
+  {
+    slug: "return-kenya-london-to-bangkok-jun-2026",
+    tripType: "return",
+    apiType: "thailand",
+    airlineName: "Kenya Airways",
+    airlineLogo: "imgs/airlines/kenya.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "BKK",
+    destinationCity: "Bangkok",
+    price: 502.29,
+    dates: "12 Jun - 21 Jun"
+  },
+  {
+    slug: "one-way-turkish-london-to-bangkok-jun-2026",
+    tripType: "one-way",
+    apiType: "thailand",
+    airlineName: "Turkish Airlines",
+    airlineLogo: "imgs/airlines/turkish.png",
+    departureCode: "STN",
+    departureCity: "London",
+    destinationCode: "BKK",
+    destinationCity: "Bangkok",
+    price: 521.58,
+    dates: "22 Jun 2026"
+  },
+  {
+    slug: "return-etihad-london-to-bangkok-jun-2026",
+    tripType: "return",
+    apiType: "thailand",
+    airlineName: "Etihad Airways",
+    airlineLogo: "imgs/airlines/etihad.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "BKK",
+    destinationCity: "Bangkok",
+    price: 587.09,
+    dates: "12 Jun - 21 Jun"
+  },
+  {
+    slug: "return-saudia-manchester-to-krabi-jun-2026",
+    tripType: "return",
+    apiType: "thailand",
+    airlineName: "Saudia",
+    airlineLogo: "imgs/airlines/saudia.png",
+    departureCode: "MAN",
+    departureCity: "Manchester",
+    destinationCode: "KBV",
+    destinationCity: "Krabi",
+    price: 594.00,
+    dates: "20 Jun - 04 Jul"
+  },
+  {
+    slug: "return-gulfair-london-to-phuket-jun-2026",
+    tripType: "return",
+    apiType: "thailand",
+    airlineName: "Gulf Air",
+    airlineLogo: "imgs/airlines/gulfair.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "HKT",
+    destinationCity: "Phuket",
+    price: 597.79,
+    dates: "16 Jun - 30 Jun"
+  },
+  {
+    slug: "return-malaysia-london-to-phuket-jun-2026",
+    tripType: "return",
+    apiType: "thailand",
+    airlineName: "Malaysia Airlines",
+    airlineLogo: "imgs/airlines/malaysia.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "HKT",
+    destinationCity: "Phuket",
+    price: 618.89,
+    dates: "14 Jun - 30 Jun"
+  },
+  {
+    slug: "one-way-gulfair-bristol-to-bangkok-jun-2026",
+    tripType: "one-way",
+    apiType: "thailand",
+    airlineName: "Gulf Air",
+    airlineLogo: "imgs/airlines/gulfair.png",
+    departureCode: "BRS",
+    departureCity: "Bristol",
+    destinationCode: "BKK",
+    destinationCity: "Bangkok",
+    price: 631.99,
+    dates: "24 Jun 2026"
+  },
+  {
+    slug: "one-way-klm-belfast-to-bangkok-mar-2027",
+    tripType: "one-way",
+    apiType: "thailand",
+    airlineName: "KLM",
+    airlineLogo: "imgs/airlines/klm.png",
+    departureCode: "BHD",
+    departureCity: "Belfast City",
+    destinationCode: "BKK",
+    destinationCity: "Bangkok",
+    price: 698.83,
+    dates: "25 Mar 2027"
+  },
+  {
+    slug: "return-klm-london-to-krabi-sep-2026",
+    tripType: "return",
+    apiType: "thailand",
+    airlineName: "KLM",
+    airlineLogo: "imgs/airlines/klm.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "KBV",
+    destinationCity: "Krabi",
+    price: 759.95,
+    dates: "19 Sep - 26 Dec"
+  },
+  {
+    slug: "return-etihad-manchester-to-koh-samui-jun-2026",
+    tripType: "return",
+    apiType: "thailand",
+    airlineName: "Etihad Airways",
+    airlineLogo: "imgs/airlines/etihad.png",
+    departureCode: "MAN",
+    departureCity: "Manchester",
+    destinationCode: "USM",
+    destinationCity: "Koh Samui",
+    price: 780.33,
+    dates: "12 Jun - 30 Jun"
+  },
+  {
+    slug: "return-etihad-manchester-to-koh-samui-jun-2026-v2",
+    tripType: "return",
+    apiType: "thailand",
+    airlineName: "Etihad Airways",
+    airlineLogo: "imgs/airlines/etihad.png",
+    departureCode: "MAN",
+    departureCity: "Manchester",
+    destinationCode: "USM",
+    destinationCity: "Koh Samui",
+    price: 780.33,
     dates: "12 Jun - 20 Jun"
+  },
+  {
+    slug: "return-britishairways-london-to-trat-jan-2027",
+    tripType: "return",
+    apiType: "thailand",
+    airlineName: "British Airways",
+    airlineLogo: "imgs/airlines/britishairways.png",
+    departureCode: "LGW",
+    departureCity: "London",
+    destinationCode: "TDX",
+    destinationCity: "Trat",
+    price: 787.20,
+    dates: "19 Jan - 09 Feb"
+  },
+  {
+    slug: "return-gulfair-london-to-chiang-mai-oct-2026",
+    tripType: "return",
+    apiType: "thailand",
+    airlineName: "Gulf Air",
+    airlineLogo: "imgs/airlines/gulfair.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "CNX",
+    destinationCity: "Chiang Mai",
+    price: 818.59,
+    dates: "12 Oct - 27 Oct"
+  },
+  {
+    slug: "return-qatar-edinburgh-to-chiang-mai-jun-2026",
+    tripType: "return",
+    apiType: "thailand",
+    airlineName: "Qatar Airways",
+    airlineLogo: "imgs/airlines/qatar.png",
+    departureCode: "EDI",
+    departureCity: "Edinburgh",
+    destinationCode: "CNX",
+    destinationCity: "Chiang Mai",
+    price: 873.34,
+    dates: "17 Jun - 30 Jun"
+  },
+  {
+    slug: "return-omanair-london-to-udon-thani-nov-2026",
+    tripType: "return",
+    apiType: "thailand",
+    airlineName: "Oman Air",
+    airlineLogo: "imgs/airlines/omanair.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "UTH",
+    destinationCity: "Udon Thani",
+    price: 897.89,
+    dates: "17 Nov - 16 Jan"
+  },
+  {
+    slug: "return-thai-london-to-chiang-rai-jul-2026",
+    tripType: "return",
+    apiType: "thailand",
+    airlineName: "Thai Airways",
+    airlineLogo: "imgs/airlines/thai.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "CEI",
+    destinationCity: "Chiang Rai",
+    price: 921.82,
+    dates: "11 Jul - 31 Jul"
+  },
+  {
+    slug: "return-qatar-london-to-udon-thani-nov-2026",
+    tripType: "return",
+    apiType: "thailand",
+    airlineName: "Qatar Airways",
+    airlineLogo: "imgs/airlines/qatar.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "UTH",
+    destinationCity: "Udon Thani",
+    price: 930.39,
+    dates: "17 Nov - 16 Jan"
+  },
+  {
+    slug: "return-qatar-london-to-chiang-rai-jul-2026",
+    tripType: "return",
+    apiType: "thailand",
+    airlineName: "Qatar Airways",
+    airlineLogo: "imgs/airlines/qatar.png",
+    departureCode: "LGW",
+    departureCity: "London",
+    destinationCode: "CEI",
+    destinationCity: "Chiang Rai",
+    price: 1234.41,
+    dates: "11 Jul - 31 Jul"
+  },
+  {
+    slug: "return-etihad-london-to-trat-dec-2026",
+    tripType: "return",
+    apiType: "thailand",
+    airlineName: "Etihad Airways",
+    airlineLogo: "imgs/airlines/etihad.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "TDX",
+    destinationCity: "Trat",
+    price: 1397.72,
+    dates: "17 Dec - 12 Feb"
+  },
+  //////////////////
+// CANADA 
+  {
+    slug: "one-way-tap-london-to-toronto-oct-2026",
+    tripType: "one-way",
+    apiType: "canada",
+    airlineName: "TAP Air Portugal",
+    airlineLogo: "imgs/airlines/tap.png",
+    departureCode: "LGW",
+    departureCity: "London",
+    destinationCode: "YYZ",
+    destinationCity: "Toronto",
+    price: 332.18,
+    dates: "16 Oct 2026"
+  },
+  {
+    slug: "one-way-iberia-london-to-toronto-oct-2026",
+    tripType: "one-way",
+    apiType: "canada",
+    airlineName: "Iberia",
+    airlineLogo: "imgs/airlines/iberia.png",
+    departureCode: "LCY",
+    departureCity: "London",
+    destinationCode: "YYZ",
+    destinationCity: "Toronto",
+    price: 342.37,
+    dates: "16 Oct 2026"
+  },
+  {
+    slug: "one-way-airtransat-glasgow-to-toronto-aug-2026",
+    tripType: "one-way",
+    apiType: "canada",
+    airlineName: "Air Transat",
+    airlineLogo: "imgs/airlines/airtransat.png",
+    departureCode: "GLA",
+    departureCity: "Glasgow",
+    destinationCode: "YYZ",
+    destinationCity: "Toronto",
+    price: 347.41,
+    dates: "27 Aug 2026"
+  },
+  {
+    slug: "one-way-aircanada-london-to-toronto-jul-2026",
+    tripType: "one-way",
+    apiType: "canada",
+    airlineName: "Air Canada",
+    airlineLogo: "imgs/airlines/aircanada.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "YYZ",
+    destinationCity: "Toronto",
+    price: 368.79,
+    dates: "09 Jul 2026"
+  },
+  {
+    slug: "return-aircanada-london-to-ottawa-jun-2026",
+    tripType: "return",
+    apiType: "canada",
+    airlineName: "Air Canada",
+    airlineLogo: "imgs/airlines/aircanada.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "YOW",
+    destinationCity: "Ottawa",
+    price: 413.49,
+    dates: "19 Jun - 29 Jun"
+  },
+  {
+    slug: "return-lufthansa-london-to-ottawa-jun-2026",
+    tripType: "return",
+    apiType: "canada",
+    airlineName: "Lufthansa",
+    airlineLogo: "imgs/airlines/lufthansa.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "YOW",
+    destinationCity: "Ottawa",
+    price: 415.99,
+    dates: "19 Jun - 29 Jun"
+  },
+  {
+    slug: "one-way-royalairmaroc-london-to-toronto-oct-2026",
+    tripType: "one-way",
+    apiType: "canada",
+    airlineName: "Royal Air Maroc",
+    airlineLogo: "imgs/airlines/royalairmaroc.png",
+    departureCode: "STN",
+    departureCity: "London",
+    destinationCode: "YYZ",
+    destinationCity: "Toronto",
+    price: 418.16,
+    dates: "16 Oct 2026"
+  },
+  {
+    slug: "one-way-iberia-birmingham-to-toronto-sep-2026",
+    tripType: "one-way",
+    apiType: "canada",
+    airlineName: "Iberia",
+    airlineLogo: "imgs/airlines/iberia.png",
+    departureCode: "BHX",
+    departureCity: "Birmingham",
+    destinationCode: "YYZ",
+    destinationCity: "Toronto",
+    price: 461.52,
+    dates: "14 Sep 2026"
+  },
+  {
+    slug: "return-swiss-london-to-montreal-mar",
+    tripType: "return",
+    apiType: "canada",
+    airlineName: "Swiss International Air Lines",
+    airlineLogo: "imgs/airlines/swiss.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "YMQ",
+    destinationCity: "Montreal",
+    price: 573.25,
+    dates: "16 Mar - 22 Mar"
+  },
+  {
+    slug: "return-aircanada-london-to-vancouver-jun-2026",
+    tripType: "return",
+    apiType: "canada",
+    airlineName: "Air Canada",
+    airlineLogo: "imgs/airlines/aircanada.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "YVR",
+    destinationCity: "Vancouver",
+    price: 583.29,
+    dates: "15 Jun - 06 Jul"
+  },
+  {
+    slug: "return-aircanada-london-to-london-ontario-oct-2026",
+    tripType: "return",
+    apiType: "canada",
+    airlineName: "Air Canada",
+    airlineLogo: "imgs/airlines/aircanada.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "YXU",
+    destinationCity: "London Ontario",
+    price: 584.05,
+    dates: "05 Oct - 12 Oct"
+  },
+  {
+    slug: "return-airtransat-manchester-to-toronto-jun-2026",
+    tripType: "return",
+    apiType: "canada",
+    airlineName: "Air Transat",
+    airlineLogo: "imgs/airlines/airtransat.png",
+    departureCode: "MAN",
+    departureCity: "Manchester",
+    destinationCode: "YYZ",
+    destinationCity: "Toronto",
+    price: 589.23,
+    dates: "13 Jun - 04 Jul"
+  },
+  {
+    slug: "return-swiss-london-to-vancouver-jun-2026",
+    tripType: "return",
+    apiType: "canada",
+    airlineName: "Swiss International Air Lines",
+    airlineLogo: "imgs/airlines/swiss.png",
+    departureCode: "LGW",
+    departureCity: "London",
+    destinationCode: "YVR",
+    destinationCity: "Vancouver",
+    price: 594.88,
+    dates: "15 Jun - 06 Jul"
+  },
+  {
+    slug: "return-airtransat-london-to-edmonto-jun-2026",
+    tripType: "return",
+    apiType: "canada",
+    airlineName: "Air Transat",
+    airlineLogo: "imgs/airlines/airtransat.png",
+    departureCode: "LGW",
+    departureCity: "London",
+    destinationCode: "YEG",
+    destinationCity: "Edmonton",
+    price: 602.20,
+    dates: "16 Jun - 21 Jun"
+  },
+
+// BRAZIL FLIGHTS..
+
+  {
+    slug: "one-way-lufthansa-manchester-to-sao-paulo-aug-2026",
+    tripType: "one-way",
+    apiType: "brazil",
+    airlineName: "Lufthansa",
+    airlineLogo: "imgs/airlines/lufthansa.png",
+    departureCode: "MAN",
+    departureCity: "Manchester",
+    destinationCode: "GRU",
+    destinationCity: "Sao Paulo",
+    price: 552.48,
+    dates: "24 Aug 2026"
+  },
+  {
+    slug: "one-way-aireuropa-london-to-salvador-dec-2026",
+    tripType: "one-way",
+    apiType: "brazil",
+    airlineName: "Air Europa",
+    airlineLogo: "imgs/airlines/aireuropa.png",
+    departureCode: "LGW",
+    departureCity: "London",
+    destinationCode: "SSA",
+    destinationCity: "Salvador",
+    price: 638.78,
+    dates: "12 Dec 2026"
+  },
+  {
+    slug: "one-way-airfrance-london-to-recife-aug-2026",
+    tripType: "one-way",
+    apiType: "brazil",
+    airlineName: "Air France",
+    airlineLogo: "imgs/airlines/airfrance.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "REC",
+    destinationCity: "Recife",
+    price: 646.45,
+    dates: "14 Aug 2026"
+  },
+  {
+    slug: "return-klm-edinburgh-to-sao-paulo-jun-2026",
+    tripType: "return",
+    apiType: "brazil",
+    airlineName: "KLM",
+    airlineLogo: "imgs/airlines/klm.png",
+    departureCode: "EDI",
+    departureCity: "Edinburgh",
+    destinationCode: "GRU",
+    destinationCity: "Sao Paulo",
+    price: 759.81,
+    dates: "16 Jun - 20 Jul"
+  },
+  {
+    slug: "return-turkish-edinburgh-to-sao-paulo-jun-2026",
+    tripType: "return",
+    apiType: "brazil",
+    airlineName: "Turkish Airlines",
+    airlineLogo: "imgs/airlines/turkish.png",
+    departureCode: "EDI",
+    departureCity: "Edinburgh",
+    destinationCode: "GRU",
+    destinationCity: "Sao Paulo",
+    price: 762.09,
+    dates: "16 Jun - 20 Jul"
+  },
+  {
+    slug: "one-way-klm-london-to-recife-aug-2026",
+    tripType: "one-way",
+    apiType: "brazil",
+    airlineName: "KLM",
+    airlineLogo: "imgs/airlines/klm.png",
+    departureCode: "LCY",
+    departureCity: "London",
+    destinationCode: "REC",
+    destinationCity: "Recife",
+    price: 825.11,
+    dates: "14 Aug 2026"
+  },
+  {
+    slug: "return-turkish-london-to-rio-de-janeiro-jun-2026",
+    tripType: "return",
+    apiType: "brazil",
+    airlineName: "Turkish Airlines",
+    airlineLogo: "imgs/airlines/turkish.png",
+    departureCode: "STN",
+    departureCity: "London",
+    destinationCode: "GIG",
+    destinationCity: "Rio De Janeiro",
+    price: 883.98,
+    dates: "17 Jun - 28 Jun"
+  },
+  {
+    slug: "one-way-turkish-london-to-rio-de-janeiro-dec-2026",
+    tripType: "one-way",
+    apiType: "brazil",
+    airlineName: "Turkish Airlines",
+    airlineLogo: "imgs/airlines/turkish.png",
+    departureCode: "STN",
+    departureCity: "London",
+    destinationCode: "GIG",
+    destinationCity: "Rio De Janeiro",
+    price: 899.18,
+    dates: "10 Dec 2026"
+  },
+  {
+    slug: "return-klm-london-to-rio-de-janeiro-jun-2026",
+    tripType: "return",
+    apiType: "brazil",
+    airlineName: "KLM",
+    airlineLogo: "imgs/airlines/klm.png",
+    departureCode: "LCY",
+    departureCity: "London",
+    destinationCode: "GIG",
+    destinationCity: "Rio De Janeiro",
+    price: 910.81,
+    dates: "17 Jun - 28 Jun"
+  },
+  {
+    slug: "return-avianca-london-to-belem-jun-2026",
+    tripType: "return",
+    apiType: "brazil",
+    airlineName: "Avianca",
+    airlineLogo: "imgs/airlines/avianca.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "BEL",
+    destinationCity: "Belem",
+    price: 918.89,
+    dates: "16 Jun - 28 Jul"
+  },
+  {
+    slug: "return-lufthansa-edinburgh-to-porto-alegre-dec-2026",
+    tripType: "return",
+    apiType: "brazil",
+    airlineName: "Lufthansa",
+    airlineLogo: "imgs/airlines/lufthansa.png",
+    departureCode: "EDI",
+    departureCity: "Edinburgh",
+    destinationCode: "POA",
+    destinationCity: "Porto Alegre",
+    price: 952.44,
+    dates: "24 Dec - 17 Jan"
+  },
+  {
+    slug: "return-tap-london-to-salvador-aug-2026",
+    tripType: "return",
+    apiType: "brazil",
+    airlineName: "TAP Air Portugal",
+    airlineLogo: "imgs/airlines/tap.png",
+    departureCode: "LGW",
+    departureCity: "London",
+    destinationCode: "SSA",
+    destinationCity: "Salvador",
+    price: 964.78,
+    dates: "16 Aug - 31 Aug"
+  },
+  {
+    slug: "return-american-london-to-florianopolis-sep-2026",
+    tripType: "return",
+    apiType: "brazil",
+    airlineName: "American Airlines",
+    airlineLogo: "imgs/airlines/american.png",
+    departureCode: "LHR",
+    departureCity: "London",
+    destinationCode: "FLN",
+    destinationCity: "Florianopolis",
+    price: 1012.49,
+    dates: "04 Sep - 25 Sep"
+  },
+  {
+    slug: "return-turkish-london-to-fortaleza-jun-2026",
+    tripType: "return",
+    apiType: "brazil",
+    airlineName: "Turkish Airlines",
+    airlineLogo: "imgs/airlines/turkish.png",
+    departureCode: "STN",
+    departureCity: "London",
+    destinationCode: "FOR",
+    destinationCity: "Fortaleza",
+    price: 1022.18,
+    dates: "19 Jun - 11 Jul"
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// BRAZIL FLIGHTS END.
+
+
+
+
+
+
+
+
+
 
 
 

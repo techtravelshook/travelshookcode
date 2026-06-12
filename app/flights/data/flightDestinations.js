@@ -76,6 +76,50 @@ export const flightDestinations = {
     bgImage: "/imgs/flights/south-africa.jpg",
     apiType: "south-africa",
   },
+   zimbabwe: {
+    cityName: "Zimbabwe",
+    title: "Flights to",
+    highlightText: "zimbabwe",
+    description:
+      "Book cheap flights to Zimbabwe from the UK and worldwide.",
+    bgImage: "/imgs/flights/zimbabwe.jpg",
+    apiType: "zimbabwe",
+  },
+     usa: {
+    cityName: "Usa",
+    title: "Flights to",
+    highlightText: "USA",
+    description:
+      "Book cheap flights to USA from the UK and worldwide.",
+    bgImage: "/imgs/flights/usa.jpg",
+    apiType: "usa",
+  },
+    thailand: {
+    cityName: "Thailand",
+    title: "Flights to",
+    highlightText: "Thailand",
+    description:
+      "Book cheap flights to Thailand from the UK and worldwide.",
+    bgImage: "/imgs/flights/thailand.jpg",
+    apiType: "thailand",
+  },
+    canada: {
+    cityName: "Canada",
+    title: "Flights to",
+    highlightText: "Canada",
+    description:
+      "Book cheap flights to Thailand from the UK and worldwide.",
+    bgImage: "/imgs/flights/canada.jpg",
+    apiType: "canada",
+  }, brazil: {
+    cityName: "Brazil",
+    title: "Flights to",
+    highlightText: "Brazil",
+    description:
+      "Book cheap flights to Brazil from the UK and worldwide.",
+    bgImage: "/imgs/flights/brazil.jpg",
+    apiType: "brazil",
+  },
 };
 
 export  const africanCities = [

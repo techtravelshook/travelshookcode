@@ -8,6 +8,8 @@ import FlightFaqs from "@/components/flightservice/flightsplaces/FlightFaqs";
 import FlightDealsGrid from "@/components/flightservice/flightsplaces/FlightTickets";
 import FlightHeroLayout from "@/components/flightservice/Header";
 import { flightDestinations,africanCities,mostTravelledAfrica } from "../data/flightDestinations";
+import FlightModal from "@/components/flightservice/FlightModal";
+import BookingProcess from "@/components/hajjumrah/BookingProcess";
 
 
 
@@ -68,12 +70,8 @@ export default function FlightPage() {
 
       <BookNowPayLaterBanner />
       <FlightFaqs cityName={destination.cityName} />
-      <FlightDirectoryLinks
-        primaryHeading="Popular City Hubs in Africa"
-        secondaryHeading="Most Travelled Countries in Africa"
-        primaryLinks={africanCities}
-        secondaryLinks={mostTravelledAfrica}
-      />
+      <FlightModal/>
+<BookingProcess/>
     </div>
   );
 }
