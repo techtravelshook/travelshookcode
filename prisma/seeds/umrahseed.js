@@ -191,6 +191,12 @@ isFeatured:true,
         month: null, 
         duration: 7,
         makkahHotel: "Al Massa Grand Hotel", madinahHotel: "Emaar Elite Madinah Hotel", price: 835,
+          images: {
+    create: [
+      { url: "imgs/hajj/hajj22.jpg" },
+     
+    ]
+  },
       },
       {
         title: "8 Nights 4 Star Umrah Package",
