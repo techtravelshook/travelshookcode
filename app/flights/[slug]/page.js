@@ -3,15 +3,13 @@
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import BookNowPayLaterBanner from "@/components/flightservice/flightsplaces/FlightBanners";
-import FlightDirectoryLinks from "@/components/flightservice/flightsplaces/FlightDirectories";
-import FlightFaqs from "@/components/flightservice/flightsplaces/FlightFaqs";
 import FlightDealsGrid from "@/components/flightservice/flightsplaces/FlightTickets";
 import FlightHeroLayout from "@/components/flightservice/Header";
 import { flightDestinations,africanCities,mostTravelledAfrica } from "../data/flightDestinations";
 import FlightModal from "@/components/flightservice/FlightModal";
 import BookingProcess from "@/components/hajjumrah/BookingProcess";
-
-
+import DynamicFaqs from "@/components/flightservice/flightsplaces/DynamicFaqs";
+import FlightsZigzag from "@/components/flightservice/FlightsZigzag";
 
 
 export default function FlightPage() {
@@ -67,9 +65,9 @@ export default function FlightPage() {
           dealsData={liveDeals}
         />
       )}
-
+<FlightsZigzag/>
       <BookNowPayLaterBanner />
-      <FlightFaqs cityName={destination.cityName} />
+      <DynamicFaqs/>
       <FlightModal/>
 <BookingProcess/>
     </div>

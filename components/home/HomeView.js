@@ -238,12 +238,10 @@ function HomeView() {
       titleMain="Holiday Deals &"
       titleHighlight="Packages"
       subtitle="Handpicked packages with flights, hotels and more included."
-      deals={holidayDeals} 
+  
     />
       <FlightsInfo/>
       <BookingProcess/>
-
-
     </div>
   );
 }

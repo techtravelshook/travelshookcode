@@ -1181,6 +1181,203 @@ isFeatured:true,
 
 
 
+// March PACKAGE
+{
+        title: "7 Nights 5 Star March Package",
+        slug: "7-nights-5-star-march",
+        shortDesc: "Makkah Hotel: Hailton Hotel (4 Nights) | Madinah Hotel:Al Aqeeq Hotel (3 Nights).Fully Inclusive Package ( Meals, & Ziyarah Guide)   .",
+        description: "Experience a spiritually fulfilling Umrah from the UK with our 7 Nights 5 Star March Package. This perfectly designed 8 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+        star: "STAR_5", type: "MONTHLY", 
+        month: "March", 
+        duration: 7,
+        makkahHotel: "Hailton Hotel", madinahHotel: "Al Aqeeq Hotel", price: 1182,
+             images: {
+    create: [
+      { url: "imgs/hajj/hajj28.jpg" },
+     
+    ]
+  },
+  
+      },
+      {
+        title: "10 Nights 5 Star March Package",
+        slug: "10-nights-5-star-march",
+        shortDesc: "Makkah Hotel: Jabal Marriott Hotel  (5 Nights) | Madinah Hotel: Anwar Al Madinah (5 Nights) Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).  ",
+        description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 5 Star March Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+        star: "STAR_5",
+         type: "MONTHLY", 
+         month: "March",
+          duration: 10,
+        makkahHotel: "Jabal Marriott Hotel", 
+        madinahHotel: "Anwar Al Madinah", price: 1244,
+             images: {
+    create: [
+      { url: "imgs/hajj/hajj29.jpg" },
+     
+    ]
+  },
+  
+      },
+      {
+        title: "14 Nights 5 Star March Package",
+        slug: "14-nights-5-star-march",
+        shortDesc: "Makkah Hotel: Shaza Makkah  Hotel (7 Nights) | Madinah Hotel: Emaar Royal Hotel  (7 Nights) Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+        description: "Experience a spiritually fulfilling Umrah from the UK with our 14 Nights 5 Star March Package. This perfectly designed 15 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+        star: "STAR_5",
+         type: "MONTHLY", 
+         month: "March", 
+         duration: 14,
+        makkahHotel: "Shaza Makkah Hotel",
+         madinahHotel: "Emaar Royal Hotel", 
+         price: 1319,
+              images: {
+    create: [
+      { url: "imgs/hajj/hajj25.jpg" },
+     
+    ]
+  },
+  
+      },
+
+
+  // *************....MONTHLY PACKAGES 4 star ... ********************/
+  {
+        title: "7 Nights 4 Star March Package",
+        slug: "7-nights-4-star-march",
+        shortDesc: "Makkah Hotel: M Hotel Al Dana By Millennium (4 Nights) | Madinah Hotel:Al Ansar Golden Tulip (3 Nights).Fully Inclusive Package ( Meals, & Ziyarah Guide)   .",
+        description: "Experience a spiritually fulfilling Umrah from the UK with our 7 Nights 4 Star March Package. This perfectly designed 8 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+        star: "STAR_4", type: "MONTHLY", 
+        month: "March", 
+        duration: 7,
+        makkahHotel: "M Hotel Al Dana By Millennium", madinahHotel: "Al Ansar Golden Tulip", price: 1036,
+             images: {
+    create: [
+      { url: "imgs/hajj/hajj21.jpg" },
+     
+    ]
+  },
+  
+  
+      },
+      {
+        title: "10 Nights 4 Star March Package",
+        slug: "10-nights-4-star-march",
+        shortDesc: "Makkah Hotel: Emaar Grand Hotel(5 Nights) | Madinah Hotel: Saja Al Madinah (5 Nights) Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).  ",
+        description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 4 Star March Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+        star: "STAR_4",
+         type: "MONTHLY", 
+         month: "March",
+          duration: 10,
+        makkahHotel: "Al Massa Grand Hotel", 
+        madinahHotel: "Saja Al Madinah", price: 1088,
+             images: {
+    create: [
+      { url: "imgs/hajj/hajj20.jpg" },
+     
+    ]
+  },
+      },
+      {
+        title: "14 Nights 4 Star March Package",
+        slug: "14-nights-4-star-march",
+        shortDesc: "Makkah Hotel: Voco Makkah Hotel (7 Nights) | Madinah Hotel: Emaar Mektan Hotel  (7 Nights) Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+        description: "Experience a spiritually fulfilling Umrah from the UK with our 14 Nights 4 Star March Package. This perfectly designed 15 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+        star: "STAR_4",
+         type: "MONTHLY", 
+         month: "March", 
+         duration: 14,
+        makkahHotel: "Voco Makkah Hotel",
+         madinahHotel: "Emaar Mektan Hotel", 
+         price: 1150,
+              images: {
+    create: [
+      { url: "imgs/hajj/hajj19.jpg" },
+      
+    ]
+  },
+   
+      },
+      
+      // *************....MONTHLY PACKAGES 3 star ... ********************/
+{
+        title: "7 Nights 3 Star March Package",
+        slug: "7-nights-3-star-march",
+        shortDesc: "Makkah Hotel: Emaar Al Khalil Hotel (4 Nights) | Madinah Hotel:Emaar Taibah Hotel (3 Nights).Fully Inclusive Package ( Meals,Transport,Flights & Ziyarah Guide)   .",
+        description: "Experience a spiritually fulfilling Umrah from the UK with our 7 Nights 3 Star March Package. This perfectly designed 8 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+        star: "STAR_3", type: "MONTHLY", 
+        month: "March", 
+        duration: 7,
+        makkahHotel: "Emaar Al Khalil Hotel", madinahHotel: "Emaar Taibah Hotel", price: 600,
+             images: {
+    create: [
+      { url: "imgs/hajj/hajj18.jpg" },
+    
+    ]
+  },
+   
+      },
+      
+      {
+        title: "10 Nights 3 Star March Package",
+        slug: "10-nights-3-star-march",
+        shortDesc: "Makkah Hotel: Emaar Al Khalil Hotel Makkah(4 Nights) | Madinah Hotel: Artal International Hotel (3 Nights) Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).  ",
+        description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 3 Star March Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+        star: "STAR_3",
+         type: "MONTHLY", 
+         month: "March",
+          duration: 10,
+        makkahHotel: "Emaar Al Khalil Hotel Makkah", 
+        madinahHotel: "Elaf Taiba Hotel", price: 972,
+             images: {
+    create: [
+      { url: "imgs/hajj/hajj13.jpg" },
+    
+    ]
+  }, 
+      },
+      
+      {
+        title: "10 Nights 3 Star March Package",
+        slug: "10-nights-3-star-march",
+        shortDesc: "Makkah Hotel: Emaar Al Khalil Hotel Makkah(4 Nights) | Madinah Hotel: Artal International Hotel (3 Nights) Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).  ",
+        description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 3 Star March Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+        star: "STAR_3",
+         type: "MONTHLY", 
+         month: "March",
+          duration: 10,
+        makkahHotel: "Emaar Al Khalil Hotel Makkah", 
+        madinahHotel: "Elaf Taiba Hotel", price: 972,
+             images: {
+    create: [
+      { url: "imgs/hajj/hajj13.jpg" },
+    
+    ]
+  }, 
+      },
+      {
+        title: "14 Nights 3 Star March Package",
+        slug: "14-nights-3-star-march",
+        shortDesc: "Makkah Hotel: Emaar Al Manar Hotel Makkah (7 Nights) | Madinah Hotel: Al Ansar New Palace  (7 Nights) Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+        description: "Experience a spiritually fulfilling Umrah from the UK with our 14 Nights 3 Star March Package. This perfectly designed 15 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+        star: "STAR_3",
+         type: "MONTHLY", 
+         month: "March", 
+         duration: 14,
+        makkahHotel: "Emaar Al Manar Hotel Makkah",
+         madinahHotel: "Al Ansar New Palace", 
+         price: 1060,
+          images: {
+    create: [
+      { url: "imgs/hajj/hajj17.jpg" },
+      
+    ]
+  },
+   
+      },
+      
+
+
+
 // April  PACKAGE
 
 
@@ -1456,226 +1653,1209 @@ isFeatured:true,
       { url: "imgs/hajj/hajj13.jpg" },
       
     ]
-  },
-   inclusions: [
-          "Room Type:Quad Room",
-          "Umrah Procesing Fees",
-      "Return Flights",
-      "Visa Processing",
-      "Hotel Accommodation",
-      "Airline Ticket(Round Trip)",
-      "Ziyarah Tour",
-      "VIP Private Makkah Madinah Transportation",
-      "Usually Breakfast Included",
-    ],
-
-    exclusions: [
-      "Personal Expenses",
-      "Meals not coverd in hotel packages",
-      "Travel Insurance",
-      "Zamzam water"
-    ],
+  }
       },
 
 
 
-
-// March PACKAGE
+// June packages
 
 
 {
-        title: "7 Nights 5 Star March Package",
-        slug: "7-nights-5-star-march",
-        shortDesc: "Makkah Hotel: Hailton Hotel (4 Nights) | Madinah Hotel:Al Aqeeq Hotel (3 Nights).Fully Inclusive Package ( Meals, & Ziyarah Guide)   .",
-        description: "Experience a spiritually fulfilling Umrah from the UK with our 7 Nights 5 Star March Package. This perfectly designed 8 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
-        star: "STAR_5", type: "MONTHLY", 
-        month: "March", 
-        duration: 7,
-        makkahHotel: "Hailton Hotel", madinahHotel: "Al Aqeeq Hotel", price: 1182,
-             images: {
+  title: "7 Nights 5 Star June Package",
+  slug: "7-nights-5-star-june",
+  shortDesc: "Makkah Hotel: Shaza Makkah Hotel (4 Nights) | Madinah Hotel: Crowne Plaza Madinah (3 Nights). Fully Inclusive Package (Meals & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 7 Nights 5 Star June Package. This perfectly designed 8 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_5",
+  type: "MONTHLY",
+  month: "June",
+  duration: 7,
+  makkahHotel: "Shaza Makkah Hotel",
+  madinahHotel: "Crowne Plaza Madinah",
+  price: 987,
+  images: {
     create: [
-      { url: "imgs/hajj/hajj28.jpg" },
-     
+      { url: "imgs/hajj/hajj28.jpg" }
     ]
   },
-  
-      },
-      {
-        title: "10 Nights 5 Star March Package",
-        slug: "10-nights-5-star-march",
-        shortDesc: "Makkah Hotel: Jabal Marriott Hotel  (5 Nights) | Madinah Hotel: Anwar Al Madinah (5 Nights) Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).  ",
-        description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 5 Star March Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
-        star: "STAR_5",
-         type: "MONTHLY", 
-         month: "March",
-          duration: 10,
-        makkahHotel: "Jabal Marriott Hotel", 
-        madinahHotel: "Anwar Al Madinah", price: 1244,
-             images: {
-    create: [
-      { url: "imgs/hajj/hajj29.jpg" },
-     
-    ]
-  },
-  
-      },
-      {
-        title: "14 Nights 5 Star March Package",
-        slug: "14-nights-5-star-march",
-        shortDesc: "Makkah Hotel: Shaza Makkah  Hotel (7 Nights) | Madinah Hotel: Emaar Royal Hotel  (7 Nights) Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
-        description: "Experience a spiritually fulfilling Umrah from the UK with our 14 Nights 5 Star March Package. This perfectly designed 15 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
-        star: "STAR_5",
-         type: "MONTHLY", 
-         month: "March", 
-         duration: 14,
-        makkahHotel: "Shaza Makkah Hotel",
-         madinahHotel: "Emaar Royal Hotel", 
-         price: 1319,
-              images: {
-    create: [
-      { url: "imgs/hajj/hajj25.jpg" },
-     
-    ]
-  },
-  
-      },
+},
 
-
-  // *************....MONTHLY PACKAGES 4 star ... ********************/
-  {
-        title: "7 Nights 4 Star March Package",
-        slug: "7-nights-4-star-march",
-        shortDesc: "Makkah Hotel: M Hotel Al Dana By Millennium (4 Nights) | Madinah Hotel:Al Ansar Golden Tulip (3 Nights).Fully Inclusive Package ( Meals, & Ziyarah Guide)   .",
-        description: "Experience a spiritually fulfilling Umrah from the UK with our 7 Nights 4 Star March Package. This perfectly designed 8 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
-        star: "STAR_4", type: "MONTHLY", 
-        month: "March", 
-        duration: 7,
-        makkahHotel: "M Hotel Al Dana By Millennium", madinahHotel: "Al Ansar Golden Tulip", price: 1036,
-             images: {
-    create: [
-      { url: "imgs/hajj/hajj21.jpg" },
-     
-    ]
-  },
-  
-  
-      },
-      {
-        title: "10 Nights 4 Star March Package",
-        slug: "10-nights-4-star-march",
-        shortDesc: "Makkah Hotel: Emaar Grand Hotel(5 Nights) | Madinah Hotel: Saja Al Madinah (5 Nights) Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).  ",
-        description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 4 Star March Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
-        star: "STAR_4",
-         type: "MONTHLY", 
-         month: "March",
-          duration: 10,
-        makkahHotel: "Al Massa Grand Hotel", 
-        madinahHotel: "Saja Al Madinah", price: 1088,
-             images: {
-    create: [
-      { url: "imgs/hajj/hajj20.jpg" },
-     
-    ]
-  },
-      },
-      {
-        title: "14 Nights 4 Star March Package",
-        slug: "14-nights-4-star-march",
-        shortDesc: "Makkah Hotel: Voco Makkah Hotel (7 Nights) | Madinah Hotel: Emaar Mektan Hotel  (7 Nights) Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
-        description: "Experience a spiritually fulfilling Umrah from the UK with our 14 Nights 4 Star March Package. This perfectly designed 15 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
-        star: "STAR_4",
-         type: "MONTHLY", 
-         month: "March", 
-         duration: 14,
-        makkahHotel: "Voco Makkah Hotel",
-         madinahHotel: "Emaar Mektan Hotel", 
-         price: 1150,
-              images: {
-    create: [
-      { url: "imgs/hajj/hajj19.jpg" },
-      
-    ]
-  },
-   
-      },
-      
-      // *************....MONTHLY PACKAGES 3 star ... ********************/
 {
-        title: "7 Nights 3 Star March Package",
-        slug: "7-nights-3-star-march",
-        shortDesc: "Makkah Hotel: Emaar Al Khalil Hotel (4 Nights) | Madinah Hotel:Emaar Taibah Hotel (3 Nights).Fully Inclusive Package ( Meals,Transport,Flights & Ziyarah Guide)   .",
-        description: "Experience a spiritually fulfilling Umrah from the UK with our 7 Nights 3 Star March Package. This perfectly designed 8 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
-        star: "STAR_3", type: "MONTHLY", 
-        month: "March", 
-        duration: 7,
-        makkahHotel: "Emaar Al Khalil Hotel", madinahHotel: "Emaar Taibah Hotel", price: 600,
-             images: {
+  title: "10 Nights 5 Star June Package",
+  slug: "10-nights-5-star-june",
+  shortDesc: "Makkah Hotel: Elaf Al Mashaer Hotel (5 Nights) | Madinah Hotel: Crowne Plaza Madinah (5 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 5 Star June Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_5",
+  type: "MONTHLY",
+  month: "June",
+  duration: 10,
+  makkahHotel: "Elaf Al Mashaer Hotel",
+  madinahHotel: "Crowne Plaza Madinah",
+  price: 1056,
+  images: {
     create: [
-      { url: "imgs/hajj/hajj18.jpg" },
-    
+      { url: "imgs/hajj/hajj29.jpg" }
     ]
   },
-   
-      },
-      
-      {
-        title: "10 Nights 3 Star March Package",
-        slug: "10-nights-3-star-march",
-        shortDesc: "Makkah Hotel: Emaar Al Khalil Hotel Makkah(4 Nights) | Madinah Hotel: Artal International Hotel (3 Nights) Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).  ",
-        description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 3 Star March Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
-        star: "STAR_3",
-         type: "MONTHLY", 
-         month: "March",
-          duration: 10,
-        makkahHotel: "Emaar Al Khalil Hotel Makkah", 
-        madinahHotel: "Elaf Taiba Hotel", price: 972,
-             images: {
+},
+
+{
+  title: "14 Nights 5 Star June Package",
+  slug: "14-nights-5-star-june",
+  shortDesc: "Makkah Hotel: Pullman ZamZam Makkah (7 Nights) | Madinah Hotel: Emaar Royal Hotel Madinah (7 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 14 Nights 5 Star June Package. This perfectly designed 15 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_5",
+  type: "MONTHLY",
+  month: "June",
+  duration: 14,
+  makkahHotel: "Pullman ZamZam Makkah",
+  madinahHotel: "Emaar Royal Hotel Madinah",
+  price: 1133,
+  images: {
     create: [
-      { url: "imgs/hajj/hajj13.jpg" },
-    
-    ]
-  }, 
-      },
-      
-      {
-        title: "10 Nights 3 Star March Package",
-        slug: "10-nights-3-star-march",
-        shortDesc: "Makkah Hotel: Emaar Al Khalil Hotel Makkah(4 Nights) | Madinah Hotel: Artal International Hotel (3 Nights) Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).  ",
-        description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 3 Star March Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
-        star: "STAR_3",
-         type: "MONTHLY", 
-         month: "March",
-          duration: 10,
-        makkahHotel: "Emaar Al Khalil Hotel Makkah", 
-        madinahHotel: "Elaf Taiba Hotel", price: 972,
-             images: {
-    create: [
-      { url: "imgs/hajj/hajj13.jpg" },
-    
-    ]
-  }, 
-      },
-      {
-        title: "14 Nights 3 Star March Package",
-        slug: "14-nights-3-star-march",
-        shortDesc: "Makkah Hotel: Emaar Al Manar Hotel Makkah (7 Nights) | Madinah Hotel: Al Ansar New Palace  (7 Nights) Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
-        description: "Experience a spiritually fulfilling Umrah from the UK with our 14 Nights 3 Star March Package. This perfectly designed 15 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
-        star: "STAR_3",
-         type: "MONTHLY", 
-         month: "March", 
-         duration: 14,
-        makkahHotel: "Emaar Al Manar Hotel Makkah",
-         madinahHotel: "Al Ansar New Palace", 
-         price: 1060,
-          images: {
-    create: [
-      { url: "imgs/hajj/hajj17.jpg" },
-      
+      { url: "imgs/hajj/hajj20.jpg" }
     ]
   },
-   
-      },
-      
+ 
+},
+
+// *************....JUNE PACKAGES 4 STAR... ********************/
+
+{
+  title: "7 Nights 4 Star June Package",
+  slug: "7-nights-4-star-june",
+  shortDesc: "Makkah Hotel: DoubleTree by Hilton Makkah (4 Nights) | Madinah Hotel: Swiss International Taba Alsalam (3 Nights). Fully Inclusive Package (Meals & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 7 Nights 4 Star June Package. This perfectly designed 8 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_4",
+  type: "MONTHLY",
+  month: "June",
+  duration: 7,
+  makkahHotel: "DoubleTree by Hilton Makkah",
+  madinahHotel: "Swiss International Taba Alsalam",
+  price: 842,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj21.jpg" }
+    ]
+  },
+},
+
+{
+  title: "10 Nights 4 Star June Package",
+  slug: "10-nights-4-star-june",
+  shortDesc: "Makkah Hotel: Al Kiswah Towers Hotel  (5 Nights) | Madinah Hotel: Rawda Al Aqiq Hotel(5 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 4 Star June Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_4",
+  type: "MONTHLY",
+  month: "June",
+  duration: 10,
+  makkahHotel: "Al Kiswah Towers Hotel",
+  madinahHotel: "Rawda Al Aqiq Hotel",
+  price: 889,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj22.jpg" }
+    ]
+  }
+},
+
+{
+  title: "14 Nights 4 Star June Package",
+  slug: "14-nights-4-star-june",
+  shortDesc: "Makkah Hotel: Voco Makkah Hotel (7 Nights) | Madinah Hotel: Emaar Elite Madinah Hotel (7 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 14 Nights 4 Star June Package. This perfectly designed 15 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_4",
+  type: "MONTHLY",
+  month: "June",
+  duration: 14,
+  makkahHotel: "Voco Makkah Hotel",
+  madinahHotel: "Emaar Elite Madinah Hotel",
+  price: 940,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj19.jpg" }
+    ]
+  },
+
+},
+
+// *************....JUNE PACKAGES 3 STAR... ********************/
+
+{
+  title: "7 Nights 3 Star June Package",
+  slug: "7-nights-3-star-june",
+  shortDesc: "Makkah Hotel: Emaar Al Manar Hotel Makkah  (4 Nights) | Madinah Hotel: Jawharat Al Rasheed Hotel (3 Nights). Fully Inclusive Package (Meals, Transport, Flights & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 7 Nights 3 Star June Package. This perfectly designed 8 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_3",
+  type: "MONTHLY",
+  month: "June",
+  duration: 7,
+  isFeatured: true,
+  makkahHotel: "Emaar Al Manar Hotel Makkah ",
+  madinahHotel: "Jawharat Al Rasheed Hotel",
+  price: 770,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj18.jpg" }
+    ]
+  },
+},
+
+{
+  title: "10 Nights 3 Star June Package",
+  slug: "10-nights-3-star-june",
+  shortDesc: "Makkah Hotel: Emaar Al Khalil Hotel Makkah (5 Nights) | Madinah Hotel: Emaar Taibah Hotel (5 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 3 Star June Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_3",
+  type: "MONTHLY",
+  month: "June",
+  duration: 10,
+  makkahHotel: "Emaar Al Khalil Hotel Makkah",
+  madinahHotel: "Emaar Taibah Hotel",
+  price: 811,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj13.jpg" }
+    ]
+  },
+},
+
+{
+  title: "14 Nights 3 Star June Package",
+  slug: "14-nights-3-star-june",
+  shortDesc: "Makkah Hotel: Emaar Al khalil Hotel Makkah (7 Nights) | Madinah Hotel: Mirage Al Salam Hotel (7 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 14 Nights 3 Star June Package. This perfectly designed 15 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_3",
+  type: "MONTHLY",
+  month: "June",
+  duration: 14,
+  makkahHotel: "Emaar Al khalil Hotel Makkah",
+  madinahHotel: "Mirage Al Salam Hotel",
+  price: 852,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj13.jpg" }
+    ]
+  }
+},
+// JULY
+{
+  title: "7 Nights 5 Star July Package",
+  slug: "7-nights-5-star-july",
+  shortDesc: "Makkah Hotel: Al Shohada Hotel  (4 Nights) | Madinah Hotel:  InterContinental Dar al Hijra (3 Nights). Fully Inclusive Package (Meals & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 7 Nights 5 Star july Package. This perfectly designed 8 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_5",
+  type: "MONTHLY",
+  month: "July",
+  duration: 7,
+  makkahHotel: "Al Shohada Hotel ",
+  madinahHotel: "InterContinental Dar al Hijra",
+  price: 971,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj36.jpg" }
+    ]
+  },
+},
+
+{
+  title: "10 Nights 5 Star July Package",
+  slug: "10-nights-5-star-July",
+  shortDesc: "Makkah Hotel: Anjum Hotel Makkah (5 Nights) | Madinah Hotel: Anwar Al Madinah Movenpick Madinah (5 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 5 Star June Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_5",
+  type: "MONTHLY",
+  month: "July",
+  duration: 10,
+  makkahHotel: "Anjum Hotel Makkah",
+  madinahHotel: "Anwar Al Madinah",
+  price: 1036,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj37.jpg" }
+    ]
+  },
+},
+
+{
+  title: "14 Nights 5 Star July Package",
+  slug: "14-nights-5-star-july",
+  shortDesc: "Makkah Hotel: Swissotel Hotel Makkah (7 Nights) | Madinah Hotel: Al Aqeeq Madinah Hotel (7 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 14 Nights 5 Star June Package. This perfectly designed 15 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_5",
+  type: "MONTHLY",
+  month: "July",
+  duration: 14,
+  makkahHotel: "Swissotel Hotel Makkah",
+  madinahHotel: "Al Aqeeq Madinah Hotel",
+  price: 1124,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj38.jpg" }
+    ]
+  },
+ 
+},
+
+// *************....July PACKAGES 4 STAR... ********************/
+
+{
+  title: "7 Nights 4 Star July Package",
+  slug: "7-nights-4-star-july",
+  shortDesc: "Makkah Hotel: Al Kiswah Towers Hotel (4 Nights) | Madinah Hotel: Waqf Outhman Bin Affan Hotel (3 Nights). Fully Inclusive Package (Meals & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 7 Nights 4 Star June Package. This perfectly designed 8 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_4",
+  type: "MONTHLY",
+  month: "July",
+  duration: 7,
+  makkahHotel: "Al Kiswah Towers Hotel",
+  madinahHotel: "Waqf Outhman Bin Affan Hotel",
+  price: 840,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj40.jpg" }
+    ]
+  },
+},
+
+{
+  title: "10 Nights 4 Star July Package",
+  slug: "10-nights-4-star-july",
+  shortDesc: "Makkah Hotel: Dar Al Fayzeen Makkah Hotel  (5 Nights) | Madinah Hotel: Emaar Elite Madinah Hotel(5 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 4 Star June Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_4",
+  type: "MONTHLY",
+  month: "July",
+  duration: 10,
+  makkahHotel: "Dar Al Fayzeen Makkah Hotel",
+  madinahHotel: "Emaar Elite Madinah Hotel",
+  price: 879,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj22.jpg" }
+    ]
+  }
+},
+
+{
+  title: "14 Nights 4 Star July Package",
+  slug: "14-nights-4-star-july",
+  shortDesc: "Makkah Hotel: Al Kiswah Towers Hotel (7 Nights) | Madinah Hotel: Saja Al Madinah Hotel (7 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 14 Nights 4 Star June Package. This perfectly designed 15 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_4",
+  type: "MONTHLY",
+  month: "July",
+  duration: 14,
+  makkahHotel: "Al Kiswah Towers Hotel",
+  madinahHotel: "Saja Al Madinah Hotel",
+  price: 943,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj19.jpg" }
+    ]
+  },
+
+},
+
+// *************....July PACKAGES 3 STAR... ********************/
+
+{
+  title: "7 Nights 3 Star July Package",
+  slug: "7-nights-3-star-july",
+  shortDesc: "Makkah Hotel: Emaar Al Manar Hotel Makkah  (4 Nights) | Madinah Hotel: Al Ansar New Palace Hotel (3 Nights). Fully Inclusive Package (Meals, Transport, Flights & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 7 Nights 3 Star June Package. This perfectly designed 8 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_3",
+  type: "MONTHLY",
+  month: "July",
+  duration: 7,
+  isFeatured: true,
+  makkahHotel: "Emaar Al Manar Hotel Makkah ",
+  madinahHotel: "Al Ansar New Palace Hotel",
+  price: 770,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj40.jpg" }
+    ]
+  },
+},
+
+{
+  title: "10 Nights 3 Star July Package",
+  slug: "10-nights-3-star-july",
+  shortDesc: "Makkah Hotel: Emaar Andalusia Hotel (5 Nights) | Madinah Hotel: Elaf Taiba Hotel (5 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 3 Star June Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_3",
+  type: "MONTHLY",
+  month: "July",
+  duration: 10,
+  makkahHotel: "Emaar Andalusia Hotel",
+  madinahHotel: "Elaf Taiba Hotel",
+  price: 818,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj13.jpg" }
+    ]
+  },
+},
+
+{
+  title: "14 Nights 3 Star July Package",
+  slug: "14-nights-3-star-july",
+  shortDesc: "Makkah Hotel:Emaar Al Manar Hotel Makkah (7 Nights) | Madinah Hotel: Al Ansar New Palace Hotel (7 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 14 Nights 3 Star June Package. This perfectly designed 15 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_3",
+  type: "MONTHLY",
+  month: "July",
+  duration: 14,
+  makkahHotel: " Emaar Al Manar Hotel Makkah",
+  madinahHotel: "Al Ansar New Palace Hotel",
+  price: 860,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj13.jpg" }
+    ]
+  }
+},
+
+// August
+{
+  title: "7 Nights 5 Star August Package",
+  slug: "7-nights-5-star-august",
+  shortDesc: "Makkah Hotel:Elaf Al Mashaer Hotel   (4 Nights) | Madinah Hotel:Crowne Plaza Madinah (3 Nights). Fully Inclusive Package (Meals & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 7 Nights 5 Star August Package. This perfectly designed 8 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_5",
+  type: "MONTHLY",
+  month: "August",
+  duration: 7,
+  makkahHotel: "Elaf Al Mashaer Hotel ",
+  madinahHotel: "Crowne Plaza Madinah",
+  price: 964,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj38.jpg" }
+    ]
+  },
+},
+
+{
+  title: "10 Nights 5 Star August Package",
+  slug: "10-nights-5-star-august",
+  shortDesc: "Makkah Hotel: Shaza Makkah Hotel (5 Nights) | Madinah Hotel: InterContinental Dar al Hijra (5 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 5 Star August Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_5",
+  type: "MONTHLY",
+  month: "August",
+  duration: 10,
+  makkahHotel: "Shaza Makkah Hotel",
+  madinahHotel: "InterContinental Dar al Hijra",
+  price: 1045,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj37.jpg" }
+    ]
+  },
+},
+
+{
+  title: "14 Nights 5 Star August Package",
+  slug: "14-nights-5-star-august",
+  shortDesc: "Makkah Hotel: Pullman ZamZam Makkah (7 Nights) | Madinah Hotel: Emaar Royal Hotel Madinah  (7 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 14 Nights 5 Star August Package. This perfectly designed 15 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_5",
+  type: "MONTHLY",
+  month: "August",
+  duration: 14,
+  makkahHotel: "Pullman ZamZam Makkah",
+  madinahHotel: "Emaar Royal Hotel Madinah ",
+  price: 1117,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj39.jpg" }
+    ]
+  },
+},
+
+// *************....August PACKAGES 4 STAR... ********************/
+
+{
+  title: "7 Nights 4 Star August Package",
+  slug: "7-nights-4-star-august",
+  shortDesc: "Makkah Hotel: DoubleTree by Hilton Makkah (4 Nights) | Madinah Hotel: Saja Al Madinah Hotel (3 Nights). Fully Inclusive Package (Meals & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 7 Nights 4 Star August Package. This perfectly designed 8 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_4",
+  type: "MONTHLY",
+  month: "August",
+  duration: 7,
+  makkahHotel: "DoubleTree by Hilton Makkah",
+  madinahHotel: "Saja Al Madinah Hotel",
+  price: 840,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj41.jpg" }
+    ]
+  },
+},
+
+{
+  title: "10 Nights 4 Star August Package",
+  slug: "10-nights-4-star-august",
+  shortDesc: "Makkah Hotel: Emaar Grand Hotel Makkah  (5 Nights) | Madinah Hotel: Al Ansar Golden Tulip(5 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 4 Star August Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_4",
+  type: "MONTHLY",
+  month: "August",
+  duration: 10,
+  makkahHotel: "Emaar Grand Hotel Makkah",
+  madinahHotel: "Al Ansar Golden Tulip",
+  price: 893,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj22.jpg" }
+    ]
+  }
+},
+
+{
+  title: "14 Nights 4 Star August Package",
+  slug: "14-nights-4-star-august",
+  shortDesc: "Makkah Hotel: Al Massa Grand Hotel (7 Nights) | Madinah Hotel: Emaar Mektan Hotel (7 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 14 Nights 4 Star August Package. This perfectly designed 15 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_4",
+  type: "MONTHLY",
+  month: "August",
+  duration: 14,
+  makkahHotel: "Al Massa Grand Hotel",
+  madinahHotel: "Emaar Mektan Hotel",
+  price: 928,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj19.jpg" }
+    ]
+  },
+},
+// *************....August PACKAGES 3 STAR... ********************/
+
+{
+  title: "7 Nights 3 Star August Package",
+  slug: "7-nights-3-star-august",
+  shortDesc: "Makkah Hotel: Emaar Andalusia Hotel   (4 Nights) | Madinah Hotel: Jawharat Al Rasheed Hotel (3 Nights). Fully Inclusive Package (Meals, Transport, Flights & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 7 Nights 3 Star August Package. This perfectly designed 8 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_3",
+  type: "MONTHLY",
+  month: "August",
+  duration: 7,
+  isFeatured: true,
+  makkahHotel: "Emaar Andalusia Hotel ",
+  madinahHotel: "Jawharat Al Rasheed Hotel",
+  price: 750,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj40.jpg" }
+    ]
+  },
+},
+
+{
+  title: "10 Nights 3 Star August Package",
+  slug: "10-nights-3-star-august",
+  shortDesc: "Makkah Hotel: :Emaar Al Manar Hotel Makkah (5 Nights) | Madinah Hotel:  Emaar Taibah Hotel (5 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 3 Star August Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_3",
+  type: "MONTHLY",
+  month: "August",
+  duration: 10,
+  makkahHotel: "Emaar Al Manar Hotel Makkah",
+  madinahHotel: " Emaar Taibah Hotel",
+  price: 893,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj13.jpg" }
+    ]
+  },
+},
+
+{
+  title: "14 Nights 3 Star August Package",
+  slug: "14-nights-3-star-august",
+  shortDesc: "Makkah Hotel:Emaar Al khalil Hotel Makkah (7 Nights) | Madinah Hotel: Mirage Al Salam Hotel (7 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 14 Nights 3 Star August Package. This perfectly designed 15 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_3",
+  type: "MONTHLY",
+  month: "August",
+  duration: 14,
+  makkahHotel: " Emaar Al khalil Hotel Makkah",
+  madinahHotel: "Mirage Al Salam Hotel",
+  price: 844,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj13.jpg" }
+    ]
+  }
+},
+
+       // september packages
+
+
+       // *************....September PACKAGES 5 STAR... ********************/
+
+{
+  title: "7 Nights 5 Star September Package",
+  slug: "7-nights-5-star-september",
+  shortDesc: "Makkah Hotel: Makkah Clock Royal Tower, A Fairmont Hotel (4 Nights) | Madinah Hotel: Anwar Al Madinah Movenpick (3 Nights). Fully Inclusive Package (Meals & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 7 Nights 5 Star September Package. This perfectly designed 8 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_5",
+  type: "MONTHLY",
+  month: "September",
+  duration: 7,
+  makkahHotel: "Makkah Clock Royal Tower, A Fairmont Hotel",
+  madinahHotel: "Anwar Al Madinah Movenpick",
+  price: 979,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj38.jpg" }
+    ]
+  },
+},
+
+{
+  title: "10 Nights 5 Star September Package",
+  slug: "10-nights-5-star-september",
+  shortDesc: "Makkah Hotel: Sheraton Makkah Jabal Al Kaaba (5 Nights) | Madinah Hotel: Dallah Taibah Hotel (5 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 5 Star September Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_5",
+  type: "MONTHLY",
+  month: "September",
+  duration: 10,
+  makkahHotel: "Sheraton Makkah Jabal Al Kaaba",
+  madinahHotel: "Dallah Taibah Hotel",
+  price: 1046,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj37.jpg" }
+    ]
+  },
+},
+
+{
+  title: "14 Nights 5 Star September Package",
+  slug: "14-nights-5-star-september",
+  shortDesc: "Makkah Hotel: Le Meridien Makkah Hotel (7 Nights) | Madinah Hotel: InterContinental Dar al Hijra (7 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 14 Nights 5 Star September Package. This perfectly designed 15 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_5",
+  type: "MONTHLY",
+  month: "September",
+  duration: 14,
+  makkahHotel: "Le Meridien Makkah Hotel",
+  madinahHotel: "InterContinental Dar al Hijra",
+  price: 1138,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj39.jpg" }
+    ]
+  },
+},
+
+// *************....September PACKAGES 4 STAR... ********************/
+
+{
+  title: "7 Nights 4 Star September Package",
+  slug: "7-nights-4-star-september",
+  shortDesc: "Makkah Hotel: Voco Makkah Hotel (4 Nights) | Madinah Hotel: Saja Al Madinah Hotel (3 Nights). Fully Inclusive Package (Meals & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 7 Nights 4 Star September Package. This perfectly designed 8 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_4",
+  type: "MONTHLY",
+  month: "September",
+  duration: 7,
+  makkahHotel: "Voco Makkah Hotel",
+  madinahHotel: "Saja Al Madinah Hotel",
+  price: 824,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj41.jpg" }
+    ]
+  },
+},
+
+{
+  title: "10 Nights 4 Star September Package",
+  slug: "10-nights-4-star-september",
+  shortDesc: "Makkah Hotel: Al Massa Grand Hotel (5 Nights) | Madinah Hotel: Al Ansar Golden Tulip (5 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 4 Star September Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_4",
+  type: "MONTHLY",
+  month: "September",
+  duration: 10,
+  makkahHotel: "Al Massa Grand Hotel",
+  madinahHotel: "Al Ansar Golden Tulip",
+  price: 891,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj22.jpg" }
+    ]
+  }
+},
+
+{
+  title: "14 Nights 4 Star September Package",
+  slug: "14-nights-4-star-september",
+  shortDesc: "Makkah Hotel: Emaar Grand Hotel Makkah (7 Nights) | Madinah Hotel: Al Ansar Golden Tulip (7 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 14 Nights 4 Star September Package. This perfectly designed 15 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_4",
+  type: "MONTHLY",
+  month: "September",
+  duration: 14,
+  makkahHotel: "Emaar Grand Hotel Makkah",
+  madinahHotel: "Al Ansar Golden Tulip",
+  price: 936,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj19.jpg" }
+    ]
+  },
+},
+
+// *************....September PACKAGES 3 STAR... ********************/
+
+{
+  title: "7 Nights 3 Star September Package",
+  slug: "7-nights-3-star-september",
+  shortDesc: "Makkah Hotel: Emaar Al Khalil Hotel (4 Nights) | Madinah Hotel: Emaar Taibah Hotel (3 Nights). Fully Inclusive Package (Meals, Transport, Flights & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 7 Nights 3 Star September Package. This perfectly designed 8 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_3",
+  type: "MONTHLY",
+  month: "September",
+  duration: 7,
+  isFeatured: true,
+  makkahHotel: "Emaar Al Khalil Hotel",
+  madinahHotel: "Emaar Taibah Hotel",
+  price: 756,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj40.jpg" }
+    ]
+  },
+},
+
+{
+  title: "10 Nights 3 Star September Package",
+  slug: "10-nights-3-star-september",
+  shortDesc: "Makkah Hotel: Emaar Al Manar Hotel Makkah (5 Nights) | Madinah Hotel: Mirage Al Salam Hotel (5 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 3 Star September Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_3",
+  type: "MONTHLY",
+  month: "September",
+  duration: 10,
+  makkahHotel: "Emaar Al Manar Hotel Makkah",
+  madinahHotel: "Mirage Al Salam Hotel",
+  price: 789,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj13.jpg" }
+    ]
+  },
+},
+
+{
+  title: "14 Nights 3 Star September Package",
+  slug: "14-nights-3-star-september",
+  shortDesc: "Makkah Hotel: Emaar Al Khalil Hotel (4 Nights) | Madinah Hotel: Jawharat Al Rasheed Hotel (3 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 14 Nights 3 Star September Package. This perfectly designed 15 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_3",
+  type: "MONTHLY",
+  month: "September",
+  duration: 14,
+  makkahHotel: "Emaar Al Khalil Hotel",
+  madinahHotel: "Jawharat Al Rasheed Hotel",
+  price: 851,
+  images: {
+    create: [
+      { url: "imgs/hajj/hajj13.jpg" }
+    ]
+  }
+},
+
+///////////////// October
+// *************....October PACKAGES 5 STAR... ********************/
+
+{
+  title: "7 Nights 5 Star October Package",
+  slug: "7-nights-5-star-october",
+  shortDesc: "Makkah Hotel: Infinity Hotel Makkah (4 Nights) | Madinah Hotel: Le Meridien Medina (3 Nights). Fully Inclusive Package (Meals & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 7 Nights 5 Star October Package. This perfectly designed 8 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_5",
+  type: "MONTHLY",
+  month: "October",
+  duration: 7,
+  makkahHotel: "Infinity Hotel Makkah",
+  madinahHotel: "Le Meridien Medina",
+  price: 954,
+  images: {
+    create: [{ url: "imgs/hajj/hajj38.jpg" }]
+  },
+},
+
+{
+  title: "10 Nights 5 Star October Package",
+  slug: "10-nights-5-star-october",
+  shortDesc: "Makkah Hotel: Elaf Al Mashaer Hotel (5 Nights) | Madinah Hotel: Emaar Royal Hotel Madinah (5 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 5 Star October Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_5",
+  type: "MONTHLY",
+  month: "October",
+  duration: 10,
+  makkahHotel: "Elaf Al Mashaer Hotel",
+  madinahHotel: "Emaar Royal Hotel Madinah",
+  price: 1037,
+  images: {
+    create: [{ url: "imgs/hajj/hajj27.jpg" }]
+  },
+},
+
+{
+  title: "14 Nights 5 Star October Package",
+  slug: "14-nights-5-star-october",
+  shortDesc: "Makkah Hotel: Shaza Makkah Hotel (7 Nights) | Madinah Hotel: Frontel Al Harithia Hotel (7 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 14 Nights 5 Star October Package. This perfectly designed 15 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_5",
+  type: "MONTHLY",
+  month: "October",
+  duration: 14,
+  makkahHotel: "Shaza Makkah Hotel",
+  madinahHotel: "Frontel Al Harithia Hotel",
+  price: 1130,
+  images: {
+    create: [{ url: "imgs/hajj/hajj23.jpg" }]
+  },
+},
+
+// *************....October PACKAGES 4 STAR... ********************/
+
+{
+  title: "7 Nights 4 Star October Package",
+  slug: "7-nights-4-star-october",
+  shortDesc: "Makkah Hotel: Dar Al Fayzeen Makkah Hotel (4 Nights) | Madinah Hotel: Waqf Outhman Bin Affan Hotel (3 Nights). Fully Inclusive Package (Meals & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 7 Nights 4 Star October Package. This perfectly designed 8 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_4",
+  type: "MONTHLY",
+  month: "October",
+  duration: 7,
+  makkahHotel: "Dar Al Fayzeen Makkah Hotel",
+  madinahHotel: "Waqf Outhman Bin Affan Hotel",
+  price: 813,
+  images: {
+    create: [{ url: "imgs/hajj/hajj16.jpg" }]
+  },
+},
+
+{
+  title: "10 Nights 4 Star October Package",
+  slug: "10-nights-4-star-october",
+  shortDesc: "Makkah Hotel: Emaar Grand Hotel Makkah (5 Nights) | Madinah Hotel: Al Ansar Golden Tulip (5 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 4 Star October Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_4",
+  type: "MONTHLY",
+  month: "October",
+  duration: 10,
+  makkahHotel: "Emaar Grand Hotel Makkah",
+  madinahHotel: "Al Ansar Golden Tulip",
+  price: 893,
+  images: {
+    create: [{ url: "imgs/hajj/hajj17.jpg" }]
+  },
+},
+
+{
+  title: "14 Nights 4 Star October Package",
+  slug: "14-nights-4-star-october",
+  shortDesc: "Makkah Hotel: Dar Al Fayzeen Makkah Hotel (7 Nights) | Madinah Hotel: Saja Al Madinah Hotel (7 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 14 Nights 4 Star October Package. This perfectly designed 15 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_4",
+  type: "MONTHLY",
+  month: "October",
+  duration: 14,
+  makkahHotel: "Dar Al Fayzeen Makkah Hotel",
+  madinahHotel: "Saja Al Madinah Hotel",
+  price: 945,
+  images: {
+    create: [{ url: "imgs/hajj/hajj15.jpg" }]
+  },
+},
+
+// *************....October PACKAGES 3 STAR... ********************/
+
+{
+  title: "7 Nights 3 Star October Package",
+  slug: "7-nights-3-star-october",
+  shortDesc: "Makkah Hotel: Emaar Al Khalil Hotel (4 Nights) | Madinah Hotel: Emaar Taibah Hotel (3 Nights). Fully Inclusive Package (Meals, Transport, Flights & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 7 Nights 3 Star October Package. This perfectly designed 8 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_3",
+  type: "MONTHLY",
+  month: "October",
+  duration: 7,
+  isFeatured: true,
+  makkahHotel: "Emaar Al Khalil Hotel",
+  madinahHotel: "Emaar Taibah Hotel",
+  price: 748,
+  images: {
+    create: [{ url: "imgs/hajj/hajj32.jpg" }]
+  },
+},
+
+{
+  title: "10 Nights 3 Star October Package",
+  slug: "10-nights-3-star-october",
+  shortDesc: "Makkah Hotel: Emaar Andalusia Hotel (5 Nights) | Madinah Hotel: Swiss International Taba Alsalam (5 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 3 Star October Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_3",
+  type: "MONTHLY",
+  month: "October",
+  duration: 10,
+  makkahHotel: "Emaar Andalusia Hotel",
+  madinahHotel: "Swiss International Taba Alsalam",
+  price: 783,
+  images: {
+    create: [{ url: "imgs/hajj/hajj33.jpg" }]
+  },
+},
+
+{
+  title: "14 Nights 3 Star October Package",
+  slug: "14-nights-3-star-october",
+  shortDesc: "Makkah Hotel: Emaar Al Manar Hotel Makkah (7 Nights) | Madinah Hotel: Elaf Taiba Hotel (7 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 14 Nights 3 Star October Package. This perfectly designed 15 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_3",
+  type: "MONTHLY",
+  month: "October",
+  duration: 14,
+  makkahHotel: "Emaar Al Manar Hotel Makkah",
+  madinahHotel: "Elaf Taiba Hotel",
+  price: 847,
+  images: {
+    create: [{ url: "imgs/hajj/hajj25.jpg" }]
+  },
+},
+
+// November
+// *************....November PACKAGES 5 STAR... ********************/
+
+{
+  title: "7 Nights 5 Star November Package",
+  slug: "7-nights-5-star-november",
+  shortDesc: "Makkah Hotel: M Hotel Al Dana Makkah by Millennium (4 Nights) | Madinah Hotel: Anwar Al Madinah Movenpick (3 Nights). Fully Inclusive Package (Meals & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 7 Nights 5 Star November Package. This perfectly designed 8 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_5",
+  type: "MONTHLY",
+  month: "November",
+  duration: 7,
+  makkahHotel: "M Hotel Al Dana Makkah by Millennium",
+  madinahHotel: "Anwar Al Madinah Movenpick",
+  price: 970,
+  images: {
+    create: [{ url: "imgs/hajj/hajj26.jpg" }]
+  },
+},
+
+{
+  title: "10 Nights 5 Star November Package",
+  slug: "10-nights-5-star-november",
+  shortDesc: "Makkah Hotel: Jabal Omar Marriott Hotel (5 Nights) | Madinah Hotel: Anwar Al Madinah Movenpick (5 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 5 Star November Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_5",
+  type: "MONTHLY",
+  month: "November",
+  duration: 10,
+  makkahHotel: "Jabal Omar Marriott Hotel",
+  madinahHotel: "Anwar Al Madinah Movenpick",
+  price: 1043,
+  images: {
+    create: [{ url: "imgs/hajj/hajj28.jpg" }]
+  },
+},
+
+{
+  title: "14 Nights 5 Star November Package",
+  slug: "14-nights-5-star-november",
+  shortDesc: "Makkah Hotel: Shaza Makkah Hotel (7 Nights) | Madinah Hotel: Crowne Plaza Madinah (7 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 14 Nights 5 Star November Package. This perfectly designed 15 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_5",
+  type: "MONTHLY",
+  month: "November",
+  duration: 14,
+  makkahHotel: "Shaza Makkah Hotel",
+  madinahHotel: "Crowne Plaza Madinah",
+  price: 1126,
+  images: {
+    create: [{ url: "imgs/hajj/hajj24.jpg" }]
+  },
+},
+
+// *************....November PACKAGES 4 STAR... ********************/
+
+{
+  title: "7 Nights 4 Star November Package",
+  slug: "7-nights-4-star-november",
+  shortDesc: "Makkah Hotel: DoubleTree by Hilton Makkah (4 Nights) | Madinah Hotel: Saja Al Madinah Hotel (3 Nights). Fully Inclusive Package (Meals & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 7 Nights 4 Star November Package. This perfectly designed 8 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_4",
+  type: "MONTHLY",
+  month: "November",
+  duration: 7,
+  makkahHotel: "DoubleTree by Hilton Makkah",
+  madinahHotel: "Saja Al Madinah Hotel",
+  price: 846,
+  images: {
+    create: [{ url: "imgs/hajj/hajj17.jpg" }]
+  },
+},
+
+{
+  title: "10 Nights 4 Star November Package",
+  slug: "10-nights-4-star-november",
+  shortDesc: "Makkah Hotel: Al Massa Grand Hotel (5 Nights) | Madinah Hotel: Emaar Elite Madinah Hotel (5 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 4 Star November Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_4",
+  type: "MONTHLY",
+  month: "November",
+  duration: 10,
+  makkahHotel: "Al Massa Grand Hotel",
+  madinahHotel: "Emaar Elite Madinah Hotel",
+  price: 892,
+  images: {
+    create: [{ url: "imgs/hajj/hajj15.jpg" }]
+  },
+},
+
+{
+  title: "14 Nights 4 Star November Package",
+  slug: "14-nights-4-star-november",
+  shortDesc: "Makkah Hotel: Al Kiswah Towers Hotel (7 Nights) | Madinah Hotel: Waqf Outhman Bin Affan Hotel (7 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 14 Nights 4 Star November Package. This perfectly designed 15 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_4",
+  type: "MONTHLY",
+  month: "November",
+  duration: 14,
+  makkahHotel: "Al Kiswah Towers Hotel",
+  madinahHotel: "Waqf Outhman Bin Affan Hotel",
+  price: 942,
+  images: {
+    create: [{ url: "imgs/hajj/hajj18.jpg" }]
+  },
+},
+
+// *************....November PACKAGES 3 STAR... ********************/
+
+{
+  title: "7 Nights 3 Star November Package",
+  slug: "7-nights-3-star-november",
+  shortDesc: "Makkah Hotel: Emaar Andalusia Hotel (4 Nights) | Madinah Hotel: Mirage Al Salam Hotel (3 Nights). Fully Inclusive Package (Meals, Transport, Flights & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 7 Nights 3 Star November Package. This perfectly designed 8 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_3",
+  type: "MONTHLY",
+  month: "November",
+  duration: 7,
+  isFeatured: true,
+  makkahHotel: "Emaar Andalusia Hotel",
+  madinahHotel: "Mirage Al Salam Hotel",
+  price: 773,
+  images: {
+    create: [{ url: "imgs/hajj/hajj42.jpg" }]
+  },
+},
+
+{
+  title: "10 Nights 3 Star November Package",
+  slug: "10-nights-3-star-november",
+  shortDesc: "Makkah Hotel: Emaar Al Manar Hotel Makkah (5 Nights) | Madinah Hotel: Jawharat Al Rasheed Hotel (5 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 10 Nights 3 Star November Package. This perfectly designed 11 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_3",
+  type: "MONTHLY",
+  month: "November",
+  duration: 10,
+  makkahHotel: "Emaar Al Manar Hotel Makkah",
+  madinahHotel: "Jawharat Al Rasheed Hotel",
+  price: 808,
+  images: {
+    create: [{ url: "imgs/hajj/hajj30.jpg" }]
+  },
+},
+
+{
+  title: "14 Nights 3 Star November Package",
+  slug: "14-nights-3-star-november",
+  shortDesc: "Makkah Hotel: Emaar Al Khalil Hotel (7 Nights) | Madinah Hotel: Emaar Taibah Hotel (7 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 14 Nights 3 Star November Package. This perfectly designed 15 Days package ensures a smooth and comfortable pilgrimage experience and provides all the essentials for your Umrah journey.",
+  star: "STAR_3",
+  type: "MONTHLY",
+  month: "November",
+  duration: 14,
+  makkahHotel: "Emaar Al Khalil Hotel",
+  madinahHotel: "Emaar Taibah Hotel",
+  price: 846,
+  images: {
+    create: [{ url: "imgs/hajj/hajj33.jpg" }]
+  },
+},
+
+// DECEMBER 
+// *************....DECEMBER PACKAGES 5 STAR... ********************/
+
+{
+  title: "7 Nights 5 Star December Package",
+  slug: "7-nights-5-star-december",
+  shortDesc: "Makkah Hotel: Pullman ZamZam Makkah (4 Nights) | Madinah Hotel: Crowne Plaza Madinah (3 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah from the UK with our 7 Nights 5 Star December Package. This perfectly designed 8 Days package ensures a smooth and comfortable pilgrimage experience during the peak December season.",
+  star: "STAR_5",
+  type: "MONTHLY",
+  month: "December",
+  duration: 7,
+  makkahHotel: "Pullman ZamZam Makkah",
+  madinahHotel: "Crowne Plaza Madinah",
+  price: 1580,
+  images: {
+    create: [{ url: "imgs/hajj/hajj50.jpg" }]
+  },
+},
+
+{
+  title: "10 Nights 5 Star December Package",
+  slug: "10-nights-5-star-december",
+  shortDesc: "Makkah Hotel: Fairmont Makkah Clock Royal Tower (5 Nights) | Madinah Hotel: Anwar Al Madinah Movenpick (5 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Experience a spiritually fulfilling Umrah with our 10 Nights 5 Star December Package. This premium 11 Days package ensures maximum comfort and convenience in peak season travel.",
+  star: "STAR_5",
+  type: "MONTHLY",
+  month: "December",
+  duration: 10,
+  makkahHotel: "Fairmont Makkah Clock Royal Tower",
+  madinahHotel: "Anwar Al Madinah Movenpick",
+  price: 1680,
+  images: {
+    create: [{ url: "imgs/hajj/hajj51.jpg" }]
+  },
+},
+
+{
+  title: "14 Nights 5 Star December Package",
+  slug: "14-nights-5-star-december",
+  shortDesc: "Makkah Hotel: Jabal Omar Marriott Hotel (7 Nights) | Madinah Hotel: Shaza Madinah (7 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Enjoy a long and peaceful Umrah journey with our 14 Nights 5 Star December Package. Designed for a complete spiritual experience with extended stay in both holy cities.",
+  star: "STAR_5",
+  type: "MONTHLY",
+  month: "December",
+  duration: 14,
+  makkahHotel: "Jabal Omar Marriott Hotel",
+  madinahHotel: "Shaza Madinah",
+  price: 1750,
+  images: {
+    create: [{ url: "imgs/hajj/hajj52.jpg" }]
+  },
+},
+
+// *************....DECEMBER PACKAGES 4 STAR... ********************/
+
+{
+  title: "7 Nights 4 Star December Package",
+  slug: "7-nights-4-star-december",
+  shortDesc: "Makkah Hotel: DoubleTree by Hilton Makkah (4 Nights) | Madinah Hotel: Saja Al Madinah Hotel (3 Nights). Fully Inclusive Package (Meals & Ziyarah Guide).",
+  description: "Experience a comfortable Umrah with our 7 Nights 4 Star December Package. Ideal for families and budget-conscious travelers during peak season.",
+  star: "STAR_4",
+  type: "MONTHLY",
+  month: "December",
+  duration: 7,
+  makkahHotel: "DoubleTree by Hilton Makkah",
+  madinahHotel: "Saja Al Madinah Hotel",
+  price: 1480,
+  images: {
+    create: [{ url: "imgs/hajj/hajj45.jpg" }]
+  },
+},
+
+{
+  title: "10 Nights 4 Star December Package",
+  slug: "10-nights-4-star-december",
+  shortDesc: "Makkah Hotel: Al Massa Grand Hotel (5 Nights) | Madinah Hotel: Emaar Elite Madinah Hotel (5 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "A balanced 10 Nights 4 Star December Package offering comfort and affordability during the busy Umrah season.",
+  star: "STAR_4",
+  type: "MONTHLY",
+  month: "December",
+  duration: 10,
+  makkahHotel: "Al Massa Grand Hotel",
+  madinahHotel: "Emaar Elite Madinah Hotel",
+  price: 1445,
+  images: {
+    create: [{ url: "imgs/hajj/hajj46.jpg" }]
+  },
+},
+
+{
+  title: "14 Nights 4 Star December Package",
+  slug: "14-nights-4-star-december",
+  shortDesc: "Makkah Hotel: Al Kiswah Towers Hotel (7 Nights) | Madinah Hotel: Waqf Outhman Bin Affan Hotel (7 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "A longer stay 14 Nights 4 Star December Package designed for pilgrims who want a relaxed and complete spiritual journey.",
+  star: "STAR_4",
+  type: "MONTHLY",
+  month: "December",
+  duration: 14,
+  makkahHotel: "Al Kiswah Towers Hotel",
+  madinahHotel: "Waqf Outhman Bin Affan Hotel",
+  price: 1510,
+  images: {
+    create: [{ url: "imgs/hajj/hajj47.jpg" }]
+  },
+},
+
+// *************....DECEMBER PACKAGES 3 STAR... ********************/
+
+{
+  title: "7 Nights 3 Star December Package",
+  slug: "7-nights-3-star-december",
+  shortDesc: "Makkah Hotel: Emaar Andalusia Hotel (4 Nights) | Madinah Hotel: Mirage Al Salam Hotel (3 Nights). Fully Inclusive Package (Meals, Transport, Flights & Ziyarah Guide).",
+  description: "Affordable 7 Nights 3 Star December Package ideal for budget travelers during peak Umrah season.",
+  star: "STAR_3",
+  type: "MONTHLY",
+  month: "December",
+  duration: 7,
+  makkahHotel: "Emaar Andalusia Hotel",
+  madinahHotel: "Mirage Al Salam Hotel",
+  price: 1395,
+  images: {
+    create: [{ url: "imgs/hajj/hajj40.jpg" }]
+  },
+},
+
+{
+  title: "10 Nights 3 Star December Package",
+  slug: "10-nights-3-star-december",
+  shortDesc: "Makkah Hotel: Emaar Al Manar Hotel Makkah (5 Nights) | Madinah Hotel: Jawharat Al Rasheed Hotel (5 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Economical 10 Nights 3 Star December Package with essential services and comfortable accommodation.",
+  star: "STAR_3",
+  type: "MONTHLY",
+  month: "December",
+  duration: 10,
+  makkahHotel: "Emaar Al Manar Hotel Makkah",
+  madinahHotel: "Jawharat Al Rasheed Hotel",
+  price: 1470,
+  images: {
+    create: [{ url: "imgs/hajj/hajj41.jpg" }]
+  },
+},
+
+{
+  title: "14 Nights 3 Star December Package",
+  slug: "14-nights-3-star-december",
+  shortDesc: "Makkah Hotel: Emaar Al Khalil Hotel (7 Nights) | Madinah Hotel: Emaar Taibah Hotel (7 Nights). Fully Inclusive Package (Flights, Meals, Transfers & Ziyarah Guide).",
+  description: "Long stay 14 Nights 3 Star December Package for pilgrims seeking affordable extended Umrah experience.",
+  star: "STAR_3",
+  type: "MONTHLY",
+  month: "December",
+  duration: 14,
+  makkahHotel: "Emaar Al Khalil Hotel",
+  madinahHotel: "Emaar Taibah Hotel",
+  price: 1550,
+  images: {
+    create: [{ url: "imgs/hajj/hajj42.jpg" }]
+  },
+},
+
     ];
     
 

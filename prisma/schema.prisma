@@ -180,3 +180,105 @@ model Flight {
   dates           String   // e.g., "17 Oct 2026" or "11 Jun - 10 Jul"
   createdAt       DateTime @default(now())
 }
+// for Flight content
+model CountryContent {
+  id              Int    @id @default(autoincrement())
+  slug            String @unique
+   apiType          String
+  section1Title   String
+  section1img     String
+  section2img     String
+  section1Content String @db.Text
+  section2Title   String
+  section2Content String @db.Text
+  faqs            Json   // Stores the entire FAQ list as a clean array
+}
+////////////////////////
+////****HONEYMOON SEED*******
+/////////////////////////
+
+
+
+model Package {
+  id             Int             @id @default(autoincrement())
+  title          String
+  slug           String          @unique
+  shortDesc      String          @db.Text
+  description    String          @db.Text
+  price          Int
+  durationDays   Int
+  durationNights Int
+  month          String
+  star           Int
+  type           String
+  country        String
+  city           String
+  category       String
+  featured       Boolean         @default(false)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  // Relationships
+  hotels         Hotel[]
+  images         Image[]
+  flights        FlightDetail ?
+  transportation Transportation?
+  visaAssistance VisaAssistance?
+  sightseeing    Sightseeing?
+}
+
+model Hotel {
+  id             Int     @id @default(autoincrement())
+  name           String
+  city           String
+  durationNights Int
+  starRating     Int
+  roomType       String
+  description    String  @db.Text
+  packageId      Int
+  package        Package @relation(fields: [packageId], references: [id], onDelete: Cascade)
+}
+
+model Image {
+  id        Int     @id @default(autoincrement())
+  url       String
+  packageId Int
+  package   Package @relation(fields: [packageId], references: [id], onDelete: Cascade)
+}
+
+model FlightDetail  {
+  id              Int     @id @default(autoincrement())
+  departureCities Json    // Saves array: ["Lahore", "Islamabad", "Karachi"]
+  destination     String
+  airlines        Json    // Saves array: ["Emirates", "Qatar Airways"]
+  classOption     String
+  packageId       Int     @unique
+  package         Package @relation(fields: [packageId], references: [id], onDelete: Cascade)
+}
+
+model Transportation {
+  id           Int     @id @default(autoincrement())
+  type         String
+  routeDetails String  @db.Text
+  extras       String  @db.Text
+  packageId    Int     @unique
+  package      Package @relation(fields: [packageId], references: [id], onDelete: Cascade)
+}
+
+model VisaAssistance {
+  id                Int     @id @default(autoincrement())
+  supportedRegion   String
+  agency            String
+  requiredDocuments Json    // Saves array: ["Valid passport", "Photos"]
+  packageId         Int     @unique
+  package           Package @relation(fields: [packageId], references: [id], onDelete: Cascade)
+}
+
+model Sightseeing {
+  id                  Int     @id @default(autoincrement())
+  items               Json    // Saves array of activities
+  romanticExperiences Json    // Saves array of romantic options
+  guideIncluded       Boolean @default(true)
+  packageId           Int     @unique
+  package             Package @relation(fields: [packageId], references: [id], onDelete: Cascade)
+}

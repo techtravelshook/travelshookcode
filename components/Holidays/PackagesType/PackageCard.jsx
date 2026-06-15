@@ -12,7 +12,7 @@ import Image from "next/image";
 function StarRow({ count = 0 }) {
   return (
     <div className="flex gap-0.5">
-      {Array.from({ length: 5 }).map((_, i) => (
+      {Array.from({ length: 8 }).map((_, i) => (
         <Star
           key={i}
           size={12}

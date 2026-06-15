@@ -37,7 +37,7 @@ export async function GET(request) {
         exclusions: true,
       },
 
-      take: 30, // only 4 packages
+      take: 500, // only 4 packages
     });
 
     return NextResponse.json({

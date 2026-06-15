@@ -3,18 +3,16 @@ import umrahPackages from './seeds/umrahseed.js';
 import ramadanPackagesData from "./seeds/ramdanseed.js";
 import holidayPackagesData from "./seeds/holidayseed.js";
 import { cityBreaksData, inclusiveHolidaysData, BeachHolidays, FamilyHolidays,lastMinuteHolidaysData } from "./seeds/holidaybreakseed.js";
+
 import flightData from './seeds/flightseed.js';
+import { countryContent } from './seeds/flightcontent.js';
+import travelPackage from './seeds/honeymoonseed.js';
 
 const prisma = new PrismaClient();
-
-// ─── Helpers ────────────────────────────────────────────────────────────────
-
 const mapRatingToEnum = (rating) => {
   const map = { 1: "STAR_1", 2: "STAR_2", 3: "STAR_3", 4: "STAR_4", 5: "STAR_5" };
   return map[rating] || "STAR_5";
 };
-
-// Safely strips non-digits and parses — returns null if result is NaN
 const safeId = (id) => {
   const n = parseInt(String(id).replace(/\D/g, ''), 10);
   return isNaN(n) ? null : n;
@@ -25,9 +23,6 @@ const safeDuration = (duration) => {
   const n = parseInt(String(duration).trim(), 10);
   return isNaN(n) ? 0 : n;
 };
-
-// ─── Main ────────────────────────────────────────────────────────────────────
-
 async function main() {
   console.log('🌱 Processing database seeding...');
 
@@ -190,8 +185,113 @@ console.log("✈️ Starting flight seeding...");
   } else {
     console.warn("⚠️ flightData array is empty or undefined. Skipping flight loop.");
   }
+  // ================
+//   SEED CODE FOR FLIGHTS SLUG CONTENT 
+  //==================
 
-// ─── Run ────────────────────────────────────────────────────────────────────
+
+
+  console.log("📄 Starting country content seeding...");
+console.log("📄 Starting country content seeding...");
+
+await prisma.countryContent.deleteMany({});
+
+const countryData = [
+  countryContent.australia,
+  countryContent.india,
+  countryContent.ghana,
+  countryContent.Nigeria,
+  countryContent.pakistan,
+      countryContent.usa,
+  countryContent.canada,
+
+   countryContent.thailand,
+  countryContent.philippines,
+countryContent.brazil,
+countryContent['southa-frica'],
+countryContent.zimbabwe,
+
+
+
+  
+
+
+
+];
+if (Array.isArray(countryData) && countryData.length > 0) {
+  for (const item of countryData) {
+    await prisma.countryContent.create({
+      data: item,
+    });
+  }
+  console.log(`✅ Successfully seeded ${countryData.length} country content pages.`);
+} else {
+  console.warn("⚠️ countryData array is empty or undefined.");
+}
+
+
+// HoneyMoon Package...
+
+  // =========================================================================
+  // 4. HONEYMOON / TRAVEL PACKAGES
+  // =========================================================================
+  console.log(`👩‍❤️‍👨 Seeding ${travelPackage.length} Honeymoon / Travel packages...`);
+
+  for (const pkg of travelPackage) {
+    // Destructure nested relations away from plain field mappings
+    const { 
+      hotels, 
+      images, 
+      flights, 
+      transportation, 
+      visaAssistance, 
+      sightseeing, 
+      duration, 
+      ...plainPackageFields 
+    } = pkg;
+
+    // Convert separate duration fields to match schema scalar layout variables
+    const durationDays = duration?.days ?? 0;
+    const durationNights = duration?.nights ?? 0;
+
+    await prisma.package.upsert({
+      where: { slug: plainPackageFields.slug },
+      update: {
+        ...plainPackageFields,
+        durationDays,
+        durationNights,
+        month: plainPackageFields.month ?? null,
+        
+        // Wipe out children and re-create arrays safely
+        hotels:         { deleteMany: {}, create: hotels?.create || [] },
+        images:         { deleteMany: {}, create: images?.create || [] },
+        flights:        flights?.create ? { delete: {}, create: flights.create } : undefined,
+        transportation: transportation?.create ? { delete: {}, create: transportation.create } : undefined,
+        visaAssistance: visaAssistance?.create ? { delete: {}, create: visaAssistance.create } : undefined,
+        sightseeing:    sightseeing?.create ? { delete: {}, create: sightseeing.create } : undefined,
+      },
+      create: {
+        ...plainPackageFields,
+        durationDays,
+        durationNights,
+        month: plainPackageFields.month ?? null,
+        
+        // Initial insert maps
+        hotels:         hotels?.create ? { create: hotels.create } : undefined,
+        images:         images?.create ? { create: images.create } : undefined,
+        flights:        flights?.create ? { create: flights.create } : undefined,
+        transportation: transportation?.create ? { create: transportation.create } : undefined,
+        visaAssistance: visaAssistance?.create ? { create: visaAssistance.create } : undefined,
+        sightseeing:    sightseeing?.create ? { create: sightseeing.create } : undefined,
+      },
+    });
+  }
+
+
+
+
+
+
 
 main()
   .catch((e) => { console.error(e); process.exit(1); })

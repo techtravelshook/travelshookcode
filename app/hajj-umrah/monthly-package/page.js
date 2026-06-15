@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import AboutChooseus from "@/components/aboutus/AboutChooseus";
 import { usePackages } from "@/hooks/usePackage";
 import BookingProcess from "@/components/hajjumrah/BookingProcess";
@@ -259,12 +259,15 @@ const MonthlyPackageGrid = ({ packages, onCardClick }) => {
     const months = new Set();
     const stars = new Set();
     const durations = new Set();
+    
     packages.forEach((pkg) => {
+
       if (pkg.month) months.add(pkg.month);
       if (pkg.star) stars.add(pkg.star.replace("STAR_", ""));
       if (pkg.duration && pkg.duration > 0) durations.add(String(pkg.duration));
     });
     return {
+      
       months: ["All", ...Array.from(months).sort()],
       stars: ["All", ...Array.from(stars).sort((a, b) => Number(b) - Number(a))],
       durations: ["All", ...Array.from(durations).sort((a, b) => Number(a) - Number(b))],
@@ -284,8 +287,10 @@ const MonthlyPackageGrid = ({ packages, onCardClick }) => {
 
       return matchMonth && matchStar && matchDuration;
     });
+    
   }, [packages, selectedMonth, selectedStar, selectedDuration]);
-
+  console.log("filters:", selectedMonth, selectedStar, selectedDuration);
+console.log("packages:", packages.length, "| filtered:", filteredPackages.length, "| months:", filterOptions.months);
   // ── Reset ────────────────────────────────────
   const resetFilters = () => {
     setSelectedMonth("All");
@@ -441,12 +446,27 @@ const Page = () => {
   const router = useRouter();
   const { packages: allPackages, loading, mounted, error } = usePackages("MONTHLY");
 
+
+useEffect(() => {
+  console.log("Total packages:", allPackages?.length);
+  
+  console.log("Months present:", [...new Set(allPackages?.map(p => p.month))]);
+}, [allPackages]);
+
+useEffect(() => {
+  console.log("Sample package:", allPackages?.[0]);
+}, [allPackages]);
  const handleCardClick = (pkg) => {
   if (!pkg?.slug) return;
   router.push(`/hajj-umrah/monthly-package/${pkg.slug}`);
 };
-
-  if (!mounted) return null;
+if (!mounted || loading) {
+  return (
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="w-10 h-10 border-4 border-[#E8E0D0] border-t-[#C47A1E] rounded-full animate-spin" />
+    </div>
+  );
+}
 
   return (
     <main>
