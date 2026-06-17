@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const services = [
   {
@@ -11,21 +12,24 @@ const services = [
     title: "14 Nights 5 Star Ramadan Package",
     desc: "A premium 14-night Ramadan Umrah experience featuring 5-star accommodations: 7 nights at Pullman ZamZam Makkah and 7 nights at Crowne Plaza Madinah.",
     tags: ["Meals", "Transport", "Guide", "Flights"],
-    image: "/imgs/hajj/hajj1.jpg"
+    image: "/imgs/hajj/hajj1.jpg",
+    link:"/hajj-umrah/5-star-umrah/14-nights-5-star"
   },
   {
     id: "(02)",
     title: "14 Nights Luxury Umrah Package",
     desc: "Experience ultimate comfort with 7 nights at the Dorrar Aleiman Royal in Makkah and 7 nights at the Madinah Hilton, both premium 5-star hotels.",
     tags: ["Meals", "Transport", "Guide", "Flights"],
-    image: "/imgs/hajj/hajj2.jpg"
+    image: "/imgs/hajj/hajj2.jpg",
+    link:"/hajj-umrah/luxury/14-nights-luxury"
   },
   {
     id: "(03)",
     title: "3 Star 7 Nights Budget Umrah Packages",
     desc: "An affordable 7-night journey including 4 nights at Emaar Al Khalil Hotel in Makkah and 3 nights at Emaar Taibah Hotel in Madinah.",
     tags: ["Meals", "Transport", "Guide", "Flights"],
-    image: "/imgs/hajj/hajj3.jpg"
+    image: "/imgs/hajj/hajj3.jpg",
+    link:"/hajj-umrah/3-star-umrah/7-nights-3-star"
   }
 ];
 
@@ -161,32 +165,35 @@ function ServiceRow({ service, index }) {
                   </div>
 
                   {/* BUTTON */}
-                  <div className="pt-2">
-                    <motion.button
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.15, duration: 0.4 }}
-                      className="
-                        group/btn inline-flex items-center
-                        gap-2 sm:gap-3 rounded-full
-                        bg-gradient-to-r from-[#E68213] to-[#0070A1]
-                        px-5 sm:px-6 py-2.5 sm:py-3.5
-                        text-xs sm:text-sm font-bold uppercase
-                        tracking-[0.2em] text-white
-                        hover:opacity-95 hover:scale-[1.02]
-                        active:scale-[0.98]
-                        transition-all duration-300 shadow-md
-                      "
-                    >
-                      Explore Now
-
-                      <ArrowRight
-                        size={16}
-                        className="transition-transform duration-300 group-hover/btn:translate-x-1.5"
-                      />
-                    </motion.button>
+                 <div className="pt-2">
+                    <Link href={service.link} passHref legacyBehavior>
+                      <motion.a
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.15, duration: 0.4 }}
+                        className="
+                          group/btn inline-flex items-center
+                          gap-2 sm:gap-3 rounded-full
+                          bg-gradient-to-r from-[#E68213] to-[#0070A1]
+                          px-5 sm:px-6 py-2.5 sm:py-3.5
+                          text-xs sm:text-sm font-bold uppercase
+                          tracking-[0.2em] text-white
+                          hover:opacity-95 hover:scale-[1.02]
+                          active:scale-[0.98]
+                          transition-all duration-300 shadow-md
+                          cursor-pointer select-none
+                        "
+                      >
+                        Explore Now
+                        <ArrowRight
+                          size={16}
+                          className="transition-transform duration-300 group-hover/btn:translate-x-1.5"
+                        />
+                      </motion.a>
+                    </Link>
                   </div>
                 </div>
+              
               </motion.div>
             )}
           </AnimatePresence>

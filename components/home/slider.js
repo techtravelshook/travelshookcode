@@ -43,7 +43,6 @@ const slides = [
 export default function HomeSlider() {
   const [index, setIndex] = useState(0);
 
-  // MOUSE PARALLAX
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -92,10 +91,8 @@ export default function HomeSlider() {
       className="relative w-full overflow-hidden bg-black font-mulish"
       style={{ minHeight: "100svh" }}
     >
-      {/* ================= BACKGROUND ================= */}
       <AnimatePresence mode="wait">
         <motion.div key={index} className="absolute inset-0">
-          {/* IMAGE */}
           <motion.div
             initial={{
               scale: 1.3,
@@ -127,7 +124,6 @@ export default function HomeSlider() {
             />
           </motion.div>
 
-          {/* REVEAL TRANSITIONS */}
           <motion.div
             initial={{ x: "0%" }}
             animate={{ x: "100%" }}
@@ -151,14 +147,10 @@ export default function HomeSlider() {
             className="absolute inset-0 z-20 bg-[#0070A1]"
           />
 
-          {/* OVERLAYS */}
           <div className="absolute inset-0 bg-black/60" />
-
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent" />
-
           <div className="absolute inset-0 opacity-[0.05] mix-blend-soft-light bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
-          {/* FLOATING ORBS */}
           <motion.div
             animate={{
               x: [0, 40, 0],
@@ -168,7 +160,7 @@ export default function HomeSlider() {
               duration: 10,
               repeat: Infinity,
             }}
-            className="absolute -left-20 top-20 h-[350px] w-[350px] rounded-full bg-[#E68213]/30 blur-[120px]"
+            className="absolute -left-20 top-20 h-[350px] w-[350px] rounded-full bg-[#E68213]/30 blur-[120px] md:h-[400px] md:w-[400px]"
           />
 
           <motion.div
@@ -180,12 +172,11 @@ export default function HomeSlider() {
               duration: 12,
               repeat: Infinity,
             }}
-            className="absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-[#0070A1]/30 blur-[140px]"
+            className="absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-[#0070A1]/30 blur-[140px] md:h-[450px] md:w-[450px]"
           />
         </motion.div>
       </AnimatePresence>
 
-      {/* GRID OVERLAY */}
       <div className="absolute inset-0 opacity-[0.07]">
         <div
           className="h-full w-full"
@@ -197,30 +188,16 @@ export default function HomeSlider() {
         />
       </div>
 
-      {/* ================= CONTENT ================= */}
-      {/*
-        KEY FIX: This wrapper is position:relative z-40 and uses flex-col
-        so the text block and the flight widget stack predictably.
-        We give it padding-top for the navbar and padding-bottom so the
-        widget never gets clipped at the bottom.
-        No height constraint here — the section grows to fit on small screens.
-      */}
       <div
-        className="relative z-40 w-full flex flex-col items-center"
-        style={{
-          paddingTop: "clamp(5rem, 12vw, 8rem)",
-          paddingBottom: "clamp(2rem, 5vw, 4rem)",
-        }}
-      >
+  className="relative z-40 w-full flex flex-col items-center pt-16 md:pt-0"
+  style={{
+    paddingTop: "clamp(4rem, 10vw, 8rem)",
+    paddingBottom: "clamp(1.5rem, 4vw, 3.5rem)",
+  }}
+>
         <div className="container mx-auto px-4 sm:px-6 lg:px-16 w-full">
-
-          {/* CENTERED CONTENT */}
           <div className="max-w-6xl w-full mx-auto flex flex-col items-center text-center gap-6 sm:gap-8">
-
-            {/* TEXT CONTENT */}
-            <div>
-
-              {/* SUBTITLE */}
+            <div className="w-full px-1">
               <motion.div
                 key={current.subtitle}
                 initial={{ opacity: 0, x: -50 }}
@@ -242,7 +219,6 @@ export default function HomeSlider() {
                 </span>
               </motion.div>
 
-              {/* TITLE */}
               <div className="overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.h1
@@ -263,7 +239,7 @@ export default function HomeSlider() {
                       duration: 0.8,
                       ease: [0.22, 1, 0.36, 1],
                     }}
-                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-[1.1] text-white tracking-tight"
+                    className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-[1.05] text-white tracking-tight"
                   >
                     {current.title.split(" ").map((word, i) => {
                       const isHighlight = i === current.title.split(" ").length - 1;
@@ -286,24 +262,16 @@ export default function HomeSlider() {
                 </AnimatePresence>
               </div>
 
-              {/* DESCRIPTION */}
-              <p className="mt-6 text-sm sm:text-base md:text-lg text-slate-300 max-w-2xl font-medium leading-relaxed mx-auto">
+              <p className="mt-6 text-sm sm:text-base md:text-lg text-slate-200 max-w-2xl font-medium leading-relaxed mx-auto px-2">
                 {current.desc}
               </p>
             </div>
 
-            {/* ================= FLIGHT FILTER ================= */}
-            {/*
-              KEY FIX: Removed sm:mt-10 / mb-10 / sm:mb-14 margin that
-              caused reflow when the pax popup opened. The gap on the
-              parent flex handles spacing consistently across slides.
-            */}
-            <div className="w-full flex justify-center px-2 sm:px-4">
-              <div className="w-full max-w-5xl px-1 sm:px-0">
+            <div className="w-full flex justify-center px-1 sm:px-2 mt-2">
+              <div className="w-full max-w-5xl">
                 <FlightSearchWidget />
               </div>
             </div>
-
           </div>
         </div>
       </div>

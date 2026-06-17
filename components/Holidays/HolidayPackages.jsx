@@ -353,23 +353,42 @@ function ListCard({ pkg, onSelect }) {
 /* ================= MAIN PAGE ================= */
 export default function HolidayPackages() {
   const [selected, setSelected]   = useState(null);
-  const [viewMode, setViewMode]   = useState("grid"); // "grid" | "list" | "scroll"
+  const [viewMode, setViewMode]   = useState("grid");
   const [activeTab, setActiveTab] = useState("Overview");
   const [form, setForm]           = useState({ name: "", phone: "", message: "" });
-// for mobile screen view
 
-const [currentIndex, setCurrentIndex] = useState(0);
+  // Mobile Carousel
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
 
-const prevCard = () => setCurrentIndex((i) => Math.max(0, i - 1));
-const nextCard = () => setCurrentIndex((i) => Math.min(tourPackages.length - 1, i + 1));
+  const prevCard = () => setCurrentIndex((i) => Math.max(0, i - 1));
+  const nextCard = () => setCurrentIndex((i) => Math.min(tourPackages.length - 1, i + 1));
 
+  // Touch Handlers
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
 
-  const sliderRef = useRef(null);
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
 
-  const handleScroll = (direction) => {
-    if (sliderRef.current) {
-      sliderRef.current.scrollBy({ left: direction === "left" ? -380 : 380, behavior: "smooth" });
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      nextCard();
+    } else if (isRightSwipe) {
+      prevCard();
     }
+
+    setTouchStart(null);
+    setTouchEnd(null);
   };
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
@@ -392,7 +411,6 @@ const nextCard = () => setCurrentIndex((i) => Math.min(tourPackages.length - 1, 
   const VIEW_MODES = [
     { id: "grid",   label: "Grid",   icon: <LayoutGrid size={16} /> },
     { id: "list",   label: "List",   icon: <List size={16} /> },
-   ,
   ];
 
   return (
@@ -434,72 +452,74 @@ const nextCard = () => setCurrentIndex((i) => Math.min(tourPackages.length - 1, 
           </div>
         </div>
 
-      
-
         {/* ── GRID VIEW ─────────────────────────────────────── */}
-       {viewMode === "grid" && (
-  <div>
-    {/* Mobile: single card + arrows */}
-    <div className="sm:hidden">
-      <div className="relative">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentIndex}
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -40 }}
-            transition={{ type: "spring", stiffness: 280, damping: 26 }}
-          >
-            <GridCard pkg={tourPackages[currentIndex]} onSelect={setSelected} />
-          </motion.div>
-        </AnimatePresence>
-      </div>
+        {viewMode === "grid" && (
+          <div>
+            {/* Mobile: Swipeable single card */}
+            <div className="sm:hidden">
+              <div 
+                className="relative touch-pan-y"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              >
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentIndex}
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -50 }}
+                    transition={{ type: "spring", stiffness: 280, damping: 26 }}
+                  >
+                    <GridCard pkg={tourPackages[currentIndex]} onSelect={setSelected} />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
 
-      {/* Arrows + counter */}
-      <div className="flex items-center justify-between mt-4 px-1">
-        <button
-          onClick={prevCard}
-          disabled={currentIndex === 0}
-          className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white dark:bg-white/[0.04] border border-slate-200 dark:border-white/10 text-slate-500 dark:text-white/50 text-xs font-bold disabled:opacity-30 disabled:cursor-not-allowed hover:border-[#F6931F] hover:text-[#F6931F] transition-all shadow-sm"
-        >
-          <ArrowLeft size={13} /> Prev
-        </button>
+              {/* Arrows + counter */}
+              <div className="flex items-center justify-between mt-4 px-1">
+                <button
+                  onClick={prevCard}
+                  disabled={currentIndex === 0}
+                  className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white dark:bg-white/[0.04] border border-slate-200 dark:border-white/10 text-slate-500 dark:text-white/50 text-xs font-bold disabled:opacity-30 disabled:cursor-not-allowed hover:border-[#F6931F] hover:text-[#F6931F] transition-all shadow-sm"
+                >
+                  <ArrowLeft size={13} /> Prev
+                </button>
 
-        {/* Dot indicators */}
-        <div className="flex items-center gap-1.5">
-          {tourPackages.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrentIndex(i)}
-              className={`rounded-full transition-all duration-300 ${
-                i === currentIndex
-                  ? "w-5 h-2 bg-[#F6931F]"
-                  : "w-2 h-2 bg-slate-300 dark:bg-white/20 hover:bg-[#F6931F]/50"
-              }`}
-            />
-          ))}
-        </div>
+                <div className="flex items-center gap-1.5">
+                  {tourPackages.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrentIndex(i)}
+                      className={`rounded-full transition-all duration-300 ${
+                        i === currentIndex
+                          ? "w-5 h-2 bg-[#F6931F]"
+                          : "w-2 h-2 bg-slate-300 dark:bg-white/20 hover:bg-[#F6931F]/50"
+                      }`}
+                    />
+                  ))}
+                </div>
 
-        <button
-          onClick={nextCard}
-          disabled={currentIndex === tourPackages.length - 1}
-          className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white dark:bg-white/[0.04] border border-slate-200 dark:border-white/10 text-slate-500 dark:text-white/50 text-xs font-bold disabled:opacity-30 disabled:cursor-not-allowed hover:border-[#F6931F] hover:text-[#F6931F] transition-all shadow-sm"
-        >
-          Next <ArrowRight size={13} />
-        </button>
-      </div>
-    </div>
+                <button
+                  onClick={nextCard}
+                  disabled={currentIndex === tourPackages.length - 1}
+                  className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white dark:bg-white/[0.04] border border-slate-200 dark:border-white/10 text-slate-500 dark:text-white/50 text-xs font-bold disabled:opacity-30 disabled:cursor-not-allowed hover:border-[#F6931F] hover:text-[#F6931F] transition-all shadow-sm"
+                >
+                  Next <ArrowRight size={13} />
+                </button>
+              </div>
+            </div>
 
-    {/* Tablet/Desktop: normal grid */}
-    <div className="hidden sm:grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-      {tourPackages.map((pkg, i) => (
-        <motion.div key={pkg.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.06 }}>
-          <GridCard pkg={pkg} onSelect={setSelected} />
-        </motion.div>
-      ))}
-    </div>
-  </div>
-)}
+            {/* Tablet/Desktop: normal grid */}
+            <div className="hidden sm:grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+              {tourPackages.map((pkg, i) => (
+                <motion.div key={pkg.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.06 }}>
+                  <GridCard pkg={pkg} onSelect={setSelected} />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* ── LIST VIEW ─────────────────────────────────────── */}
         {viewMode === "list" && (
@@ -515,215 +535,205 @@ const nextCard = () => setCurrentIndex((i) => Math.min(tourPackages.length - 1, 
 
       {/* ── MODAL ─────────────────────────────────────────────── */}
       <AnimatePresence>
-  {selected && (
-    <motion.div
-      className="fixed inset-0 bg-black/80 backdrop-blur-xl flex items-center justify-center z-50 p-4"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      onClick={() => setSelected(null)}
-    >
-      <motion.div
-        initial={{ scale: 0.96, opacity: 0, y: 40 }}
-        animate={{ scale: 1, opacity: 1, y: 0 }}
-        exit={{ scale: 0.96, opacity: 0, y: 20 }}
-        transition={{ type: "spring", stiffness: 280, damping: 25 }}
-        onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-7xl bg-white dark:bg-[#0A1118] border border-white/10 dark:border-white/5 rounded-3xl overflow-hidden shadow-2xl max-h-[92vh] flex flex-col lg:flex-row"
-      >
-        {/* Left: Media Section */}
-        <div className="relative lg:w-[46%] shrink-0 min-h-[260px] lg:min-h-0 flex flex-col justify-end overflow-hidden">
-          <Image
-            src={selected.image}
-            alt={selected.title}
-            fill
-            className="object-cover"
-          />
-
-          {/* Enhanced Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20" />
-
-          {/* Subtle shine effect */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none" />
-
-          {/* Close Button */}
-          <button
+        {selected && (
+          <motion.div
+            className="fixed inset-0 bg-black/80 backdrop-blur-xl flex items-center justify-center z-50 p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             onClick={() => setSelected(null)}
-            className="absolute top-6 right-6 bg-black/60 hover:bg-black/80 backdrop-blur-md p-3 rounded-2xl text-white transition-all hover:scale-105 z-30"
           >
-            <X size={20} strokeWidth={2.5} />
-          </button>
+            <motion.div
+              initial={{ scale: 0.96, opacity: 0, y: 40 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.96, opacity: 0, y: 20 }}
+              transition={{ type: "spring", stiffness: 280, damping: 25 }}
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-7xl bg-white dark:bg-[#0A1118] border border-white/10 dark:border-white/5 rounded-3xl overflow-hidden shadow-2xl max-h-[92vh] flex flex-col lg:flex-row"
+            >
+              {/* Left: Media Section */}
+              <div className="relative lg:w-[46%] shrink-0 min-h-[260px] lg:min-h-0 flex flex-col justify-end overflow-hidden">
+                <Image
+                  src={selected.image}
+                  alt={selected.title}
+                  fill
+                  className="object-cover"
+                />
 
-          {/* Badges */}
-          <div className="absolute top-6 left-6 flex gap-2 z-20">
-            <span className="bg-black/70 border border-white/20 backdrop-blur-md text-white text-xs px-3.5 py-1.5 rounded-2xl font-semibold shadow-lg">
-              {selected.flightBadge}
-            </span>
-            <span className="bg-gradient-to-r from-[#F6931F] to-orange-600 text-white text-xs px-3.5 py-1.5 rounded-2xl font-bold uppercase tracking-widest shadow-lg">
-              {selected.urgencyTag}
-            </span>
-          </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20" />
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none" />
 
-          {/* Info Overlay */}
-          <div className="relative z-10 p-8 pb-9">
-            <span className="inline-block bg-white/10 backdrop-blur-md border border-white/20 text-white/90 text-xs font-bold uppercase tracking-[2px] px-4 py-2 rounded-2xl mb-3">
-              {selected.subtitle}
-            </span>
+                <button
+                  onClick={() => setSelected(null)}
+                  className="absolute top-6 right-6 bg-black/60 hover:bg-black/80 backdrop-blur-md p-3 rounded-2xl text-white transition-all hover:scale-105 z-30"
+                >
+                  <X size={20} strokeWidth={2.5} />
+                </button>
 
-            <h2 className="text-4xl lg:text-5xl font-black text-white leading-none tracking-tighter mb-3">
-              {selected.title}
-            </h2>
+                <div className="absolute top-6 left-6 flex gap-2 z-20">
+                  <span className="bg-black/70 border border-white/20 backdrop-blur-md text-white text-xs px-3.5 py-1.5 rounded-2xl font-semibold shadow-lg">
+                    {selected.flightBadge}
+                  </span>
+                  <span className="bg-gradient-to-r from-[#F6931F] to-orange-600 text-white text-xs px-3.5 py-1.5 rounded-2xl font-bold uppercase tracking-widest shadow-lg">
+                    {selected.urgencyTag}
+                  </span>
+                </div>
 
-            <p className="text-white/80 flex items-center gap-2 text-lg mb-5">
-              <MapPin size={20} className="text-[#F6931F]" /> {selected.location}
-            </p>
+                <div className="relative z-10 p-8 pb-9">
+                  <span className="inline-block bg-white/10 backdrop-blur-md border border-white/20 text-white/90 text-xs font-bold uppercase tracking-[2px] px-4 py-2 rounded-2xl mb-3">
+                    {selected.subtitle}
+                  </span>
 
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="line-through text-white/40 text-sm font-medium">
-                  £{selected.originalPrice}
-                </p>
-                <p className="text-4xl font-black text-[#F6931F] tracking-tighter">
-                  £{selected.discountedPrice}
-                </p>
-              </div>
+                  <h2 className="text-4xl lg:text-5xl font-black text-white leading-none tracking-tighter mb-3">
+                    {selected.title}
+                  </h2>
 
-              <StarRow
-                rating={selected.rating}
-                reviewsCount={selected.reviewsCount}
-                size={18}
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Right: Content */}
-        <div className="flex-1 flex flex-col bg-white dark:bg-[#0A1118] min-h-0">
-          {/* Tab Bar */}
-          <div className="flex border-b border-slate-100 dark:border-white/10 px-8 flex-shrink-0">
-            {["Overview", "Inquire"].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`py-5 px-6 text-sm font-semibold border-b-2 transition-all relative -mb-px ${
-                  activeTab === tab
-                    ? "border-[#F6931F] text-[#F6931F]"
-                    : "border-transparent text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300"
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
-
-          {/* Content Area */}
-          <div className="flex-1 overflow-y-auto p-8 custom-scrollbar">
-            {activeTab === "Overview" && (
-              <div className="space-y-8">
-                {/* Highlights */}
-                <div>
-                  <p className="uppercase text-xs tracking-[2px] font-bold text-slate-400 dark:text-slate-500 mb-4">
-                    Highlights
+                  <p className="text-white/80 flex items-center gap-2 text-lg mb-5">
+                    <MapPin size={20} className="text-[#F6931F]" /> {selected.location}
                   </p>
-                  <div className="space-y-3">
-                    {selected.highlights.map((h, i) => (
-                      <div
-                        key={i}
-                        className="flex items-start gap-3 bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-2xl p-4"
-                      >
-                        <div className="w-2 h-2 rounded-full bg-[#F6931F] mt-2.5 shrink-0" />
-                        <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                          {h}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
 
-                <InclusionBadges inclusions={selected.inclusions} />
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="line-through text-white/40 text-sm font-medium">
+                        £{selected.originalPrice}
+                      </p>
+                      <p className="text-4xl font-black text-[#F6931F] tracking-tighter">
+                        £{selected.discountedPrice}
+                      </p>
+                    </div>
 
-                {/* Tier & Plan */}
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-2xl p-5">
-                    <p className="text-xs uppercase tracking-widest text-slate-400">Tier</p>
-                    <p className="font-bold text-xl mt-1 text-slate-800 dark:text-white">
-                      {selected.tier}
-                    </p>
-                  </div>
-                  <div className="bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-2xl p-5">
-                    <p className="text-xs uppercase tracking-widest text-slate-400">Plan</p>
-                    <p className="font-bold text-xl mt-1 text-slate-800 dark:text-white">
-                      {selected.plan}
-                    </p>
+                    <StarRow
+                      rating={selected.rating}
+                      reviewsCount={selected.reviewsCount}
+                      size={18}
+                    />
                   </div>
                 </div>
               </div>
-            )}
 
-            {activeTab === "Inquire" && (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <p className="text-slate-500 dark:text-slate-400 text-sm">
-                  Fill in your details and we&apos;ll get back to you within 2 hours.
-                </p>
-
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  placeholder="Your Full Name"
-                  value={form.name}
-                  onChange={handleChange}
-                  className="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:border-[#F6931F] focus:ring-1 focus:ring-[#F6931F]/30 outline-none transition-all text-sm"
-                />
-
-                <input
-                  type="tel"
-                  name="phone"
-                  required
-                  placeholder="Phone Number"
-                  value={form.phone}
-                  onChange={handleChange}
-                  className="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:border-[#F6931F] focus:ring-1 focus:ring-[#F6931F]/30 outline-none transition-all text-sm"
-                />
-
-                <textarea
-                  name="message"
-                  rows={4}
-                  placeholder="Any special requests or modifications required?"
-                  value={form.message}
-                  onChange={handleChange}
-                  className="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:border-[#F6931F] focus:ring-1 focus:ring-[#F6931F]/30 outline-none transition-all text-sm resize-none"
-                />
-
-                <div className="flex items-center gap-2 text-xs text-slate-400 dark:text-slate-500 pt-2">
-                  <Lock size={14} />
-                  Your details are private and won&apos;t be shared.
+              {/* Right: Content */}
+              <div className="flex-1 flex flex-col bg-white dark:bg-[#0A1118] min-h-0">
+                <div className="flex border-b border-slate-100 dark:border-white/10 px-8 flex-shrink-0">
+                  {["Overview", "Contact us"].map((tab) => (
+                    <button
+                      key={tab}
+                      onClick={() => setActiveTab(tab)}
+                      className={`py-5 px-6 text-sm font-semibold border-b-2 transition-all relative -mb-px ${
+                        activeTab === tab
+                          ? "border-[#F6931F] text-[#F6931F]"
+                          : "border-transparent text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300"
+                      }`}
+                    >
+                      {tab}
+                    </button>
+                  ))}
                 </div>
 
-                <div className="grid grid-cols-2 gap-3 pt-4">
-                  <button
-                    type="submit"
-                    className="flex items-center justify-center gap-2 bg-[#F6931F] hover:bg-orange-600 text-white font-bold py-4 rounded-2xl transition-all active:scale-[0.985] shadow-lg shadow-orange-600/30"
-                  >
-                    <Send size={17} /> Send Inquiry
-                  </button>
+                <div className="flex-1 overflow-y-auto p-8 custom-scrollbar">
+                  {activeTab === "Overview" && (
+                    <div className="space-y-8">
+                      <div>
+                        <p className="uppercase text-xs tracking-[2px] font-bold text-slate-400 dark:text-slate-500 mb-4">
+                          Highlights
+                        </p>
+                        <div className="space-y-3">
+                          {selected.highlights.map((h, i) => (
+                            <div
+                              key={i}
+                              className="flex items-start gap-3 bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-2xl p-4"
+                            >
+                              <div className="w-2 h-2 rounded-full bg-[#F6931F] mt-2.5 shrink-0" />
+                              <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                                {h}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
 
-                  <button
-                    type="button"
-                    onClick={handleWhatsApp}
-                    className="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-green-600 text-white font-bold py-4 rounded-2xl transition-all active:scale-[0.985]"
-                  >
-                    <MessageCircle size={17} /> WhatsApp
-                  </button>
+                      <InclusionBadges inclusions={selected.inclusions} />
+
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-2xl p-5">
+                          <p className="text-xs uppercase tracking-widest text-slate-400">Tier</p>
+                          <p className="font-bold text-xl mt-1 text-slate-800 dark:text-white">
+                            {selected.tier}
+                          </p>
+                        </div>
+                        <div className="bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-2xl p-5">
+                          <p className="text-xs uppercase tracking-widest text-slate-400">Plan</p>
+                          <p className="font-bold text-xl mt-1 text-slate-800 dark:text-white">
+                            {selected.plan}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {activeTab === "Contact us" && (
+                    <form onSubmit={handleSubmit} className="space-y-5">
+                      <p className="text-slate-500 dark:text-slate-400 text-sm">
+                        Fill in your details and we&apos;ll get back to you within 2 hours.
+                      </p>
+
+                      <input
+                        type="text"
+                        name="name"
+                        required
+                        placeholder="Your Full Name"
+                        value={form.name}
+                        onChange={handleChange}
+                        className="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:border-[#F6931F] focus:ring-1 focus:ring-[#F6931F]/30 outline-none transition-all text-sm"
+                      />
+
+                      <input
+                        type="tel"
+                        name="phone"
+                        required
+                        placeholder="Phone Number"
+                        value={form.phone}
+                        onChange={handleChange}
+                        className="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:border-[#F6931F] focus:ring-1 focus:ring-[#F6931F]/30 outline-none transition-all text-sm"
+                      />
+
+                      <textarea
+                        name="message"
+                        rows={4}
+                        placeholder="Any special requests or modifications required?"
+                        value={form.message}
+                        onChange={handleChange}
+                        className="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:border-[#F6931F] focus:ring-1 focus:ring-[#F6931F]/30 outline-none transition-all text-sm resize-none"
+                      />
+
+                      <div className="flex items-center gap-2 text-xs text-slate-400 dark:text-slate-500 pt-2">
+                        <Lock size={14} />
+                        Your details are private and won&apos;t be shared.
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-3 pt-4">
+                        <button
+                          type="submit"
+                          className="flex items-center justify-center gap-2 bg-[#F6931F] hover:bg-orange-600 text-white font-bold py-4 rounded-2xl transition-all active:scale-[0.985] shadow-lg shadow-orange-600/30"
+                        >
+                          <Send size={17} /> Send Inquiry
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={handleWhatsApp}
+                          className="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-green-600 text-white font-bold py-4 rounded-2xl transition-all active:scale-[0.985]"
+                        >
+                          <MessageCircle size={17} /> WhatsApp
+                        </button>
+                      </div>
+                    </form>
+                  )}
                 </div>
-              </form>
-            )}
-          </div>
-        </div>
-      </motion.div>
-    </motion.div>
-  )}
-</AnimatePresence>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

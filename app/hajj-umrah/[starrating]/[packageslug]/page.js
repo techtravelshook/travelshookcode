@@ -170,21 +170,32 @@ function SectionHeading({ children, subtitle }) {
 // ─── Main Page Component ──────────────────────────────────────────────────────
 
 export default async function MasterPackageDetailPage({ params }) {
-  const { starrating, packageslug } = await params;
+  const { starrating, packageslug } =  params;
+  
   let currentPackage = null;
 
   try {
-   const res = await fetch(
-  `/api/packages/${packageslug}`,
-  { cache: "no-store" }
-);
-    if (!res.ok) notFound();
-    const data = await res.json();
-    currentPackage = data.data;
-  } catch (err) {
-    console.error("Package fetch error:", err);
-    notFound();
-  }
+  // Point to the demo domain to match your active staging database endpoint
+  const apiBase = process.env.NEXT_PUBLIC_API_BASE || 'https://demo.travelhook.co.uk';
+  const cleanBase = apiBase.endsWith('/') ? apiBase.slice(0, -1) : apiBase;
+
+  const res = await fetch(
+    `${cleanBase}/api/packages/${packageslug}`,
+    { cache: "no-store" }
+  );
+  if (!res.ok) notFound();
+  const data = await res.json();
+  
+  console.log("Slug:", packageslug);
+  console.log("Status:", res.status);
+  console.log("API BASE:", process.env.NEXT_PUBLIC_API_BASE);
+  
+  currentPackage = data.data;
+} catch (err) {
+  console.error("Package fetch error:", err);
+  notFound();
+}
+
 
   if (!currentPackage) notFound();
 

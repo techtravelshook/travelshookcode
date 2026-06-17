@@ -41,3 +41,8 @@ yarn-error.log*
 next-env.d.ts
 
 /lib/generated/prisma
+# Production Media Optimizations (Removed leading slashes)
+node_modules/
+.next/
+out/
+public/imgs/
