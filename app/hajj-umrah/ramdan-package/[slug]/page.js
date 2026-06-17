@@ -29,7 +29,7 @@ const DynamicPackageDetailPage = () => {
   const fetchPackage = async () => {
     try {
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_BASE}/api/packages/${slug}`
+        `/api/packages/${slug}`
       );
 
       setActivePackage(res.data.data);

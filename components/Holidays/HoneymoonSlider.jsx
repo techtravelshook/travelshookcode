@@ -5,17 +5,8 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight, Image as ImageIcon, X, Expand } from "lucide-react";
 
 export default function ImageSlider({ images = [], title = "Package Image" }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+   const [currentIndex, setCurrentIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  if (!images || images.length === 0) {
-    return (
-      <div className="w-full h-full bg-gradient-to-br from-[#0B1F33] to-[#0F2A45] flex flex-col items-center justify-center text-slate-500 gap-2">
-        <ImageIcon size={40} />
-        <span className="text-xs font-semibold uppercase tracking-[0.2em]">No Gallery Images Available</span>
-      </div>
-    );
-  }
 
   const handlePrev = (e) => {
     e?.stopPropagation();
@@ -48,6 +39,16 @@ export default function ImageSlider({ images = [], title = "Package Image" }) {
       document.body.style.overflow = "";
     };
   }, [isModalOpen]);
+
+  // ✅ MOVE THE EARLY RETURN HERE - AFTER ALL HOOKS
+  if (!images || images.length === 0) {
+    return (
+      <div className="w-full h-full bg-gradient-to-br from-[#0B1F33] to-[#0F2A45] flex flex-col items-center justify-center text-slate-500 gap-2">
+        <ImageIcon size={40} />
+        <span className="text-xs font-semibold uppercase tracking-[0.2em]">No Gallery Images Available</span>
+      </div>
+    );
+  }
 
   return (
     <>

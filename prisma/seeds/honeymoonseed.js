@@ -1770,7 +1770,632 @@ const travelPackage = [
         guideIncluded: true
       }
     }
+  },
+  // New Packages..,.
+  {
+  title: "Romantic Croatia Adriatic Elegance & Coastline Honeymoon",
+  slug: "romantic-croatia-adriatic-elegance-coastline-honeymoon",
+  shortDesc:
+    "A sophisticated Adriatic escape pairing the historic architectural opulence of Dubrovnik with the serene beachfront luxury of Split.",
+  description:
+    "Experience timeless charm and coastal romance in Croatia. Stay at world-class 5-star hotels, wander through fairy-tale medieval lanes, and completely unwind with private beach access and luxury spa treatments overlooking the Adriatic Sea.",
+
+  price: 2699, // Estimated base price in £ pp
+  duration: {
+    days: 5,
+    nights: 4
+  },
+
+  month: "june",
+  star: 5,
+  type: "honeymoon",
+
+  country: "Croatia",
+  city: "Dubrovnik & Split",
+  category: "honeymoon",
+  featured: true,
+
+  // 1. Hotels (One-to-Many nested models)
+  hotels: {
+    create: [
+      {
+        name: "Villa Dubrovnik",
+        city: "Dubrovnik",
+        durationNights: 2,
+        starRating: 5,
+        roomType: "Double / Twin Honeymoon Room",
+        description:
+          "Luxury cliffside hotel with panoramic views of the Adriatic Sea, perfect for romantic stays."
+      },
+      {
+        name: "Hotel Park Split",
+        city: "Split",
+        durationNights: 2,
+        starRating: 5,
+        roomType: "Double / Twin Honeymoon Room",
+        description:
+          "Elegant beachfront hotel offering private beaches, spa services, and easy access to Diocletian’s Palace."
+      }
+    ]
+  },
+
+  // 2. Images
+  images: {
+    create: [
+      { url: "imgs/honeymoon/croatia1.jpg" },
+      { url: "imgs/honeymoon/croatia2.jpg" },
+      { url: "imgs/honeymoon/croatia3.jpg" },
+      { url: "imgs/honeymoon/croatia4.jpg" }
+    ]
+  },
+
+  // 3. Flights
+  flights: {
+    create: {
+      departureCities: ["Lahore", "Islamabad", "Karachi"],
+      destination: "Dubrovnik Airport (arrival) & Split Airport (departure)",
+      airlines: [
+        "Qatar Airways",
+        "Emirates",
+        "Turkish Airlines",
+        "Etihad Airways"
+      ],
+      classOption: "Economy Class (Business Class upgrades available)"
+    }
+  },
+
+  // 4. Transportation
+  transportation: {
+    create: {
+      type: "Private Air-Conditioned Vehicle",
+      routeDetails:
+        "Dubrovnik Airport → Dubrovnik Hotel → Split → Split Airport for departure",
+      extras:
+        "Private transfer and scenic drive along the coast. Optional scenic drives along the Dalmatian coast included."
+    }
+  },
+
+  // 5. Visa Assistance
+  visaAssistance: {
+    create: {
+      supportedRegion: "Schengen Tourist Visa support for Pakistani travelers",
+      agency: "VFS Global",
+      requiredDocuments: [
+        "Valid passport",
+        "Passport-size photos",
+        "Flight reservations",
+        "Hotel confirmations",
+        "Travel insurance",
+        "Bank statements"
+      ]
+    }
+  },
+
+  // 6. Sightseeing / Activities
+  sightseeing: {
+    create: {
+      items: [
+        "Dubrovnik Old Town – Enchanting walks through a historic medieval center",
+        "City Walls – Walk the iconic stone walls with sweeping sea views",
+        "Fort Lovrijenac – Majestic fortress guarding the cliffs of Dubrovnik",
+        "Rector’s Palace – Explore Gothic-Renaissance architecture and local history",
+        "Diocletian's Palace – Ancient Roman palace at the heart of Split",
+        "Riva Promenade – Vibrant waterfront walk lined with palm trees",
+        "Marjan Hill – Scenic nature trails and panoramic views of Split",
+        "Cathedral of Saint Domnius – Historic landmark and historic tower",
+        "Lokrum Island – Optional romantic island excursion from Dubrovnik"
+      ],
+      romanticExperiences: [
+        "Private sunset cruise in Dubrovnik navigating the Adriatic waters",
+        "Couples specialized luxury spa and thermal wellness treatments",
+        "Romantic candlelight dinner in Old Town Dubrovnik",
+        "Wine tasting tour in Dalmatian vineyards sampling regional blends",
+        "Helicopter ride along the Adriatic coast for breathtaking aerial views",
+        "Private boat trip to the Blue Lagoon from Split",
+        "Sunset cruise along the Dalmatian coast"
+      ],
+      guideIncluded: true
+    }
   }
+},
+{
+  title: "Romantic Bulgaria Baltic Elegance & Coastline Honeymoon", // Matching your pattern, or "Romantic Bulgaria Mountain & Heritage Honeymoon"
+  slug: "romantic-bulgaria-mountain-heritage-honeymoon",
+  shortDesc:
+    "A sophisticated Balkan escape pairing the historic architectural opulence of Sofia and Plovdiv with the serene mountain luxury of Bansko.",
+  description:
+    "Experience timeless charm and alpine romance in Bulgaria. Stay at world-class 5-star hotels, wander through fairy-tale medieval lanes in Plovdiv's Old Town, and completely unwind with luxury spa treatments overlooking the breathtaking Pirin mountains.",
+
+  price: 2199, // Estimated base price in £ pp
+  duration: {
+    days: 6,
+    nights: 5
+  },
+
+  month: "june",
+  star: 5,
+  type: "honeymoon",
+
+  country: "Bulgaria",
+  city: "Sofia, Plovdiv & Bansko",
+  category: "honeymoon",
+  featured: true,
+
+  // 1. Hotels (One-to-Many nested models)
+  hotels: {
+    create: [
+      {
+        name: "Sense Hotel Sofia",
+        city: "Sofia",
+        durationNights: 2,
+        starRating: 5,
+        roomType: "Double / Twin Honeymoon Room",
+        description:
+          "Luxury city-center hotel offering panoramic views, modern amenities, and romantic ambiance."
+      },
+      {
+        name: "Hotel Evmolpia",
+        city: "Plovdiv / Rose Valley",
+        durationNights: 2,
+        starRating: 4,
+        roomType: "Double / Twin Honeymoon Room",
+        description:
+          "Charming boutique hotel in Plovdiv’s Old Town, perfect for couples exploring historic streets."
+      },
+      {
+        name: "Premier Luxury Mountain Resort",
+        city: "Bansko / Bulgarian Mountains",
+        durationNights: 1,
+        starRating: 5,
+        roomType: "Double / Twin Honeymoon Room",
+        description:
+          "Luxury mountain resort ideal for romantic getaway and scenic nature experiences."
+      }
+    ]
+  },
+
+  // 2. Images
+  images: {
+    create: [
+      { url: "imgs/honeymoon/bulgaria1.jpg" },
+      { url: "imgs/honeymoon/bulgaria2.jpg" },
+      { url: "imgs/honeymoon/bulgaria3.jpg" },
+      { url: "imgs/honeymoon/bulgaria4.jpg" }
+    ]
+  },
+
+  // 3. Flights
+  flights: {
+    create: {
+      departureCities: ["Lahore", "Islamabad", "Karachi"],
+      destination: "Sofia Airport (SOF) (arrival and departure)",
+      airlines: [
+        "Qatar Airways",
+        "Emirates",
+        "Turkish Airlines",
+        "Etihad Airways"
+      ],
+      classOption: "Economy Class (Business Class upgrades available)"
+    }
+  },
+
+  // 4. Transportation
+  transportation: {
+    create: {
+      type: "Private Air-Conditioned Vehicle",
+      routeDetails:
+        "Sofia Airport → Sofia Hotel → Plovdiv → Bansko → Sofia Airport for departure",
+      extras:
+        "Optional scenic drives included through the beautiful Rhodope and Pirin mountains."
+    }
+  },
+
+  // 5. Visa Assistance
+  visaAssistance: {
+    create: {
+      supportedRegion: "Schengen Tourist Visa support for Pakistani travelers",
+      agency: "VFS Global",
+      requiredDocuments: [
+        "Valid passport",
+        "Passport-size photos",
+        "Flight reservations",
+        "Hotel confirmations",
+        "Travel insurance",
+        "Bank statements"
+      ]
+    }
+  },
+
+  // 6. Sightseeing / Activities
+  sightseeing: {
+    create: {
+      items: [
+        "Alexander Nevsky Cathedral – Marvel at the iconic gold-domed symbol of Sofia",
+        "Vitosha Boulevard – Enjoy a romantic stroll down Sofia's premium pedestrian avenue",
+        "Boyana Church – Explore historic medieval frescoes inside this UNESCO site",
+        "National Palace of Culture – See the sprawling park and cultural hub of the capital",
+        "Plovdiv Old Town – Enchanting walks through colourful 19th-century Bulgarian Revival houses",
+        "Ancient Theatre of Philippopolis – One of the world's best-preserved Roman theatres",
+        "Kapana Creative District – Walk through trendy pedestrian alleys and artistic cafes",
+        "Pirin National Park – Take in majestic alpine scenery, nature walks, and hiking trails",
+        "Bansko Cable Car – Ride up into the high peaks for panoramic mountain views"
+      ],
+      romanticExperiences: [
+        "Private sunset cable car ride in Bansko offering sweeping alpine vistas",
+        "Couples specialized luxury spa & wellness treatments at Premier Luxury Mountain Resort",
+        "Candlelight dinner in Plovdiv Old Town surrounded by historic romance",
+        "Wine tasting in the Rose Valley sampling premium local Bulgarian vintages",
+        "Romantic evening walk and dining setup in Sofia city center"
+      ],
+      guideIncluded: true
+    }
+  }
+},
+{
+  title: "Romantic Slovakia Alpine Romance & Imperial Charm Honeymoon",
+  slug: "romantic-slovakia-alpine-romance-imperial-charm-honeymoon",
+  shortDesc:
+    "A sophisticated European escape pairing the historic architectural opulence of Bratislava with the serene mountain luxury of the High Tatras.",
+  description:
+    "Experience timeless charm and alpine romance in Slovakia. Stay at world-class 5-star hotels, wander through fairy-tale medieval lanes in Bratislava's Old Town, and completely unwind with luxury mountain spa treatments overlooking the breathtaking High Tatras peaks.",
+
+  price: 2249, // Estimated base price in £ pp
+  duration: {
+    days: 5,
+    nights: 4
+  },
+
+  month: "june",
+  star: 5,
+  type: "honeymoon",
+
+  country: "Slovakia",
+  city: "Bratislava & High Tatras",
+  category: "honeymoon",
+  featured: true,
+
+  // 1. Hotels (One-to-Many nested models)
+  hotels: {
+    create: [
+      {
+        name: "Marrol's Boutique Hotel",
+        city: "Bratislava",
+        durationNights: 2,
+        starRating: 5,
+        roomType: "Double / Twin Honeymoon Room",
+        description:
+          "Luxury boutique hotel in the heart of Bratislava Old Town, with romantic city views and elegant interiors."
+      },
+      {
+        name: "Grand Hotel Praha",
+        city: "High Tatras",
+        durationNights: 2,
+        starRating: 5,
+        roomType: "Double / Twin Honeymoon Room",
+        description:
+          "Scenic mountain resort offering stunning views of the High Tatras, ideal for couples and romantic getaways."
+      }
+    ]
+  },
+
+  // 2. Images
+  images: {
+    create: [
+      { url: "imgs/honeymoon/slovakia1.jpg" },
+      { url: "imgs/honeymoon/slovakia2.jpg" },
+      { url: "imgs/honeymoon/slovakia3.jpg" },
+      { url: "imgs/honeymoon/slovakia4.jpg" }
+    ]
+  },
+
+  // 3. Flights
+  flights: {
+    create: {
+      departureCities: ["Lahore", "Islamabad", "Karachi"],
+      destination: "Bratislava Airport (BTS) (arrival and departure)",
+      airlines: [
+        "Qatar Airways",
+        "Emirates",
+        "Turkish Airlines",
+        "Etihad Airways",
+        "LOT Polish Airlines"
+      ],
+      classOption: "Economy Class (Business Class upgrades available)"
+    }
+  },
+
+  // 4. Transportation
+  transportation: {
+    create: {
+      type: "Private Air-Conditioned Vehicle",
+      routeDetails:
+        "Bratislava Airport → Bratislava Hotel → High Tatras Hotel → Bratislava Airport for departure",
+      extras:
+        "Optional scenic drives included through the beautiful Slovak countryside and majestic mountain roads."
+    }
+  },
+
+  // 5. Visa Assistance
+  visaAssistance: {
+    create: {
+      supportedRegion: "Schengen Tourist Visa support for Pakistani travelers",
+      agency: "VFS Global",
+      requiredDocuments: [
+        "Valid passport",
+        "Passport-size photos",
+        "Flight reservations",
+        "Hotel confirmations",
+        "Travel insurance",
+        "Bank statements"
+      ]
+    }
+  },
+
+  // 6. Sightseeing / Activities
+  sightseeing: {
+    create: {
+      items: [
+        "Bratislava Castle – Landmark fortress offering sweeping panoramic views over the Danube River",
+        "Bratislava Old Town – Enchanting walks through historic, narrow cobblestone lanes",
+        "St. Martin's Cathedral – Explore the historic 15th-century Gothic coronation church",
+        "Michael's Gate – Pass through the last standing medieval gate of the city's fortifications",
+        "Štrbské Pleso – Stroll hand-in-hand around a breathtakingly scenic glacial lake in the Tatras",
+        "Lomnický štít – Ride a high-altitude cable car up to one of the highest peaks in the High Tatras",
+        "Devin Castle – Optional excursion to romantic cliffside castle ruins overlooking the Danube and Morava rivers"
+      ],
+      romanticExperiences: [
+        "Private sunset cable car ride in the High Tatras offering majestic alpine vistas",
+        "Couples specialized luxury spa & wellness treatments at the premium mountain resort",
+        "Romantic dinner with an unobstructed, panoramic view of the Tatras mountains",
+        "Charming horse carriage ride traversing the medieval streets of Bratislava Old Town",
+        "Exclusive wine tasting tour through the historic Slovak vineyards"
+      ],
+      guideIncluded: true
+    }
+  }
+},
+{
+  title: "Romantic Hungary Danube Elegance & Imperial Romance Honeymoon",
+  slug: "romantic-hungary-danube-elegance-imperial-romance-honeymoon",
+  shortDesc:
+    "A sophisticated European escape pairing the historic architectural opulence of Budapest with the serene luxury of a private Danube retreat.",
+  description:
+    "Experience timeless charm and architectural romance in Hungary. Stay at the world-class 5-star Four Seasons Hotel Gresham Palace, wander through fairy-tale castle districts, and completely unwind with private thermal spa treatments overlooking the majestic Danube River.",
+
+  price: 2499, // Estimated base price in £ pp
+  duration: {
+    days: 5,
+    nights: 4
+  },
+
+  month: "june",
+  star: 5,
+  type: "honeymoon",
+
+  country: "Hungary",
+  city: "Budapest",
+  category: "honeymoon",
+  featured: true,
+
+  // 1. Hotels (One-to-Many nested models)
+  hotels: {
+    create: [
+      {
+        name: "Four Seasons Hotel Gresham Palace",
+        city: "Budapest",
+        durationNights: 4,
+        starRating: 5,
+        roomType: "Double / Twin Honeymoon Room",
+        description:
+          "Luxury hotel overlooking the Danube River with elegant Art Nouveau architecture, ideal for romantic stays."
+      }
+    ]
+  },
+
+  // 2. Images
+  images: {
+    create: [
+      { url: "imgs/honeymoon/hungary1.jpg" },
+      { url: "imgs/honeymoon/hungary2.jpg" },
+      { url: "imgs/honeymoon/hungary3.jpg" },
+      { url: "imgs/honeymoon/hungary4.jpg" }
+    ]
+  },
+
+  // 3. Flights
+  flights: {
+    create: {
+      departureCities: ["Lahore", "Islamabad", "Karachi"],
+      destination: "Budapest Ferenc Liszt International Airport (BUD) (arrival and departure)",
+      airlines: [
+        "Qatar Airways",
+        "Emirates",
+        "Turkish Airlines",
+        "Etihad Airways",
+        "LOT Polish Airlines"
+      ],
+      classOption: "Economy Class (Business Class upgrades available)"
+    }
+  },
+
+  // 4. Transportation
+  transportation: {
+    create: {
+      type: "Private Air-Conditioned Vehicle",
+      routeDetails:
+        "Budapest Airport → Hotel → Budapest Airport for departure",
+      extras:
+        "Optional scenic drives included along the Danube River and the picturesque Buda Hills."
+    }
+  },
+
+  // 5. Visa Assistance
+  visaAssistance: {
+    create: {
+      supportedRegion: "Schengen Tourist Visa support for Pakistani travelers",
+      agency: "VFS Global",
+      requiredDocuments: [
+        "Valid passport",
+        "Passport-size photos",
+        "Flight reservations",
+        "Hotel confirmations",
+        "Travel insurance",
+        "Bank statements"
+      ]
+    }
+  },
+
+  // 6. Sightseeing / Activities
+  sightseeing: {
+    create: {
+      items: [
+        "Buda Castle – Explore the grand historical palace complex overlooking the capital city",
+        "Hungarian Parliament Building – Marvel at the magnificent neo-Gothic icon along the riverbanks",
+        "Fisherman's Bastion – Take romantic photos at the fairytale panoramic terrace and towers",
+        "Chain Bridge – Stroll across the landmark 19th-century suspension bridge connecting Buda and Pest",
+        "St. Stephen's Basilica – Visit the neoclassical cathedral anchoring the heart of the city",
+        "Danube Bend – Optional day trip excursion to the scenic, winding river landscape and historic towns"
+      ],
+      romanticExperiences: [
+        "Private sunset cruise on the Danube River with spectacular illuminated city views",
+        "Couples specialized luxury spa and private thermal bath experience at Széchenyi Thermal Bath",
+        "Candlelight dinner with sweeping panoramic city views at a premium venue",
+        "Charming horse-drawn carriage ride through the cobblestone alleys of the Old Town",
+        "Exclusive wine tasting tour through historic Hungarian vineyards sampling regional varieties"
+      ],
+      guideIncluded: true
+    }
+  }
+},
+{
+  title: "Romantic Romania Transylvanian Castles & Imperial Romance Honeymoon",
+  slug: "romantic-romania-transylvanian-castles-imperial-romance-honeymoon",
+  shortDesc:
+    "A sophisticated European escape pairing the historic architectural opulence of Bucharest with the serene castle luxury of Transylvania.",
+  description:
+    "Experience timeless charm and architectural romance in Romania. Stay at world-class 5-star properties like the historic InterContinental Athenee Palace Bucharest, wander through fairy-tale medieval lanes in Brașov, and completely unwind with luxury spa treatments looking out toward the Carpathian Mountains.",
+
+  price: 2349, // Estimated base price in £ pp
+  duration: {
+    days: 6,
+    nights: 5
+  },
+
+  month: "june",
+  star: 5,
+  type: "honeymoon",
+
+  country: "Romania",
+  city: "Bucharest & Brașov",
+  category: "honeymoon",
+  featured: true,
+
+  // 1. Hotels (One-to-Many nested models)
+  hotels: {
+    create: [
+      {
+        name: "InterContinental Athenee Palace Bucharest", // Note: Formally Athenee Palace Hilton
+        city: "Bucharest",
+        durationNights: 2,
+        starRating: 5,
+        roomType: "Double / Twin Honeymoon Room",
+        description:
+          "Luxury hotel located in central Bucharest with elegant rooms and historic charm, ideal for honeymoon stays."
+      },
+      {
+        name: "Aro Palace Hotel",
+        city: "Brașov / Transylvania",
+        durationNights: 3,
+        starRating: 5,
+        roomType: "Double / Twin Honeymoon Room",
+        description:
+          "Boutique mountain hotel near the Carpathians, perfect for romantic escapes and exploring castles."
+      }
+    ]
+  },
+
+  // 2. Images
+  images: {
+    create: [
+      { url: "imgs/honeymoon/romania1.jpg" },
+      { url: "imgs/honeymoon/romania2.jpg" },
+      { url: "imgs/honeymoon/romania3.jpg" },
+      { url: "imgs/honeymoon/romania4.jpg" }
+    ]
+  },
+
+  // 3. Flights
+  flights: {
+    create: {
+      departureCities: ["Lahore", "Islamabad", "Karachi"],
+      destination: "Bucharest Henri Coandă International Airport (OTP) (arrival and departure)",
+      airlines: [
+        "Qatar Airways",
+        "Emirates",
+        "Turkish Airlines",
+        "Etihad Airways"
+      ],
+      classOption: "Economy Class (Business Class upgrades available)"
+    }
+  },
+
+  // 4. Transportation
+  transportation: {
+    create: {
+      type: "Private Air-Conditioned Vehicle",
+      routeDetails:
+        "Bucharest Airport → Bucharest Hotel → Brașov / Sinaia → Bucharest Airport for departure",
+      extras:
+        "Optional scenic drives included through the beautiful Transylvanian countryside and the majestic Carpathian Mountains."
+    }
+  },
+
+  // 5. Visa Assistance
+  visaAssistance: {
+    create: {
+      supportedRegion: "Schengen Tourist Visa support for Pakistani travelers",
+      agency: "VFS Global",
+      requiredDocuments: [
+        "Valid passport",
+        "Passport-size photos",
+        "Flight reservations",
+        "Hotel confirmations",
+        "Travel insurance",
+        "Bank statements"
+      ]
+    }
+  },
+
+  // 6. Sightseeing / Activities
+  sightseeing: {
+    create: {
+      items: [
+        "Palace of the Parliament – Tour the colossal architectural icon and world's second-largest administrative building",
+        "Bucharest Old Town – Enjoy romantic strolls through the lively historic streets of the Lipscani district",
+        "Romanian Athenaeum – Marvel at the grand neoclassical concert hall anchoring the heart of the capital",
+        "Stavropoleos Monastery – Discover the tranquil courtyard and ornate Brâncovenesc architecture of this 18th-century gem",
+        "Council Square – Walk hand-in-hand through the vibrant, pastel-colored medieval heart of Brașov",
+        "Black Church – Explore the towering Gothic landmark dominating Brașov's historic landscape",
+        "Bran Castle – Tour the legendary, dramatic cliffside fortress globally famous as Dracula's Castle",
+        "Rope Street (Strada Sforii) – Take memorable photos inside one of the narrowest streets in all of Europe",
+        "Peleș Castle – Optional day trip to the spectacular Neo-Renaissance masterpiece nestled in Sinaia's forests"
+      ],
+      romanticExperiences: [
+        "Private carriage ride traversing the charming cobblestone streets of Brașov Old Town",
+        "Sunset dinner featuring panoramic, sweeping views of the majestic Carpathian Mountains",
+        "Exclusive wine tasting tour at premium Transylvanian vineyards sampling regional vintages",
+        "Couples specialized luxury spa and thermal wellness treatments at the Aro Palace Hotel",
+        "Romantic candlelight dinner setup in Bucharest's historic architectural center"
+      ],
+      guideIncluded: true
+    }
+  }
+}
+
+
+
+
+
 
 ];
 

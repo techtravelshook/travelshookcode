@@ -119,11 +119,6 @@ function PackageCard({ deal, onOpen }) {
 
 function PackageModal({ deal, onClose }) {
   const [imgIndex, setImgIndex] = useState(0);
-
-  useEffect(() => {
-    setImgIndex(0);
-  }, [deal]);
-
   useEffect(() => {
     document.body.style.overflow = deal ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };

@@ -10,7 +10,8 @@ import ImageSlider from "@/components/Holidays/HoneymoonSlider";
 
 async function getPackageData(slug) {
   try {
-    const res = await fetch(`http://localhost:3000/api/honeymoon/${slug}`, {
+    // ✅ Use relative URL - same as your other files
+    const res = await fetch(`/api/honeymoon/${slug}`, {
       cache: "no-store",
     });
 
@@ -22,7 +23,6 @@ async function getPackageData(slug) {
     return null;
   }
 }
-
 export default async function SinglePackagePage(context) {
   const { slug } = await context.params;
   const pkg = await getPackageData(slug);

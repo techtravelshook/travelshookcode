@@ -34,10 +34,10 @@ export function usePackages(filters) {
           }
         });
 
-        const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_BASE}/api/packages?${params.toString()}`,
-          { signal }
-        );
+       const res = await axios.get(
+  `/api/packages?${params.toString()}`,
+  { signal }
+);
         setPackages(res.data.data || []);
       } catch (err) {
         if (axios.isCancel(err)) return;

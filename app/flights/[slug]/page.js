@@ -27,12 +27,9 @@ export default function FlightPage() {
   const destination = flightDestinations[slug];
   if (!destination) return;
 
-  setLoading(true);
-
   fetch(`/api/flightroute?type=${destination.apiType}`)
     .then((res) => res.json())
     .then((result) => {
-      console.log("API RESULT:", result); // 🔥 debug
       setLiveDeals(result?.data || []);
       setLoading(false);
     })

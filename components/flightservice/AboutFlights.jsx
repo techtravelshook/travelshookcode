@@ -121,7 +121,7 @@ export default function AboutFlights() {
             </p>
 
             <p className="mt-4 leading-8 text-slate-600 dark:text-slate-300">
-              Whether you're planning a family holiday, visiting loved ones, or
+              Whether you&apos;re planning a family holiday, visiting loved ones, or
               arranging a business trip, our travel specialists work tirelessly
               to secure the best possible fares while maintaining comfort,
               flexibility, and convenience.
@@ -168,7 +168,7 @@ export default function AboutFlights() {
             </h3>
 
             <p className="mt-6 leading-8 text-slate-600 dark:text-slate-300">
-              Our Hold The Fare feature allows you to secure today's price for
+              Our Hold The Fare feature allows you to secure today&apos;s price for
               up to 48 hours, giving you time to finalize plans without missing
               out on exceptional deals.
             </p>

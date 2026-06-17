@@ -32,9 +32,8 @@ export default function MonthDynamicListingPage() {
 
   const fetchPackage = async () => {
     try {
-      const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_BASE}/api/packages/${rawSlug}`
-      );
+     // ✅ After
+const res = await axios.get(`/api/packages/${rawSlug}`);
 
       setActivePackage(res.data.data);
     } catch (error) {

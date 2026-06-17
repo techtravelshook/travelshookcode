@@ -174,10 +174,10 @@ export default async function MasterPackageDetailPage({ params }) {
   let currentPackage = null;
 
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE}/api/packages/${packageslug}`,
-      { cache: "no-store" }
-    );
+   const res = await fetch(
+  `/api/packages/${packageslug}`,
+  { cache: "no-store" }
+);
     if (!res.ok) notFound();
     const data = await res.json();
     currentPackage = data.data;

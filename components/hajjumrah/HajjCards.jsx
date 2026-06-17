@@ -31,9 +31,8 @@ export default function HajjCards() {
   useEffect(() => {
     const fetchFeaturedPackages = async () => {
       try {
-        const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_BASE}/api/featurespackage`
-        );
+        // ✅ After
+const res = await axios.get(`/api/featurespackage`);
         setPackages(res.data.data || []);
       } catch (error) {
         console.error("Error fetching featured packages:", error);

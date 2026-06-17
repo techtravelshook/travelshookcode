@@ -29,7 +29,7 @@ export function useHolidayPackages(filters) {
 
         // Target your new isolated Holiday API endpoint
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_BASE}/api/holidays?${params.toString()}`,
+          `/api/holidays?${params.toString()}`,
           { signal }
         );
 
