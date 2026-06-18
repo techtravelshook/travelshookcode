@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import PackageSlider from '@/components/hajjumrah/packagedetails/PackageSlider';
 import PackageInformations from '@/components/hajjumrah/packagedetails/PackageInformations';
 import ThreeStar from '@/components/hajjumrah/packagedetails/ThreeStar';
@@ -10,7 +10,22 @@ import PackageBanner from '@/components/hajjumrah/packagedetails/PackageBanner';
 import BookingProcess from '@/components/hajjumrah/BookingProcess';
 import { usePackages } from '@/hooks/usePackage';
 import axios from 'axios';
+
 const Page = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  packageName: "",
+});
+
+const [isSubmitting, setIsSubmitting] = useState(false);
+
+const [submitStatus, setSubmitStatus] = useState({
+  success: null,
+  message: "",
+});
   
 const { packages: threeStarPackage,  loading: cheapLoading,  error: threeserror  } = usePackages({ type: "RAMADAN", star: "STAR_3" });
   const { packages: fourStarPackage,  loading: womenLoading,  error: fourserror  } = usePackages({ type: "RAMADAN", star: "STAR_4" });
@@ -53,6 +68,62 @@ if (cheapLoading || womenLoading || luxuryLoading) {
       btnText: "Request Custom Ramadan Quote"
     }
   ];
+
+const handleBookingSubmit = async (e) => {
+  e.preventDefault();
+
+  setIsSubmitting(true);
+  setSubmitStatus({
+    success: null,
+    message: "",
+  });
+
+  try {
+    const res = await axios.post("/api/ramdanroute", {
+      name: formData.name,
+      email: formData.email,
+      packageName: formData.packageName,
+    });
+
+    setSubmitStatus({
+      success: true,
+      message: res.data.message,
+    });
+
+    setTimeout(() => {
+      setIsModalOpen(false);
+
+      setFormData({
+        name: "",
+        email: "",
+        packageName: "",
+      });
+
+      setSubmitStatus({
+        success: null,
+        message: "",
+      });
+    }, 1500);
+  } catch (error) {
+    setSubmitStatus({
+      success: false,
+      message:
+        error.response?.data?.message ||
+        "Failed to send inquiry.",
+    });
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
+const handleInputChange = (e) => {
+  const { name, value } = e.target;
+
+  setFormData((prev) => ({
+    ...prev,
+    [name]: value,
+  }));
+};
 
   return (
     <div className="w-full bg-slate-50 dark:bg-black transition-colors duration-300">
@@ -124,13 +195,99 @@ if (cheapLoading || womenLoading || luxuryLoading) {
       </div>
 
       {/* 3. CORE INFORMATIVE DISPLAY WALL BLOCK */}
-      <ThreeStar blocks={pageDataBlocks} />
+      {/* <ThreeStar blocks={pageDataBlocks} /> */}
+<ThreeStar
+  blocks={pageDataBlocks}
+  onBlockClick={(block) => {
+    setSubmitStatus({
+      success: null,
+      message: "",
+    });
 
+    setFormData({
+      name: "",
+      email: "",
+      packageName:
+        typeof block.title === "string"
+          ? block.title
+          : "Ramadan Umrah Package",
+    });
+
+    setIsModalOpen(true);
+  }}
+/>
       {/* 4. SHARED APP LANDING INTERFACE UTILITIES */}
       <AboutChooseus />
       <PackageBanner />
       <BookingProcess />
+{isModalOpen && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+    <div className="bg-white dark:bg-zinc-900 rounded-2xl max-w-md w-full p-6 relative">
 
+      <button
+        onClick={() => setIsModalOpen(false)}
+        className="absolute right-4 top-4 text-xl"
+      >
+        ✕
+      </button>
+
+      <h2 className="text-2xl font-bold mb-6">
+        Request Ramadan Quote
+      </h2>
+
+      <form onSubmit={handleBookingSubmit} className="space-y-4">
+
+        <input
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          value={formData.name}
+          onChange={handleInputChange}
+          required
+          className="w-full border rounded-xl p-3"
+        />
+
+        <input
+          type="email"
+          name="email"
+          placeholder="Email Address"
+          value={formData.email}
+          onChange={handleInputChange}
+          required
+          className="w-full border rounded-xl p-3"
+        />
+
+        <input
+          type="text"
+          value={formData.packageName}
+          readOnly
+          className="w-full border rounded-xl p-3 bg-gray-100"
+        />
+
+        {submitStatus.message && (
+          <div
+            className={`p-3 rounded-lg text-sm ${
+              submitStatus.success
+                ? "bg-green-100 text-green-700"
+                : "bg-red-100 text-red-700"
+            }`}
+          >
+            {submitStatus.message}
+          </div>
+        )}
+
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="w-full bg-[#F6931F] text-white rounded-xl py-3 font-bold"
+        >
+          {isSubmitting ? "Sending..." : "Send Inquiry"}
+        </button>
+
+      </form>
+    </div>
+  </div>
+)}
     </div>
   );
 };

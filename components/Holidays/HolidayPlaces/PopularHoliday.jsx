@@ -10,7 +10,7 @@ const starMap = {
   STAR_1: 1, STAR_2: 2, STAR_3: 3, STAR_4: 4, STAR_5: 5,
 };
 
-const ACCENTS = ["#E68213", "#0070A1", "#7C3AED", "#059669"];
+const ACCENTS = ["#E68213", "#0070A1", "#006280", "#059669"];
 
 function Stars({ rating }) {
   return (
@@ -94,7 +94,7 @@ function ContentPanel({ pkg, slideTitle, slideDesc, index, total, accent }) {
           </div>
 
           <Link href={`/holidays/${pkg.slug}`} className="mt-2 sm:mt-0">
-            <motion.div
+            {/* <motion.div
               whileHover={{ scale: 1.06 }}
               whileTap={{ scale: 0.96 }}
               className="group relative inline-flex items-center gap-2.5 px-7 py-4 rounded-2xl overflow-hidden cursor-pointer shadow-2xl text-white font-bold text-sm w-full sm:w-auto justify-center"
@@ -102,9 +102,9 @@ function ContentPanel({ pkg, slideTitle, slideDesc, index, total, accent }) {
             >
               <span className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 bg-gradient-to-r from-transparent via-white/25 to-transparent" />
               <Shield size={15} />
-              <span>Book Now</span>
+            
               <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform duration-300" />
-            </motion.div>
+            </motion.div> */}
           </Link>
         </div>
       </motion.div>

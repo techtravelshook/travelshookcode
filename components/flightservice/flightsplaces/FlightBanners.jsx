@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck, Wallet, RefreshCw, Clock, ArrowRight, MessageCircle } from "lucide-react";
+import Link from "next/link";
 
 export default function BookNowPayLaterBanner({ 
   onBookClick, 
@@ -15,13 +16,16 @@ export default function BookNowPayLaterBanner({
     { label: "Accra", price: "£29", color: "#0070A1", left: "75%", top: "top-24", animY: [0, -4, 0], delay: 1.1, duration: 4.2 }
   ]
 }) {
-  const whatsappNumber = "923124928496";
+ const whatsappNumber = "923124928496";
+  
+  // Dynamically injects the destination name into your message string safely
   const whatsappMessage = encodeURIComponent(
     `Hi! I'm interested in booking flights to ${destination} with the Book Now Pay Later option. Please help me with more details.`
   );
-  // FIX: Fixed the typo (added missing '/')
-  const whatsappUrl = `https://wa.me{whatsappNumber}?text=${whatsappMessage}`;
 
+  // FIXED: Added missing '/' and corrected string placeholder format to ${whatsappNumber}
+
+const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
   const features = [
     {
       icon: <ShieldCheck className="text-[#0070A1] dark:text-[#E68213]" size={20} />,
@@ -101,6 +105,7 @@ export default function BookNowPayLaterBanner({
 
           {/* Right Action Booking Wrapper */}
           <div className="flex flex-col sm:flex-row lg:flex-col gap-3 sm:w-full lg:w-auto min-w-[260px] shrink-0">
+           <Link href="/contact">
             <button
               onClick={onBookClick}
               className="flex items-center justify-center gap-2 w-full rounded-xl bg-[#E68213] px-6 py-3.5 text-sm font-bold uppercase tracking-wider text-white shadow-md transition-all duration-300 hover:bg-[#c96a0a] hover:-translate-y-0.5 active:scale-95"
@@ -108,6 +113,7 @@ export default function BookNowPayLaterBanner({
               Lock in My Seat 
               <ArrowRight size={16} />
             </button>
+           </Link>
 
             <a
               href={whatsappUrl}

@@ -38,7 +38,7 @@ const Page = () => {
       "Visa & Ground Transport Included",
       "Ideal for Families & Seniors"
     ],
-    btnText: "Explore 4-Star Packages"
+  //  btnText: "Explore 4-Star Packages"
   },
   {
     tagline: "Tailored for Your Spiritual Journey",
@@ -58,7 +58,7 @@ const Page = () => {
       "Group Discounts Available",
       "Transparent Pricing – No Hidden Fees"
     ],
-    btnText: "Customize Your Package"
+  //  btnText: "Customize Your Package"
   }
 ];
   // section 2 cards data for 4 star packages

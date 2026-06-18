@@ -77,11 +77,11 @@ export default function HeroSlider({
       <div className="relative z-20 container mx-auto px-4 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
         
         {/* LEFT CONTENT */}
-        <div className="text-center lg:text-left mt-12 sm:mt-0">
+        <div className="text-center lg:text-left mt-28 sm:mt-12 lg:mt-0">
           {/* BADGE */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-6">
+        <div className="inline-flex max-w-full items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-5 sm:mb-6">
             <MapPin size={16} className="text-[#F6931F]" />
-            <span className="text-xs uppercase tracking-widest text-white">
+          <span className="text-[10px] sm:text-xs uppercase tracking-wide sm:tracking-widest text-white">
               {badgeText}
             </span>
           </div>

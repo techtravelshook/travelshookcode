@@ -18,14 +18,14 @@ import FlightSearchWidget from "../filter/FlightFilter";
 
 const slides = [
   {
-    title: "Sacred Spiritual Journeys",
-    subtitle: "Luxury Umrah Experience",
+    title: "Trace The Sacred",
+    subtitle: "Luxury Umrah ",
     desc: "Experience 5-star luxury at the heart of Makkah and Madinah with exclusive travel experiences.",
     img: "/imgs/slider01.jpg",
     accent: "#E68213",
   },
   {
-    title: "Discover European Wonders",
+    title: "Blessed Spirit Travels",
     subtitle: "Explore The Alps",
     desc: "Explore breathtaking landscapes, premium stays, and unforgettable moments across Europe.",
     img: "/imgs/slider02.jpg",
@@ -149,7 +149,7 @@ export default function HomeSlider() {
 
           <div className="absolute inset-0 bg-black/60" />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent" />
-          <div className="absolute inset-0 opacity-[0.05] mix-blend-soft-light bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+          <div className="absolute inset-0 opacity-[0.05] mix-blend-soft-light" />
 
           <motion.div
             animate={{
@@ -205,6 +205,7 @@ export default function HomeSlider() {
                 transition={{ duration: 0.8 }}
                 className="mb-4 flex items-center justify-center gap-4"
               >
+                <div className="inline-flex items-center gap-2 sm:gap-3 rounded-full border border-white/15 bg-white/10 backdrop-blur-md mt-8 px-12 py-5 sm:px-5 sm:py-2 md:px-6 md:py-2.5">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: 60 }}
@@ -217,6 +218,7 @@ export default function HomeSlider() {
                 >
                   {current.subtitle}
                 </span>
+                </div>
               </motion.div>
 
               <div className="overflow-hidden">

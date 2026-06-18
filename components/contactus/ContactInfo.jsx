@@ -65,15 +65,15 @@ const ContactInfo = () => {
        
 
         {/* RIGHT SIDE: Banner Image Container */}
-        <div className="relative min-h-[350px] md:min-h-full w-full rounded-2xl overflow-hidden">
-          <Image
-            src="/imgs/contact_us.jpg" 
-            alt="Contact Us Visual"
-            fill
-            priority
-            className="object-cover object-center"
-          />
-        </div>
+       <div className="hidden md:block relative min-h-[350px] md:min-h-full w-full rounded-2xl overflow-hidden">
+  <Image
+    src="/imgs/contactus.jpg"
+    alt="Contact Us Visual"
+    fill
+    priority
+    className="object-cover object-center"
+  />
+</div>
         
          <div className="flex flex-col justify-between bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
           <div>

@@ -65,7 +65,7 @@ export default function FlightPage() {
 <FlightsZigzag/>
       <BookNowPayLaterBanner />
       <DynamicFaqs/>
-      <FlightModal/>
+      {/* <FlightModal/> */}
 <BookingProcess/>
     </div>
   );

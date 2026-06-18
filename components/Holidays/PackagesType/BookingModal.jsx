@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Star, Clock, Plane, Shield, CheckCircle2, ChevronRight, Users, Calendar } from 'lucide-react';
 import Image from 'next/image';
+import axios from "axios";
 
 function StarRow({ count }) {
   return (
@@ -23,14 +24,47 @@ function StarRow({ count }) {
 export default function BookingModal({ pkg, onClose }) {
   const [step, setStep] = useState(1);
   const [form, setForm] = useState({ name: '', email: '', phone: '', date: '', guests: '2', message: '' });
-  const [submitted, setSubmitted] = useState(false);
+ const [submitted, setSubmitted] = useState(false);
+const [loading, setLoading] = useState(false);
 
   if (!pkg) return null;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  setLoading(true);
+
+  try {
+    const { data } = await axios.post("/api/holidayroute", {
+      packageName: pkg.title,
+      packagePrice: pkg.price,
+      duration: pkg.duration,
+      category: pkg.category,
+
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+
+      preferredDate: form.date,
+      guests: form.guests,
+      message: form.message,
+    });
+
+    if (data.success) {
+      setSubmitted(true);
+    } else {
+      alert(data.message || "Failed to send enquiry.");
+    }
+  } catch (err) {
+    console.error(err);
+    alert(
+      err.response?.data?.message ||
+        "Something went wrong. Please try again."
+    );
+  }
+
+  setLoading(false);
+};
 
   return (
     <AnimatePresence>
@@ -240,17 +274,7 @@ export default function BookingModal({ pkg, onClose }) {
                     </div>
                   </div>
                   <div>
-                    <label className="text-xs text-white/50 uppercase tracking-widest mb-1 block">
-                      Special Requests
-                    </label>
-                    <textarea
-                      value={form.message}
-                      onChange={(e) => setForm({ ...form, message: e.target.value })}
-                      placeholder="Any special requirements or questions..."
-                      rows={3}
-                      className="w-full px-3 py-2.5 rounded-xl text-sm text-white placeholder-white/25 outline-none focus:ring-1 focus:ring-amber-400 resize-none"
-                      style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}
-                    />
+                   
                   </div>
 
                   {/* Price summary */}
@@ -277,6 +301,7 @@ export default function BookingModal({ pkg, onClose }) {
                     </button>
                     <button
                       type="submit"
+                      disabled={loading}
                       className="flex-1 py-3 rounded-xl font-black text-sm text-black flex items-center justify-center gap-2"
                       style={{ background: 'linear-gradient(135deg, #f59e0b, #d97706)' }}
                     >

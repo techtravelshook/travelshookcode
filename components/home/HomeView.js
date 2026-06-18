@@ -154,7 +154,7 @@ const destinations = [
 ];
 
 
-// 2. Holiday Destinations Data Array
+/// 2. Holiday Destinations Data Array
 const holidayDestinations = [
   { city: "Spain", country: "Europe", price: "£235", image: "/imgs/holidays/spain.jpg" },
   { city: "Greece", country: "Europe", price: "£201", image: "/imgs/holidays/greece.jpg" },

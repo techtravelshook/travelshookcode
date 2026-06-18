@@ -138,7 +138,7 @@ export default function FlightDealsGrid({ cityName, dealsData = [] }) {
 
                     <div>
                       <div className="flex justify-between items-start mb-4">
-                        <div className="flex items-center gap-2.5">
+                        <div className="flex items-center w-full">
                           <div>
                             <div className="flex items-center gap-2.5 text-2xl font-black text-slate-900 dark:text-white tracking-tight">
                               <span>{deal.departureCode}</span>
@@ -150,9 +150,8 @@ export default function FlightDealsGrid({ cityName, dealsData = [] }) {
                           </div>
                           
                       
-                         {/* Airline Logo on Card */}
 {deal.airlineLogo && (
-                <div className="w-12 h-12 rounded-lg bg-slate-50 dark:bg-zinc-900/50 p-1.5 flex items-center justify-center border border-slate-200/50 dark:border-zinc-800 flex-shrink-0">
+  <div className="ml-auto w-12 h-12 rounded-lg bg-slate-50 dark:bg-zinc-900/50 p-1.5 flex items-center justify-center border border-slate-200/50 dark:border-zinc-800 flex-shrink-0">
                   <Image 
                     src={deal.airlineLogo.startsWith('/') ? deal.airlineLogo : `/${deal.airlineLogo}`}
                     width={48}

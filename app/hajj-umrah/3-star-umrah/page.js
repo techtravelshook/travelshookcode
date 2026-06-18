@@ -39,7 +39,7 @@ const Page = () => {
         "Practical Budget Amenities",
         "Ideal for Senior Citizens"
       ],
-      btnText: "Explore 3 Star Hotels"
+      // btnText: "Book Package"
     },
     {
       tagline: "Best Value Deals",
@@ -57,7 +57,7 @@ const Page = () => {
         "Optional Guided Tours Included",
         "Private Transfer Tiers Available"
       ],
-      btnText: "Check Departure Dates"
+     // btnText: "Check Departure Dates"
     }
   ];
 

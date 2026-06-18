@@ -36,7 +36,7 @@ export default async function SinglePackagePage(context) {
     <main className="min-h-screen bg-[#F7F5F0]">
 
       {/* 1. Hero — image slider with overlaid heading card */}
-      <div className="relative h-[48vh] md:h-[60vh] bg-[#0B1F33] overflow-hidden">
+      <div className="pt-12 relative h-[48vh] md:h-[60vh] bg-[#0B1F33] overflow-hidden">
         <ImageSlider images={pkg.images} title={pkg.title} />
 
         <div className="absolute inset-x-0 bottom-0 z-10">
@@ -44,7 +44,7 @@ export default async function SinglePackagePage(context) {
             <div className="inline-flex items-center gap-2 bg-[#F6931F] text-[#0B1F33] text-[11px] font-bold px-3 py-1.5 rounded-full mb-4 uppercase tracking-[0.15em] shadow-lg">
               {pkg.type} <span className="opacity-50">·</span> {pkg.month}
             </div>
-            <h1 className="text-3xl md:text-6xl font-black tracking-tight leading-[1.05] text-white max-w-3xl">
+            <h1 className=" text-2xl md:text-3xl font-black tracking-tight leading-[1.05] text-white max-w-3xl">
               {pkg.title}
             </h1>
             <p className="mt-3 flex items-center gap-2 text-sm md:text-base text-slate-300 font-medium">

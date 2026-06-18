@@ -1,7 +1,8 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+
 import { motion } from "framer-motion";
 import {
   AlertCircle, Clock, Star, Plane, FileCheck, Bus,
@@ -26,7 +27,7 @@ const FIXED_FEATURES = [
 ];
 
 /* ── ZigzagCard ─────────────────────────────────────────────── */
-function ZigzagCard({ pkg, index }) {
+function ZigzagCard({ pkg, index, onBookClick }) {
   const isEven = index % 2 === 0;
 
   const rawSrc = pkg.images?.[0]?.url || "";
@@ -38,6 +39,7 @@ function ZigzagCard({ pkg, index }) {
   const inclusions = pkg.inclusions || [];
   const exclusions = pkg.exclusions || [];
 
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 32 }}
@@ -179,13 +181,12 @@ function ZigzagCard({ pkg, index }) {
             </p>
           </div>
 
-          <Link
-            href="/contact"
-            className="w-full xs:w-auto flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-[#D57E1B] to-[#00618C] hover:from-[#F6931F] hover:to-[#0070A1] text-white text-[11px] font-black uppercase tracking-widest shadow-md transition-all duration-300 hover:scale-105 active:scale-95"
-          >
-            BOOK NOW
-            <CheckCircle2 size={13} />
-          </Link>
+       <button
+  onClick={() => onBookClick?.(pkg)}
+  className="w-full xs:w-auto flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-[#D57E1B] to-[#00618C] hover:from-[#F6931F] hover:to-[#0070A1] text-white text-[11px] font-black uppercase tracking-widest shadow-md transition-all duration-300 hover:scale-105 active:scale-95"
+>
+  Book Now
+</button>
         </div>
       </div>
     </motion.div>
@@ -221,7 +222,7 @@ function SkeletonCard({ flip }) {
 }
 
 /* ── Main ───────────────────────────────────────────────────── */
-export default function HolidaysSec({ slug }) {
+export default function HolidaysSec({ slug, onBookClick, }) {
   const { packages, loading, error } = useHolidayPackages({ type: "HOLIDAY" });
   const filtered = slug ? packages.filter((p) => p.slug === slug) : packages;
 
@@ -266,9 +267,14 @@ export default function HolidaysSec({ slug }) {
 
         {!loading && !error && filtered.length > 0 && (
           <div className="space-y-5 sm:space-y-8">
-            {filtered.map((pkg, i) => (
-              <ZigzagCard key={pkg.id} pkg={pkg} index={i} />
-            ))}
+           {filtered.map((pkg, i) => (
+  <ZigzagCard
+    key={pkg.id}
+    pkg={pkg}
+    index={i}
+    onBookClick={onBookClick}
+  />
+))}
           </div>
         )}
 
