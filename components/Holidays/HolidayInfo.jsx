@@ -1,116 +1,96 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import { Palmtree } from 'lucide-react';
-
-// Curated 18 Trending Holiday Packages Data with Days & Pricing Mapping
-const holidayPackages = [
-  { country: 'Trip To Cyprus',        days: '7 Nights',  price: '499', pence: '00' },
-  { country: 'Trip To San Marino',         days: '5 Nights',  price: '549', pence: '50' },
-  { country: 'Trip To Liechtenstein',        days: '7 Nights',  price: '399', pence: '00' },
-  { country: 'Trip To Italy',      days: '10 Nights', price: '1299', pence: '99' },
-  { country: 'Trip To Kosovo',         days: '5 Nights',  price: '289', pence: '75' },
-  { country: 'Trip To Moldova',      days: '9 Nights',  price: '649', pence: '00' },
-  { country: 'Trip To Georgia',         days: '7 Nights',  price: '379', pence: '50' },
-  { country: 'Trip To Russia',       days: '6 Nights',  price: '319', pence: '00' },
-  { country: 'Trip To Monaco',     days: '7 Nights',  price: '999', pence: '00' },
-  { country: 'Trip To North Macedonia',          days: '10 Nights', price: '789', pence: '25' },
-  { country: 'Trip To Estonia',     days: '8 Nights',  price: '580', pence: '00' },
-  { country: 'Trip To Latvia',         days: '5 Nights',  price: '340', pence: '90' },
-  { country: 'Trip To United Kingdom',   days: '6 Nights',  price: '460', pence: '00' },
-  { country: 'Trip To Latvia',        days: '4 Nights',  price: '299', pence: '50' },
-  { country: 'Trip To Croatia',      days: '7 Nights',  price: '520', pence: '00' },
-  { country: 'Trip To Bulgaria',         days: '5 Nights',  price: '241', pence: '89' },
-  { country: 'Trip To Slovakia',      days: '6 Nights',  price: '265', pence: '00' },
-  { country: 'Trip To Hungary',        days: '7 Nights',  price: '275', pence: '00' },
-];
-
-const col1 = holidayPackages.slice(0, 6);
-const col2 = holidayPackages.slice(6, 12);
-const col3 = holidayPackages.slice(12, 18);
-
-// Sub-Component: Individual Holiday Item Row with Days Badge
-function HolidayRow({ country, days, price, pence }) {
-  return (
-    <div className="group flex items-center justify-between py-3.5 border-b border-slate-100 dark:border-white/[0.06] hover:border-[#E68213]/30 transition-colors duration-200 cursor-pointer">
-      <div className="flex items-center gap-3">
-        <Palmtree
-          size={14}
-          className="text-slate-400 dark:text-white/25 group-hover:text-[#E68213] transition-colors duration-200 shrink-0"
-        />
-        <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-          <span className="text-[13.5px] font-semibold text-slate-800 dark:text-white/90 group-hover:text-slate-900 group-hover:dark:text-white transition-colors duration-200">
-            Holidays in {country}
-          </span>
-          {/* ⏳ NEW: Compact Days/Nights Badge tracker */}
-          <span className="text-[10px] font-medium text-slate-400 dark:text-white/40 bg-slate-100 dark:bg-white/5 px-2 py-0.5 rounded-full group-hover:bg-[#E68213]/10 group-hover:text-[#E68213] transition-colors duration-200 w-fit">
-            {days}
-          </span>
-        </div>
-      </div>
-      
-      {/* Price Target Panel Block */}
-      <div className="flex items-baseline gap-0 ml-4 shrink-0">
-        <span className="text-[11px] text-slate-400 dark:text-white/35 mr-1">fr.</span>
-        <span className="text-[13.5px] font-bold text-slate-800 dark:text-white/90 group-hover:text-[#E68213] transition-colors duration-200">
-          £{price}
-        </span>
-        <span className="text-[10px] font-bold text-slate-400 dark:text-white/45 leading-none self-start mt-0.5">
-          .{pence}
-        </span>
-      </div>
-    </div>
-  );
-}
+import Link from 'next/link';
 
 const HolidaysInfo = () => {
+  const [packages, setPackages] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/api/honeymoon', { 
+      cache: 'no-store' 
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && Array.isArray(data.data)) {
+          setPackages(data.data);
+        } else {
+          console.error("Invalid data format");
+        }
+      })
+      .catch(err => console.error("Fetch error:", err))
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="py-14 text-center text-slate-600 dark:text-slate-400">
+        Loading Trending honeymoon packages...
+      </section>
+    );
+  }
+
   return (
     <section className="relative overflow-hidden w-full bg-white dark:bg-[#01080C] py-14 text-slate-900 dark:text-white transition-colors duration-500">
       <div className="container relative z-10 mx-auto px-6">
 
-        {/* BRAND THEMED HEADER BLOCK */}
+        {/* Header - Same as your original */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div className="max-w-xl">
-            
-            {/* Matching Top Tracking Orange Badge */}
             <span className="mb-3 inline-block rounded-full border border-[#E68213]/20 bg-[#E68213]/10 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] text-[#E68213] font-bold">
               Top Booked Packages
             </span>
             
-            {/* Standardized Title Sync */}
             <h2 className="text-xl sm:text-4xl lg:text-3xl font-black leading-tight tracking-tighter text-slate-900 dark:text-white">
-              Trending Holidays &
+              Trending Holidays &amp;
               <span className="bg-gradient-to-r from-[#E68213] to-[#0070A1] bg-clip-text text-transparent italic pr-2 ml-2">
                 Deals
               </span>
             </h2>
             
-            {/* Subtitle Sync */}
             <p className="text-[13px] text-slate-500 dark:text-slate-400 mt-2 font-medium">
-              Most requested holiday escapes this week — secure your booking at lowest rates.
+              Most requested honeymoon escapes this week — secure your booking at lowest rates.
             </p>
-
           </div>
         </div>
 
-        {/* 3-Column Responsive Grid Row */}
+        {/* Simple Row List - No Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10">
-          <div>
-            {col1.map((h) => (
-              <HolidayRow key={h.country} country={h.country} days={h.days} price={h.price} pence={h.pence} />
-            ))}
-          </div>
-          <div>
-            {col2.map((h) => (
-              <HolidayRow key={h.country} country={h.country} days={h.days} price={h.price} pence={h.pence} />
-            ))}
-          </div>
-          <div>
-            {col3.map((h) => (
-              <HolidayRow key={h.country} country={h.country} days={h.days} price={h.price} pence={h.pence} />
-            ))}
-          </div>
+          {packages.map((pkg) => (
+            <Link
+              key={pkg.id}
+              href={`/honeymoon/${pkg.slug}`}
+              className="group block"
+            >
+              <div className="flex items-center justify-between py-3.5 border-b border-slate-100 dark:border-white/[0.06] hover:border-[#E68213]/30 transition-colors duration-200 cursor-pointer">
+                <div className="flex items-center gap-3">
+                  <Palmtree
+                    size={14}
+                    className="text-slate-400 dark:text-white/25 group-hover:text-[#E68213] transition-colors duration-200 shrink-0"
+                  />
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                    <span className="text-[13.5px] font-semibold text-slate-800 dark:text-white/90 group-hover:text-slate-900 group-hover:dark:text-white transition-colors duration-200">
+                      {pkg.title}
+                    </span>
+                   
+                  </div>
+                </div>
+                
+                {/* Price Section */}
+                <div className="flex items-baseline gap-0 ml-4 shrink-0">
+                  <span className="text-[11px] text-slate-400 dark:text-white/35 mr-1">fr.</span>
+                  <span className="text-[13.5px] font-bold text-slate-800 dark:text-white/90 group-hover:text-[#E68213] transition-colors duration-200">
+                    £{pkg.price}
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
 
-        {/* Dynamic Footer terms notes */}
+        {/* Footer Note */}
         <p className="mt-8 text-[11px] text-slate-400 dark:text-slate-500 font-medium">
           * Prices shown are per person based on lowest available tour availability rates and subject to alterations.
         </p>

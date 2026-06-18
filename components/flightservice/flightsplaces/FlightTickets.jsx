@@ -201,7 +201,7 @@ export default function FlightDealsGrid({ cityName, dealsData = [] }) {
                         onClick={() => setSelectedDeal(deal)}
                         className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#E68213] to-[#0070A1] text-white text-xs font-bold uppercase tracking-wider flex items-center gap-2 hover:opacity-95 hover:shadow-md active:scale-95 transition-all duration-300"
                       >
-                        Book Now
+                        Book Now 
                         <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5" />
                       </button>
                     </div>
@@ -315,13 +315,13 @@ export default function FlightDealsGrid({ cityName, dealsData = [] }) {
                   WhatsApp
                 </a>
 
-                <button
+                {/* <button
                   onClick={() => setSelectedDeal(null)}
                   className="flex-1 px-4 py-3 rounded-lg bg-gradient-to-r from-[#E68213] to-[#0070A1] text-white font-bold text-sm uppercase tracking-wider hover:opacity-95 hover:shadow-lg active:scale-95 transition-all flex items-center justify-center gap-2"
                 >
                   <CheckCircle size={16} />
                   Book Now
-                </button>
+                </button> */}
               </div>
 
               {/* Secondary Action */}

@@ -162,10 +162,10 @@ export default async function SinglePackagePage(context) {
               </div>
             </div>
 
-            <button className="mt-5 w-full bg-[#F6931F] hover:bg-[#e2840f] text-[#0B1F33] py-3.5 rounded-xl text-sm font-bold transition-colors shadow-sm flex items-center justify-center gap-2">
+            {/* <button className="mt-5 w-full bg-[#F6931F] hover:bg-[#e2840f] text-[#0B1F33] py-3.5 rounded-xl text-sm font-bold transition-colors shadow-sm flex items-center justify-center gap-2">
               Inquire / request booking
               <ArrowRight size={16} />
-            </button>
+            </button> */}
           </section>
 
           {/* Logistics */}

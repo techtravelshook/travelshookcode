@@ -233,13 +233,13 @@ function HomeView() {
       
         
          <HolidayPackages />   
-      <HolidayDeals 
+      {/* <HolidayDeals 
       badge="Top Booked Routes"
       titleMain="Holiday Deals &"
       titleHighlight="Packages"
       subtitle="Handpicked packages with flights, hotels and more included."
   
-    />
+    /> */}
       <FlightsInfo/>
       <BookingProcess/>
     </div>

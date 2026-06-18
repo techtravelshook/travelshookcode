@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin } from "lucide-react";
+import Link from "next/link";
 
 export default function HeroSlider({
   slides = [],
@@ -28,19 +29,36 @@ export default function HeroSlider({
   if (!slides || slides.length === 0) return null;
   const current = slides[currentSlide];
 
+  // Scroll to packages section
+  const scrollToPackages = () => {
+    const packagesSection = document.getElementById("packages");
+    if (packagesSection) {
+      packagesSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    } else {
+      // Fallback: scroll down by one full viewport
+      window.scrollTo({
+        top: window.innerHeight - 100,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <section className="relative min-h-screen w-full flex items-center overflow-hidden">
       
       {/* ================= BACKGROUND SLIDER ================= */}
       <AnimatePresence mode="wait">
         <motion.div
-  key={currentSlide}
-  initial={{ opacity: 0, scale: 1.05 }}
-  animate={{ opacity: 1, scale: 1 }}
-  exit={{ opacity: 0, scale: 1.05 }}
-  transition={{ duration: 0.8 }}
-  className="absolute inset-0"
->
+          key={currentSlide}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 1.05 }}
+          transition={{ duration: 0.8 }}
+          className="absolute inset-0"
+        >
           <Image
             src={current.src}
             alt={current.alt || "Slider Image"}
@@ -69,8 +87,6 @@ export default function HeroSlider({
           </div>
 
           {/* TITLE */}
-                   {/* TITLE */}
-       
           <h1 className="text-3xl md:text-4xl font-black leading-tight uppercase tracking-tight text-white flex flex-wrap items-center justify-center lg:justify-start gap-x-3">
             {mainTitle || (
               <>
@@ -93,7 +109,6 @@ export default function HeroSlider({
             )}
           </h1>
 
-
           {/* SUBTITLE / DESCRIPTION */}
           {description && (
             <p className="mt-5 text-white/80 max-w-xl mx-auto lg:mx-0">
@@ -103,12 +118,17 @@ export default function HeroSlider({
 
           {/* BUTTONS */}
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <button className="hidden sm:block px-6 py-3 rounded-full bg-[#F6931F] hover:bg-orange-500 transition font-bold text-white">
+            <button 
+              onClick={scrollToPackages}
+              className="hidden sm:block px-6 py-3 rounded-full bg-[#F6931F] hover:bg-orange-500 transition font-bold text-white active:scale-95"
+            >
               Explore Packages
             </button>
-            <button className="hidden sm:block px-6 py-3 rounded-full border border-white/20 bg-white/10 hover:bg-white/20 transition font-medium text-white">
-              View Destinations
-            </button>
+            <Link href="/cities-hotels">
+              <button className="hidden sm:block w-full sm:w-auto px-6 py-3 rounded-full border border-white/20 bg-white/10 hover:bg-white/20 transition font-medium text-white active:scale-95">
+                View Destinations
+              </button>
+            </Link>
           </div>
         </div>
 

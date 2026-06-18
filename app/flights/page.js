@@ -12,7 +12,7 @@ export default function FlightPage() {
   return (
     <div>
 <FlightHeader/>
-{/* NEW SECTION */}
+
 <AboutFlights/>
 
 <FlightContent/>

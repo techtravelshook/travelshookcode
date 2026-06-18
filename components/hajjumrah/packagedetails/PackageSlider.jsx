@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { MapPin } from "lucide-react";
+import Link from "next/link";
 
 export default function PackageSlider({
   // Dynamic Content Props
@@ -15,6 +16,8 @@ export default function PackageSlider({
   // Button Action Props
   primaryBtnText = "Explore Packages",
   secondaryBtnText = "View Hotels",
+    primaryBtnLink="/hajj-umrah", 
+    secondaryBtnLink="/cities-hotels" ,
   onPrimaryClick,
   onSecondaryClick,
 
@@ -84,25 +87,44 @@ export default function PackageSlider({
           )}
 
           {/* ACTION BUTTONS */}
-          <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4 w-full sm:w-auto">
-            {primaryBtnText && (
-              <button 
-                onClick={onPrimaryClick}
-                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#F6931F] hover:bg-orange-500 transition font-black text-xs uppercase tracking-wider text-white shadow-lg shadow-[#F6931F]/10 active:scale-95 cursor-pointer"
-              >
-                {primaryBtnText}
-              </button>
-            )}
+        <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4 w-full sm:w-auto">
+  {/* ================= PRIMARY LINK BUTTON ================= */}
+  {primaryBtnText && (
+    primaryBtnLink ? (
+      /*  FIXED: Changed href="#" to dynamic href={primaryBtnLink} */
+      <Link href={primaryBtnLink} className="w-full sm:w-auto text-center px-6 py-3.5 rounded-xl bg-[#F6931F] hover:bg-orange-500 transition font-black text-xs uppercase tracking-wider text-white shadow-lg shadow-[#F6931F]/10 active:scale-95 cursor-pointer block select-none">
+        {primaryBtnText}
+      </Link>
+    ) : (
+      <button 
+        type="button"
+        onClick={onPrimaryClick}
+        className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#F6931F] hover:bg-orange-500 transition font-black text-xs uppercase tracking-wider text-white shadow-lg shadow-[#F6931F]/10 active:scale-95 cursor-pointer select-none"
+      >
+        {primaryBtnText}
+      </button>
+    )
+  )}
 
-            {secondaryBtnText && (
-              <button 
-                onClick={onSecondaryClick}
-                className="w-full sm:w-auto px-6 py-3 rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm hover:bg-white/20 transition font-bold text-xs uppercase tracking-wider text-white active:scale-95 cursor-pointer"
-              >
-                {secondaryBtnText}
-              </button>
-            )}
-          </div>
+  {/* ================= SECONDARY LINK BUTTON ================= */}
+  {secondaryBtnText && (
+    secondaryBtnLink ? (
+      /*  CORRECT: Hardcoded route works perfectly if this button always goes here */
+      <Link href="/cities-hotels" className="w-full sm:w-auto text-center px-6 py-3.5 rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm hover:bg-white/20 transition font-bold text-xs uppercase tracking-wider text-white active:scale-95 cursor-pointer block select-none">
+        {secondaryBtnText}
+      </Link>
+    ) : (
+      <button 
+        type="button"
+        onClick={onSecondaryClick}
+        className="w-full sm:w-auto px-6 py-3.5 rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm hover:bg-white/20 transition font-bold text-xs uppercase tracking-wider text-white active:scale-95 cursor-pointer select-none"
+      >
+        {secondaryBtnText}
+      </button>
+    )
+  )}
+</div>
+
         </div>
 
         {/* SIDE COMPONENT SLOT (FORM) - FULLY REALIGNED FOR SMARTPHONE WRAPPING */}

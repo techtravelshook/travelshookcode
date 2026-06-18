@@ -214,22 +214,7 @@ pakistan: {
     section2Content:
       "When it comes to budget-friendly options from the UK to Pakistan, Turkish Airlines frequently leads the market with the lowest base fares. Because airline pricing structures shift constantly and other premium carriers introduce seasonal promotions, we recommend speaking with a travelsHook consultant to cross-reference current inventories. Alternatively, you can sign up for our newsletter to receive automated updates the moment prices drop for your preferred route.",
  faqs : [
-  {
-    q: "Which Nigerian city offers the most affordable arrival options from the UK?",
-    a: "Lagos generally provides the most competitive airfares due to the high volume of daily flights servicing the city. However, special exceptions do occur, and choosing indirect routes with layovers can occasionally yield cheaper tickets for alternative entry points like Abuja or Port Harcourt."
-  },
-  {
-    q: "Which carrier provides the top travel experience to Nigeria?",
-    a: "The ideal airline depends on your personal travel priorities. Turkish Airlines frequently delivers the lowest prices, while Royal Air Maroc offers the fastest transit times from London Heathrow. For passengers prioritizing superior seat comfort, exceptional customer service, premium dining, and generous luggage limits, Emirates and Qatar Airways remain highly popular choices."
-  },
-  {
-    q: "What is the typical price for a round-trip ticket from London to Nigeria?",
-    a: "An Economy Class return ticket generally ranges between £450 and £500 during standard periods. Fares often increase sharply during high-demand peaks like the summer break and the Christmas holidays, so we advise checking real-time rates with our team before finalizing your plans."
-  },
-  {
-    q: "Am I entitled to a refund if my trip to Nigeria gets cancelled?",
-    a: "If an airline delays or cancels your schedule, they will typically offer the choice between a full refund or rescheduling for a future date. Because ticket refundability rules vary widely by fare class, it is highly recommended to review the terms or confirm the policy with your travelsHook expert at the time of booking."
-  },
+  
   {
     q: "Which airlines currently provide flexible booking options for Nigeria routes?",
     a: "British Airways, Virgin Atlantic, and Emirates stand out as the top carriers offering adaptable booking conditions. Depending on their specific terms, these airlines allow you to adjust, reschedule, or cancel your travel dates through your travelsHook consultant."
@@ -250,14 +235,7 @@ pakistan: {
     q: "Which carriers provide non-stop routes to Nigeria from the UK?",
     a: "British Airways and Virgin Atlantic both run daily, direct flights connecting the UK to Nigeria. Both airlines feature regular daily departures from London Heathrow straight to Lagos and Abuja."
   },
-  {
-    q: "Can I reserve local domestic flights within Nigeria before I leave the UK?",
-    a: "Yes, travelsHook can arrange your entire itinerary, including connecting regional flights to domestic airports like Abuja, Port Harcourt, and beyond. Contact our specialists to bundle your internal flights and secure a unified discount."
-  },
-  {
-    q: "What is the ideal season to plan a trip to Nigeria?",
-    a: "Nigeria is an excellent destination throughout the year, but visiting during the dry season is highly recommended to enjoy the resorts and outdoor sights without disruption. While there is no bad time to visit, the heavy downpours during the rainy season can occasionally complicate local transit and sightseeing plans."
-  },
+  
   {
     q: "Is it more economical to fly to Pakistan on mid-week days or weekends?",
     a: "Booking your departures for mid-week days, particularly Tuesdays and Wednesdays, generally secures much lower rates. High leisure, family, and business demand drives up weekend airfares, though you can mitigate this pricing surge by locking in weekend tickets well in advance."

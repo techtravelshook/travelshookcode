@@ -9,6 +9,7 @@ import { ImSpinner9 } from "react-icons/im";
 export default function HolidayCards() {
    const { packages, loading, error } = useHolidayPackages({ type: "HOLIDAY" });
   const [selected, setSelected] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState({ name: "", phone: "", message: "" });
   const [isHovered, setIsHovered] = useState(false);
   
@@ -47,6 +48,7 @@ export default function HolidayCards() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+
   const whatsappNumber = "923124928496"; 
 
   const handleWhatsApp = () => {
@@ -55,12 +57,42 @@ export default function HolidayCards() {
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank");
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Inquiry Sent Successfully!");
-    setForm({ name: "", phone: "", message: "" });
-    setSelected(null);
-  };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true); // Triggers loading spin states across inputs
+
+  try {
+    const response = await fetch("/api/send-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: form.name,
+        phone: form.phone,
+        message: form.message,
+        packageName: selected?.title || "General Holiday Inquiry",
+        packagePrice: selected?.price || "N/A",
+      }),
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      alert("Inquiry Sent Successfully via Email!");
+      setForm({ name: "", phone: "", message: "" });
+      setSelected(null);
+    } else {
+      alert(`Submission failed: ${data.error || "Unknown server error"}`);
+    }
+  } catch (err) {
+    console.error("API Connection Error:", err);
+    alert("Network error: Could not reach the email submission server.");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
 
    if (loading) {
     return (
@@ -274,41 +306,51 @@ export default function HolidayCards() {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-2.5 border-t border-slate-100 dark:border-white/[0.05] pt-3">
-            <input
-              type="text"
-              name="name"
-              required
-              placeholder="Your Full Name"
-              value={form.name}
-              onChange={handleChange}
-              className="w-full px-3 py-2 text-xs rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white focus:outline-none focus:border-[#F6931F]"
-            />
-            <input
-              type="tel"
-              name="phone"
-              required
-              placeholder="Phone Number (WhatsApp preferred)"
-              value={form.phone}
-              onChange={handleChange}
-              className="w-full px-3 py-2 text-xs rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white focus:outline-none focus:border-[#F6931F]"
-            />
-            <textarea
-              name="message"
-              rows={2}
-              placeholder="Any special request?"
-              value={form.message}
-              onChange={handleChange}
-              className="w-full px-3 py-2 text-xs rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white focus:outline-none focus:border-[#F6931F] resize-none"
-            />
-            <div className="grid grid-cols-2 gap-2 pt-1">
-              <button type="submit" className="flex items-center justify-center gap-1.5 py-2 rounded-xl bg-[#F6931F] hover:bg-orange-500 text-white text-xs font-bold uppercase tracking-wider transition-colors">
-                <Send size={12} /> Email
-              </button>
-              <button type="button" onClick={handleWhatsApp} className="flex items-center justify-center gap-1.5 py-2 rounded-xl bg-[#25D366] hover:bg-green-600 text-white text-xs font-bold uppercase tracking-wider transition-colors">
-                <MessageCircle size={12} /> WhatsApp
-              </button>
-            </div>
-          </form>
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    placeholder="Your Full Name"
+                    value={form.name}
+                    onChange={handleChange}
+                    className="w-full px-3 py-2 text-xs rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white focus:outline-none focus:border-[#F6931F]"
+                  />
+                  <input
+                    type="tel"
+                    name="phone"
+                    required
+                    placeholder="Phone Number (WhatsApp preferred)"
+                    value={form.phone}
+                    onChange={handleChange}
+                    className="w-full px-3 py-2 text-xs rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white focus:outline-none focus:border-[#F6931F]"
+                  />
+                  <textarea
+                    name="message"
+                    rows={3}
+                    placeholder="Any special request or questions?"
+                    value={form.message}
+                    onChange={handleChange}
+                    className="w-full px-3 py-2 text-xs rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white focus:outline-none focus:border-[#F6931F] resize-none"
+                  />
+
+                  <div className="grid grid-cols-2 gap-2 pt-2">
+                    <button 
+                      type="submit" 
+                      disabled={isSubmitting}
+                      className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-[#F6931F] hover:bg-orange-500 disabled:opacity-70 text-white text-xs font-bold uppercase tracking-wider transition-colors"
+                    >
+                      {isSubmitting ? "Sending..." : <><Send size={12} /> Send Email</>}
+                    </button>
+
+                    <button 
+                      type="button" 
+                      onClick={handleWhatsApp}
+                      className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-[#25D366] hover:bg-green-600 text-white text-xs font-bold uppercase tracking-wider transition-colors"
+                    >
+                      <MessageCircle size={12} /> WhatsApp
+                    </button>
+                  </div>
+                </form>
         </div>
       </motion.div>
     </motion.div>

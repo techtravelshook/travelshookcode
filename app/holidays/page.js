@@ -7,6 +7,7 @@ import HolidaysInfo from '@/components/Holidays/HolidayInfo';
 import HolidayInquiryForms from '@/components/Holidays/HolidayInquryForms';
 import HolidayPackages from '@/components/Holidays/HolidayPackages';
 import HolidayDeals from '@/components/Holidays/Holidays';
+
 import React from 'react'
 
 const sliderImages = [
@@ -53,7 +54,16 @@ export default function HolidaysPage() {
       <div className="mt-8 md:mt-0">
         {/*  */}
         <HolidayCards />
-         <HolidayPackages />   
+
+         <HolidayPackages />  
+         {/* honeymoon */}
+         <HolidayDeals 
+      badge="Top Booked Routes"
+      titleMain="Holiday Deals &"
+      titleHighlight="Packages"
+      subtitle="Handpicked packages with flights, hotels and more included."
+  
+    /> 
          <HolidaysInfo />  
          <BookingProcess/>    
       </div>

@@ -233,12 +233,7 @@ export default function HotelDetailModal({ hotel, onClose }) {
 
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-3">
-            <Link
-              href={`/hotels/${hotel.name.toLowerCase().replace(/\s+/g, "-")}`}
-              className="flex-1 flex items-center justify-center gap-2 rounded-2xl bg-[#E68213] text-white py-3.5 text-sm font-bold hover:bg-[#cf7410] transition-colors"
-            >
-              Book This Hotel <ArrowRight size={15} />
-            </Link>
+           
             <button
               onClick={onClose}
               className="flex-1 flex items-center justify-center rounded-2xl border border-black/10 dark:border-white/10 bg-transparent py-3.5 text-sm font-bold text-slate-700 dark:text-white hover:bg-black/[0.03] dark:hover:bg-white/[0.03] transition-colors"

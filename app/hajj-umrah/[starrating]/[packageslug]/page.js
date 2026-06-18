@@ -509,7 +509,7 @@ const uniqueExclusions = [
               </>
             }
             description={`Secure bookings starting at £${currentPackage.price}. Tailored specifically from your nearest UK airport terminal hub.`}
-            primaryBtnText="Instant Reservation"
+            primaryBtnText="Other Packages"
             formComponent={<HolidayInquiryForms formType="umrah" />}
           />
 
@@ -576,78 +576,107 @@ const uniqueExclusions = [
     </span>{" "}
     &amp; Excluded
   </SectionHeading>
-
-  <div className="inclusions-grid">
-    {/* Included */}
-    <div className="inclusions-card">
-      <div className="inclusions-card-header included">
-        <div className="inclusions-icon included">✈️</div>
-        <div>
-          <div className="inclusions-title">What&rsquo;s Included</div>
-          <div className="inclusions-subtitle included">
-            {uniqueInclusions.length} benefits included
+<div className="w-full max-w-7xl mx-auto px-4 py-8">
+      {/* 2-COLUMN RESPONSIVE LAYOUT CONTAINER */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        
+        {/* ================= INCLUSIONS CARD (LEFT) ================= */}
+        <div className="bg-white dark:bg-slate-900/40 rounded-[2rem] border border-slate-100 dark:border-white/[0.06] p-6 sm:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.02)] backdrop-blur-md">
+          {/* Header Layout */}
+          <div className="flex items-center gap-4 border-b border-slate-100 dark:border-white/5 pb-5 mb-5">
+            <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-amber-50 dark:bg-amber-500/10 text-xl shadow-sm">
+              ✈️
+            </div>
+            <div>
+              <h3 className="text-xl font-black tracking-tight text-slate-900 dark:text-white">
+                What&apos;s Included
+              </h3>
+              <p className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mt-0.5">
+               9 benefits included
+              </p>
+            </div>
           </div>
+
+          {/* List Content Block */}
+          <ul className="divide-y divide-slate-100 dark:divide-white/5 font-sans">
+            {uniqueInclusions.length > 0 ? (
+              uniqueInclusions.map((item, index) => (
+                <InclusionItem
+                  key={`inc-${item.id || index}-${index}`}
+                  text={item.title}
+                  type="included"
+                />
+              ))
+            ) : (
+              // Hardcoded Static Fallback array
+              [
+                "Room Type: Quad Room",
+                "Umrah Processing Fees",
+                "Return Flights",
+                "Visa Processing",
+                "Hotel Accommodation",
+                "Airline Ticket (Round Trip)",
+                "Ziyarah Tour",
+                "VIP Private Makkah Madinah Transportation",
+                "Usually Breakfast Included"
+              ].map((fallbackItem, idx) => (
+                <InclusionItem
+                  key={`inc-fallback-${idx}`}
+                  text={fallbackItem}
+                  type="included"
+                />
+              ))
+            )}
+          </ul>
         </div>
-      </div>
 
-      <ul className="inclusions-list">
-        {uniqueInclusions.length > 0 ? (
-          uniqueInclusions.map((item, index) => (
-            <InclusionItem
-              key={`inc-${item.id}-${index}`}
-              text={item.title}
-              type="included"
-            />
-          ))
-        ) : (
-          <li
-            style={{
-              padding: "12px 0",
-              color: "#64748b",
-              fontWeight: 600,
-            }}
-          >
-            No inclusions available.
-          </li>
-        )}
-      </ul>
-    </div>
-
-    {/* Excluded */}
-    <div className="inclusions-card">
-      <div className="inclusions-card-header excluded">
-        <div className="inclusions-icon excluded">📋</div>
-        <div>
-          <div className="inclusions-title">What&rsquo;s Excluded</div>
-          <div className="inclusions-subtitle excluded">
-            {uniqueExclusions.length} items not covered
+        {/* ================= EXCLUSIONS CARD (RIGHT) ================= */}
+        <div className="bg-white dark:bg-slate-900/40 rounded-[2rem] border border-slate-100 dark:border-white/[0.06] p-6 sm:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.02)] backdrop-blur-md">
+          {/* Header Layout */}
+          <div className="flex items-center gap-4 border-b border-slate-100 dark:border-white/5 pb-5 mb-5">
+            <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-rose-50 dark:bg-rose-500/10 text-xl shadow-sm">
+              📋
+            </div>
+            <div>
+              <h3 className="text-xl font-black tracking-tight text-slate-900 dark:text-white">
+                What&apos;s Excluded
+              </h3>
+              <p className="text-xs font-bold uppercase tracking-wider text-rose-500 dark:text-rose-400 mt-0.5">
+                4 items not covered
+              </p>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <ul className="inclusions-list">
-        {uniqueExclusions.length > 0 ? (
-          uniqueExclusions.map((item, index) => (
-            <InclusionItem
-              key={`exc-${item.id}-${index}`}
-              text={item.title}
-              type="excluded"
-            />
-          ))
-        ) : (
-          <li
-            style={{
-              padding: "12px 0",
-              color: "#64748b",
-              fontWeight: 600,
-            }}
-          >
-            No exclusions available.
-          </li>
-        )}
-      </ul>
+          {/* List Content Block */}
+          <ul className="divide-y divide-slate-100 dark:divide-white/5 font-sans">
+            {uniqueExclusions.length > 0 ? (
+              uniqueExclusions.map((item, index) => (
+                <InclusionItem
+                  key={`exc-${item.id || index}-${index}`}
+                  text={item.title}
+                  type="excluded"
+                />
+              ))
+            ) : (
+              // Hardcoded Static Fallback array
+              [
+                "Personal Expenses",
+                "Meals not coverd in hotel packages",
+                "Travel Insurance",
+                "Zamzam water"
+              ].map((fallbackItem, idx) => (
+                <InclusionItem
+                  key={`exc-fallback-${idx}`}
+                  text={fallbackItem}
+                  type="excluded"
+                />
+              ))
+            )}
+          </ul>
+        </div>
+
+      </div>
     </div>
-  </div>
 </section>
 
           {/* ── CTA Banner ── */}
@@ -658,7 +687,7 @@ const uniqueExclusions = [
                 <p>Speak with our Umrah specialists — available 7 days a week</p>
               </div>
              <a href="/contact" className="cta-link">
-                <button className="cta-btn">Book Now from £{currentPackage.price}</button>
+                <button className="cta-btn">Contact Us Now</button>
               </a>
             </div>
           </div>

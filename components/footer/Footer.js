@@ -54,13 +54,13 @@ const footerLinks = {
     { name: "Flights", href: "/flights" },
     { name: "Holidays", href: "/holidays" },
     { name: "Umrah", href: "/hajj-umrah" },
-    { name: "Hotels", href: "/hotels" },
+    { name: "Hotels", href: "/cities-hotels" },
   ],
   legal: [
     { name: "Privacy Policy", href: "/privacy" },
     { name: "Terms of Service", href: "/terms" },
     { name: "Our Responsibility", href: "/#" },
-    { name: "FAQ'S", href: "/FAQ'S" },
+    { name: "FAQ'S", href: "/#" },
   ],
 };
 

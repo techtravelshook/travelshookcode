@@ -2,6 +2,7 @@
 
 import React, { useState, useRef } from "react";
 import Image from "next/image";
+import { ImSpinner9 } from "react-icons/im";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   X, Clock, Users, MapPin, Shield, Send, CalendarDays, Star,
@@ -352,11 +353,11 @@ function ListCard({ pkg, onSelect }) {
 
 /* ================= MAIN PAGE ================= */
 export default function HolidayPackages() {
-  const [selected, setSelected]   = useState(null);
+  const [selected, setSelected] = useState(null); 
   const [viewMode, setViewMode]   = useState("grid");
   const [activeTab, setActiveTab] = useState("Overview");
   const [form, setForm]           = useState({ name: "", phone: "", message: "" });
-
+const [isSubmitting, setIsSubmitting] = useState(false); 
   // Mobile Carousel
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(null);
@@ -401,18 +402,45 @@ export default function HolidayPackages() {
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank");
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Inquiry sent successfully!");
-    setForm({ name: "", phone: "", message: "" });
-    setSelected(null);
-  };
+ 
 
   const VIEW_MODES = [
     { id: "grid",   label: "Grid",   icon: <LayoutGrid size={16} /> },
     { id: "list",   label: "List",   icon: <List size={16} /> },
   ];
 
+ const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          phone: form.phone,
+          message: form.message,
+          packageName: selected?.title || "Custom Package Inquiry",
+packagePrice: selected?.discountedPrice || "N/A",
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        alert("Inquiry Sent Successfully!");
+        setForm({ name: "", phone: "", message: "" }); // Resets form values
+      } else {
+        alert(`Submission Failed: ${data.error}`);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Network Error: Verification with mail host failed.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <section className="w-full py-14 bg-slate-50 dark:bg-[#01080C] transition-colors duration-500">
       <div className="w-full max-w-12xl mx-auto px-4 sm:px-12 ">
@@ -687,7 +715,7 @@ export default function HolidayPackages() {
                       />
 
                       <input
-                        type="tel"
+                        type="number"
                         name="phone"
                         required
                         placeholder="Phone Number"
@@ -710,22 +738,39 @@ export default function HolidayPackages() {
                         Your details are private and won&apos;t be shared.
                       </div>
 
-                      <div className="grid grid-cols-2 gap-3 pt-4">
-                        <button
-                          type="submit"
-                          className="flex items-center justify-center gap-2 bg-[#F6931F] hover:bg-orange-600 text-white font-bold py-4 rounded-2xl transition-all active:scale-[0.985] shadow-lg shadow-orange-600/30"
-                        >
-                          <Send size={17} /> Send Inquiry
-                        </button>
+                     {/*  NEW COMPACT LOGIC WITH LOAD-STATE PROTECTIONS */}
+<div className="grid grid-cols-2 gap-3 pt-4">
+  <button
+    type="submit"
+    disabled={isSubmitting} // 👈 Prevents duplicate network post calls while sending
+    className="flex items-center justify-center gap-2 bg-[#F6931F] hover:bg-orange-600 disabled:bg-orange-400 disabled:cursor-not-allowed text-white font-bold py-4 rounded-2xl transition-all active:scale-[0.985] shadow-lg shadow-orange-600/30"
+  >
+    {isSubmitting ? (
+      <>
+        {/* Dynamic inline loader animation */}
+        <svg className="animate-spin h-5 w-5 text-white" xmlns="http://w3.org" fill="none" viewBox="0 0 24 24">
+          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        <span>Sending...</span>
+      </>
+    ) : (
+      <>
+        <Send size={17} /> Message Us
+      </>
+    )}
+  </button>
 
-                        <button
-                          type="button"
-                          onClick={handleWhatsApp}
-                          className="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-green-600 text-white font-bold py-4 rounded-2xl transition-all active:scale-[0.985]"
-                        >
-                          <MessageCircle size={17} /> WhatsApp
-                        </button>
-                      </div>
+  <button
+    type="button"
+    disabled={isSubmitting} // 👈 Optional: Lock WhatsApp input click during active submissions
+    onClick={handleWhatsApp}
+    className="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-4 rounded-2xl transition-all active:scale-[0.985]"
+  >
+    <MessageCircle size={17} /> WhatsApp
+  </button>
+</div>
+
                     </form>
                   )}
                 </div>
