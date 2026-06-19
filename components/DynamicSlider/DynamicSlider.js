@@ -88,6 +88,7 @@ export default function DynamicSlider({
 
     setIsSubmitting(true);
 
+    
     try {
       const response = await fetch("/api/send-email", {
         method: "POST",
@@ -502,19 +503,21 @@ function PackageModal({ item, onClose, onBook, onCallUs }) {
 
         {/* Footer Buttons */}
         <div className="flex-shrink-0 border-t border-slate-100 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-4 grid grid-cols-2 gap-3">
-          <button
-            onClick={onBook}
-            className="flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-[#E68213] to-[#F7A63C] text-white text-xs font-bold tracking-wider hover:brightness-105 active:scale-[0.98] transition"
-          >
-            Book Now <ArrowRight size={13} />
-          </button>
-          <button
-            onClick={onCallUs}
-            className="flex items-center justify-center gap-2 py-3.5 rounded-xl border border-slate-200 dark:border-zinc-700 text-slate-600 dark:text-zinc-300 text-xs font-semibold hover:bg-slate-50 dark:hover:bg-zinc-800 active:scale-[0.98] transition"
-          >
-            <Phone size={13} /> Call Us
-          </button>
-        </div>
+  <button
+    onClick={onBook}
+    className="flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-[#E68213] to-[#F7A63C] text-white text-xs font-bold tracking-wider hover:brightness-105 active:scale-[0.98] transition"
+  >
+    Book Now <ArrowRight size={13} />
+  </button>
+  
+  <a
+    href="tel:+442038766846"
+    className="flex items-center justify-center gap-2 py-3.5 rounded-xl border border-slate-200 dark:border-zinc-700 text-slate-600 dark:text-zinc-300 text-xs font-semibold hover:bg-slate-50 dark:hover:bg-zinc-800 active:scale-[0.98] transition no-underline"
+  >
+    <Phone size={13} /> Call Us
+  </a>
+</div>
+
       </motion.div>
     </motion.div>
   );

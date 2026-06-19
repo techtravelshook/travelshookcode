@@ -32,14 +32,14 @@ export default function AboutusInfo() {
           {/* SECTION HEADER TITLE */}
           <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight uppercase leading-tight whitespace-normal">
             Our Story &{" "}
-            <span className="bg-gradient-to-r from-[#F6931F] to-[#0070A1] bg-clip-text text-transparent italic font-serif normal-case">
+            <span className="bg-gradient-to-r from-[#F6931F] to-[#0070A1] bg-clip-text text-transparent  font-serif normal-case">
               Who We Are
             </span>
           </h2>
 
           {/* PARAGRAPH BLOCKS */}
           <div className="space-y-5 text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed mt-2 whitespace-normal">
-            <p className="border-l-2 border-[#F6931F] pl-4 italic bg-slate-50 dark:bg-white/[0.01] py-2 rounded-r-xl">
+            <p className="border-l-2 border-[#F6931F] pl-4  bg-slate-50 dark:bg-white/[0.01] py-2 rounded-r-xl">
               Welcome to Travelshook – your trusted partner for sacred journeys and dream vacations. As a premier travel management agency, we specialize in crafting custom travel experiences that perfectly balance the best prices, premium locations, and top-tier hospitality.
             </p>
             <p>

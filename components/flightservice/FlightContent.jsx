@@ -155,7 +155,7 @@ function FlightContent() {
             </span>
             <h2 className="text-xl sm:text-4xl lg:text-3xl font-black leading-tight tracking-tighter text-slate-900 dark:text-white">
               Elite Deals,{" "}
-              <span className="bg-gradient-to-r from-[#E68213] to-[#0070A1] bg-clip-text text-transparent italic">
+              <span className="bg-gradient-to-r from-[#E68213] to-[#0070A1] bg-clip-text text-transparent ">
                 Budget Prices
               </span>
             </h2>
@@ -208,7 +208,7 @@ function FlightContent() {
                       }}
                       className="rounded-lg bg-white/10 px-4 py-2 text-sm font-bold uppercase tracking-wider text-white backdrop-blur-md transition-all hover:bg-[#F7931E] active:scale-95"
                     >
-                      Book Now
+                      Book Now 
                     </button>
                   </div>
                 </div>

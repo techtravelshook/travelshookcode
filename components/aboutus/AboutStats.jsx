@@ -37,7 +37,7 @@ export default function AboutStats() {
           {/* MAIN TITLE WITH SEAMLESS BRAND GRADIENT */}
           <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight uppercase leading-tight whitespace-normal">
             Our Numbers Speak For{" "}
-            <span className="bg-gradient-to-r from-[#F6931F] to-[#0070A1] bg-clip-text text-transparent italic ml-1 font-serif normal-case">
+            <span className="bg-gradient-to-r from-[#F6931F] to-[#0070A1] bg-clip-text text-transparent  ml-1 font-serif normal-case">
               Themselves
             </span>
           </h2>

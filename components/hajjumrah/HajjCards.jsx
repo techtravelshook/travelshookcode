@@ -117,12 +117,17 @@ Please share more details. Thanks!`;
             <span className="mb-3 inline-flex rounded-full bg-[#F6931F]/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.25em] text-[#F6931F]">
               Popular Packages
             </span>
-            <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight  leading-tight whitespace-normal">
+            <h2 className="text-2xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight  leading-tight whitespace-normal">
               Our Featured {" "}
-              <span className="text-2xl sm:text-4xl bg-gradient-to-r from-[#F6931F] to-[#0070A1] bg-clip-text text-transparent  ml-1 font-serif normal-case">
+              <span className="text-2xl sm:text-5xl bg-gradient-to-r from-[#F6931F] to-[#0070A1] bg-clip-text text-transparent  ml-1 ">
                 Packages 2026 - 2027
               </span>
             </h2>
+
+
+ 
+
+
             <p className="mt-3 text-xs sm:text-sm leading-relaxed text-slate-500 dark:text-slate-400 font-medium hidden sm:block whitespace-normal">
               At Travelshook, we design Ramadan Umrah Packages with flights, luxury hotel accommodations, convenient transfers, expert advice and more for the ultimate convenience in your pilgrimage.
             </p>

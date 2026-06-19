@@ -71,7 +71,7 @@ const FlightsInfo = () => {
             {/* FIXED: Font sizing standardized to match exactly with slider alignments */}
             <h2 className="text-xl sm:text-4xl lg:text-3xl font-black leading-tight tracking-tighter text-slate-900 dark:text-white">
               Trending Destinations &
-              <span className="bg-gradient-to-r from-[#E68213] to-[#0070A1] bg-clip-text text-transparent italic pr-2 ml-2">
+              <span className="bg-gradient-to-r from-[#E68213] to-[#0070A1] bg-clip-text text-transparent  pr-2 ml-2">
                 Fares
               </span>
             </h2>

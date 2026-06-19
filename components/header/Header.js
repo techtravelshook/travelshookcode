@@ -32,7 +32,7 @@ const destinationImages = {
   philippines: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=400&q=80",
   "south-africa": "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=400&q=80",
   zimbabwe: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=400&q=80",
-  canada: "https://images.unsplash.com/photo-1514119412350-e174d90d280e?w=400&q=80",
+  canada: "https://images.unsplash.com/photo-1530025809667-1f4bcff8e60f?q=80&w=1391",
   thailand: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=400&q=80",
   brazil: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=400&q=80",
   // Holidays / Umrah
@@ -350,6 +350,7 @@ export default function Navbar() {
         <div className="bg-white/70 dark:bg-[#111112]/70 backdrop-blur-2xl border border-black/10 dark:border-white/10 rounded-3xl md:rounded-full px-5 md:px-8 h-16 md:h-20 flex items-center justify-between shadow-[0_8px_30px_-10px_rgba(0,0,0,0.15)] relative">
         <div className="flex items-center gap-2">
   <div className="w-14 h-14 md:w-17 md:h-17 rounded-full overflow-hidden shrink-0">
+    {/* logoo */}
      <Link href="/" >
   <img
     src="/imgs/logo1.jpeg"

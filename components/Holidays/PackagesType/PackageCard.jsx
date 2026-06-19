@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   Star,
@@ -30,6 +31,7 @@ function StarRow({ count = 0 }) {
 export default function PackageCard({
   pkg,
   onBook,
+  isMobile = false,
   theme = {
     primary: "#f59e0b",
     border: "rgba(245,158,11,0.2)",
@@ -37,13 +39,18 @@ export default function PackageCard({
     gradient: "linear-gradient(135deg,#f59e0b,#d97706)",
   },
 }) {
+  const [isOpen, setIsOpen] = useState(false);
+
   if (!pkg) return null;
 
   return (
     <motion.div
-      whileHover={{ y: -4 }}
+      whileHover={!isMobile ? { y: -4 } : {}}
       transition={{ duration: 0.25 }}
-      className="relative rounded-2xl overflow-hidden group"
+      onClick={() => isMobile && setIsOpen(!isOpen)}
+      className={`relative rounded-2xl overflow-hidden ${
+        isMobile ? "cursor-pointer" : "group"
+      }`}
       style={{
         background: "#111",
         border: "1px solid rgba(255,255,255,0.07)",
@@ -52,13 +59,14 @@ export default function PackageCard({
       {/* Image Container */}
       <div className="relative h-65 overflow-hidden">
         <Image
-  src={`/${pkg.image}`}
-  alt={pkg.title || "Holiday Package"}
-  fill
-  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-  className="object-cover transition-transform duration-700 group-hover:scale-110"
-/>
-
+          src={`/${pkg.image}`}
+          alt={pkg.title || "Holiday Package"}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className={`object-cover transition-transform duration-700 ${
+            !isMobile ? "group-hover:scale-110" : ""
+          }`}
+        />
 
         <div
           className="absolute inset-0"
@@ -108,73 +116,154 @@ export default function PackageCard({
         </div>
       </div>
 
-      {/* Hover Info Overlay */}
-      <div
-        className="
-          absolute inset-0 z-20
-          bg-black/85 backdrop-blur-sm
-          opacity-0 group-hover:opacity-100
-          transition-all duration-500
-          flex flex-col justify-end
-          p-4
-        "
-      >
-        {/* Title inside hover overlay for context */}
-        <h4 className="text-white font-bold text-xs mb-1 uppercase tracking-wider opacity-60">
-          {pkg.title}
-        </h4>
+      {/* Hover Info Overlay - Desktop (hover-based) */}
+      {!isMobile && (
+        <div
+          className="
+            absolute inset-0 z-20
+            bg-black/85 backdrop-blur-sm
+            opacity-0 group-hover:opacity-100
+            transition-all duration-500
+            flex flex-col justify-end
+            p-4
+            pointer-events-none group-hover:pointer-events-auto
+          "
+        >
+          {/* Title inside hover overlay for context */}
+          <h4 className="text-white font-bold text-xs mb-1 uppercase tracking-wider opacity-60">
+            {pkg.title}
+          </h4>
 
-        {/* Short Description rendering here */}
-        {pkg.shortDesc && (
-          <p className="text-white/80 text-[11px] leading-relaxed mb-4 line-clamp-4">
-            {pkg.shortDesc}
-          </p>
-        )}
-
-        <div className="flex flex-wrap gap-2 mb-4">
-          {pkg.features?.map((feature, index) => (
-            <span
-              key={index}
-              className="flex items-center gap-1 text-[11px] font-semibold px-2 py-1 rounded-full"
-              style={{
-                background: theme.lightBg,
-                color: theme.primary,
-                border: `1px solid ${theme.border}`,
-              }}
-            >
-              <Plane size={9} />
-              {feature}
-            </span>
-          ))}
-        </div>
-
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-[10px] text-white/50 uppercase tracking-widest">
-              From
+          {/* Short Description rendering here */}
+          {pkg.shortDesc && (
+            <p className="text-white/80 text-[11px] leading-relaxed mb-4 line-clamp-4">
+              {pkg.shortDesc}
             </p>
+          )}
 
-            <p className="text-2xl font-black text-white">
-              £{pkg.price?.toLocaleString() || 0}
-              <span className="text-xs text-white/40 ml-1">pp</span>
-            </p>
+          <div className="flex flex-wrap gap-2 mb-4">
+            {pkg.features?.map((feature, index) => (
+              <span
+                key={index}
+                className="flex items-center gap-1 text-[11px] font-semibold px-2 py-1 rounded-full"
+                style={{
+                  background: theme.lightBg,
+                  color: theme.primary,
+                  border: `1px solid ${theme.border}`,
+                }}
+              >
+                <Plane size={9} />
+                {feature}
+              </span>
+            ))}
           </div>
 
-          <motion.button
-            type="button"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-            onClick={() => onBook?.(pkg)}
-            className="px-5 py-2.5 rounded-xl font-black text-xs text-black flex items-center gap-2"
-            style={{
-              background: theme.gradient,
-            }}
-          >
-            <Shield size={12} />
-            Book Now
-          </motion.button>
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-[10px] text-white/50 uppercase tracking-widest">
+                From
+              </p>
+
+              <p className="text-2xl font-black text-white">
+                £{pkg.price?.toLocaleString() || 0}
+                <span className="text-xs text-white/40 ml-1">pp</span>
+              </p>
+            </div>
+
+            <motion.button
+              type="button"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={() => onBook?.(pkg)}
+              className="px-5 py-2.5 rounded-xl font-black text-xs text-black flex items-center gap-2"
+              style={{
+                background: theme.gradient,
+              }}
+            >
+              <Shield size={12} />
+              Book Now
+            </motion.button>
+          </div>
         </div>
-      </div>
+      )}
+
+      {/* Mobile Tap-to-Reveal Overlay */}
+      {isMobile && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isOpen ? 1 : 0 }}
+          transition={{ duration: 0.3 }}
+          className="
+            absolute inset-0 z-20
+            bg-black/85 backdrop-blur-sm
+            flex flex-col justify-end
+            p-4
+            pointer-events-none
+          "
+          style={{
+            pointerEvents: isOpen ? "auto" : "none",
+          }}
+        >
+          {/* Title inside overlay for context */}
+          <h4 className="text-white font-bold text-xs mb-1 uppercase tracking-wider opacity-60">
+            {pkg.title}
+          </h4>
+
+          {/* Short Description rendering here */}
+          {pkg.shortDesc && (
+            <p className="text-white/80 text-[11px] leading-relaxed mb-4 line-clamp-4">
+              {pkg.shortDesc}
+            </p>
+          )}
+
+          <div className="flex flex-wrap gap-2 mb-4">
+            {pkg.features?.map((feature, index) => (
+              <span
+                key={index}
+                className="flex items-center gap-1 text-[11px] font-semibold px-2 py-1 rounded-full"
+                style={{
+                  background: theme.lightBg,
+                  color: theme.primary,
+                  border: `1px solid ${theme.border}`,
+                }}
+              >
+                <Plane size={9} />
+                {feature}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-[10px] text-white/50 uppercase tracking-widest">
+                From
+              </p>
+
+              <p className="text-2xl font-black text-white">
+                £{pkg.price?.toLocaleString() || 0}
+                <span className="text-xs text-white/40 ml-1">pp</span>
+              </p>
+            </div>
+
+            <motion.button
+              type="button"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={(e) => {
+                e.stopPropagation();
+                onBook?.(pkg);
+              }}
+              className="px-5 py-2.5 rounded-xl font-black text-xs text-black flex items-center gap-2"
+              style={{
+                background: theme.gradient,
+              }}
+            >
+              <Shield size={12} />
+              Book Now
+            </motion.button>
+          </div>
+        </motion.div>
+      )}
     </motion.div>
   );
 }

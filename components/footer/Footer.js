@@ -112,16 +112,17 @@ export default function Footer() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid lg:grid-cols-12 gap-12 lg:gap-8"
         >
-          {/* Brand Column */}
+          {/* Brand Column LOGO*/}
           <motion.div variants={itemVariants} className="lg:col-span-4 flex flex-col justify-start">
-            <Link href="/" className="flex items-center gap-2.5 mb-5 w-fit">
-              <div className="w-10 h-10 bg-[#F6931F] rounded-xl flex items-center justify-center shadow-lg shadow-[#F6931F]/20">
-                <PlaneTakeoff className="text-white" size={18} />
-              </div>
-              <span className="text-xl font-black tracking-tight text-slate-900 dark:text-white uppercase">
-                TRAVELS<span className="text-[#F6931F]">HOOK</span>
-              </span>
-            </Link>
+            <div className="w-14 h-14 md:w-17 md:h-17 rounded-full overflow-hidden shrink-0 mb-3 ">
+     <Link href="/" >
+  <img
+    src="/imgs/logo1.jpeg"
+    alt="TravelsHook"
+    className="w-full h-full object-cover scale-110"
+  />
+    </Link>
+</div>
 
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-sm font-medium">
               Your trusted partner for flights, holidays, Hajj & Umrah packages. 

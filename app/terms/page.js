@@ -85,7 +85,7 @@ export default function Terms() {
           </p>
 
           <div className="bg-[#F7F5F0] border-l-4 border-[#F6931F] p-6 my-10 rounded-r-2xl">
-            <p className="text-sm italic text-slate-600">
+            <p className="text-sm  text-slate-600">
               <strong>Note:</strong> We strongly recommend purchasing comprehensive travel insurance to protect against unforeseen circumstances.
             </p>
           </div>

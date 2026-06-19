@@ -1,13 +1,21 @@
 // components/Holidays/PackageGrid.jsx
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import PackageCard from "./PackageCard";
 
 export default function PackageGrid({ packages, onBook, theme }) {
   const scrollRef = useRef(null);
+  
+
+  // Detect if device supports hover (touch devices don't)
+  // ✅ No warning, cleaner
+const [isMobile] = useState(() => {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(hover: none)").matches;
+});
 
   const scrollByCard = (direction) => {
     const el = scrollRef.current;
@@ -33,7 +41,12 @@ export default function PackageGrid({ packages, onBook, theme }) {
             transition={{ delay: i * 0.06, duration: 0.5 }}
             className="snap-center shrink-0 w-[85%]"
           >
-            <PackageCard pkg={pkg} onBook={onBook} theme={theme} />
+            <PackageCard 
+              pkg={pkg} 
+              onBook={onBook} 
+              theme={theme}
+              isMobile={isMobile}
+            />
           </motion.div>
         ))}
       </div>
@@ -42,14 +55,14 @@ export default function PackageGrid({ packages, onBook, theme }) {
       <div className="flex sm:hidden justify-center gap-3 mt-4">
         <button
           onClick={() => scrollByCard(-1)}
-          className="w-9 h-9 rounded-full flex items-center justify-center border"
+          className="w-9 h-9 rounded-full flex items-center justify-center border transition-colors active:bg-opacity-10"
           style={{ borderColor: theme?.border || "rgba(245,158,11,0.2)" }}
         >
           <ChevronLeft size={18} />
         </button>
         <button
           onClick={() => scrollByCard(1)}
-          className="w-9 h-9 rounded-full flex items-center justify-center border"
+          className="w-9 h-9 rounded-full flex items-center justify-center border transition-colors active:bg-opacity-10"
           style={{ borderColor: theme?.border || "rgba(245,158,11,0.2)" }}
         >
           <ChevronRight size={18} />
@@ -66,7 +79,12 @@ export default function PackageGrid({ packages, onBook, theme }) {
             viewport={{ once: true }}
             transition={{ delay: i * 0.06, duration: 0.5 }}
           >
-            <PackageCard pkg={pkg} onBook={onBook} theme={theme} />
+            <PackageCard 
+              pkg={pkg} 
+              onBook={onBook} 
+              theme={theme}
+              isMobile={false}
+            />
           </motion.div>
         ))}
       </div>

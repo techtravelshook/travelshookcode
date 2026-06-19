@@ -87,7 +87,7 @@ export default function Privacy() {
           </p>
 
           <div className="bg-[#F7F5F0] border-l-4 border-[#F6931F] p-6 my-10 rounded-r-2xl">
-            <p className="text-sm italic text-slate-600">
+            <p className="text-sm  text-slate-600">
               <strong>Note:</strong> By using our website, you consent to the collection and use of information in accordance with this Privacy Policy.
             </p>
           </div>

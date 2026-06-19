@@ -103,7 +103,7 @@ export default function LuxuryTestimonials() {
                         </div>
 
                         {/* CORE TESTIMONIAL TEXT BODY */}
-                        <p className="text-xl md:text-2xl font-medium leading-relaxed tracking-tight text-slate-800 dark:text-zinc-200 italic max-w-2xl font-serif">
+                        <p className="text-xl md:text-2xl font-medium leading-relaxed tracking-tight text-slate-800 dark:text-zinc-200  max-w-2xl font-serif">
                           {item.quote}
                         </p>
 

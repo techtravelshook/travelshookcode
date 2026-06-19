@@ -41,7 +41,7 @@ export default function FlightDestinations() {
             </span>
             <h2 className="text-3xl font-black leading-tight sm:text-4xl lg:text-5xl text-slate-900 dark:text-white tracking-tighter">
               Worlds Most
-              <span className="bg-gradient-to-r from-[#E68213] to-[#0070A1] bg-clip-text text-transparent italic"> Beautiful Flights</span>
+              <span className="bg-gradient-to-r from-[#E68213] to-[#0070A1] bg-clip-text text-transparent "> Beautiful Flights</span>
             </h2>
           </div>
           

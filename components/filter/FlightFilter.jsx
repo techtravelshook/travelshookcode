@@ -5,7 +5,7 @@ import {
   Plane,
   MapPin,
   Calendar,
-  Search,
+  Mail,
   Users,
   ChevronDown,
 } from "lucide-react";
@@ -17,8 +17,12 @@ export default function FlightSearchWidget() {
   const [cabin, setCabin] = useState("Economy");
   const [fromAirport, setFromAirport] = useState("LHR");
   const [toAirport, setToAirport] = useState("JED");
+  const [departDate, setDepartDate] = useState("");
+  const [returnDate, setReturnDate] = useState("");
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
-  // Track button position so the popup anchors correctly
   const triggerRef = useRef(null);
   const popupRef = useRef(null);
 
@@ -45,6 +49,69 @@ export default function FlightSearchWidget() {
         Math.min(9, prev[type] + d)
       ),
     }));
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setMessage("");
+    setLoading(true);
+
+    // Validation
+    if (!email) {
+      setMessage("Please enter your email address");
+      setLoading(false);
+      return;
+    }
+    if (!departDate) {
+      setMessage("Please select a departure date");
+      setLoading(false);
+      return;
+    }
+    if (tripType === "return" && !returnDate) {
+      setMessage("Please select a return date");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/flightemail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          tripType,
+          fromAirport,
+          toAirport,
+          departDate,
+          returnDate: tripType === "return" ? returnDate : null,
+          passengers: {
+            adults: pax.adults,
+            children: pax.children,
+            infants: pax.infants,
+            total: pax.adults + pax.children + pax.infants,
+          },
+          cabin,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setMessage(`Error: ${data.error || "Failed to send email"}`);
+      } else {
+        setMessage("✓ Flight details sent to your email successfully!");
+        // Reset form
+        setEmail("");
+        setDepartDate("");
+        setReturnDate("");
+        setTimeout(() => setMessage(""), 3000);
+      }
+    } catch (error) {
+      setMessage(`Error: ${error.message}`);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -73,7 +140,7 @@ export default function FlightSearchWidget() {
         {/* TOP ROW */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 w-full">
 
-          {/* PASSENGER — popup is position:fixed so it never pushes layout */}
+          {/* PASSENGER */}
           <div className="relative w-full sm:w-auto">
 
             <button
@@ -95,11 +162,6 @@ export default function FlightSearchWidget() {
               <ChevronDown size={14} />
             </button>
 
-            {/* POPUP
-                Using position:fixed + top/left calculated from the trigger
-                means the popup floats above the layout and NEVER causes
-                any parent element to resize or reflow.
-            */}
             {showPax && (
               <div
                 ref={popupRef}
@@ -163,57 +225,117 @@ export default function FlightSearchWidget() {
 
         </div>
 
-        {/* GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4 items-end">
+        <form onSubmit={handleSubmit}>
 
-          {/* FROM */}
-          <div className="lg:col-span-3 w-full">
-            <label className="block text-[10px] uppercase font-bold text-slate-400 mb-1">
-              Flying From
-            </label>
-            <select
-              value={fromAirport}
-              onChange={(e) => setFromAirport(e.target.value)}
-              className="w-full p-3 bg-slate-50 dark:bg-slate-900/50 rounded-2xl"
-            >
-              <option value="LHR">London Heathrow</option>
-            </select>
-          </div>
+          {/* GRID */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4 items-end">
 
-          {/* TO */}
-          <div className="lg:col-span-3 w-full">
-            <label className="block text-[10px] uppercase font-bold text-slate-400 mb-1">
-              Going To
-            </label>
-            <select
-              value={toAirport}
-              onChange={(e) => setToAirport(e.target.value)}
-              className="w-full p-3 bg-slate-50 dark:bg-slate-900/50 rounded-2xl"
-            >
-              <option value="JED">Jeddah</option>
-            </select>
-          </div>
-
-          {/* DATE */}
-          <div className="lg:col-span-4 w-full">
-            <label className="block text-[10px] uppercase font-bold text-slate-400 mb-1">
-              Travel Dates
-            </label>
-
-            <div className="flex bg-slate-50 dark:bg-slate-900/50 rounded-2xl overflow-hidden">
-              <input type="date" className="w-1/2 p-3" />
-              <input type="date" className="w-1/2 p-3" />
+            {/* FROM */}
+            <div className="lg:col-span-3 w-full">
+              <label className="block text-[10px] uppercase font-bold text-slate-400 mb-1">
+                Flying From
+              </label>
+              <select
+                value={fromAirport}
+                onChange={(e) => setFromAirport(e.target.value)}
+                className="w-full p-3 bg-slate-50 dark:bg-slate-900/50 rounded-2xl"
+              >
+                <option value="LHR">London Heathrow (LHR)</option>
+                <option value="LGW">London Gatwick (LGW)</option>
+                <option value="STN">London Stansted (STN)</option>
+                <option value="LCY">London City (LCY)</option>
+              </select>
             </div>
+
+            {/* TO */}
+            <div className="lg:col-span-3 w-full">
+              <label className="block text-[10px] uppercase font-bold text-slate-400 mb-1">
+                Going To
+              </label>
+              <select
+                value={toAirport}
+                onChange={(e) => setToAirport(e.target.value)}
+                className="w-full p-3 bg-slate-50 dark:bg-slate-900/50 rounded-2xl"
+              >
+                <option value="JED">Jeddah (JED)</option>
+                <option value="DXB">Dubai (DXB)</option>
+                <option value="CAI">Cairo (CAI)</option>
+                <option value="DPS">Bali (DPS)</option>
+              </select>
+            </div>
+
+            {/* DATE */}
+            <div className="lg:col-span-2 w-full">
+              <label className="block text-[10px] uppercase font-bold text-slate-400 mb-1">
+                Depart
+              </label>
+              <input
+                type="date"
+                value={departDate}
+                onChange={(e) => setDepartDate(e.target.value)}
+                className="w-full p-3 bg-slate-50 dark:bg-slate-900/50 rounded-2xl"
+                required
+              />
+            </div>
+
+            {tripType === "return" && (
+              <div className="lg:col-span-2 w-full">
+                <label className="block text-[10px] uppercase font-bold text-slate-400 mb-1">
+                  Return
+                </label>
+                <input
+                  type="date"
+                  value={returnDate}
+                  onChange={(e) => setReturnDate(e.target.value)}
+                  className="w-full p-3 bg-slate-50 dark:bg-slate-900/50 rounded-2xl"
+                  required={tripType === "return"}
+                />
+              </div>
+            )}
+
+            {/* EMAIL */}
+            <div className={tripType === "return" ? "lg:col-span-2 w-full" : "lg:col-span-4 w-full"}>
+              <label className="block text-[10px] uppercase font-bold text-slate-400 mb-1">
+                Your Email
+              </label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="your@email.com"
+                className="w-full p-3 bg-slate-50 dark:bg-slate-900/50 rounded-2xl"
+                required
+              />
+            </div>
+
+            {/* BUTTON */}
+            <div className="lg:col-span-2 w-full">
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full bg-[#E68213] hover:bg-[#d67010] disabled:bg-slate-300 text-white py-4 rounded-3xl font-bold flex items-center justify-center gap-2 transition-all duration-200"
+              >
+                <Mail size={18} />
+                {loading ? "Sending..." : "Send to Email"}
+              </button>
+            </div>
+
           </div>
 
-          {/* BUTTON */}
-          <div className="lg:col-span-2 w-full">
-            <button className="w-full bg-[#E68213] text-white py-4 rounded-3xl font-bold flex items-center justify-center gap-2">
-              <Search size={18} /> Search
-            </button>
-          </div>
+          {/* STATUS MESSAGE */}
+          {message && (
+            <div className={`mt-4 p-3 rounded-xl text-sm font-medium text-center ${
+              message.startsWith("✓") || message.startsWith("Error:")
+                ? message.startsWith("✓")
+                  ? "bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300"
+                  : "bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300"
+                : "bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300"
+            }`}>
+              {message}
+            </div>
+          )}
 
-        </div>
+        </form>
       </div>
     </section>
   );
