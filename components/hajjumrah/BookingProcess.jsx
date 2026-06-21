@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, memo } from "react";
 import { motion, useInView } from "framer-motion";
 import { Compass, PhoneCall, FileText, CheckSquare, Luggage } from "lucide-react";
 import Link from "next/link";
@@ -38,7 +38,7 @@ const stepsData = [
   },
 ];
 
-function StepCard({ step, index, total }) {
+const StepCard = memo(function StepCard({ step, index, total }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
   const Icon = step.icon;
@@ -48,10 +48,9 @@ function StepCard({ step, index, total }) {
       ref={ref}
       initial={{ opacity: 0, y: 32 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.55, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative flex flex-col w-full"
-    >
-      {/* Desktop dotted connector line */}
+      transition={{ duration: 0.55, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+      className="group relative flex flex-col w-full flex-shrink-0 md:flex-shrink-1 snap-start"
+    >      
       {index < total - 1 && (
         <div className="hidden xl:block absolute top-[52px] left-[calc(100%-8px)] w-[calc(100%-64px)] z-0 pointer-events-none">
           <div className="h-px w-full border-t-2 border-dashed border-orange-200 dark:border-orange-900/40" />
@@ -68,8 +67,6 @@ function StepCard({ step, index, total }) {
           />
         </div>
       )}
-
-      {/* Card */}
       <div
         className="relative overflow-hidden rounded-3xl border min-h-[270px] flex flex-col
           bg-white dark:bg-[#020d14]
@@ -81,8 +78,6 @@ function StepCard({ step, index, total }) {
       >
         {/* Gradient top bar */}
         <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-[#F6931F] to-[#0070A1] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-        {/* Watermark number */}
         <span
           aria-hidden="true"
           className="absolute -bottom-3 -right-1 font-black text-[80px] leading-none select-none pointer-events-none
@@ -94,7 +89,6 @@ function StepCard({ step, index, total }) {
         </span>
 
         <div className="relative z-10 flex flex-col h-full p-6 gap-5">
-          {/* Icon + Badge */}
           <div className="flex items-start justify-between">
             <div
               className="flex items-center justify-center w-11 h-11 rounded-2xl
@@ -147,7 +141,7 @@ function StepCard({ step, index, total }) {
       )}
     </motion.div>
   );
-}
+});
 
 export default function BookingProcess() {
   const headerRef = useRef(null);
@@ -183,7 +177,6 @@ export default function BookingProcess() {
         </svg>
       </div>
 
-      {/* FIXED: Changed to full fluid viewport width alignment matching upper panels */}
       <div className="relative w-full max-w-[100vw] mx-auto px-4 lg:px-12">
 
         {/* Header */}
@@ -212,10 +205,15 @@ export default function BookingProcess() {
           </p>
         </motion.div>
 
-        {/* Steps Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-6 w-full items-start">
+        {/* Steps Container - Horizontal scroll on mobile, grid on larger screens */}
+        <div className="flex md:grid md:grid-cols-2 xl:grid-cols-5 gap-6 w-full items-start overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide md:overflow-visible -mx-1 px-1">
           {stepsData.map((step, index) => (
-            <StepCard key={step.id} step={step} index={index} total={stepsData.length} />
+            <StepCard 
+              key={step.id} 
+              step={step} 
+              index={index} 
+              total={stepsData.length} 
+            />
           ))}
         </div>
 

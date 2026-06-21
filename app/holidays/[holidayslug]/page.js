@@ -1,14 +1,9 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-
 import HeroSlider from "@/components/Holidays/HolidayHero";
 import axios from "axios";
 import HolidayInquiryForms from '@/components/Holidays/HolidayInquryForms';
-import SearchedPackages from "@/components/Holidays/HolidayPlaces/SearchedPackages";
-import OtherPackages from "@/components/Holidays/HolidayPlaces/OtherPackages";
 import PopularHolidays from "@/components/Holidays/HolidayPlaces/PopularHoliday";
 import BookingProcess from "@/components/hajjumrah/BookingProcess";
 import FlightFaqs from "@/components/flightservice/flightsplaces/FlightFaqs";
@@ -126,8 +121,6 @@ const [submitStatus, setSubmitStatus] = useState({
         formComponent={<HolidayInquiryForms />}
         autoPlayInterval={5000}
       />
-  {/*   <SearchedPackages /> */}
-    {/* <HolidaysSec slug={params.holidayslug} /> */}
     <HolidaysSec
   slug={slug1}
   onBookClick={(holiday) => {

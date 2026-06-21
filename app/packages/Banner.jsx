@@ -1,6 +1,4 @@
 "use client";
-
-import FlightSearchWidget from "@/components/filter/FlightFilter";
 import Image from "next/image";
 import React from "react";
 
@@ -8,7 +6,7 @@ export default function Banner({
   title = "Package ",
   highlightText = "Customizer App",
   description = "Discover premium destinations, unbeatable airfare deals, and seamless travel experiences worldwide.",
-  bgImage = "/imgs/slider02.jpg",
+  bgImage = "/imgs/slider01.webp",
 }) {
   return (
     <main className="font-mulish overflow-hidden bg-white text-slate-900 transition-colors duration-300 dark:bg-[#01080C] dark:text-white">

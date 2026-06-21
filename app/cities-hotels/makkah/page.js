@@ -10,11 +10,6 @@ import {
   Search,
   ChevronDown,
   X,
-  User,
-  Mail,
-  Phone,
-  Minus,
-  Plus,
 } from "lucide-react";
 import HotelDetailModal from "@/components/hotels/HotelDetailModal";
 import MAKKAH_HOTELS from "@/data/makkahhotels";
@@ -193,7 +188,7 @@ export default function MakkahHotelsPage() {
                 className="w-full sm:w-auto appearance-none rounded-xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/[0.07] dark:border-white/[0.07] pl-4 pr-9 py-2.5 text-sm text-slate-900 dark:text-white"
               >
                 {SORT_OPTIONS.map((o) => (
-                  <option key={o} value={o}>{o}</option>
+                  <option key={o} value={o} className="dark:text-black">{o}</option>
                 ))}
               </select>
               <ChevronDown size={13} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400" />

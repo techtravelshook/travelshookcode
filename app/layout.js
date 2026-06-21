@@ -53,11 +53,36 @@ export const metadata = {
 };
 
 
+// export default function RootLayout({ children }) {
+//   return (
+  
+//     <html lang="en" className={`${jakarta.variable} ${mulish.variable} ${jost.variable}`} suppressHydrationWarning>
+//       <body className="bg-white dark:bg-[#01080C] text-slate-900 dark:text-white antialiased">
+        
+//         {/* Fix 2: Providers ko top par rakha takay Header aur SmoothScroll dono ko state/theme ka access mile */}
+//         <Providers>
+//           <SmoothScroll>
+//             <Header />
+//             <main>
+//               {children}
+//               <Footer/>
+//             </main>
+//           </SmoothScroll>
+//         </Providers>
+
+//       </body>
+//     </html>
+//   );
+// }
+
 export default function RootLayout({ children }) {
   return (
-  
     <html lang="en" className={`${jakarta.variable} ${mulish.variable} ${jost.variable}`} suppressHydrationWarning>
-      <body className="bg-white dark:bg-[#01080C] text-slate-900 dark:text-white antialiased">
+      {/* ADD suppressHydrationWarning={true} TO THE BODY TAG BELOW */}
+      <body 
+        className="bg-white dark:bg-[#01080C] text-slate-900 dark:text-white antialiased"
+        suppressHydrationWarning={true}
+      >
         
         {/* Fix 2: Providers ko top par rakha takay Header aur SmoothScroll dono ko state/theme ka access mile */}
         <Providers>

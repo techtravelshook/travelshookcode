@@ -1,19 +1,8 @@
-// app/api/send-email/route.js
-
 import nodemailer from "nodemailer";
 
 export async function POST(req) {
   try {
-    const {
-      email,
-      tripType,
-      fromAirport,
-      toAirport,
-      departDate,
-      returnDate,
-      passengers,
-      cabin,
-    } = await req.json();
+    const body = await req.json();
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -25,48 +14,40 @@ export async function POST(req) {
 
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER, // YOU receive the email
-      replyTo: email, // Reply goes to customer
-      subject: `✈️ New Flight Inquiry: ${fromAirport} → ${toAirport}`,
+      to: process.env.EMAIL_USER,
+      subject: "New Flight Inquiry",
       html: `
-        <h2>New Flight Inquiry</h2>
+        <h2>Flight Inquiry</h2>
 
-        <p><strong>Customer Email:</strong> ${email}</p>
+        <p><strong>WhatsApp:</strong> ${body.whatsapp || "N/A"}</p>
+        <p><strong>Trip Type:</strong> ${body.tripType || "N/A"}</p>
+        <p><strong>From:</strong> ${body.fromAirport || "N/A"}</p>
+        <p><strong>To:</strong> ${body.toAirport || "N/A"}</p>
+        <p><strong>Departure:</strong> ${body.departDate || "N/A"}</p>
+        <p><strong>Return:</strong> ${body.returnDate || "N/A"}</p>
+        <p><strong>Cabin:</strong> ${body.cabin || "Economy"}</p>
 
-        <hr />
+        <hr>
 
-        <p><strong>Trip Type:</strong> ${tripType}</p>
-        <p><strong>From:</strong> ${fromAirport}</p>
-        <p><strong>To:</strong> ${toAirport}</p>
-        <p><strong>Departure Date:</strong> ${departDate}</p>
-        <p><strong>Return Date:</strong> ${returnDate || "N/A"}</p>
-
-        <hr />
-
-        <p><strong>Adults:</strong> ${passengers?.adults || 0}</p>
-        <p><strong>Children:</strong> ${passengers?.children || 0}</p>
-        <p><strong>Infants:</strong> ${passengers?.infants || 0}</p>
-        <p><strong>Total Passengers:</strong> ${passengers?.total || 0}</p>
-
-        <hr />
-
-        <p><strong>Cabin Class:</strong> ${cabin}</p>
+        <pre>${JSON.stringify(body, null, 2)}</pre>
       `,
     });
 
     return Response.json({
       success: true,
-      message: "Inquiry sent successfully",
+      message: "Email sent successfully",
     });
   } catch (error) {
-    console.error("EMAIL ERROR:", error);
+    console.error("MAIL ERROR:", error);
 
     return Response.json(
       {
         success: false,
         error: error.message,
       },
-      { status: 500 }
+      {
+        status: 500,
+      }
     );
   }
 }

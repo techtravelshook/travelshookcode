@@ -2,11 +2,8 @@
 import HeroSlider from '@/components/Holidays/HolidayHero';
 import HolidayInquiryForms from '@/components/Holidays/HolidayInquryForms';
 import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X, Star, Clock, Plane, Shield, CheckCircle2, ChevronRight, MapPin, Users, Calendar } from 'lucide-react';
-import Image from 'next/image';
+
 import PackageGrid from '@/components/Holidays/PackagesType/PackageGrid';
-import PackageCard from '@/components/Holidays/PackagesType/PackageCard';
 import BookingModal from '@/components/Holidays/PackagesType/BookingModal';
 import FlightFaqs from '@/components/flightservice/flightsplaces/FlightFaqs';
 const theme = {
@@ -65,11 +62,11 @@ useEffect(() => {
   onBook={setSelectedPkg}
   theme={theme}
 />
-<AnimatePresence>
+<>
   {selectedPkg && (
     <BookingModal pkg={selectedPkg} onClose={() => setSelectedPkg(null)} />
   )}
-</AnimatePresence>
+</>
 <FlightFaqs/>
   
 </div>

@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Compass, CheckCircle2, ChevronRight, Star } from "lucide-react";
+import {  ChevronRight, Star } from "lucide-react";
 
 const differentiators = [
   { 

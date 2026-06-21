@@ -2,11 +2,7 @@
 import HeroSlider from '@/components/Holidays/HolidayHero';
 import HolidayInquiryForms from '@/components/Holidays/HolidayInquryForms';
 import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X, Star, Clock, Plane, Shield, CheckCircle2, ChevronRight, MapPin, Users, Calendar } from 'lucide-react';
-import Image from 'next/image';
 import PackageGrid from '@/components/Holidays/PackagesType/PackageGrid';
-import PackageCard from '@/components/Holidays/PackagesType/PackageCard';
 import BookingModal from '@/components/Holidays/PackagesType/BookingModal';
 import FlightFaqs from '@/components/flightservice/flightsplaces/FlightFaqs';
 const theme = {
@@ -22,12 +18,6 @@ const sliderImages = [
   { id: 3, src: "/imgs/holidays/Manchester.jpg", alt: "Manchester Holiday", title: "Elite holiday experiences", subtitle: "Premium Manchester Experiences" },
   { id: 4, src: "/imgs/holidays/Birmingham.jpg", alt: "Birmingham Holiday", title: "Elite Birmingham experiences", subtitle: "Premium Birmingham Experiences" },
 ];
-// for single pages this will be good to use array of objects dont need to make db overload
-
-
-
-
-/* ══ PAGE ══ */
 export default function HolidaysPage() {
   const [selectedPkg, setSelectedPkg] = useState(null);
 const [packages, setPackages] = useState([]);
@@ -65,11 +55,11 @@ useEffect(() => {
   onBook={setSelectedPkg}
   theme={theme}
 />
-<AnimatePresence>
+<>
   {selectedPkg && (
     <BookingModal pkg={selectedPkg} onClose={() => setSelectedPkg(null)} />
   )}
-</AnimatePresence>
+</>
 <FlightFaqs/>
   
 </div>

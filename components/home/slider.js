@@ -1,278 +1,177 @@
 "use client";
+import React, { useState, useEffect, memo, useCallback } from "react";
+import dynamic from "next/dynamic";
+import Image from "next/image";
 
-import React, { useState, useEffect } from "react";
-import {
-  motion,
-  AnimatePresence,
-  useMotionValue,
-  useSpring,
-} from "framer-motion";
+const FlightSearchWidget = dynamic(
+  () => import("../filter/FlightFilter"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-full h-[120px] animate-pulse rounded-xl bg-white/10" />
+    ),
+  }
+);
 
-import {
-  ArrowRight,
-  ChevronRight,
-  ChevronLeft,
-} from "lucide-react";
-
-import FlightSearchWidget from "../filter/FlightFilter";
-
-const slides = [
+const SLIDES = [
   {
     title: "Trace The Sacred",
-    subtitle: "Luxury Umrah ",
+    subtitle: "Luxury Umrah",
     desc: "Experience 5-star luxury at the heart of Makkah and Madinah with exclusive travel experiences.",
-    img: "/imgs/slider01.jpg",
+    img: "/imgs/slider01.webp",
     accent: "#E68213",
   },
   {
-    title: "Blessed Spirit Travels",
+    title: "Alpine Wonders",
     subtitle: "Explore The Alps",
     desc: "Explore breathtaking landscapes, premium stays, and unforgettable moments across Europe.",
-    img: "/imgs/slider02.jpg",
+    img: "/imgs/slider02.webp",
     accent: "#0070A1",
   },
   {
     title: "Fly Across Africa",
     subtitle: "50+ Destinations",
     desc: "Connecting you to Africa's most iconic destinations with comfort, elegance, and adventure.",
-    img: "/imgs/slider03.jpg",
+    img: "/imgs/slider03.webp",
     accent: "#E68213",
   },
 ];
 
-export default function HomeSlider() {
+function HomeSlider() {
   const [index, setIndex] = useState(0);
+  const current = SLIDES[index];
+  const words = current.title.split(" ");
 
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const smoothX = useSpring(mouseX, {
-    stiffness: 50,
-    damping: 20,
-  });
-
-  const smoothY = useSpring(mouseY, {
-    stiffness: 50,
-    damping: 20,
-  });
-
+  // Auto slide with useCallback for memoization
   useEffect(() => {
     const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % slides.length);
+      setIndex((prev) => (prev + 1) % SLIDES.length);
     }, 7000);
-
     return () => clearInterval(timer);
   }, []);
 
-  const next = () =>
-    setIndex((prev) => (prev + 1) % slides.length);
-
-  const prev = () =>
-    setIndex((prev) =>
-      prev === 0 ? slides.length - 1 : prev - 1
-    );
-
-  const current = slides[index];
-
-  const handleMouseMove = (e) => {
-    const x =
-      (e.clientX / window.innerWidth - 0.5) * 40;
-
-    const y =
-      (e.clientY / window.innerHeight - 0.5) * 40;
-
-    mouseX.set(x);
-    mouseY.set(y);
-  };
-
   return (
-    <section
-      onMouseMove={handleMouseMove}
-      className="relative w-full overflow-hidden bg-black font-mulish"
-      style={{ minHeight: "100svh" }}
-    >
-      <AnimatePresence mode="wait">
-        <motion.div key={index} className="absolute inset-0">
-          <motion.div
-            initial={{
-              scale: 1.3,
-              opacity: 0,
-              filter: "blur(30px)",
-            }}
-            animate={{
-              scale: 1,
-              opacity: 1,
-              filter: "blur(0px)",
-            }}
-            exit={{
-              scale: 1.15,
-              opacity: 0,
-              filter: "blur(20px)",
-            }}
-            transition={{
-              duration: 0.7,
-              ease: [0.76, 0, 0.24, 1],
-            }}
-            style={{ x: smoothX, y: smoothY }}
-            className="absolute inset-0 scale-110"
-          >
-            <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{
-                backgroundImage: `url(${current.img})`,
-              }}
-            />
-          </motion.div>
+    <section className="relative w-full overflow-hidden bg-black font-mulish min-h-[75vh] py-8 sm:py-12 flex items-center justify-center">
+      <style jsx>{`
+        @keyframes slideInImage {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
 
-          <motion.div
-            initial={{ x: "0%" }}
-            animate={{ x: "100%" }}
-            exit={{ x: "0%" }}
-            transition={{
-              duration: 1.3,
-              ease: [0.76, 0, 0.24, 1],
-            }}
-            className="absolute inset-0 z-30 bg-[#E68213]"
-          />
+        @keyframes slideInText {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
 
-          <motion.div
-            initial={{ x: "0%" }}
-            animate={{ x: "100%" }}
-            exit={{ x: "0%" }}
-            transition={{
-              delay: 0.15,
-              duration: 1.5,
-              ease: [0.76, 0, 0.24, 1],
-            }}
-            className="absolute inset-0 z-20 bg-[#0070A1]"
-          />
+        @keyframes slideInSubtitle {
+          from {
+            opacity: 0;
+            transform: translateX(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
 
-          <div className="absolute inset-0 bg-black/60" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent" />
-          <div className="absolute inset-0 opacity-[0.05] mix-blend-soft-light" />
+        @keyframes colorPulse {
+          0%, 100% {
+            opacity: 0.1;
+          }
+          50% {
+            opacity: 0.15;
+          }
+        }
 
-          <motion.div
-            animate={{
-              x: [0, 40, 0],
-              y: [0, -30, 0],
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-            }}
-            className="absolute -left-20 top-20 h-[350px] w-[350px] rounded-full bg-[#E68213]/30 blur-[120px] md:h-[400px] md:w-[400px]"
-          />
+        .slide-image {
+          animation: slideInImage 0.6s ease-in-out forwards;
+        }
 
-          <motion.div
-            animate={{
-              x: [0, -30, 0],
-              y: [0, 40, 0],
-            }}
-            transition={{
-              duration: 12,
-              repeat: Infinity,
-            }}
-            className="absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-[#0070A1]/30 blur-[140px] md:h-[450px] md:w-[450px]"
-          />
-        </motion.div>
-      </AnimatePresence>
+        .slide-subtitle {
+          animation: slideInSubtitle 0.5s ease-out 0.1s forwards;
+        }
 
-      <div className="absolute inset-0 opacity-[0.07]">
-        <div
-          className="h-full w-full"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px)",
-            backgroundSize: "70px 70px",
-          }}
+        .slide-title {
+          animation: slideInText 0.6s ease-out 0.2s forwards;
+        }
+
+        .slide-desc {
+          animation: slideInText 0.6s ease-out 0.3s forwards;
+        }
+
+        .color-accent {
+          color: ${current.accent};
+        }
+      `}</style>
+
+      {/* BACKGROUND IMAGE - Simplified */}
+      <div className="absolute inset-0 overflow-hidden">
+        <Image
+          key={current.img}
+          src={current.img}
+          alt={current.title}
+          fill
+          priority={index === 0}
+          sizes="100vw"
+          quality={60}
+          className="object-cover slide-image"
         />
+
+        {/* Single dark overlay - removed layered overlays */}
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent" />
       </div>
 
-      <div
-  className="relative z-40 w-full flex flex-col items-center pt-16 md:pt-0"
-  style={{
-    paddingTop: "clamp(4rem, 10vw, 8rem)",
-    paddingBottom: "clamp(1.5rem, 4vw, 3.5rem)",
-  }}
->
-        <div className="container mx-auto px-4 sm:px-6 lg:px-16 w-full">
-          <div className="max-w-6xl w-full mx-auto flex flex-col items-center text-center gap-6 sm:gap-8">
-            <div className="w-full px-1">
-              <motion.div
-                key={current.subtitle}
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                className="mb-4 flex items-center justify-center gap-4"
-              >
-                <div className="inline-flex items-center gap-2 sm:gap-3 rounded-full border border-white/15 bg-white/10 backdrop-blur-md mt-8 px-12 py-5 sm:px-5 sm:py-2 md:px-6 md:py-2.5">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: 60 }}
-                  className="h-[2px] bg-[#E68213]"
-                />
-
+      {/* MINIMAL GRID - removed for performance */}
+      {/* CONTENT */}
+      <div className="relative z-40 w-full flex flex-col items-center pt-8 pb-5">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-16">
+          <div className="max-w-6xl mx-auto text-center flex flex-col items-center gap-6 sm:gap-8">
+            {/* SUBTITLE */}
+            <div className="slide-subtitle mt-14">
+              <div className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm px-3 py-2 will-change-transform">
+                <div className="h-[2px] w-10 bg-[#E68213]" />
                 <span
-                  className="text-xs sm:text-sm uppercase tracking-[0.3em] font-bold"
+                  className="text-xs sm:text-sm uppercase tracking-[0.3em] font-bold color-accent transition-colors duration-300"
                   style={{ color: current.accent }}
                 >
                   {current.subtitle}
                 </span>
-                </div>
-              </motion.div>
-
-              <div className="overflow-hidden">
-                <AnimatePresence mode="wait">
-                  <motion.h1
-                    key={current.title}
-                    initial={{
-                      y: 100,
-                      opacity: 0,
-                    }}
-                    animate={{
-                      y: 0,
-                      opacity: 1,
-                    }}
-                    exit={{
-                      y: -100,
-                      opacity: 0,
-                    }}
-                    transition={{
-                      duration: 0.8,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-[1.05] text-white tracking-tight"
-                  >
-                    {current.title.split(" ").map((word, i) => {
-                      const isHighlight = i === current.title.split(" ").length - 1;
-
-                      return (
-                        <motion.span
-                          key={i}
-                          initial={{ opacity: 0, y: 30 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: i * 0.05, duration: 0.5 }}
-                          className={`mr-3 inline-block ${
-                            isHighlight ? "text-[#E68213]" : "text-white"
-                          }`}
-                        >
-                          {word}
-                        </motion.span>
-                      );
-                    })}
-                  </motion.h1>
-                </AnimatePresence>
               </div>
-
-              <p className="mt-6 text-sm sm:text-base md:text-lg text-slate-200 max-w-2xl font-medium leading-relaxed mx-auto px-2">
-                {current.desc}
-              </p>
             </div>
 
-            <div className="w-full flex justify-center px-1 sm:px-2 mt-2">
-              <div className="w-full max-w-5xl">
-                <FlightSearchWidget />
-              </div>
+            {/* TITLE */}
+            <h1 className="slide-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight text-white will-change-transform">
+              {words.map((word, i) => (
+                <span
+                  key={`${word}-${i}`}
+                  className={`inline-block mr-3 transition-colors duration-300 ${
+                    i === words.length - 1 ? "color-accent" : "text-white"
+                  }`}
+                >
+                  {word}
+                </span>
+              ))}
+            </h1>
+
+            {/* DESCRIPTION */}
+            <p className="slide-desc text-sm sm:text-base md:text-lg text-slate-200 max-w-2xl leading-relaxed will-change-transform">
+              {current.desc}
+            </p>
+
+            {/* SEARCH */}
+            <div className="w-full max-w-12xl">
+              <FlightSearchWidget />
             </div>
           </div>
         </div>
@@ -280,3 +179,5 @@ export default function HomeSlider() {
     </section>
   );
 }
+
+export default memo(HomeSlider);

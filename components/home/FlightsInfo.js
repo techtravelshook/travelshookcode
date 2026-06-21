@@ -53,38 +53,25 @@ function FlightRow({ destination, price, pence }) {
 
 const FlightsInfo = () => {
   return (
-    /* FIXED: Changed to absolute relative fluid model for perfect symmetry alignment */
     <section className="relative overflow-hidden w-full bg-white dark:bg-[#01080C] py-14 text-slate-900 dark:text-white transition-colors duration-500">
-      
-      {/* FIXED: Added 'container mx-auto px-6' wrapper to align text exactly like other sliders */}
       <div className="container relative z-10 mx-auto px-6">
-
-        {/* UPGRADED PREMIUM ALIGNED HEADER BLOCK */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div className="max-w-xl">
-            
-            {/* Matching Top Tracking Orange Badge */}
             <span className="mb-3 inline-block rounded-full border border-[#E68213]/20 bg-[#E68213]/10 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] text-[#E68213] font-bold">
               Top Booked Routes
             </span>
-            
-            {/* FIXED: Font sizing standardized to match exactly with slider alignments */}
             <h2 className="text-xl sm:text-4xl lg:text-3xl font-black leading-tight tracking-tighter text-slate-900 dark:text-white">
               Trending Destinations &
               <span className="bg-gradient-to-r from-[#E68213] to-[#0070A1] bg-clip-text text-transparent  pr-2 ml-2">
                 Fares
               </span>
             </h2>
-            
-            {/* Subtitle Sync */}
             <p className="text-[13px] text-slate-500 dark:text-slate-400 mt-2 font-medium">
               Most booked routes this week — grab yours before prices rise.
             </p>
 
           </div>
         </div>
-
-        {/* 3-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10">
           <div>
             {col1.map((f) => (
@@ -102,8 +89,6 @@ const FlightsInfo = () => {
             ))}
           </div>
         </div>
-
-        {/* Footer note */}
         <p className="mt-8 text-[11px] text-slate-400 dark:text-slate-500 font-medium">
           * Prices shown are the lowest available fares and may vary. All prices include taxes & fees.
         </p>

@@ -13,6 +13,7 @@ import {
   ChevronRight,
   MapPin,
 } from "lucide-react";
+import Link from "next/link";
 
 const features = [
   {
@@ -39,13 +40,14 @@ const features = [
 
 export default function PackageBanner({
   onContactClick,
-  whatsappNumber = "923124928496",
+
 }) {
+  const whatsappNumber = "923124928496";
   const whatsappMsg = encodeURIComponent(
     "As-salamu alaykum! I am interested in your Umrah Packages."
   );
 
-  const whatsappUrl = `https://wa.me{whatsappNumber}?text=${whatsappMsg}`;
+ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMsg}`;
 
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -176,7 +178,7 @@ export default function PackageBanner({
                   <MessageCircle size={16} />
                   WhatsApp Now
                 </a>
-
+<Link href="/contact">
                 <button
                   onClick={onContactClick}
                   className="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#F6931F] hover:bg-orange-500 text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 hover:scale-102 shadow-[0_8px_20px_rgba(246,147,31,0.2)]"
@@ -188,6 +190,7 @@ export default function PackageBanner({
                     className="transition-transform duration-300 group-hover:translate-x-1"
                   />
                 </button>
+                </Link>
               </div>
             </div>
           </div>

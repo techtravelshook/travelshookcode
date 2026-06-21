@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useCallback, memo } from "react";
 import Image from "next/image";
-import { ImSpinner9 } from "react-icons/im";
+
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  X, Clock, Users, MapPin, Shield, Send, CalendarDays, Star,
-  MessageCircle, ArrowRight, ArrowLeft, Utensils, LayoutGrid,
-  List, Zap, CheckCircle2, Lock, BadgeCheck
+  X, MapPin, Send, Star,
+  MessageCircle, ArrowRight, ArrowLeft, LayoutGrid,
+  List, CheckCircle2, Lock, 
 } from "lucide-react";
 
 /* ================= DATA ARRAY ================= */
@@ -79,7 +79,7 @@ const tourPackages = [
     category: "Luxury · Tropical",
     subtitle: "7-Day Island Paradise Escape",
     title: "Bali to Indonesia",
-    image: "/imgs/paris.jpg",
+    image: "/imgs/paris.webp",
     location: "Bali, Indonesia",
     duration: "6 Nights In Dec",
     groupSize: "2–12 Pax",
@@ -99,7 +99,7 @@ const tourPackages = [
     category: "Luxury · Urban",
     subtitle: "5-Day Metropolitan Skyline Tour",
     title: "New York to USA",
-    image: "/imgs/paris.jpg",
+    image: "/imgs/newyork.webp",
     location: "New York, USA",
     duration: "4 Nights In Nov",
     groupSize: "2–12 Pax",
@@ -119,7 +119,7 @@ const tourPackages = [
     category: "Luxury · Exotic",
     subtitle: "7-Day Ultra-Luxury Lagoon Stay",
     title: "Maldives Luxury Resort",
-    image: "/imgs/paris.jpg",
+    image: "/imgs/maldives1.webp",
     location: "Malé, Maldives",
     duration: "6 Nights In Jan",
     groupSize: "2–12 Pax",
@@ -135,25 +135,23 @@ const tourPackages = [
 ];
 
 /* ================= STAR RATING ================= */
-function StarRow({ rating, reviewsCount, size = 11 }) {
+const StarRow = memo(function StarRow({ rating, reviewsCount, size = 11 }) {
   return (
     <div className="flex items-center gap-1">
-      <div className="flex gap-0.5">
-        {[...Array(5)].map((_, i) => (
-          <Star
-            key={i}
-            size={size}
-            className={i < rating ? "fill-amber-400 stroke-none" : "fill-slate-200 dark:fill-white/10 stroke-none"}
-          />
-        ))}
-      </div>
+      {[...Array(5)].map((_, i) => (
+        <Star
+          key={i}
+          size={size}
+          className={i < rating ? "fill-amber-400 stroke-none" : "fill-slate-200 dark:fill-white/10 stroke-none"}
+        />
+      ))}
       <span className="text-[9px] text-slate-400 font-bold">({reviewsCount})</span>
     </div>
   );
-}
+});
 
 /* ================= INCLUSION BADGES ================= */
-function InclusionBadges({ inclusions }) {
+const InclusionBadges = memo(function InclusionBadges({ inclusions }) {
   const items = [
     { key: "visa",  label: "Visa" },
     { key: "guide", label: "Guide" },
@@ -169,10 +167,10 @@ function InclusionBadges({ inclusions }) {
       ))}
     </div>
   );
-}
+});
 
 /* ================= GRID CARD ================= */
-function GridCard({ pkg, onSelect }) {
+const GridCard = memo(function GridCard({ pkg, onSelect }) {
   const discount = pkg.originalPrice && pkg.discountedPrice
     ? Math.round((1 - Number(pkg.discountedPrice.replace(/,/g, "")) / Number(pkg.originalPrice.replace(/,/g, ""))) * 100)
     : null;
@@ -256,10 +254,10 @@ function GridCard({ pkg, onSelect }) {
       </div>
     </motion.div>
   );
-}
+});
 
 /* ================= LIST CARD ================= */
-function ListCard({ pkg, onSelect }) {
+const ListCard = memo(function ListCard({ pkg, onSelect }) {
   const discount = pkg.originalPrice && pkg.discountedPrice
     ? Math.round((1 - Number(pkg.discountedPrice.replace(/,/g, "")) / Number(pkg.originalPrice.replace(/,/g, ""))) * 100)
     : null;
@@ -349,7 +347,7 @@ function ListCard({ pkg, onSelect }) {
       </div>
     </motion.div>
   );
-}
+});
 
 /* ================= MAIN PAGE ================= */
 export default function HolidayPackages() {
@@ -357,25 +355,34 @@ export default function HolidayPackages() {
   const [viewMode, setViewMode]   = useState("grid");
   const [activeTab, setActiveTab] = useState("Overview");
   const [form, setForm]           = useState({ name: "", phone: "", message: "" });
-const [isSubmitting, setIsSubmitting] = useState(false); 
+  const [isSubmitting, setIsSubmitting] = useState(false); 
   // Mobile Carousel
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
 
-  const prevCard = () => setCurrentIndex((i) => Math.max(0, i - 1));
-  const nextCard = () => setCurrentIndex((i) => Math.min(tourPackages.length - 1, i + 1));
+  const handleSelect = useCallback((pkg) => {
+    setSelected(pkg);
+  }, []);
+
+  const prevCard = useCallback(() => {
+    setCurrentIndex((i) => Math.max(0, i - 1));
+  }, []);
+
+  const nextCard = useCallback(() => {
+    setCurrentIndex((i) => Math.min(tourPackages.length - 1, i + 1));
+  }, []);
 
   // Touch Handlers
-  const handleTouchStart = (e) => {
+  const handleTouchStart = useCallback((e) => {
     setTouchStart(e.targetTouches[0].clientX);
-  };
+  }, []);
 
-  const handleTouchMove = (e) => {
+  const handleTouchMove = useCallback((e) => {
     setTouchEnd(e.targetTouches[0].clientX);
-  };
+  }, []);
 
-  const handleTouchEnd = () => {
+  const handleTouchEnd = useCallback(() => {
     if (!touchStart || !touchEnd) return;
     
     const distance = touchStart - touchEnd;
@@ -390,26 +397,26 @@ const [isSubmitting, setIsSubmitting] = useState(false);
 
     setTouchStart(null);
     setTouchEnd(null);
-  };
+  }, [touchStart, touchEnd, nextCard, prevCard]);
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = useCallback((e) => {
+    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  }, []);
 
   const whatsappNumber = "923124928496";
 
-  const handleWhatsApp = () => {
+  const handleWhatsApp = useCallback(() => {
     if (!selected) return;
     const msg = `Hi, I am interested in the *${selected.title}* package priced at £${selected.discountedPrice}.\nName: ${form.name}\nPhone: ${form.phone}\n\n${form.message}`;
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank");
-  };
-
- 
+  }, [selected, form]);
 
   const VIEW_MODES = [
     { id: "grid",   label: "Grid",   icon: <LayoutGrid size={16} /> },
     { id: "list",   label: "List",   icon: <List size={16} /> },
   ];
 
- const handleSubmit = async (e) => {
+  const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
@@ -422,7 +429,7 @@ const [isSubmitting, setIsSubmitting] = useState(false);
           phone: form.phone,
           message: form.message,
           packageName: selected?.title || "Custom Package Inquiry",
-packagePrice: selected?.discountedPrice || "N/A",
+          packagePrice: selected?.discountedPrice || "N/A",
         }),
       });
 
@@ -430,7 +437,7 @@ packagePrice: selected?.discountedPrice || "N/A",
 
       if (data.success) {
         alert("Inquiry Sent Successfully!");
-        setForm({ name: "", phone: "", message: "" }); // Resets form values
+        setForm({ name: "", phone: "", message: "" });
       } else {
         alert(`Submission Failed: ${data.error}`);
       }
@@ -440,7 +447,8 @@ packagePrice: selected?.discountedPrice || "N/A",
     } finally {
       setIsSubmitting(false);
     }
-  };
+  }, [form, selected]);
+
   return (
     <section className="w-full py-14 bg-slate-50 dark:bg-[#01080C] transition-colors duration-500">
       <div className="w-full max-w-12xl mx-auto px-4 sm:px-12 ">
@@ -499,7 +507,7 @@ packagePrice: selected?.discountedPrice || "N/A",
                     exit={{ opacity: 0, x: -50 }}
                     transition={{ type: "spring", stiffness: 280, damping: 26 }}
                   >
-                    <GridCard pkg={tourPackages[currentIndex]} onSelect={setSelected} />
+                    <GridCard pkg={tourPackages[currentIndex]} onSelect={handleSelect} />
                   </motion.div>
                 </AnimatePresence>
               </div>
@@ -542,7 +550,7 @@ packagePrice: selected?.discountedPrice || "N/A",
             <div className="hidden sm:grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
               {tourPackages.map((pkg, i) => (
                 <motion.div key={pkg.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.06 }}>
-                  <GridCard pkg={pkg} onSelect={setSelected} />
+                  <GridCard pkg={pkg} onSelect={handleSelect} />
                 </motion.div>
               ))}
             </div>
@@ -554,7 +562,7 @@ packagePrice: selected?.discountedPrice || "N/A",
           <div className="flex flex-col gap-5">
             {tourPackages.map((pkg, i) => (
               <motion.div key={pkg.id} initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.06 }}>
-                <ListCard pkg={pkg} onSelect={setSelected} />
+                <ListCard pkg={pkg} onSelect={handleSelect} />
               </motion.div>
             ))}
           </div>
@@ -598,11 +606,11 @@ packagePrice: selected?.discountedPrice || "N/A",
                   <X size={20} strokeWidth={2.5} />
                 </button>
 
-                <div className="absolute top-6 left-6 flex gap-2 z-20">
+                <div className="absolute top-6 left-6 flex gap-2 z-20 ">
                   <span className="bg-black/70 border border-white/20 backdrop-blur-md text-white text-xs px-3.5 py-1.5 rounded-2xl font-semibold shadow-lg">
                     {selected.flightBadge}
                   </span>
-                  <span className="bg-gradient-to-r from-[#F6931F] to-orange-600 text-white text-xs px-3.5 py-1.5 rounded-2xl font-bold uppercase tracking-widest shadow-lg">
+                  <span className=" bg-gradient-to-r from-[#F6931F] to-orange-600 text-white text-xs px-3.5 py-1.5 rounded-2xl font-bold uppercase tracking-widest shadow-lg">
                     {selected.urgencyTag}
                   </span>
                 </div>
@@ -742,12 +750,11 @@ packagePrice: selected?.discountedPrice || "N/A",
 <div className="grid grid-cols-2 gap-3 pt-4">
   <button
     type="submit"
-    disabled={isSubmitting} // 👈 Prevents duplicate network post calls while sending
+    disabled={isSubmitting}
     className="flex items-center justify-center gap-2 bg-[#F6931F] hover:bg-orange-600 disabled:bg-orange-400 disabled:cursor-not-allowed text-white font-bold py-4 rounded-2xl transition-all active:scale-[0.985] shadow-lg shadow-orange-600/30"
   >
     {isSubmitting ? (
       <>
-        {/* Dynamic inline loader animation */}
         <svg className="animate-spin h-5 w-5 text-white" xmlns="http://w3.org" fill="none" viewBox="0 0 24 24">
           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -763,7 +770,7 @@ packagePrice: selected?.discountedPrice || "N/A",
 
   <button
     type="button"
-    disabled={isSubmitting} // 👈 Optional: Lock WhatsApp input click during active submissions
+    disabled={isSubmitting}
     onClick={handleWhatsApp}
     className="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-4 rounded-2xl transition-all active:scale-[0.985]"
   >

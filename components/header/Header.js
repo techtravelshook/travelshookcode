@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
 
 import { useTheme } from "next-themes";
 import Link from "next/link";
@@ -18,16 +18,17 @@ import {
   MessageCircle,
   Home,
   ChevronRight,
+  Search,
 } from "lucide-react";
+import Image from "next/image";
 
 // ─── destination images keyed by name (lowercase, no spaces) ────────────────
 const destinationImages = {
-  // Flights
   australia: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=400&q=80",
-  india: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=400&q=80",
+  india: "https://images.unsplash.com/photo-1532375810709-75b1da00537c?q=80",
   ghana: "https://images.unsplash.com/photo-1531956531700-dc0ee0f1f9a5?w=400&q=80",
   nigeria: "/imgs/flights/accra.jpg",
-  pakistan: "/imgs/flights/pakistan1.jpg",
+  pakistan: "https://images.unsplash.com/photo-1633100291356-19e4e0dcb98f?q=80",
   usa: "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=400&q=80",
   philippines: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=400&q=80",
   "south-africa": "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=400&q=80",
@@ -35,31 +36,22 @@ const destinationImages = {
   canada: "https://images.unsplash.com/photo-1530025809667-1f4bcff8e60f?q=80&w=1391",
   thailand: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=400&q=80",
   brazil: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=400&q=80",
-  // Holidays / Umrah
-  "umrah-birmingham": "https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=400&q=80",
-  "umrah-london": "https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=400&q=80",
-  "umrah-bolton": "https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=400&q=80",
-  "umrah-manchester": "https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=400&q=80",
+  "umrah-birmingham": "/imgs/hajj/hajj22.jpg",
+  "umrah-london": "/imgs/hajj/hajj25.jpg",
+  "umrah-bolton": "/imgs/hajj/hajj28.jpg",
+  "umrah-manchester": "/imgs/hajj/hajj26.jpg",
   "inclusive-holidays": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80",
   "beach-holidays": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80",
   "city-breaks": "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=400&q=80",
   "family-holidays": "https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=400&q=80",
   "last-minute-holidays": "https://images.unsplash.com/photo-1488085061387-422e29b40080?w=400&q=80",
-  // Hajj & Umrah
-  "ramdan-package": "https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=400&q=80",
+  "ramdan-package": "/imgs/hajj/hajj24.jpg",
   "3-star-umrah": "/imgs/hajj/hajj26.jpg",
   "4-star-umrah": "/imgs/hajj/hajj33.jpg",
   "5-star-umrah": "/imgs/hajj/hajj28.jpg",
   "monthly-package": "/imgs/hajj/hajj22.jpg",
-  "ramdan-package": "/imgs/hajj/hajj21.jpg",
-  // Cities & Hotels
   makkah: "/imgs/hajj/makkah_hotel.jpg",
   madinah: "/imgs/hajj/al-kiswah.jpg",
-  // holidays
-  "umrah-birmingham":"/imgs/holidays/Birmingham3.jpg",
-  "umrah-london":"/imgs/holidays/LondonBanner3.jpg",
-  "umrah-bolton":"/imgs/holidays/bolton.jpg",
-  "umrah-manchester":"/imgs/holidays/Manchester.jpg",
 };
 
 function getImage(name) {
@@ -135,8 +127,21 @@ const menuData = {
   },
 };
 
-// ─── Desktop card with background image ──────────────────────────────────────
-function DestinationCard({ item, basePath }) {
+// ─── Optimized search hook ────────────────────────────────────────────────────
+function useSearch(items, query) {
+  return useMemo(() => {
+    if (!query.trim()) return items;
+    const lowerQuery = query.toLowerCase();
+    return items.filter(item =>
+      item.name.toLowerCase().includes(lowerQuery) ||
+      item.code.toLowerCase().includes(lowerQuery) ||
+      item.tag.toLowerCase().includes(lowerQuery)
+    );
+  }, [items, query]);
+}
+
+// ─── Memoized Desktop card ────────────────────────────────────────────────────
+const DestinationCard = React.memo(function DestinationCard({ item, basePath }) {
   const slug = item.name.toLowerCase().replace(/\s+/g, "-");
   const img = getImage(item.name);
 
@@ -145,16 +150,12 @@ function DestinationCard({ item, basePath }) {
       href={`/${basePath}/${slug}`}
       className="group relative overflow-hidden rounded-2xl h-[110px] flex flex-col justify-end transition-transform duration-200 hover:scale-[1.03]"
     >
-      {/* background image */}
       <div
-        className="absolute inset-0 bg-cover bg-center  transition-transform  duration-500 group-hover:scale-110"
+        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
         style={{ backgroundImage: `url(${img})` }}
       />
-      {/* gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent group-hover:from-black/90 transition-all duration-300" />
-      {/* orange shimmer on hover */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-[#E68213]/30 to-transparent" />
-
       <div className="relative z-10 p-3">
         <div className="flex items-start justify-between mb-1">
           <span className="text-[11px] font-bold text-white leading-tight">{item.name}</span>
@@ -170,9 +171,10 @@ function DestinationCard({ item, basePath }) {
       </div>
     </Link>
   );
-}
+});
 
-function DestinationGrid({ items, basePath }) {
+// ─── Memoized Grid ────────────────────────────────────────────────────────────
+const DestinationGrid = React.memo(function DestinationGrid({ items, basePath }) {
   return (
     <div className="grid grid-cols-3 gap-2">
       {items.map((item) => (
@@ -180,12 +182,35 @@ function DestinationGrid({ items, basePath }) {
       ))}
     </div>
   );
-}
+});
 
-// ─── Mega panel ───────────────────────────────────────────────────────────────
-function MegaPanel({ menu }) {
+// ─── Mega panel with search ───────────────────────────────────────────────────
+const MegaPanel = React.memo(function MegaPanel({ menu }) {
+  const [searchQuery, setSearchQuery] = useState("");
   const isHajj = menu === "hajj-umrah";
   const { items, icon: PanelIcon, title } = menuData[menu];
+  const filteredItems = useSearch(items, searchQuery);
+
+  const handleSearchChange = useCallback((e) => {
+    setSearchQuery(e.target.value);
+  }, []);
+  const scrollContainerRef = useRef(null);
+
+useEffect(() => {
+  const container = scrollContainerRef.current;
+  if (!container) return;
+
+  const handleWheel = (e) => {
+    // If the user is scrolling vertically, move the container horizontally
+    if (e.deltaY !== 0) {
+      e.preventDefault();
+      container.scrollLeft += e.deltaY * 1.5; // Multiply to adjust scroll speed
+    }
+  };
+
+  container.addEventListener("wheel", handleWheel, { passive: false });
+  return () => container.removeEventListener("wheel", handleWheel);
+}, []);
 
   return (
     <motion.div
@@ -215,24 +240,76 @@ function MegaPanel({ menu }) {
           </Link>
         </div>
 
+        {/* Search Bar */}
+        <div className="px-5 py-3 border-b border-black/[0.06] dark:border-white/[0.06]">
+          <div className="relative flex items-center">
+            <Search size={14} className="absolute left-3 text-slate-400 pointer-events-none" />
+            <input
+              type="text"
+              placeholder={`Search ${title.toLowerCase()}...`}
+              value={searchQuery}
+              onChange={handleSearchChange}
+              className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl pl-9 pr-4 py-2 text-xs text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-white/40 focus:outline-none focus:ring-1 focus:ring-[#E68213] transition-all"
+            />
+          </div>
+        </div>
+
         <div className={`p-5 overflow-y-auto ${isHajj ? "max-h-[300px]" : "max-h-[400px]"}`}>
-          <DestinationGrid items={items} basePath={menu} />
+          {filteredItems.length > 0 ? (
+            <DestinationGrid items={filteredItems} basePath={menu} />
+          ) : (
+            <div className="flex items-center justify-center py-8 text-slate-500 dark:text-white/40 text-sm">
+              No results found for {searchQuery}
+            </div>
+          )}
         </div>
       </div>
     </motion.div>
   );
-}
+});
 
-// ─── Mobile accordion (FIXED) ─────────────────────────────────────────────────
-// FIX: Separated the toggle button from the Link, and manage open state locally.
-// FIX: Removed drag from sidebar wrapper — it was swallowing tap events on iOS.
-function MobileAccordion({ menuKey, onClose }) {
+// ─── Memoized Mobile Card ─────────────────────────────────────────────────────
+const MobileDestinationCard = React.memo(function MobileDestinationCard({ item, menuKey, onClose }) {
+  const slug = item.name.toLowerCase().replace(/\s+/g, "-");
+  const img = getImage(item.name);
+
+  return (
+    <Link
+      href={`/${menuKey}/${slug}`}
+      onClick={onClose}
+      className="group relative overflow-hidden rounded-2xl h-[90px] flex flex-col justify-end"
+    >
+      <div
+        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-active:scale-110"
+        style={{ backgroundImage: `url(${img})` }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+      <div className="relative z-10 p-2.5">
+        <p className="text-[10px] font-mono text-[#F7931E]">{item.code}</p>
+        <p className="text-xs font-semibold text-white leading-tight">{item.name}</p>
+        <p className="text-[11px] font-bold text-white mt-0.5">{item.price}</p>
+      </div>
+    </Link>
+  );
+});
+
+// ─── Mobile accordion with search and proper scroll ────────────────────────────
+const MobileAccordion = React.memo(function MobileAccordion({ menuKey, onClose }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const { items, icon: Icon, title, color } = menuData[menuKey];
+  const filteredItems = useSearch(items, searchQuery);
+
+  const toggleOpen = useCallback(() => {
+    setIsOpen(v => !v);
+  }, []);
+
+  const handleSearchChange = useCallback((e) => {
+    setSearchQuery(e.target.value);
+  }, []);
 
   return (
     <div className="border-b border-black/5 dark:border-white/5">
-      {/* Header row: left side navigates, right chevron toggles accordion */}
       <div className="flex items-center justify-between px-6 py-4">
         <Link
           href={`/${menuKey}`}
@@ -251,10 +328,9 @@ function MobileAccordion({ menuKey, onClose }) {
           </div>
         </Link>
 
-        {/* Separate toggle button — this is the key fix */}
         <button
           type="button"
-          onClick={() => setIsOpen((v) => !v)}
+          onClick={toggleOpen}
           className="p-2 rounded-xl bg-black/[0.04] dark:bg-white/[0.04] shrink-0 ml-2"
           aria-label={isOpen ? "Collapse" : "Expand"}
         >
@@ -266,7 +342,7 @@ function MobileAccordion({ menuKey, onClose }) {
         </button>
       </div>
 
-      {/* Collapsible sub-items with image cards */}
+      {/* Collapsible search and items with scroll isolation */}
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
@@ -277,92 +353,144 @@ function MobileAccordion({ menuKey, onClose }) {
             transition={{ duration: 0.22, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="px-6 pb-5 grid grid-cols-2 gap-2">
-              {items.slice(0, 6).map((item) => {
-                const slug = item.name.toLowerCase().replace(/\s+/g, "-");
-                const img = getImage(item.name);
-                return (
-                  <Link
-                    key={item.code + item.name}
-                    href={`/${menuKey}/${slug}`}
-                    onClick={onClose}
-                    className="group relative overflow-hidden rounded-2xl h-[90px] flex flex-col justify-end"
-                  >
-                    <div
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-active:scale-110"
-                      style={{ backgroundImage: `url(${img})` }}
+            <div className="px-6 pt-3 pb-2">
+              <div className="relative flex items-center">
+                <Search size={14} className="absolute left-3 text-slate-400 pointer-events-none" />
+                <input
+                  type="text"
+                  placeholder={`Search...`}
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl pl-9 pr-4 py-2 text-xs text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-white/40 focus:outline-none focus:ring-1 focus:ring-[#E68213] transition-all"
+                />
+              </div>
+            </div>
+
+            {/* SCROLL ISOLATED CONTAINER */}
+            <div className="px-6 pb-5 max-h-[400px] overflow-y-auto" style={{ WebkitOverflowScrolling: "touch" }}>
+              {filteredItems.length > 0 ? (
+                <div className="grid grid-cols-2 gap-2">
+                  {filteredItems.slice(0, 6).map((item) => (
+                    <MobileDestinationCard
+                      key={item.code + item.name}
+                      item={item}
+                      menuKey={menuKey}
+                      onClose={onClose}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                    <div className="relative z-10 p-2.5">
-                      <p className="text-[10px] font-mono text-[#F7931E]">{item.code}</p>
-                      <p className="text-xs font-semibold text-white leading-tight">{item.name}</p>
-                      <p className="text-[11px] font-bold text-white mt-0.5">{item.price}</p>
-                    </div>
-                  </Link>
-                );
-              })}
+                  ))}
+                </div>
+              ) : (
+                <div className="flex items-center justify-center py-6 text-slate-500 dark:text-white/40 text-xs">
+                  No results found
+                </div>
+              )}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
     </div>
   );
-}
+});
 
-// ─── Main Navbar ──────────────────────────────────────────────────────────────
+// ─── Main Navbar with scroll progress bar ────────────────────────────────────
 export default function Navbar() {
   const [activeMenu, setActiveMenu] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const sidebarRef = useRef(null);
-  // For swipe-to-close on mobile sidebar
+  const sidebarContentRef = useRef(null);
   const touchStartX = useRef(null);
+  const touchStartY = useRef(null);
 
   useEffect(() => {
     setTimeout(() => setMounted(true), 0);
   }, []);
 
+  // ─── Scroll progress tracker ───────────────────────────────────────────────
   useEffect(() => {
-    document.body.style.overflow = isSidebarOpen ? "hidden" : "unset";
-    return () => { document.body.style.overflow = "unset"; };
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      setScrollProgress(scrolled);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (isSidebarOpen) {
+      document.body.style.overflow = "hidden";
+      document.body.style.height = "100vh";
+    } else {
+      document.body.style.overflow = "unset";
+      document.body.style.height = "unset";
+    }
+    
+    return () => {
+      document.body.style.overflow = "unset";
+      document.body.style.height = "unset";
+    };
   }, [isSidebarOpen]);
 
-  const closeMenu = () => setIsSidebarOpen(false);
+  const closeMenu = useCallback(() => setIsSidebarOpen(false), []);
 
-  // Swipe-right-to-close (right-side drawer)
-  const handleTouchStart = (e) => {
+  const handleMenuOpen = useCallback(() => setIsSidebarOpen(true), []);
+
+  const handleTouchStart = useCallback((e) => {
     touchStartX.current = e.touches[0].clientX;
-  };
-  const handleTouchEnd = (e) => {
+    touchStartY.current = e.touches[0].clientY;
+  }, []);
+
+  const handleTouchEnd = useCallback((e) => {
     if (touchStartX.current === null) return;
-    const diff = e.changedTouches[0].clientX - touchStartX.current;
-    if (diff > 80) closeMenu(); // swipe right > 80px closes sidebar
+    const diffX = e.changedTouches[0].clientX - touchStartX.current;
+    const diffY = Math.abs(e.changedTouches[0].clientY - touchStartY.current);
+    
+    // Only close if horizontal swipe is greater than vertical movement
+    if (diffX > 80 && diffY < 50) {
+      closeMenu();
+    }
     touchStartX.current = null;
-  };
+    touchStartY.current = null;
+  }, [closeMenu]);
+
+  const handleThemeToggle = useCallback(() => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  }, [theme, setTheme]);
 
   const phoneNumber = "02038766846";
   const whatsappNumber = "02038766846";
 
   return (
     <>
+      {/* Scroll Progress Bar */}
+      <div className="fixed top-0 left-0 h-1 z-[100] pointer-events-none">
+        <motion.div
+          className="h-full bg-gradient-to-r from-[#F6931F] via-[#0070A1] to-[#F6931F]"
+          style={{ width: `${scrollProgress}%` }}
+          transition={{ type: "spring", stiffness: 100, damping: 30 }}
+        />
+      </div>
+
       <nav className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 w-[92%] md:w-[95%] max-w-7xl z-50">
         <div className="bg-white/70 dark:bg-[#111112]/70 backdrop-blur-2xl border border-black/10 dark:border-white/10 rounded-3xl md:rounded-full px-5 md:px-8 h-16 md:h-20 flex items-center justify-between shadow-[0_8px_30px_-10px_rgba(0,0,0,0.15)] relative">
-        <div className="flex items-center gap-2">
-  <div className="w-14 h-14 md:w-17 md:h-17 rounded-full overflow-hidden shrink-0">
-    {/* logoo */}
-     <Link href="/" >
-  <img
-    src="/imgs/logo1.jpeg"
-    alt="TravelsHook"
-    className="w-full h-full object-cover scale-110"
-  />
-    </Link>
-</div>
- 
-    
-
-</div>
+          <div className="flex items-center gap-2">
+            <div className="w-14 h-14 md:w-17 md:h-17 rounded-full overflow-hidden shrink-0">
+              <Link href="/">
+                <Image
+                  src="/imgs/logo1.jpeg"
+                  alt="TravelsHook"
+                  width={68} 
+                  height={68} 
+                  className="w-full h-full object-cover scale-110"
+                />
+              </Link>
+            </div>
+          </div>
 
           {/* DESKTOP MENU */}
           <div className="hidden md:flex items-center gap-8">
@@ -391,7 +519,7 @@ export default function Navbar() {
           <div className="flex items-center gap-2">
             {mounted && (
               <button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                onClick={handleThemeToggle}
                 className="p-2.5 rounded-2xl bg-black/5 dark:bg-white/5"
               >
                 {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
@@ -408,7 +536,7 @@ export default function Navbar() {
             </Link>
 
             <button
-              onClick={() => setIsSidebarOpen(true)}
+              onClick={handleMenuOpen}
               className="md:hidden p-2.5 rounded-2xl bg-black/5 dark:bg-white/5 active:scale-90 transition-transform"
             >
               <Menu size={20} />
@@ -417,7 +545,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* MOBILE SIDEBAR — drag removed to fix tap event swallowing */}
+      {/* MOBILE SIDEBAR WITH SCROLL ISOLATION */}
       <AnimatePresence>
         {isSidebarOpen && (
           <>
@@ -430,7 +558,7 @@ export default function Navbar() {
               className="fixed inset-0 bg-black/50 backdrop-blur-md z-[60] md:hidden"
             />
 
-            {/* Drawer — no framer-motion drag, using native touch events instead */}
+            {/* Drawer with scroll isolation */}
             <motion.div
               ref={sidebarRef}
               initial={{ x: "100%" }}
@@ -439,7 +567,7 @@ export default function Navbar() {
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
-              className="fixed top-0 right-0 h-full w-full md:w-[420px] bg-white dark:bg-[#111112] z-[70] rounded-l-3xl flex flex-col"
+              className="fixed top-0 right-0 h-full w-full sm:w-[420px] bg-white dark:bg-[#111112] z-[70] rounded-l-3xl flex flex-col"
               style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
             >
               {/* Drag handle indicator */}
@@ -491,8 +619,12 @@ export default function Navbar() {
                 </a>
               </div>
 
-              {/* Scrollable accordion list */}
-              <div className="overflow-y-auto flex-1 pb-8">
+              {/* Scrollable accordion list with scroll isolation */}
+              <div 
+                ref={sidebarContentRef}
+                className="overflow-y-auto flex-1 pb-8"
+                style={{ WebkitOverflowScrolling: "touch" }}
+              >
                 {Object.keys(menuData).map((key) => (
                   <MobileAccordion key={key} menuKey={key} onClose={closeMenu} />
                 ))}

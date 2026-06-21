@@ -190,7 +190,7 @@ export default function MakkahHotelsPage() {
     <div className="bg-white dark:bg-[#01080C] text-slate-900 dark:text-white min-h-screen">
       {/* Hero Banner - unchanged */}
       <div className="relative w-full h-64 sm:h-80 overflow-hidden">
-        <Image src="/imgs/hotels/makkah_hotel.jpg" alt="Makkah Hotels" fill className="object-cover" priority />
+        <Image src="/imgs/hotels/makkah_hotel.jpg" alt="Makkah Hotels" fill className="object-cover" priority  />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/80" />
         <div className="absolute -bottom-20 -right-20 w-72 h-72 rounded-full border border-[#E68213]/20 opacity-40" style={{ boxShadow: "0 0 80px 10px rgba(230,130,19,0.12)" }} />
 
@@ -215,13 +215,13 @@ export default function MakkahHotelsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-3">
           <div className="relative w-full sm:flex-1">
             <Search size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-white/30" />
-            <input type="text" placeholder="Search hotels…" value={search} onChange={(e) => setSearch(e.target.value)} className="w-full rounded-xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/[0.07] dark:border-white/[0.07] pl-9 pr-4 py-2.5 text-sm text-slate-900 dark:text-white" />
+            <input type="text" placeholder="Search hotels…" value={search} onChange={(e) => setSearch(e.target.value)} className="w-full rounded-xl bg-black/[0.03]  dark:bg-white/[0.04] border border-black/[0.07] dark:border-white/[0.07] pl-9 pr-4 py-2.5 text-sm text-slate-900 dark:text-white" />
           </div>
 
           <div className="flex w-full sm:w-auto items-center gap-2 sm:gap-3">
             <div className="relative flex-1 sm:flex-none">
-              <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} className="w-full sm:w-auto appearance-none rounded-xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/[0.07] dark:border-white/[0.07] pl-4 pr-9 py-2.5 text-sm text-slate-900 dark:text-white">
-                {SORT_OPTIONS.map((o) => <option key={o} value={o}>{o}</option>)}
+              <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} className="w-full sm:w-auto appearance-none rounded-xl bg-black/[0.03] dark:bg-white/[0.04]  border border-black/[0.07] dark:border-white/[0.07] pl-4 pr-9 py-2.5 text-sm text-slate-900 dark:text-white">
+                {SORT_OPTIONS.map((o) => <option key={o} value={o} className="dark:text-black">{o}</option>)}
               </select>
               <ChevronDown size={13} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400" />
             </div>

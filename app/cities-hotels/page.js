@@ -3,7 +3,7 @@ import HeroSlider from '@/components/Holidays/HolidayHero';
 import HolidayInquiryForms from '@/components/Holidays/HolidayInquryForms';
 import Image from 'next/image';
 import React, { useState } from 'react';
-import { ArrowRight, MapPin, X, User, Mail, Phone, Minus, Plus } from 'lucide-react';
+import {MapPin, X, Minus, Plus } from 'lucide-react';
 import BookingProcess from '@/components/hajjumrah/BookingProcess';
 import FlightFaqs from '@/components/flightservice/flightsplaces/FlightFaqs';
 import Link from 'next/link';

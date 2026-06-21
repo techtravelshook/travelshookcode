@@ -1,5 +1,3 @@
-
-
 const cityBreaksData = [
   {
     id: "cb-01",
@@ -8,10 +6,14 @@ const cityBreaksData = [
     image: "imgs/holidays/inc/catacombs-paris.jpg",
     rating: 5,
     duration: "3 Nights",
-    features: ["Flights included"],
+    features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 341,
-    shortDesc: "Uncover the mysterious underground side of the City of Light with an exclusive tour of Paris's historic catacombs. Walk through hauntingly beautiful ossuaries holding centuries of history hidden beneath the bustling Parisian streets. Perfect for history buffs and travelers seeking a thrilling, unconventional urban adventure."
+    location: "Paris, France",
+    bestTimeToVisit: "September to November",
+    highlights: ["Skip-the-line catacombs entry", "Expert local guide", "Left Bank walking tour"],
+    shortDesc: "Uncover the mysterious underground side of the City of Light with an exclusive tour of Paris's historic catacombs. Walk through hauntingly beautiful ossuaries holding centuries of history hidden beneath the bustling Parisian streets. Perfect for history buffs and travelers seeking a thrilling, unconventional urban adventure.",
+    desc: "Delve far beneath the romantic avenues of Paris into a dark, subterranean world where six million former residents rest. This curated city break features an exclusive, skip-the-line guided journey through the restricted sections of the Paris Catacombs. Above ground, your trip balances this chilling history with classic Parisian elegance. Enjoy three nights in a boutique hotel, easy access to chic cafés, and romantic twilight strolls along the Seine River."
   },
   {
     id: "cb-02",
@@ -20,10 +22,14 @@ const cityBreaksData = [
     image: "imgs/holidays/inc/amsterdam-light-festival.jpg",
     rating: 4,
     duration: "3 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 259,
-    shortDesc: "Experience the magic of Amsterdam as the city's iconic canals transform into an open-air light art gallery. Enjoy a cozy evening boat cruise to view breathtaking, illuminated installations designed by international artists. This seasonal winter getaway offers a vibrant, artistic perspective on a classic European destination."
+    location: "Amsterdam, Netherlands",
+    bestTimeToVisit: "December to January",
+    highlights: ["Heated canal cruise", "Complimentary drinks", "Audio guide commentary"],
+    shortDesc: "Experience the magic of Amsterdam as the city's iconic canals transform into an open-air light art gallery. Enjoy a cozy evening boat cruise to view breathtaking, illuminated installations designed by international artists. This seasonal winter getaway offers a vibrant, artistic perspective on a classic European destination.",
+    desc: "Celebrate the winter season in style as Amsterdam lights up for its annual cultural phenomenon. This holiday pairs a cozy central hotel stay with an evening canal boat cruise through world-famous illuminated water paths. You will glide past historic canal houses glowing with custom light installations created by global master artists. Warm up with traditional Dutch stroopwafels, explore local holiday markets, and experience the city's festive winter nightlife."
   },
   {
     id: "cb-03",
@@ -32,10 +38,14 @@ const cityBreaksData = [
     image: "imgs/holidays/inc/kiev-chernobyl.jpg",
     rating: 4,
     duration: "3 Nights",
-    features: ["Flights included"],
+    features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 279,
-    shortDesc: "Embark on an unforgettable journey blending the rich cultural heritage of Ukraine's capital with a historic tour of Chernobyl. Explore Kiev's golden-domed cathedrals and vibrant local markets before heading to the haunting, frozen-in-time exclusion zone of Pripyat. An exceptional choice for dark tourism enthusiasts and modern history lovers."
+    location: "Kyiv, Ukraine",
+    bestTimeToVisit: "May to September",
+    highlights: ["Pripyat guided exploration", "Geiger counter rental", "St. Sophia Cathedral entry"],
+    shortDesc: "Embark on an unforgettable journey blending the rich cultural heritage of Ukraine's capital with a historic tour of Chernobyl. Explore Kiev's golden-domed cathedrals and vibrant local markets before heading to the haunting, frozen-in-time exclusion zone of Pripyat. An exceptional choice for dark tourism enthusiasts and modern history lovers.",
+    desc: "This thought-provoking urban break offers a stark contrast between ancient imperial beauty and 20th-century historical gravity. Spend your days wandering past Kyiv’s majestic golden-domed orthodox churches, bustling modern squares, and deep historic metro systems. Your package includes a fully permitted, expert-led day excursion deep into the Chernobyl Exclusion Zone. Witness the ghost city of Pripyat, stand before the giant reactor sarcophagus, and document a world frozen in 1986."
   },
   {
     id: "cb-04",
@@ -44,10 +54,14 @@ const cityBreaksData = [
     image: "imgs/holidays/inc/iceland-blue-lagoon.jpg",
     rating: 4,
     duration: "3 Nights",
-    features: ["Flights included"],
+   features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 229,
-    shortDesc: "Escape to the dramatic landscapes of Iceland for a perfect mix of volcanic exploration and ultimate relaxation. Soak your worries away in the milky-blue, mineral-rich geothermal waters of the world-famous Blue Lagoon. Spend your nights hunting for the ethereal Northern Lights across Reykjavik's crisp, dark skies."
+    location: "Reykjavik, Iceland",
+    bestTimeToVisit: "October to March",
+    highlights: ["Blue Lagoon comfort entry", "Northern lights coach tour", "Silica mud mask"],
+    shortDesc: "Escape to the dramatic landscapes of Iceland for a perfect mix of volcanic exploration and ultimate relaxation. Soak your worries away in the milky-blue, mineral-rich geothermal waters of the world-famous Blue Lagoon. Spend your nights hunting for the ethereal Northern Lights across Reykjavik's crisp, dark skies.",
+    desc: "Immerse yourself in the stark, volcanic elements of the North Atlantic with this ultimate Icelandic escape. Based in the trendy, colorful capital of Reykjavik, this trip perfectly balances rugged natural wonders with restorative spa wellness. Your package features a premium day ticket to the legendary geothermal waters of the Blue Lagoon, complete with therapeutic mud masks. As darkness falls, board a specialized wilderness coach tour to hunt the vivid greens of the Aurora Borealis."
   },
   {
     id: "cb-05",
@@ -56,10 +70,14 @@ const cityBreaksData = [
     image: "imgs/holidays/inc/draculas-castle.jpg",
     rating: 4,
     duration: "3 Nights",
-    features: ["Flights included"],
+    features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 229,
-    shortDesc: "Step into a world of gothic legends and medieval charm with a trip deep into the mist-shrouded forests of Transylvania. Tour the imposing stone towers of Bran Castle, famously known as the inspiration behind Bram Stoker's Dracula. Discover cobblestone fortresses, local folklore, and stunning mountain backdrops."
+    location: "Brasov, Romania",
+    bestTimeToVisit: "October to November",
+    highlights: ["Bran Castle day pass", "Transylvanian Alps tour", "Medieval town walk"],
+    shortDesc: "Step into a world of gothic legends and medieval charm with a trip deep into the mist-shrouded forests of Transylvania. Tour the imposing stone towers of Bran Castle, famously known as the inspiration behind Bram Stoker's Dracula. Discover cobblestone fortresses, local folklore, and stunning mountain backdrops.",
+    desc: "Venture beyond the ordinary into the haunting, mist-veiled mountain landscape of Transylvania. Staying in the beautifully preserved medieval city of Brasov, you will be surrounded by gothic towers, cobblestone corridors, and ancient watchtowers. The trip's crown jewel is a comprehensive day tour of Bran Castle, the historic cliffside fortress tied to the dark legacy of Vlad the Impaler. Sample rich Transylvanian stews, explore Carpathian mountain villages, and unravel genuine Romanian folklore."
   },
   {
     id: "cb-06",
@@ -68,10 +86,14 @@ const cityBreaksData = [
     image: "imgs/holidays/inc/szechenyi-spa-budapest.jpg",
     rating: 5,
     duration: "3 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 129,
-    shortDesc: "Relax like royalty in the 'City of Spas' with a visit to Europe's largest medicinal bath complex. Dive into the warm, healing outdoor thermal pools of Szechenyi, surrounded by magnificent Neo-Baroque architecture. A perfect city break to unwind, rejuvenate, and experience Budapest's rich café culture and nightlife."
+    location: "Budapest, Hungary",
+    bestTimeToVisit: "March to May",
+    highlights: ["Full-day bath pass", "Private changing cabin", "Danube evening cruise"],
+    shortDesc: "Relax like royalty in the 'City of Spas' with a visit to Europe's largest medicinal bath complex. Dive into the warm, healing outdoor thermal pools of Szechenyi, surrounded by magnificent Neo-Baroque architecture. A perfect city break to unwind, rejuvenate, and experience Budapest's rich café culture and nightlife.",
+    desc: "Indulge in the grand spa traditions of Central Europe with a revitalizing escape to magnificent Budapest. This city break grants you priority access to the historic Szechenyi Baths, where you can swim in steaming, mineral-rich outdoor pools beneath striking Neo-Baroque facades. Beyond the pools, explore Budapest's eclectic heritage. Wander through iconic 'Ruin Bars' housed in historic abandoned buildings, feast on traditional goulash, and admire the illuminated Parliament over the Danube River."
   },
   {
     id: "cb-07",
@@ -80,10 +102,14 @@ const cityBreaksData = [
     image: "imgs/holidays/inc/rome-city-break.jpg",
     rating: 5,
     duration: "3 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 139,
-    shortDesc: "Immerse yourself in thousands of years of living history, ancient monuments, and world-class culinary delights. Walk in the footsteps of gladiators at the Colosseum, marvel at the Vatican, and toss a coin into the Trevi Fountain. This fast-paced Roman escape serves as the ultimate destination for art and food lovers."
+    location: "Rome, Italy",
+    bestTimeToVisit: "April to June",
+    highlights: ["Colosseum fast-track entry", "Vatican Museums pass", "Gelato tasting tour"],
+    shortDesc: "Immerse yourself in thousands of years of living history, ancient monuments, and world-class culinary delights. Walk in the footsteps of gladiators at the Colosseum, marvel at the Vatican, and toss a coin into the Trevi Fountain. This fast-paced Roman escape serves as the ultimate destination for art and food lovers.",
+    desc: "Experience the eternal grandeur of Rome with a high-energy holiday tailored for history buffs and gourmands alike. Your central Roman accommodation serves as the perfect launchpad to legendary architectural landmarks. This itinerary includes fast-track access to both the mighty Colosseum and the breathtaking Vatican Museums. Spend your afternoons indulgence-hunting, finding hidden family-run trattorias for authentic carbonara, crispy Roman pizza, and fresh artisanal gelato."
   },
   {
     id: "cb-08",
@@ -92,12 +118,17 @@ const cityBreaksData = [
     image: "imgs/holidays/inc/switzerland.jpg",
     rating: 5,
     duration: "5 Nights",
-    features: ["Classic Room", "Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 299,
-    shortDesc: "Indulge in a premium lakeside escape surrounded by the snow-capped majesty of the Swiss Alps. Explore Geneva's sophisticated old town, iconic Jet d'Eau water fountain, and legendary watchmaking boutiques. Stay in a luxurious classic room with easy access to pristine nature and alpine mountain excursions."
+    location: "Geneva, Switzerland",
+    bestTimeToVisit: "June to August",
+    highlights: ["Lake Geneva cruise Ticket", "Swiss Alps rail pass", "Chocolatier workshop"],
+    shortDesc: "Indulge in a premium lakeside escape surrounded by the snow-capped majesty of the Swiss Alps. Explore Geneva's sophisticated old town, iconic Jet d'Eau water fountain, and legendary watchmaking boutiques. Stay in a luxurious classic room with easy access to pristine nature and alpine mountain excursions.",
+    desc:"Escape to a land of unparalleled luxury and pristine natural beauty with an extended five-night alpine city break. Situated on the shores of Lake Geneva, your premium hotel offers immediate access to the city’s global district, fine dining, and historical boutiques. The package includes a scenic mountain railway ticket, allowing you to quickly transition from lakeside promenades to crisp Alpine mountain lookouts. Perfect for travelers wanting high-end comfort mixed with outdoor exploration."
   }
-];
+
+  ]
 
 const inclusiveHolidaysData = [
   {
@@ -107,10 +138,14 @@ const inclusiveHolidaysData = [
     image: "imgs/holidays/inc/antalyia.jpg",
     rating: 5,
     duration: "7 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4, 
     price: 399,
-    shortDesc: "Escape to the beautiful Turkish Riviera for a week of pure sun-soaked bliss along Antalya's golden coast. Relax at a premium beachfront resort, swim in crystal-clear turquoise waters, and sample exquisite Mediterranean cuisine. This perfect coastal getaway effortlessly balances deep relaxation with vibrant local culture."
+    location: "Antalya, Turkey",
+    bestTimeToVisit: "June to September",
+    highlights: ["Private sandy beach access", "All-inclusive buffet & drinks", "Traditional Turkish bath entry"],
+    shortDesc: "Escape to the beautiful Turkish Riviera for a week of pure sun-soaked bliss along Antalya's golden coast. Relax at a premium beachfront resort, swim in crystal-clear turquoise waters, and sample exquisite Mediterranean cuisine. This perfect coastal getaway effortlessly balances deep relaxation with vibrant local culture.",
+    desc: "Unwind for seven glorious nights on Turkey's stunning Turquoise Coast. Your premium resort features expansive outdoor pools, lush manicured gardens, and direct access to a private beach. Indulge in unlimited local and international dining options across multiple on-site restaurants. When you are not lounging by the Mediterranean Sea, you can explore the ancient Roman ruins of Hadrian's Gate or shop in the historic Kaleiçi old town district just a short drive away."
   },
   {
     id: "inc-02",
@@ -119,10 +154,14 @@ const inclusiveHolidaysData = [
     image: "imgs/holidays/inc/maldives.jpg",
     rating: 5,
     duration: "7 Nights", 
-    features: ["Flights included"],
+    features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 2049,
-    shortDesc: "Indulge in a premium, worry-free island getaway at an expansive five-star playground in the heart of the Maldives. Stay in an overwater villa complete with private slides, dine across diverse global restaurants, and enjoy endless ocean water sports. The ultimate luxury retreat tailored for families, couples, and ocean adventurers alike."
+    location: "Noonu Atoll, Maldives",
+    bestTimeToVisit: "November to April",
+    highlights: ["Overwater villa with water slide", "Access to the floating water park", "24/7 premium all-inclusive dining"],
+    shortDesc: "Indulge in a premium, worry-free island getaway at an expansive five-star playground in the heart of the Maldives. Stay in an overwater villa complete with private slides, dine across diverse global restaurants, and enjoy endless ocean water sports. The ultimate luxury retreat tailored for families, couples, and ocean adventurers alike.",
+    desc: "Redefine luxury at Siyam World, a boundary-breaking five-star island resort that acts as a massive tropical playground. Your overwater villa lets you slide directly from your private sun deck into the pristine Indian Ocean reef below. Enjoy a premium, worry-free island itinerary featuring a choice of a dozen bars and gourmet restaurants. Try unlimited access to the Indian Ocean's largest floating water park, complimentary sunset cruises, and guided snorkeling excursions among vibrant sea turtles."
   },
   {
     id: "inc-03",
@@ -131,10 +170,14 @@ const inclusiveHolidaysData = [
     image: "imgs/holidays/inc/dubai.jpg",
     rating: 5,
     duration: "5 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 899,
-    shortDesc: "Experience the ultimate fusion of futuristic city skylines and pristine, high-end desert beach luxury. This curated package covers top-tier accommodation, fine dining options, and seamless flights to the Middle East's entertainment capital. Ideal for travelers looking to explore towering skyscrapers, mega malls, and pristine beach clubs."
+    location: "Dubai, United Arab Emirates",
+    bestTimeToVisit: "November to March",
+    highlights: ["Luxury beachfront accommodation", "Desert safari with BBQ dinner", "Dune bashing & camel riding"],
+    shortDesc: "Experience the ultimate fusion of futuristic city skylines and pristine, high-end desert beach luxury. This curated package covers top-tier accommodation, fine dining options, and seamless flights to the Middle East's entertainment capital. Ideal for travelers looking to explore towering skyscrapers, mega malls, and pristine beach clubs.",
+    desc: "Immerse yourself in absolute opulence with an all-inclusive urban escape to Dubai. Stay at a high-end beach resort that pairs sweeping views of the Arabian Gulf with proximity to downtown marvels. This trip features full-board dining across world-class restaurants, unlimited premium beverages, and access to private resort pool clubs. Your itinerary is topped off with an unforgettable 4x4 desert safari adventure, including dune bashing, camel riding, and a gourmet twilight barbecue under the stars."
   },
   {
     id: "inc-04",
@@ -143,34 +186,46 @@ const inclusiveHolidaysData = [
     image: "imgs/holidays/inc/cancun-hardrock.jpg",
     rating: 5,
     duration: "7 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 1499,
-    shortDesc: "Live like a rock star at this high-energy, all-inclusive beachfront oasis fronting the majestic Caribbean Sea. Enjoy world-class live entertainment, celebrity-style amenities, expansive pool parties, and exceptional international dining choices. A thrilling tropical getaway designed for those who love great music and a lively resort atmosphere."
+    location: "Cancun, Mexico",
+    bestTimeToVisit: "December to April",
+    highlights: ["Rock Royalty amenities", "Daily live pool parties", "Unlimited top-shelf spirits"],
+    shortDesc: "Live like a rock star at this high-energy, all-inclusive beachfront oasis fronting the majestic Caribbean Sea. Enjoy world-class live entertainment, celebrity-style amenities, expansive pool parties, and exceptional international dining choices. A thrilling tropical getaway designed for those who love great music and a lively resort atmosphere.",
+    desc: "Turn up the volume on your vacation at the Hard Rock Hotel Cancun, an energetic oceanfront resort where luxury meets rock-and-roll history. Your spacious room features a private hydro-spa tub and a balcony overlooking the neon-blue Caribbean Sea. Indulge in world-class amenities like pool-side DJ sets, swim-up bars, and five acclaimed specialty restaurants. This package offers a fully loaded schedule of live concerts, celebrity-style spa treatments, and nightlife right on the hotel grounds."
   },
   {
     id: "inc-05",
     title: "HYATT ZILARA CAP CANA",
-    category: "All Inclusive",
+    category: "hyatt zilara holidays",
     image: "imgs/holidays/inc/cap-cana.jpg",
     rating: 5,
     duration: "10 Nights", 
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 1319,
-    shortDesc: "Immerse yourself in an exclusive, adults-only paradise nestled along the clear waters of Juanillo Beach. This extended 10-night escape offers infinity pools, a water park, a world-class fitness center, and stunning oceanfront views. Perfect for travelers seeking a sophisticated, peaceful sanctuary with top-tier hospitality."
+    location: "Punta Cana, Dominican Republic",
+    bestTimeToVisit: "December to May",
+    highlights: ["Adults-only private resort", "Unlimited à la carte dining", "On-site water park access"],
+    shortDesc: "Immerse yourself in an exclusive, adults-only paradise nestled along the clear waters of Juanillo Beach. This extended 10-night escape offers infinity pools, a water park, a world-class fitness center, and stunning oceanfront views. Perfect for travelers seeking a sophisticated, peaceful sanctuary with top-tier hospitality.",
+    desc: "Treat yourself to a serene, adults-only sanctuary on the prestigious shores of Cap Cana for ten blissful nights. Nestled on a pristine stretch of sugar-white sand, this property delivers unparalleled luxury with swim-up suites and oceanfront infinity pools. Satisfy your culinary cravings at a dozen unique dining venues, ranging from French-Tahitian cuisine to fresh local seafood shacks. Keep active with outdoor yoga, deep-sea water sports, or a thrilling afternoon at the resort’s private water park."
   },
   {
     id: "inc-06",
     title: "SAN ANTONIO HOTEL MALTA",
-    category: "All Inclusive",
+    category: "SAN MALTA Holidays",
     image: "imgs/holidays/inc/malta.jpg",
     rating: 5,
     duration: "4 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 269,
-    shortDesc: "Discover the historic charm and scenic beauty of the Mediterranean with a Moorish-style resort stay in St. Paul's Bay. Unwind at the rooftop infinity pool, treat yourself at the Moroccan-themed spa, and enjoy diverse buffet dining. A budget-friendly, highly rated escape ideal for exploring ancient architecture and sunny coasts."
+    location: "St. Paul's Bay, Malta",
+    bestTimeToVisit: "April to October",
+    highlights: ["Rooftop adult infinity pool", "Moroccan-themed spa voucher", "Central island touring base"],
+    shortDesc: "Discover the historic charm and scenic beauty of the Mediterranean with a Moorish-style resort stay in St. Paul's Bay. Unwind at the rooftop infinity pool, treat yourself at the Moroccan-themed spa, and enjoy diverse buffet dining. A budget-friendly, highly rated escape ideal for exploring ancient architecture and sunny coasts.",
+    desc: "Discover the sunny archipelago of Malta from a Moorish-style sanctuary right on St. Paul's Bay. This highly rated hotel features multiple themed restaurants, indoor fitness complexes, and a dramatic rooftop infinity pool with panoramic sea views. Enjoy a fully inclusive buffet that celebrates fresh Mediterranean flavors and regional Maltese pastries. This package provides an excellent, budget-friendly launching point to tour the nearby ancient walled city of Mdina and the island's famous Valletta harbor."
   },
   {
     id: "inc-07",
@@ -179,10 +234,14 @@ const inclusiveHolidaysData = [
     image: "imgs/holidays/inc/turkey.jpg",
     rating: 5,
     duration: "05 Nights", 
-    features: ["01 Hotel Stay", "Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 399,
-    shortDesc: "Unpack the rich history, lively bazaars, and scenic landscapes of Turkey on this beautifully balanced short escape. Benefit from a seamless hotel stay, centrally located to give you easy access to iconic landmarks, spice markets, and local cafes. A fantastic choice for culture seekers looking to maximize a five-night travel itinerary."
+    location: "Istanbul, Turkey",
+    bestTimeToVisit: "September to November",
+    highlights: ["Centrally located boutique hotel", "Daily traditional breakfast", "Bosphorus sunset cruise ticket"],
+    shortDesc: "Unpack the rich history, lively bazaars, and scenic landscapes of Turkey on this beautifully balanced short escape. Benefit from a seamless hotel stay, centrally located to give you easy access to iconic landmarks, spice markets, and local cafes. A fantastic choice for culture seekers looking to maximize a five-night travel itinerary.",
+    desc: "Immerse yourself in a thrilling historic crossroads where East meets West during this five-night cultural journey. Your handpicked hotel places you moments away from the legendary Blue Mosque, Hagia Sophia, and the labyrinth paths of the Grand Bazaar. This curated travel deal balances independent exploration with unforgettable local inclusions, like a luxury twilight cruise across the Bosphorus Strait. Start each morning with a sprawling, authentic Turkish breakfast spread before hitting the city."
   },
   {
     id: "inc-08",
@@ -191,12 +250,16 @@ const inclusiveHolidaysData = [
     image: "imgs/holidays/inc/cancun-special.jpg",
     rating: 4, 
     duration: "7 Nights",
-    features: ["Luxury Resort", "Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 1499,
-    shortDesc: "Treat yourself to a signature Mexican Caribbean experience at a handpicked, luxury beachfront resort. Spend your days relaxing under swaying palm trees, exploring nearby Mayan ruins, or diving into crystal-clear cenotes. This special holiday package delivers an exceptional blend of cultural exploration and premium beach relaxation."
-  }
-];
+    location: "Riviera Maya, Mexico",
+    bestTimeToVisit: "January to April",
+    highlights: ["Handpicked luxury resort", "Day trip to Mayan ruins", "Eco-archaeological park pass"],
+  shortDesc: "Treat yourself to a signature Mexican Caribbean experience at a handpicked, luxury beachfront resort. Spend your days relaxing under swaying palm trees, exploring nearby Mayan ruins, or diving into crystal-clear cenotes. This special holiday package delivers an exceptional blend of cultural exploration and premium beach relaxation.",
+  desc: "Escape to the legendary golden sands of the Yucatan Peninsula for seven nights of luxury and outdoor discovery. This custom-tailored package hosts you at a premium, eco-friendly luxury resort surrounded by pristine mangrove forests and clear waters. Indulge in curated wellness routines, gourmet Mexican fusion restaurants, and premium beach concierge service. This special deal includes a guided day excursion to nearby ancient Mayan pyramids and entry into a hidden jungle cenote sinkhole."
+  } 
+]
 
 const BeachHolidays = [
   {
@@ -207,9 +270,12 @@ const BeachHolidays = [
     image: "imgs/holidays/inc/sofitel-palm-dubai.jpg",
     rating: 5,
     duration: "5 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 799,
+    location: "Palm Jumeirah, Dubai, UAE",
+    bestTimeToVisit: "November to March",
+    highlights: ["Polynesian-themed luxury architecture", "500-meter private white sand beach", "Award-winning Sofitel SPA entry"]
   },
   {
     id: "bch-02",
@@ -219,9 +285,13 @@ const BeachHolidays = [
     image: "imgs/holidays/inc/hard-rock-bali.jpg",
     rating: 5,
     duration: "7 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 899,
+    location: "Kuta, Bali, Indonesia",
+    bestTimeToVisit: "April to October",
+    highlights: ["Bali's largest free-form outdoor pool", "Live music venues on site", "Boom Box recording studio access"],
+    desc: "Immerse yourself in Asia's first Hard Rock Hotel, situated directly across the road from the rolling surf of legendary Kuta Beach. This high-energy resort features music memorabilia throughout the grounds, live nightly rock concerts, and an expansive sand island pool area complete with private poolside cabanas. It delivers the perfect mix of high-fidelity entertainment, iconic rock culture, and laid-back Indonesian tropical luxury."
   },
   {
     id: "bch-03",
@@ -231,9 +301,13 @@ const BeachHolidays = [
     image: "imgs/holidays/inc/maldivian-dream-crete.jpg",
     rating: 5,
     duration: "3 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 899,
+    location: "Crete, Greece",
+    bestTimeToVisit: "May to October",
+    highlights: ["Overwater bungalow design aesthetic", "Private lagoon access", "Premium sea-to-table dining"],
+    desc: "Discover a jaw-dropping hybrid paradise that matches the overwater luxury of the Indian Ocean with the rustic, historic charm of the Aegean Sea. This resort boasts custom premium villas built directly over stunning, translucent lagoon pools. Enjoy a fast-paced three-night escape soaking under the Greek sun, wandering nearby ancient Minoan ruins, and enjoying world-class Mediterranean hospitality."
   },
   {
     id: "bch-04",
@@ -243,9 +317,13 @@ const BeachHolidays = [
     image: "imgs/holidays/inc/atlantis-palm-dubai.jpg",
     rating: 5,
     duration: "3 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 899,
+    location: "Palm Jumeirah, Dubai, UAE",
+    bestTimeToVisit: "November to March",
+    highlights: ["Unlimited Aquaventure Waterpark access", "The Lost Chambers Aquarium entry", "Celebrity chef restaurants on-site"],
+    desc: "Live out an extraordinary oceanfront fantasy at Dubai's world-famous luxury crown jewel, rising majestically from the crescent of the Palm Jumeirah. Your premium holiday grants you complimentary daily access to the world’s largest waterpark and mesmerizing underwater marine exhibits. Dine at legendary culinary hotspots curated by Michelin-starred masters before unwinding along miles of pristine, manicured resort shoreline."
   },
   {
     id: "bch-05",
@@ -255,9 +333,13 @@ const BeachHolidays = [
     image: "imgs/holidays/inc/true-blue-bay-grenada.jpg",
     rating: 5,
     duration: "7 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 959,
+    location: "St. George's, Grenada",
+    bestTimeToVisit: "January to May",
+    highlights: ["Eco-friendly climate-smart resort", "Kayaking & paddleboarding gear included", "Waterfront yoga studio classes"],
+    desc: "Settle into a vibrant, family-owned boutique paradise resting along the stunning south coast of the Spice Isle. True Blue Bay charms travelers with its colorful Caribbean style, sustainable design footprints, and highly personalized resort care. Spend a therapeutic week enjoying direct marina access, complimentary water sports, pool cocktail hours, and locally sourced West Indian dining experiences."
   },
   {
     id: "bch-06",
@@ -267,9 +349,13 @@ const BeachHolidays = [
     image: "imgs/holidays/inc/catacombs-paris.jpg",
     rating: 5,
     duration: "3 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 999,
+    location: "Paris, France",
+    bestTimeToVisit: "September to November",
+    highlights: ["Skip-the-line underground pass", "Exclusive restricted chamber access", "Central Parisian hotel stay"],
+    desc: "Take a break from the classic seaside sun to wander through a legendary underground maze right beneath the busy heart of the French capital. This unconventional history package grants you special, guided entry past the public corridors into the restricted ossuaries of the Paris Catacombs. Back on ground level, maximize your short break exploring historic sidewalk bistros and legendary city monuments."
   },
   {
     id: "bch-07",
@@ -279,9 +365,13 @@ const BeachHolidays = [
     image: "imgs/holidays/inc/jumeirah-zabeel-saray.jpg",
     rating: 5,
     duration: "5 Nights",
-    features: ["Superior King Room", "Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 1199,
+    location: "West Crescent, Palm Jumeirah, Dubai, UAE",
+    bestTimeToVisit: "November to March",
+    highlights: ["Palatial Ottoman-inspired architecture", "Talise Ottoman Spa entry", "Private indoor cinema access"],
+    desc: "Experience imperial majesty at an opulent palace resort located along the exclusive West Crescent of Palm Jumeirah. Adorned with spectacular hand-painted frescoes, Turkish marble, and glittering crystal chandeliers, this resort offers a high-end luxury lifestyle. Relax in your Superior King room, step onto the private sand beach, or immerse yourself in the massive, award-winning Turkish hammam."
   },
   {
     id: "bch-08",
@@ -291,9 +381,13 @@ const BeachHolidays = [
     image: "imgs/holidays/inc/phuket-khao-lak.jpg",
     rating: 5,
     duration: "10 Nights",
-    features: ["1X Hotel Stay", "Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 1349,
+    location: "Phuket & Khao Lak, Thailand",
+    bestTimeToVisit: "November to April",
+    highlights: ["Dual-destination itinerary", "Andaman Sea beachfront stays", "Guided national park tour"],
+    desc: "Unlock the perfect twin-center holiday showcasing the contrasting highlights of Southern Thailand. Spend the first half of your ten-night vacation enjoying the bustling night markets, nightlife, and golden sands of Phuket. Afterward, retreat up the coast to the tranquil, untouched rainforest borders and secluded white-sand shores of Khao Lak for total peace and recovery."
   },
   {
     id: "bch-09",
@@ -303,9 +397,13 @@ const BeachHolidays = [
     image: "imgs/holidays/inc/jewel-of-thailand.jpg",
     rating: 5,
     duration: "10 Nights",
-    features: ["1x Deluxe Garden View Room", "Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 1419,
+    location: "Bangkok, Krabi & Phuket, Thailand",
+    bestTimeToVisit: "November to April",
+    highlights: ["Multi-city internal travel covered", "Deluxe Garden View rooms", "Krabi island-hopping excursion"],
+    desc: "Embark on an unforgettable multi-stop itinerary that seamlessly knits together Thailand's most legendary travel landmarks. Start your journey among the hyper-modern high-rises and ancient golden temples of Bangkok. Next, catch your included domestic hop to explore the dramatic limestone sea cliffs of Krabi, finishing with a blissful beach resort stay on Phuket island."
   },
   {
     id: "bch-10",
@@ -315,16 +413,15 @@ const BeachHolidays = [
     image: "imgs/holidays/inc/retreat-the-palm.jpg",
     rating: 5,
     duration: "5 Nights",
-    features: ["1x Deluxe King Room", "Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 889,
-  }
-];
-
-
-
-
-
+    location: "East Crescent, Palm Jumeirah, Dubai, UAE",
+    bestTimeToVisit: "November to March",
+    highlights: ["First holistic wellness resort in UAE", "Custom detox & nutrition options", "Oxygen therapy & cryotherapy access"],
+    desc: "Treat yourself to a unique, health-conscious vacation at the region’s first fully dedicated holistic wellness resort. Tucked away quietly on the East Crescent of Palm Jumeirah, this serene sanctuary replaces bustling crowds with personalized wellness coaches, clean organic dining menus, and cryo-clinics. It offers a restorative oceanfront escape to reset your lifestyle habits."
+}
+]
 const FamilyHolidays = [
   {
     id: "fam-01",
@@ -334,9 +431,13 @@ const FamilyHolidays = [
     image: "imgs/holidays/inc/hurghada-aqua-park.jpg",
     rating: 5,
     duration: "7 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 378,
+    location: "Hurghada, Egypt",
+    bestTimeToVisit: "April to October",
+    highlights: ["Unlimited on-site waterpark entry", "Supervised kids club & arcade", "All-inclusive family dining panels"],
+    desc: "Treat the whole family to an unforgettable sun-soaked adventure along Egypt's stunning Red Sea coast. This massive, action-packed resort boasts giant looping waterslides, dedicated splash zones for toddlers, and a private sandy beach reef. Parents can relax on beachside loungers while kids enjoy fully organized camp games, arts, crafts, and nighttime mini-discos."
   },
   {
     id: "fam-02",
@@ -346,9 +447,13 @@ const FamilyHolidays = [
     image: "imgs/holidays/inc/atlantis-family-getaway.jpg",
     rating: 5,
     duration: "3 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 693,
+    location: "Palm Jumeirah, Dubai, UAE",
+    bestTimeToVisit: "November to March",
+    highlights: ["Free Aquaventure Waterpark passes", "Lost Chambers Aquarium access", "Teen zone & kids club entry"],
+    desc: "Whisk your family away to an iconic luxury wonderland floating on the famous Palm Jumeirah crescent. This premium 3-night package offers unlimited access to record-breaking waterslides and a hypnotic, myth-themed indoor aquarium home to over 65,000 marine animals. The resort features a rich collection of family suites, casual kid-friendly burger hubs, and world-class fine dining lines."
   },
   {
     id: "fam-03",
@@ -358,9 +463,13 @@ const FamilyHolidays = [
     image: "imgs/holidays/inc/hard-rock-bali1.jpg",
     rating: 5,
     duration: "7 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 897,
+    location: "Kuta, Bali, Indonesia",
+    bestTimeToVisit: "April to October",
+    highlights: ["Massive sand-island lagoon pool", "Roxity Kids Club pass", "Family lip-sync battles"],
+    desc: "Turn up the volume on family time at this high-energy resort directly opposite Kuta Beach. Kids will fall in love with the enormous free-form pool that features a real sand beach, water slides, and custom climbing walls. From standard guitar rentals delivered to your room to top-tier supervised play clubs and family talent stages, entertainment is constantly guaranteed."
   },
   {
     id: "fam-04",
@@ -370,9 +479,13 @@ const FamilyHolidays = [
     image: "imgs/holidays/inc/universal-orlando.jpg",
     rating: 5,
     duration: "14 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 1395,
+    location: "Orlando, Florida, USA",
+    bestTimeToVisit: "March to May",
+    highlights: ["Multi-park theme park ticket", "Early park admission privileges", "Universal CityWalk access"],
+    desc: "Unpack for an epic two-week immersion into the ultimate theme park destination on earth. Stay at a spectacular Universal resort property that grants you early park hours to skip the heaviest daytime lines. Your family will cross through iconic cinematic universes, fly through the wizarding world, battle alongside favorite superheroes, and dive into volcanic water park spaces."
   },
   {
     id: "fam-05",
@@ -382,9 +495,13 @@ const FamilyHolidays = [
     image: "imgs/holidays/inc/siyam-world-family.jpg",
     rating: 5,
     duration: "7 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 1770,
+    location: "Noonu Atoll, Maldives",
+    bestTimeToVisit: "November to April",
+    highlights: ["Overwater villa with water slides", "Floating ocean obstacle course", "24/7 Premium all-inclusive plan"],
+    desc: "Prove that the Maldives isn't just for honeymooners by taking your family to this giant, five-star natural island playground. Stay in a multi-room overwater villa featuring private slides that shoot directly into the shallow, safe reef water. The island features a premium all-inclusive plan covering limitless global meals, sunset boat tours, and entry to a massive floating waterpark."
   },
   {
     id: "fam-06",
@@ -394,9 +511,13 @@ const FamilyHolidays = [
     image: "imgs/holidays/inc/sun-siyam-vilu-reef.jpg",
     rating: 5,
     duration: "7 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 1450,
+    location: "Dhaalu Atoll, Maldives",
+    bestTimeToVisit: "November to April",
+    highlights: ["Beachfront family villa stays", "Guided family coral planting", "Complimentary non-motorized watersports"],
+    desc: "Settle into a beautifully balanced, intimate island resort that blends five-star luxury with cozy, welcoming family comforts. Your beachfront villa sits steps away from a crystal-clear, calm lagoon perfect for young swimmers and snorkelers. The resort offers custom ocean itineraries, family movie nights on the sand under the stars, and educational eco-tours like planting family coral reefs."
   },
   {
     id: "fam-07",
@@ -406,9 +527,13 @@ const FamilyHolidays = [
     image: "imgs/holidays/inc/db-seabank-malta.jpg",
     rating: 5,
     duration: "5 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 299,
+    location: "Mellieha Bay, Malta",
+    bestTimeToVisit: "May to October",
+    highlights: ["Direct access to Malta's largest beach", "6 themed buffet restaurants", "Kids jungle play complex"],
+    desc: "Take all the guesswork out of a European beach holiday with an all-inclusive stay at Malta’s premier family-friendly property. Nestled against the country's largest sandy coastline, this resort keeps things moving with massive outdoor lagoon pools, indoor play zones, and a bowling alley. Delight pickiest eaters with seven unique themed on-site dining hubs."
   },
   {
     id: "fam-08",
@@ -418,15 +543,15 @@ const FamilyHolidays = [
     image: "imgs/holidays/inc/jumeirah-zabeel-saray1.jpg",
     rating: 5,
     duration: "5 Nights",
-    features: ["Superior King Room", "Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 1199,
-  },
- 
+    location: "Palm Jumeirah, Dubai, UAE",
+    bestTimeToVisit: "November to March",
+    highlights: ["Ottoman palace architecture", "Sinbad's Kids Club & mini waterpark", "Private luxury screening theatre"],
+    desc: "Give your family the royal treatment inside a breathtaking palace inspired by the peak of the Ottoman Empire. While parents indulge inside the legendary Turkish marble spa vaults, children can run free at the fully supervised Sinbad’s Kids Club, complete with water lagoons and slides. Cap off your nights with free access to the private on-site cinema theater."
+  }
 ];
-
-
-
 const lastMinuteHolidaysData = [
   {
     id: "lm-01",
@@ -435,10 +560,14 @@ const lastMinuteHolidaysData = [
     image: "imgs/holidays/inc/iceland-northern-lights.jpg",
     rating: 5,
     duration: "3 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 266,
-    shortDesc: "Sail out into the dark Icelandic waters for a front-row seat to the spectacular Aurora Borealis. This thrilling last-minute cruise combines dramatic coastal winter scenery with an unforgettable chase for the world's most beautiful natural light show."
+    location: "Reykjavik, Iceland",
+    bestTimeToVisit: "October to March",
+    highlights: ["Midnight ocean cruise ticket", "Expert aurora forecaster on board", "Thermal outerwear gear provided"],
+    shortDesc: "Sail out into the dark Icelandic waters for a front-row seat to the spectacular Aurora Borealis. This thrilling last-minute cruise combines dramatic coastal winter scenery with an unforgettable chase for the world's most beautiful natural light show.",
+    desc: "Leave the bright city lights of Reykjavik behind as you cruise into the deep black waters of Faxaflói Bay. Escaping the urban light pollution dramatically increases your chances of witnessing the elusive green bands of the Aurora Borealis dancing across the subarctic sky. This spontaneous escape includes a comfortable cabin boat journey complete with heated indoor viewing decks, an on-board guide explaining the folklore of the skies, and premium central hotel lodging."
   },
   {
     id: "lm-02",
@@ -447,10 +576,14 @@ const lastMinuteHolidaysData = [
     image: "imgs/holidays/inc/six-nations-england-italy.jpg",
     rating: 5,
     duration: "3 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 499,
-    shortDesc: "Experience the electric matchday atmosphere of the historic Six Nations championship with a quick weekend getaway. Perfect for sports fans wanting to witness top-tier rugby action live alongside exploring a vibrant European host city."
+    location: "Rome, Italy",
+    bestTimeToVisit: "February to March",
+    highlights: ["Official Six Nations match ticket", "Stadio Olimpico fan zone pass", "Central historic hotel base"],
+    shortDesc: "Experience the electric matchday atmosphere of the historic Six Nations championship with a quick weekend getaway. Perfect for sports fans wanting to witness top-tier rugby action live alongside exploring a vibrant European host city.",
+    desc: "Spontaneously secure your spot at one of international rugby's most thrilling annual showdowns. This specialized package lands you right in the heart of Rome for a high-octane sporting weekend. Enjoy a direct match ticket to watch England take on the Azzurri at the historic Stadio Olimpico. When the final whistle blows, join the legendary third-half fan parties spilling out into Rome's vibrant squares, pairing elite sports action with plates of fresh carbonara."
   },
   {
     id: "lm-03",
@@ -459,10 +592,14 @@ const lastMinuteHolidaysData = [
     image: "imgs/holidays/inc/venice-gondola.jpg",
     rating: 5,
     duration: "3 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 229,
-    shortDesc: "Escape on a romantic getaway to the winding canals and historical palaces of Venice. Glide beneath iconic bridges during an authentic gondola ride and lose yourself in the atmospheric cobblestone alleys of this timeless floating city."
+    location: "Venice, Italy",
+    bestTimeToVisit: "April to June",
+    highlights: ["Private 30-minute gondola tour", "St. Mark's Basilica fast-track", "Vaporetto water bus pass"],
+    shortDesc: "Escape on a romantic getaway to the winding canals and historical palaces of Venice. Glide beneath iconic bridges during an authentic gondola ride and lose yourself in the atmospheric cobblestone alleys of this timeless floating city.",
+    desc: "Act fast to secure an affordable, high-romance getaway to the legendary floating jewel of the Adriatic. This curated package allows you to experience the quintessential Venetian highlight: an elegant ride on a traditional wooden gondola along the quietest side canals of the city. Spend your remaining time sipping espresso in the lively Piazza San Marco, photographing the historic Rialto Bridge, and wandering through hidden maze-like alleyways."
   },
   {
     id: "lm-04",
@@ -471,10 +608,14 @@ const lastMinuteHolidaysData = [
     image: "imgs/holidays/inc/krakow-xmas-salt-mine.jpg",
     rating: 5,
     duration: "3 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 199,
-    shortDesc: "Immerse yourself in festive magic at Poland's famous Christmas markets, then head deep underground to explore the majestic, hand-carved Wieliczka Salt Mine. A wonderful winter break filled with cultural heritage and holiday cheer."
+    location: "Krakow, Poland",
+    bestTimeToVisit: "December",
+    highlights: ["Wieliczka Salt Mine entry ticket", "Guided market food tasting", "Traditional Polish dinner voucher"],
+    shortDesc: "Immerse yourself in festive magic at Poland's famous Christmas markets, then head deep underground to explore the majestic, hand-carved Wieliczka Salt Mine. A wonderful winter break filled with cultural heritage and holiday cheer.",
+    desc: "Celebrate a classic fairytale winter with a quick flight to Krakow's legendary Rynek Główny central square. The historic center comes alive with artisan timber chalets, gingerbread aromas, and glittering handcrafted displays. Your package also takes you deep under the earth to tour the breathtaking UNESCO-listed Wieliczka Salt Mine. Walk through massive subterranean chambers, underground lakes, and complex chapels completely carved out of solid grey rock salt."
   },
   {
     id: "lm-05",
@@ -483,10 +624,14 @@ const lastMinuteHolidaysData = [
     image: "imgs/holidays/inc/bucharest-bear-sanctuary.jpg",
     rating: 5,
     duration: "3 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 299,
-    shortDesc: "Blend a dynamic city break in Romania's historic capital with a truly unique wildlife excursion. Travel into the forested hills to visit a sprawling sanctuary dedicated to the protection and preservation of beautiful European brown bears."
+    location: "Bucharest & Brasov, Romania",
+    bestTimeToVisit: "May to October",
+    highlights: ["Libearty Bear Sanctuary entry", "Transylvanian forest coach tour", "Old Town Bucharest walk"],
+    shortDesc: "Blend a dynamic city break in Romania's historic capital with a truly unique wildlife excursion. Travel into the forested hills to visit a sprawling sanctuary dedicated to the protection and preservation of beautiful European brown bears.",
+    desc: "Break away from predictable city itineraries with an adventurous escape to Romania. Begin by exploring the monumental architecture and hip café scenes of Bucharest, often called the 'Little Paris of the East.' Next, board your included day coach into the scenic Carpathian foothills to visit the Libearty Sanctuary. There, you can safely watch dozens of rescued European brown bears living peacefully inside massive, protected oak forests."
   },
   {
     id: "lm-06",
@@ -495,16 +640,16 @@ const lastMinuteHolidaysData = [
     image: "imgs/holidays/inc/budapest-christmas.jpg",
     rating: 5,
     duration: "3 Nights",
-    features: ["Flights included"],
+     features: ["Flights included","Airport Transfers","Luxury Accommodation"],
     trustpilotScore: 4,
     price: 229,
-    shortDesc: "Celebrate the holiday season in style across Budapest's brilliantly illuminated public squares. Sip warm mulled wine, sample local chimney cakes at the artisan stalls, and finish your evenings relaxing inside the city's famous thermal baths."
+    location: "Budapest, Hungary",
+    bestTimeToVisit: "November to December",
+    highlights: ["Vorosmarty Square market tour", "Szechenyi winter bath entry pass", "Hot mulled wine voucher"],
+    shortDesc: "Celebrate the holiday season in style across Budapest's brilliantly illuminated public squares. Sip warm mulled wine, sample local chimney cakes at the artisan stalls, and finish your evenings relaxing inside the city's famous thermal baths.",
+    desc: "Whisk yourself away to experience one of Europe's top-rated winter holiday landscapes. Budapest transforms into a festive wonderland complete with a massive outdoor ice skating rink sitting right below the city's Vajdahunyad Castle towers. Wander past detailed timber kiosks outside St. Stephen’s Basilica to enjoy fresh chimney cakes and craft items. Cap off your chilly winter days by plunging into the outdoor thermal pools at Szechenyi Baths."
   }
 ];
-
-
-
-
 
 
 

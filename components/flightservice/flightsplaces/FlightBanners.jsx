@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import { ShieldCheck, Wallet, RefreshCw, Clock, ArrowRight, MessageCircle } from "lucide-react";
 import Link from "next/link";
 
@@ -60,7 +59,7 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
         {/* ───────────────── DYNAMIC FLOATING PRICE TAGS ───────────────── */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden hidden xl:block z-0">
           {floatingTags.map((tag, idx) => (
-            <motion.div
+            <div
               key={idx}
               className={`absolute border border-white/10 bg-white/5 backdrop-blur-md px-3 py-1.5 text-center shadow-lg rounded-xl ${tag.top}`}
               style={{ left: tag.left }}
@@ -71,7 +70,7 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
               <span className="text-sm font-black" style={{ color: tag.color }}>
                 {tag.price} <span className="text-xs font-normal text-white">Dep</span>
               </span>
-            </motion.div>
+            </div>
           ))}
         </div>
 

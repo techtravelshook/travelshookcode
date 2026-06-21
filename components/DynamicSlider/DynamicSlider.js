@@ -11,6 +11,7 @@ import {
   Utensils, BedDouble, Luggage, Wifi, User as UserIcon, Mail,
 } from "lucide-react";
 import { ImSpinner9 } from "react-icons/im";
+import Image from "next/image";
 
 const TAG_ICONS = {
   Flights: Plane, Hotel: BedDouble, Resort: BedDouble,
@@ -277,7 +278,7 @@ export default function DynamicSlider({
 }
 
 /* ==================== FLIGHT CARD ==================== */
-function FlightCard({ item, onClick }) {
+const FlightCard = React.memo(function FlightCard({ item, onClick }) {
   return (
     <motion.article
       initial="rest"
@@ -286,7 +287,14 @@ function FlightCard({ item, onClick }) {
       className="group relative h-full overflow-hidden rounded-2xl border border-slate-100 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm hover:shadow-lg hover:border-[#E68213]/30 transition-all duration-300 cursor-pointer"
     >
       <div className="relative h-48 overflow-hidden">
-        <img src={item.image} alt={item.city} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+        {/* <img src={item.image} alt={item.city} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" /> */}
+        <Image
+  src={item.image}
+  alt={item.city}
+  fill
+  sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 25vw"
+  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+/>
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
         {item.stars && (
@@ -349,10 +357,15 @@ function FlightCard({ item, onClick }) {
       </div>
     </motion.article>
   );
-}
+});
 
 /* ==================== FULL PACKAGE DETAIL MODAL ==================== */
-function PackageModal({ item, onClose, onBook, onCallUs }) {
+const PackageModal = React.memo(function PackageModal({
+  item,
+  onClose,
+  onBook,
+  onCallUs,
+}) {
   useEffect(() => {
     const h = (e) => { if (e.key === "Escape") onClose(); };
     document.addEventListener("keydown", h);
@@ -384,7 +397,7 @@ function PackageModal({ item, onClose, onBook, onCallUs }) {
 
         {/* Image Hero */}
         <div className="relative h-48 sm:h-56 flex-shrink-0 overflow-hidden">
-          <img src={item.image} alt={item.city} className="w-full h-full object-cover" />
+          <Image src={item.image} alt={item.city} className="w-full h-full object-cover" width={50} height={20} />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
           <button onClick={onClose} className="absolute top-4 right-4 p-1.5 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur transition">
@@ -521,4 +534,4 @@ function PackageModal({ item, onClose, onBook, onCallUs }) {
       </motion.div>
     </motion.div>
   );
-}
+});

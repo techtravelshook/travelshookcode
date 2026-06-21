@@ -143,9 +143,19 @@ model HolidayBreaks {
   month     String?
   duration  Int
   price     Float
+  desc            String?             // 🆕 Added (use String @db.Text if using MySQL/Postgres for long text)
+  location        String?             // 🆕 Added
+  bestTimeToVisit String?             // 🆕 Added
 
   images   HolidayBreakImage[]
+  highlights      Highlight[] 
   features HolidayBreakFeatures[]
+}
+model Highlight {
+  id             Int           @id @default(autoincrement())
+  name           String
+  holidayBreakId Int
+  holidayBreak   HolidayBreaks @relation(fields: [holidayBreakId], references: [id], onDelete: Cascade)
 }
 
 model HolidayBreakImage {

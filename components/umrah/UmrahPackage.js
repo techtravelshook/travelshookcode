@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, memo } from "react";
+import { motion, AnimatePresence,LazyMotion,domAnimation, } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -47,10 +47,14 @@ export default function StickyServices() {
   );
 }
 
-function ServiceRow({ service, index }) {
+const ServiceRow = React.memo(function ServiceRow({
+  service,
+  index,
+}) {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
+    <LazyMotion features={domAnimation}>
     <div
       className="
         sticky top-0
@@ -79,6 +83,7 @@ function ServiceRow({ service, index }) {
           fill
           priority={index === 0}
           sizes="100vw"
+          quality={75}
           className="object-cover"
         />
 
@@ -89,8 +94,12 @@ function ServiceRow({ service, index }) {
       {/* CONTENT */}
       <motion.div
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full z-10 relative"
-        onViewportEnter={() => setIsFocused(true)}
-        onViewportLeave={() => setIsFocused(false)}
+       onViewportEnter={() =>
+  !isFocused && setIsFocused(true)
+}
+onViewportLeave={() =>
+  isFocused && setIsFocused(false)
+}
         viewport={{ amount: 0.2, margin: "-15% 0px -15% 0px" }}
       >
         <div className="flex flex-col gap-4 sm:gap-6">
@@ -166,8 +175,8 @@ function ServiceRow({ service, index }) {
 
                   {/* BUTTON */}
                  <div className="pt-2">
-                    <Link href={service.link} passHref legacyBehavior>
-                      <motion.a
+                    <Link href={service.link} >
+                      <motion.span
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.15, duration: 0.4 }}
@@ -189,7 +198,7 @@ function ServiceRow({ service, index }) {
                           size={16}
                           className="transition-transform duration-300 group-hover/btn:translate-x-1.5"
                         />
-                      </motion.a>
+                      </motion.span>
                     </Link>
                   </div>
                 </div>
@@ -207,5 +216,6 @@ function ServiceRow({ service, index }) {
         transition={{ duration: 0.5 }}
       />
     </div>
+       </LazyMotion>
   );
-}
+});

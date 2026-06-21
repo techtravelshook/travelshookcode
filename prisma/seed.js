@@ -114,6 +114,10 @@ async function main() {
 
     const numericId      = offset + rawNumber;
     const numericDuration = safeDuration(item.duration);
+    const desc            = item.desc || "";
+  const location        = item.location || "";
+  const bestTimeToVisit = item.bestTimeToVisit || "";
+  const highlightsArray = item.highlights || [];
 
     await prisma.holidayBreaks.upsert({
       where: { id: numericId },
@@ -121,24 +125,32 @@ async function main() {
         title:    item.title,
         category: item.category,
         shortDesc: item.shortDesc,
+ desc:            desc,                             // 🆕 Added
+      location:        location,                         // 🆕 Added
+      bestTimeToVisit: bestTimeToVisit, 
         rating:   mapRatingToEnum(item.rating),
         type,
         duration: numericDuration,
         price:    item.price,
         features: { deleteMany: { holidayBreakId: numericId }, create: item.features.map((f) => ({ name: f })) },
         images:   { deleteMany: { holidayBreakId: numericId }, create: [{ url: item.image }] },
+         highlights: { deleteMany: { holidayBreakId: numericId }, create: highlightsArray.map((h) => ({ name: h })) }, // 🆕 Added
       },
       create: {
         id:       numericId,          // ✅ stable id prevents duplicate rows on re-seed
         title:    item.title,
         category: item.category,
         shortDesc: item.shortDesc,
+        desc:            desc,                             // 🆕 Added
+      location:        location,                         // 🆕 Added
+      bestTimeToVisit: bestTimeToVisit,                 // 🆕 Added
         rating:   mapRatingToEnum(item.rating),
         type,
         duration: numericDuration,
         price:    item.price,
         features: { create: item.features.map((f) => ({ name: f })) },
         images:   { create: [{ url: item.image }] },
+         highlights: { create: highlightsArray.map((h) => ({ name: h })) }, // 🆕 Added
       },
     });
   };
@@ -163,7 +175,7 @@ async function main() {
   
   // --- LASTMINHOLIDAYS Holidays (offset 5000) ---
   console.log('🏖️  Seeding inclusive holidays...');
-  for (const item of lastMinuteHolidaysData) await upsertBreak(item, 2000, "Last_Minute_Holidays");
+  for (const item of lastMinuteHolidaysData) await upsertBreak(item, 5000, "Last_Minute_Holidays");
   console.log('✅ Seeding complete!');
 }
 // ----- --FLIGHTS SEEDING ------
