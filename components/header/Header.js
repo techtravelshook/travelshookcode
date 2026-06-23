@@ -1,5 +1,13 @@
 "use client";
-import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
+import React, { 
+  useState, 
+  useEffect, 
+  useRef, 
+  useMemo, 
+  useCallback,
+  useDeferredValue,
+  useTransition 
+} from "react";
 
 import { useTheme } from "next-themes";
 import Link from "next/link";
@@ -26,7 +34,7 @@ import Image from "next/image";
 const destinationImages = {
   australia: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=400&q=80",
   india: "https://images.unsplash.com/photo-1532375810709-75b1da00537c?q=80",
-  ghana: "https://images.unsplash.com/photo-1531956531700-dc0ee0f1f9a5?w=400&q=80",
+  ghana: "https://plus.unsplash.com/premium_photo-1675367606982-2a211004b593?q=80",
   nigeria: "/imgs/flights/accra.jpg",
   pakistan: "https://images.unsplash.com/photo-1633100291356-19e4e0dcb98f?q=80",
   usa: "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=400&q=80",
@@ -127,7 +135,7 @@ const menuData = {
   },
 };
 
-// ─── Optimized search hook ────────────────────────────────────────────────────
+// ─── Optimized search hook with debounce ──────────────────────────────────────
 function useSearch(items, query) {
   return useMemo(() => {
     if (!query.trim()) return items;
@@ -140,22 +148,44 @@ function useSearch(items, query) {
   }, [items, query]);
 }
 
-// ─── Memoized Desktop card ────────────────────────────────────────────────────
+// ─── Optimized debounce hook ──────────────────────────────────────────────────
+function useDebounce(value, delay) {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => clearTimeout(handler);
+  }, [value, delay]);
+
+  return debouncedValue;
+}
+
+// ─── Memoized Desktop card with CSS containment ────────────────────────────────
 const DestinationCard = React.memo(function DestinationCard({ item, basePath }) {
   const slug = item.name.toLowerCase().replace(/\s+/g, "-");
   const img = getImage(item.name);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
     <Link
       href={`/${basePath}/${slug}`}
-      className="group relative overflow-hidden rounded-2xl h-[110px] flex flex-col justify-end transition-transform duration-200 hover:scale-[1.03]"
+      className="group relative overflow-hidden rounded-2xl h-[110px] flex flex-col justify-end transition-transform duration-200 hover:scale-[1.03] will-change-transform"
+      style={{ contain: "layout style paint" }}
+      onMouseEnter={() => {
+        // Preload image on hover
+        const img = new window.Image();
+        img.src = getImage(item.name);
+      }}
     >
       <div
-        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110 will-change-transform"
         style={{ backgroundImage: `url(${img})` }}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent group-hover:from-black/90 transition-all duration-300" />
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-[#E68213]/30 to-transparent" />
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-[#E68213]/30 to-transparent will-change-opacity" />
       <div className="relative z-10 p-3">
         <div className="flex items-start justify-between mb-1">
           <span className="text-[11px] font-bold text-white leading-tight">{item.name}</span>
@@ -173,10 +203,10 @@ const DestinationCard = React.memo(function DestinationCard({ item, basePath }) 
   );
 });
 
-// ─── Memoized Grid ────────────────────────────────────────────────────────────
+// ─── Optimized Grid with CSS containment ──────────────────────────────────────
 const DestinationGrid = React.memo(function DestinationGrid({ items, basePath }) {
   return (
-    <div className="grid grid-cols-3 gap-2">
+    <div className="grid grid-cols-3 gap-2" style={{ contain: "layout style" }}>
       {items.map((item) => (
         <DestinationCard key={item.code + item.name} item={item} basePath={basePath} />
       ))}
@@ -184,33 +214,22 @@ const DestinationGrid = React.memo(function DestinationGrid({ items, basePath })
   );
 });
 
-// ─── Mega panel with search ───────────────────────────────────────────────────
+// ─── Optimized Mega panel with debounced search ────────────────────────────────
 const MegaPanel = React.memo(function MegaPanel({ menu }) {
   const [searchQuery, setSearchQuery] = useState("");
+  const [, startTransition] = useTransition();
+  const debouncedQuery = useDebounce(searchQuery, 300); // 300ms debounce
+  const deferredQuery = useDeferredValue(debouncedQuery); // Non-blocking updates
+  
   const isHajj = menu === "hajj-umrah";
   const { items, icon: PanelIcon, title } = menuData[menu];
-  const filteredItems = useSearch(items, searchQuery);
+  const filteredItems = useSearch(items, deferredQuery);
 
   const handleSearchChange = useCallback((e) => {
-    setSearchQuery(e.target.value);
+    startTransition(() => {
+      setSearchQuery(e.target.value);
+    });
   }, []);
-  const scrollContainerRef = useRef(null);
-
-useEffect(() => {
-  const container = scrollContainerRef.current;
-  if (!container) return;
-
-  const handleWheel = (e) => {
-    // If the user is scrolling vertically, move the container horizontally
-    if (e.deltaY !== 0) {
-      e.preventDefault();
-      container.scrollLeft += e.deltaY * 1.5; // Multiply to adjust scroll speed
-    }
-  };
-
-  container.addEventListener("wheel", handleWheel, { passive: false });
-  return () => container.removeEventListener("wheel", handleWheel);
-}, []);
 
   return (
     <motion.div
@@ -219,6 +238,7 @@ useEffect(() => {
       exit={{ opacity: 0, y: 10, scale: 0.97 }}
       transition={{ duration: 0.18 }}
       className={`absolute left-1/2 top-[calc(100%+18px)] -translate-x-1/2 z-50 ${isHajj ? "w-[520px]" : "w-[760px]"}`}
+      style={{ contain: "layout style paint" }}
     >
       <div className="relative overflow-hidden rounded-[28px] border border-black/10 dark:border-white/10 bg-white/95 dark:bg-[#111112]/95 shadow-[0_40px_80px_-10px_rgba(0,0,0,0.2)] backdrop-blur-3xl">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent" />
@@ -254,12 +274,12 @@ useEffect(() => {
           </div>
         </div>
 
-        <div className={`p-5 overflow-y-auto ${isHajj ? "max-h-[300px]" : "max-h-[400px]"}`}>
+        <div className={`p-5 overflow-y-auto ${isHajj ? "max-h-[300px]" : "max-h-[400px]"}`} style={{ contain: "layout style paint" }}>
           {filteredItems.length > 0 ? (
             <DestinationGrid items={filteredItems} basePath={menu} />
           ) : (
             <div className="flex items-center justify-center py-8 text-slate-500 dark:text-white/40 text-sm">
-              No results found for {searchQuery}
+              No results found for {deferredQuery}
             </div>
           )}
         </div>
@@ -277,10 +297,11 @@ const MobileDestinationCard = React.memo(function MobileDestinationCard({ item, 
     <Link
       href={`/${menuKey}/${slug}`}
       onClick={onClose}
-      className="group relative overflow-hidden rounded-2xl h-[90px] flex flex-col justify-end"
+      className="group relative overflow-hidden rounded-2xl h-[90px] flex flex-col justify-end will-change-transform"
+      style={{ contain: "layout style paint" }}
     >
       <div
-        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-active:scale-110"
+        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-active:scale-110 will-change-transform"
         style={{ backgroundImage: `url(${img})` }}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -293,23 +314,29 @@ const MobileDestinationCard = React.memo(function MobileDestinationCard({ item, 
   );
 });
 
-// ─── Mobile accordion with search and proper scroll ────────────────────────────
+// ─── Mobile accordion with debounced search ────────────────────────────────────
 const MobileAccordion = React.memo(function MobileAccordion({ menuKey, onClose }) {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [, startTransition] = useTransition();
+  const debouncedQuery = useDebounce(searchQuery, 300);
+  const deferredQuery = useDeferredValue(debouncedQuery);
+  
   const { items, icon: Icon, title, color } = menuData[menuKey];
-  const filteredItems = useSearch(items, searchQuery);
+  const filteredItems = useSearch(items, deferredQuery);
 
   const toggleOpen = useCallback(() => {
     setIsOpen(v => !v);
   }, []);
 
   const handleSearchChange = useCallback((e) => {
-    setSearchQuery(e.target.value);
+    startTransition(() => {
+      setSearchQuery(e.target.value);
+    });
   }, []);
 
   return (
-    <div className="border-b border-black/5 dark:border-white/5">
+    <div className="border-b border-black/5 dark:border-white/5" style={{ contain: "layout" }}>
       <div className="flex items-center justify-between px-6 py-4">
         <Link
           href={`/${menuKey}`}
@@ -330,8 +357,9 @@ const MobileAccordion = React.memo(function MobileAccordion({ menuKey, onClose }
 
         <button
           type="button"
+          name="toggle-collapse"
           onClick={toggleOpen}
-          className="p-2 rounded-xl bg-black/[0.04] dark:bg-white/[0.04] shrink-0 ml-2"
+          className="p-2 rounded-xl bg-black/[0.04] dark:bg-white/[0.04] shrink-0 ml-2 will-change-transform"
           aria-label={isOpen ? "Collapse" : "Expand"}
         >
           <ChevronDown
@@ -342,7 +370,7 @@ const MobileAccordion = React.memo(function MobileAccordion({ menuKey, onClose }
         </button>
       </div>
 
-      {/* Collapsible search and items with scroll isolation */}
+      {/* Collapsible search and items */}
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
@@ -352,6 +380,7 @@ const MobileAccordion = React.memo(function MobileAccordion({ menuKey, onClose }
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.22, ease: "easeInOut" }}
             className="overflow-hidden"
+            style={{ contain: "layout style" }}
           >
             <div className="px-6 pt-3 pb-2">
               <div className="relative flex items-center">
@@ -367,7 +396,7 @@ const MobileAccordion = React.memo(function MobileAccordion({ menuKey, onClose }
             </div>
 
             {/* SCROLL ISOLATED CONTAINER */}
-            <div className="px-6 pb-5 max-h-[400px] overflow-y-auto" style={{ WebkitOverflowScrolling: "touch" }}>
+            <div className="px-6 pb-5 max-h-[400px] overflow-y-auto" style={{ WebkitOverflowScrolling: "touch", contain: "layout style paint" }}>
               {filteredItems.length > 0 ? (
                 <div className="grid grid-cols-2 gap-2">
                   {filteredItems.slice(0, 6).map((item) => (
@@ -392,7 +421,7 @@ const MobileAccordion = React.memo(function MobileAccordion({ menuKey, onClose }
   );
 });
 
-// ─── Main Navbar with scroll progress bar ────────────────────────────────────
+// ─── Main Navbar with optimized scroll handling ──────────────────────────────
 export default function Navbar() {
   const [activeMenu, setActiveMenu] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -403,22 +432,33 @@ export default function Navbar() {
   const sidebarContentRef = useRef(null);
   const touchStartX = useRef(null);
   const touchStartY = useRef(null);
+  const scrollTimeoutRef = useRef(null);
 
   useEffect(() => {
     setTimeout(() => setMounted(true), 0);
   }, []);
 
-  // ─── Scroll progress tracker ───────────────────────────────────────────────
+  // ─── Optimized scroll progress tracker with throttling ────────────────────
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      setScrollProgress(scrolled);
+      if (scrollTimeoutRef.current) return;
+      
+      scrollTimeoutRef.current = requestAnimationFrame(() => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        setScrollProgress(scrolled);
+        scrollTimeoutRef.current = null;
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (scrollTimeoutRef.current) {
+        cancelAnimationFrame(scrollTimeoutRef.current);
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -437,7 +477,6 @@ export default function Navbar() {
   }, [isSidebarOpen]);
 
   const closeMenu = useCallback(() => setIsSidebarOpen(false), []);
-
   const handleMenuOpen = useCallback(() => setIsSidebarOpen(true), []);
 
   const handleTouchStart = useCallback((e) => {
@@ -450,7 +489,6 @@ export default function Navbar() {
     const diffX = e.changedTouches[0].clientX - touchStartX.current;
     const diffY = Math.abs(e.changedTouches[0].clientY - touchStartY.current);
     
-    // Only close if horizontal swipe is greater than vertical movement
     if (diffX > 80 && diffY < 50) {
       closeMenu();
     }
@@ -468,7 +506,7 @@ export default function Navbar() {
   return (
     <>
       {/* Scroll Progress Bar */}
-      <div className="fixed top-0 left-0 h-1 z-[100] pointer-events-none">
+      <div className="fixed top-0 left-0 h-1 z-[100] pointer-events-none" style={{ contain: "layout style paint" }}>
         <motion.div
           className="h-full bg-gradient-to-r from-[#F6931F] via-[#0070A1] to-[#F6931F]"
           style={{ width: `${scrollProgress}%` }}
@@ -476,7 +514,7 @@ export default function Navbar() {
         />
       </div>
 
-      <nav className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 w-[92%] md:w-[95%] max-w-7xl z-50">
+      <nav className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 w-[92%] md:w-[95%] max-w-7xl z-50" style={{ contain: "layout style" }}>
         <div className="bg-white/70 dark:bg-[#111112]/70 backdrop-blur-2xl border border-black/10 dark:border-white/10 rounded-3xl md:rounded-full px-5 md:px-8 h-16 md:h-20 flex items-center justify-between shadow-[0_8px_30px_-10px_rgba(0,0,0,0.15)] relative">
           <div className="flex items-center gap-2">
             <div className="w-14 h-14 md:w-17 md:h-17 rounded-full overflow-hidden shrink-0">
@@ -487,6 +525,7 @@ export default function Navbar() {
                   width={68} 
                   height={68} 
                   className="w-full h-full object-cover scale-110"
+                  priority
                 />
               </Link>
             </div>
@@ -520,7 +559,7 @@ export default function Navbar() {
             {mounted && (
               <button
                 onClick={handleThemeToggle}
-                className="p-2.5 rounded-2xl bg-black/5 dark:bg-white/5"
+                className="p-2.5 rounded-2xl bg-black/5 dark:bg-white/5 will-change-transform"
               >
                 {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
               </button>
@@ -530,14 +569,14 @@ export default function Navbar() {
               href={`https://api.whatsapp.com/send/?phone=${whatsappNumber}&text=Hello%2C+I%27d+like+to+enquire+about+a+booking&type=phone_number&app_absent=0`}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden md:flex items-center gap-2 bg-[#F6931F] hover:bg-[#0070A1] text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-lg shadow-[#F6931F]/20 hover:shadow-[#0070A1]/20 transform active:scale-[0.98]"
+              className="hidden md:flex items-center gap-2 bg-[#F6931F] hover:bg-[#0070A1] text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-lg shadow-[#F6931F]/20 hover:shadow-[#0070A1]/20 transform active:scale-[0.98] will-change-transform"
             >
               Book Now <ArrowRight size={14} />
             </Link>
 
             <button
               onClick={handleMenuOpen}
-              className="md:hidden p-2.5 rounded-2xl bg-black/5 dark:bg-white/5 active:scale-90 transition-transform"
+              className="md:hidden p-2.5 rounded-2xl bg-black/5 dark:bg-white/5 active:scale-90 transition-transform will-change-transform"
             >
               <Menu size={20} />
             </button>
@@ -568,7 +607,7 @@ export default function Navbar() {
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
               className="fixed top-0 right-0 h-full w-full sm:w-[420px] bg-white dark:bg-[#111112] z-[70] rounded-l-3xl flex flex-col"
-              style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
+              style={{ paddingBottom: "env(safe-area-inset-bottom)", contain: "layout style" }}
             >
               {/* Drag handle indicator */}
               <div className="w-10 h-1 bg-black/10 dark:bg-white/10 rounded-full mx-auto mt-3 mb-1 md:hidden shrink-0" />
@@ -582,7 +621,7 @@ export default function Navbar() {
                 <button
                   type="button"
                   onClick={closeMenu}
-                  className="p-2.5 rounded-2xl bg-black/5 dark:bg-white/5 active:scale-90 transition-transform"
+                  className="p-2.5 rounded-2xl bg-black/5 dark:bg-white/5 active:scale-90 transition-transform will-change-transform"
                 >
                   <X size={18} />
                 </button>
@@ -619,11 +658,11 @@ export default function Navbar() {
                 </a>
               </div>
 
-              {/* Scrollable accordion list with scroll isolation */}
+              {/* Scrollable accordion list */}
               <div 
                 ref={sidebarContentRef}
                 className="overflow-y-auto flex-1 pb-8"
-                style={{ WebkitOverflowScrolling: "touch" }}
+                style={{ WebkitOverflowScrolling: "touch", contain: "layout style paint" }}
               >
                 {Object.keys(menuData).map((key) => (
                   <MobileAccordion key={key} menuKey={key} onClose={closeMenu} />

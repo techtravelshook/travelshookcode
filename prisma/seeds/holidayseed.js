@@ -139,7 +139,7 @@ const holidayPackagesData = [
           slideDesc: "Depart from London with ATOL-protected flights and arrive at your premium Makkah hotel with zero stress."
         },
         {
-          url: "imgs/hajj/25.jpg",
+          url: "imgs/hajj/hajj23.jpg",
           slideTitle: "Devotion Without Distraction",
           slideDesc: "Let us handle the logistics while you focus on what matters most — a meaningful, heartfelt Umrah journey."
         }

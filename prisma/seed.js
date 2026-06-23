@@ -17,8 +17,6 @@ const safeId = (id) => {
   const n = parseInt(String(id).replace(/\D/g, ''), 10);
   return isNaN(n) ? null : n;
 };
-
-// Safely parses the numeric part of a duration string like "7 Nights" or "05 Nights"
 const safeDuration = (duration) => {
   const n = parseInt(String(duration).trim(), 10);
   return isNaN(n) ? 0 : n;
@@ -179,13 +177,9 @@ async function main() {
   console.log('✅ Seeding complete!');
 }
 // ----- --FLIGHTS SEEDING ------
-
-
-console.log("✈️ Starting flight seeding...");
-  
+console.log("✈️ Starting flight seeding...");  
   // Clean out existing flights to prevent duplicates
   await prisma.flight.deleteMany({});
-  
   // Ensure flightData exists before running loop block
   if (typeof flightData !== 'undefined' && Array.isArray(flightData)) {
     for (const item of flightData) {

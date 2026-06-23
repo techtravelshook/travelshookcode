@@ -6,6 +6,7 @@ import {
   MapPin, Star, X, Clock, Mail
 } from "lucide-react";
 import FeaturedSlider from "./HoneymoonSlider";
+import Image from "next/image";
 
 const FLAG_MAP = {
   "Russia": "🇷🇺", "Cyprus": "🇨🇾", "Georgia / South Ossetia": "🇬🇪",
@@ -39,7 +40,17 @@ function PackageCard({ deal, onOpen, onBook }) {
       onClick={onOpen}
     >
       <div className="relative h-64 overflow-hidden m-3 rounded-[1.6rem]">
-        <img src={imageUrl} alt={deal.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" onError={(e) => e.currentTarget.src = "/imgs/placeholder.jpg"} />
+        <div className="relative w-full h-full overflow-hidden">
+      <Image
+        src={imageUrl}
+        alt={deal.title}
+        fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        className="object-cover group-hover:scale-110 transition-transform duration-700"
+        // 2. Swaps state to local placeholder if the external source fails
+        onError={() => setImgSrc('/imgs/placeholder.jpg')}
+      />
+    </div>
         <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F33]/85 via-[#0B1F33]/10 to-transparent" />
 
         <div className="absolute top-3 inset-x-3 flex justify-between items-center">
@@ -100,7 +111,21 @@ function PackageModal({ deal, onClose }) {
         <motion.div initial={{ scale: 0.96, y: 16 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.96, y: 16 }}
           className="bg-white dark:bg-slate-900 w-full max-w-sm rounded-[1.75rem] overflow-hidden shadow-2xl border border-slate-100 dark:border-slate-800" onClick={e => e.stopPropagation()}>
           <div className="relative h-44 group">
-            <img src={imageUrl} alt={deal.title} className="w-full h-full object-cover" onError={(e) => e.currentTarget.src = "/imgs/placeholder.jpg"} />
+            {/* <img src={imageUrl} alt={deal.title} className="w-full h-full object-cover" onError={(e) => e.currentTarget.src = "/imgs/placeholder.jpg"} /> */}
+            <div className="relative w-full h-60 overflow-hidden bg-gray-100">
+  <Image 
+    src={imageUrl} 
+    alt={deal.title} 
+    className="w-full h-full object-cover" 
+    width="500" 
+    height="240"
+    loading="lazy" 
+    onError={(e) => {
+      e.currentTarget.onerror = null; // Prevents infinite loop if placeholder is also missing
+      e.currentTarget.src = "/imgs/placeholder.jpg";
+    }} 
+  />
+</div>
             <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F33]/80 via-[#0B1F33]/10 to-transparent" />
             <button onClick={onClose} className="absolute top-3 right-3 bg-black/40 text-white p-2 rounded-full z-10"><X size={15} /></button>
           </div>

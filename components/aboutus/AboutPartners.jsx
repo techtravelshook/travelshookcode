@@ -75,6 +75,7 @@ export default function OurPartners() {
                   src={partner.imageUrl}
                   alt={partner.name}
                   fill
+                  priority 
                   className="object-contain dark:invert-[0.1] dark:brightness-125"
                   sizes="(max-w: 768px) 200px, 250px"
                 />

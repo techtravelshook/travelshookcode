@@ -13,7 +13,7 @@ const bargainFlights = [
   { id: 2, country: "India", price: "855", image: "/imgs/flights/india.jpg" },
   { id: 3, country: "Ghana", price: "500", image: "/imgs/flights/accra.jpg" },
   { id: 4, country: "Nigeria", price: "349", image: "/imgs/flights/Nigeria.jpg" },
-  { id: 5, country: "Pakistan", price: "490", image: "/imgs/flights/Pakistan.jpg" },
+  { id: 5, country: "Pakistan", price: "490", image: "/imgs/flights/pakistan2.jpg" },
   { id: 6, country: "Usa", price: "338", image: "/imgs/flights/usa.jpg" },
   { id: 7, country: "Philippines", price: "450", image: "/imgs/flights/philippines.jpg" },
   { id: 8, country: "Zimbabwe", price: "463", image: "/imgs/flights/zimbabwe.jpg" },

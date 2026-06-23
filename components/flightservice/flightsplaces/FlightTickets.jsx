@@ -529,13 +529,16 @@ export default function FlightDealsGrid({ cityName, dealsData = [] }) {
                     <div className="border-2 border-dashed border-slate-200 dark:border-zinc-800 rounded-xl p-6 text-center hover:border-[#0070A1] dark:hover:border-[#E68213] transition-colors">
                       {bookingData.passportImagePreview ? (
                         <div className="space-y-3">
-                          <div className="w-full h-48 relative rounded-lg overflow-hidden border border-slate-200 dark:border-zinc-800">
-                            <img
-                              src={bookingData.passportImagePreview}
-                              alt="Passport Preview"
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
+                         <div className="w-full h-48 relative rounded-lg overflow-hidden border border-slate-200 dark:border-zinc-800">
+  <Image
+    src={bookingData.passportImagePreview}
+    alt="Passport Preview"
+    fill
+    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+    className="object-cover"
+    unoptimized={bookingData.passportImagePreview.startsWith('data:') || bookingData.passportImagePreview.startsWith('blob:')}
+  />
+</div>
                           <button
                             type="button"
                             onClick={() => {

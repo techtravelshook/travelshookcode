@@ -12,7 +12,7 @@ export default function BookNowPayLaterBanner({
     { label: "London", price: "£25", color: "#E68213", left: "52%", top: "top-8", animY: [0, -12, 0], delay: 0, duration: 4 },
     { label: "Dubai", price: "£35", color: "#0070A1", left: "58%", top: "top-28", animY: [0, -20, 0], delay: 0.3, duration: 4.8 },
     { label: "Makkah", price: "£49", color: "#E68213", left: "68%", top: "top-10", animY: [0, 15, 0], delay: 0.7, duration: 5.5 },
-    { label: "Accra", price: "£29", color: "#0070A1", left: "75%", top: "top-24", animY: [0, -4, 0], delay: 1.1, duration: 4.2 }
+   // { label: "Accra", price: "£29", color: "#0070A1", left: "75%", top: "top-24", animY: [0, -4, 0], delay: 1.1, duration: 4.2 }
   ]
 }) {
  const whatsappNumber = "923124928496";

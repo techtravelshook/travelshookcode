@@ -91,7 +91,7 @@ const ContactInfo = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="John Doe"
+                  placeholder="Enter Your Name"
                   required
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 />
@@ -108,7 +108,7 @@ const ContactInfo = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="you@example.com"
+                  placeholder="your@example.com"
                   required
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 />
@@ -117,7 +117,7 @@ const ContactInfo = () => {
               {/* Phone */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Phone Number
+                  Enter Your Phone Number
                 </label>
 
                 <input
@@ -134,7 +134,7 @@ const ContactInfo = () => {
               {/* Message */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Message
+                  Message Here
                 </label>
 
                 <textarea

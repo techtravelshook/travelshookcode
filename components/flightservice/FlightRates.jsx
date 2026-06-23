@@ -2,11 +2,12 @@
 
 import React, { useState } from "react";
 import { Plane, RefreshCw, Clock, ArrowRight, ShieldCheck, Tag, AlertCircle } from "lucide-react";
+import Image from "next/image";
 
 const fallbackFlights = [
  {
   id: "fl-1",
-  airlineLogo: "imgs/airlines/01.png",
+  airlineLogo: "/imgs/airlines/01.png",
   airlineName: "Best Deals - Aalborg",
   flightNumber: "EK-612",
   departureTime: "24 Aug",
@@ -24,7 +25,7 @@ const fallbackFlights = [
 },
 {
   id: "fl-2",
-  airlineLogo: "imgs/airlines/AF.png",
+  airlineLogo: "/imgs/airlines/AF.png",
   airlineName: "Air France",                    
   flightNumber: "AF-112",                      
   departureTime: "12 Nov",                    
@@ -42,7 +43,7 @@ const fallbackFlights = [
 },
 {
   id: "fl-3",
-  airlineLogo: "imgs/airlines/AF.png",
+  airlineLogo: "/imgs/airlines/AF.png",
   airlineName: "Air France",
   flightNumber: "AF-145",
   departureTime: "22 Aug ",
@@ -62,7 +63,7 @@ const fallbackFlights = [
   ,
   {
   id: "fl-4",
-  airlineLogo: "imgs/airlines/klm.png",
+  airlineLogo: "/imgs/airlines/klm.png",
   airlineName: "KLM",
   flightNumber: "KL-145",
   departureTime: "21 Sep",
@@ -81,7 +82,7 @@ const fallbackFlights = [
 ,
   {
   id: "fl-5",
-  airlineLogo: "imgs/airlines/AF.png",
+  airlineLogo: "/imgs/airlines/AF.png",
   airlineName: "Air France",
   flightNumber: "AF-145",
   departureTime: "23 Aug",
@@ -99,7 +100,7 @@ const fallbackFlights = [
 },
    {
   id: "fl-6",
-  airlineLogo: "imgs/airlines/britishairways.png",
+  airlineLogo: "/imgs/airlines/britishairways.png",
   airlineName: "British Airways",
   flightNumber: "BA-145",
   departureTime: "17 Oct",
@@ -206,11 +207,15 @@ export default function FlightRates() {
               {/* 1. AIRLINE LOGO BLOCK */}
               <div className={`flex items-center justify-start gap-4 ${viewType === 'list' ? 'lg:flex-col lg:justify-center lg:gap-2.5' : ''} min-w-full ${viewType === 'list' ? 'lg:min-w-[160px]' : ''} ${viewType === 'list' ? 'border-b lg:border-b-0' : ''} pb-4 ${viewType === 'list' ? 'lg:pb-0' : ''} border-slate-200/60 dark:border-white/5`}>
                 <div className="relative h-12 w-20 flex items-center justify-center bg-white dark:bg-white/5 rounded-xl border border-slate-100 dark:border-white/5 p-2 shrink-0 shadow-sm">
-                  <img
-                    src={flight.airlineLogo}
-                    alt={flight.airlineName}
-                    className="max-h-full max-w-full object-contain filter"
-                  />
+                 <div className="relative h-12 w-24 flex items-center justify-center"> 
+  <Image
+    src={flight.airlineLogo}
+    alt={flight.airlineName}
+    fill
+    sizes="(max-width: 768px) 100px, 150px"
+    className="object-contain filter"
+  />
+</div>
                 </div>
                 <div className={`${viewType === 'list' ? 'lg:text-center' : ''}`}>
                   <h4 className="text-sm font-black text-slate-900 dark:text-white leading-none">

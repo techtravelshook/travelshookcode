@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Banner from "./Banner";
+import Image from "next/image";
 
 const hotels = [
  {
@@ -455,7 +456,19 @@ export default function CustomizePage() {
                   onClick={() => handlePackageSelect(pkg)}
                   className="bg-white dark:bg-neutral-900 border border-transparent dark:border-neutral-800 rounded-3xl overflow-hidden hover:shadow-xl cursor-pointer"
                 >
-                  <img src={pkg.heroImage} className="h-60 w-full object-cover" alt={pkg.title} />
+                  {/* <img src={pkg.heroImage} className="h-60 w-full object-cover" alt={pkg.title} /> */}
+
+<div className="relative h-56 w-full overflow-hidden">
+  <Image 
+    // Automatically adds the leading "/" if it is missing
+    src={pkg.heroImage.startsWith('/') ? pkg.heroImage : `/${pkg.heroImage}`} 
+    alt={pkg.title}
+    width={500} 
+    height={300} 
+    className="object-cover"
+  />
+</div>
+
                   <div className="p-6">
                     <h3 className="text-xl font-bold dark:text-white">{pkg.title}</h3>
                     <p className="text-gray-600 dark:text-neutral-400 mt-2">{pkg.shortDesc}</p>
@@ -483,7 +496,28 @@ export default function CustomizePage() {
                   }}
                   className="bg-white dark:bg-neutral-900 border dark:border-neutral-800 rounded-3xl overflow-hidden hover:shadow-xl cursor-pointer"
                 >
-                  <img src={hotel.img} className="h-56 w-full object-cover" alt={hotel.name} />
+                  {/* <img src={hotel.img} className="h-56 w-full object-cover" alt={hotel.name} /> */}
+                  <div className="relative w-full h-56 overflow-hidden bg-gray-100 rounded-t-xl">
+  <Image 
+    // 2. Safe string path check adds leading slash if database string lacks it
+    src={hotel.img?.startsWith('http') || hotel.img?.startsWith('/') ? hotel.img : `/${hotel.img}`} 
+    alt={hotel.name || "Hotel image"} 
+    className="w-full h-full object-cover" 
+    
+    // 3. Aspect ratio dimensions prevent the 0.188 CLS layout jump completely
+    width="400"  
+    height="224" 
+
+    // 4. Lazy loading ensures off-screen hotels don't slow down initial page speed
+    loading="lazy" 
+
+    // 5. Prevents broken image icons if the path fails or image is missing
+    onError={(e) => {
+      e.currentTarget.onerror = null; 
+      e.currentTarget.src = "/imgs/placeholder.jpg";
+    }} 
+  />
+</div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold dark:text-white">{hotel.name}</h3>
                     <p className="text-orange-600 dark:text-orange-400 font-semibold mt-2">

@@ -1,6 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
+export const DynamicMotion = dynamic(
+  () => import('framer-motion').then(mod => ({
+    motion: mod.motion,
+    AnimatePresence: mod.AnimatePresence
+  })),
+  { ssr: false, loading: () => null }
+);
 import {
   Plane,
   ShieldCheck,
@@ -9,6 +15,7 @@ import {
   BadgeCheck,
   CreditCard,
 } from "lucide-react";
+import Image from "next/image";
 
 const features = [
   {
@@ -42,7 +49,7 @@ export default function AboutFlights() {
 
       <div className="container mx-auto px-4 py-20 lg:px-8">
         {/* Header */}
-        <motion.div
+        <DynamicMotion.motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -66,22 +73,26 @@ export default function AboutFlights() {
             For over a decade, we&apos;ve helped thousands of travelers secure
             exceptional flight deals.
           </p>
-        </motion.div>
+        </DynamicMotion.motion.div>
 
         {/* First Section */}
         <div className="grid items-center gap-12 lg:grid-cols-2">
-          <motion.div
+          <DynamicMotion.motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
             className="relative"
           >
-            <img
-              src="/imgs/flights/fl1.jpg"
-              alt="Travel Adventure"
-              className="h-[500px] w-full rounded-3xl object-cover shadow-2xl"
-            />
+            <div className="relative h-[500px] w-full overflow-hidden rounded-3xl shadow-2xl">
+      <Image
+        src="/imgs/flights/fl1.jpg"
+        alt="Travel Adventure"
+        fill
+        className="object-cover"
+        priority
+      />
+    </div>
 
             <div className="absolute -bottom-6 left-6 rounded-2xl bg-white p-5 shadow-xl dark:bg-slate-900">
               <div className="flex items-center gap-3">
@@ -96,9 +107,9 @@ export default function AboutFlights() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </DynamicMotion.motion.div>
 
-          <motion.div
+          <DynamicMotion.motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -126,13 +137,13 @@ export default function AboutFlights() {
               to secure the best possible fares while maintaining comfort,
               flexibility, and convenience.
             </p>
-          </motion.div>
+          </DynamicMotion.motion.div>
         </div>
 
         {/* Features */}
         <div className="my-24 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {features.map((item, index) => (
-            <motion.div
+            <DynamicMotion.motion.div
               key={index}
               whileHover={{ y: -8 }}
               className="group rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-2xl dark:border-slate-800 dark:bg-slate-900"
@@ -148,13 +159,13 @@ export default function AboutFlights() {
               <p className="leading-7 text-slate-600 dark:text-slate-400">
                 {item.desc}
               </p>
-            </motion.div>
+            </DynamicMotion.motion.div>
           ))}
         </div>
 
         {/* Second Section */}
         <div className="grid items-center gap-12 lg:grid-cols-2">
-          <motion.div
+          <DynamicMotion.motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -191,20 +202,30 @@ export default function AboutFlights() {
                 )
               )}
             </div>
-          </motion.div>
+          </DynamicMotion.motion.div>
 
-          <motion.div
+          <DynamicMotion.motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="relative"
           >
-            <img
+            {/* <img
               src="/imgs/flights/fl2.jpg"
               alt="Travel Services"
               className="h-[500px] w-full rounded-3xl object-cover shadow-2xl"
-            />
+            /> */}
 
+<Image
+  src="/imgs/flights/fl2.jpg"
+  alt="Travel Services"
+  width={1200}
+  height={500}
+  className="h-[500px] w-full rounded-3xl object-cover shadow-2xl"
+  loading="lazy"
+  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"
+  quality={80}
+/>
             <div className="absolute right-6 top-6 rounded-2xl bg-white/90 p-5 backdrop-blur-xl shadow-xl dark:bg-slate-900/90">
               <h4 className="text-2xl font-bold text-orange-500">
                 Thousands
@@ -213,7 +234,7 @@ export default function AboutFlights() {
                 Happy Travelers Worldwide
               </p>
             </div>
-          </motion.div>
+          </DynamicMotion.motion.div>
         </div>
 
         {/* CTA */}

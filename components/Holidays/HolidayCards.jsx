@@ -218,7 +218,7 @@ export default function HolidayCards() {
      <AnimatePresence>
   {selected && (
     <motion.div
-      className="fixed inset-0 bg-black/75 flex items-center justify-center z-50 p-4 backdrop-blur-sm"
+      className="fixed inset-0 bg-black/75 flex items-center justify-center z-50 p-5 backdrop-blur-sm"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -229,9 +229,9 @@ export default function HolidayCards() {
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
         onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-3xl grid grid-cols-1 md:grid-cols-2 bg-white dark:bg-[#080E12] border border-slate-200 dark:border-white/10 rounded-2xl overflow-hidden shadow-2xl max-h-[90vh] overflow-y-auto"
+        className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 bg-white dark:bg-[#080E12] border border-slate-200 dark:border-white/10 rounded-2xl overflow-hidden shadow-2xl max-h-[90vh] overflow-y-auto"
       >
-        <div className="relative h-48 md:h-full min-h-[240px]">
+        <div className="relative md:h-full min-h-[320px] md:min-h-[420px]">
           <Image
             src={
               selected?.images?.[0]?.url
@@ -239,6 +239,7 @@ export default function HolidayCards() {
                 : "/placeholder.jpg"
             }
             alt={selected?.title || "image"}
+            className="object-cover"
             fill
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />

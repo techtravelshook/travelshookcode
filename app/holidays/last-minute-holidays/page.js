@@ -2,11 +2,9 @@
 import HeroSlider from '@/components/Holidays/HolidayHero';
 import HolidayInquiryForms from '@/components/Holidays/HolidayInquryForms';
 import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X, Star, Clock, Plane, Shield, CheckCircle2, ChevronRight, MapPin, Users, Calendar } from 'lucide-react';
-import Image from 'next/image';
+import {  AnimatePresence } from 'framer-motion';
 import PackageGrid from '@/components/Holidays/PackagesType/PackageGrid';
-import PackageCard from '@/components/Holidays/PackagesType/PackageCard';
+
 import BookingModal from '@/components/Holidays/PackagesType/BookingModal';
 import FlightFaqs from '@/components/flightservice/flightsplaces/FlightFaqs';
 const theme = {
@@ -43,7 +41,7 @@ useEffect(() => {
       rating: Number(pkg.rating.replace("STAR_", "")),
     }));
     setPackages(mapped);
-    console.log("packages state:", packages);
+    // console.log("packages state:", packages);
   };
   getPackages();
 }, []);

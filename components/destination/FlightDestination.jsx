@@ -4,6 +4,7 @@ import React from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { motion } from "framer-motion";
 import { ArrowRight, MapPin, Plane, ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 const destinations = [
   { city: "Dubai", country: "UAE", price: "$320", image: "/imgs/dubai.jpg" },
@@ -26,14 +27,9 @@ export default function FlightDestinations() {
 
   return (
     <section className="relative overflow-hidden bg-white dark:bg-black py-24 text-slate-900 dark:text-white transition-colors duration-500">
-      {/* Background Glows */}
       <div className="absolute left-0 top-0 h-[400px] w-[400px] rounded-full bg-[#E68213]/10 dark:bg-[#E68213]/20 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-[#0070A1]/10 dark:bg-[#0070A1]/20 blur-[120px] pointer-events-none" />
-
-      {/* Wapsi Side Spacing (Container) */}
       <div className="container relative z-10 mx-auto px-6 lg:px-16">
-        
-        {/* HEADER SECTION */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div className="max-w-xl">
             <span className="mb-3 inline-block rounded-full border border-[#E68213]/20 bg-[#E68213]/10 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] text-[#E68213]">
@@ -55,30 +51,30 @@ export default function FlightDestinations() {
             </button>
           </div>
         </div>
-
-        {/* SLIDER VIEWPORT */}
         <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex -ml-4"> {/* Side gap management */}
+          <div className="flex -ml-4">
             {destinations.map((item, index) => (
               <div 
                 key={index} 
-                // LG: 20% width for 5 cards per row
                 className="flex-[0_0_100%] min-w-0 md:flex-[0_0_50%] lg:flex-[0_0_20%] pl-4"
               >
                 <motion.div
                   whileHover={{ y: -8 }}
                   className="group relative h-full overflow-hidden rounded-[24px] border border-black/5 dark:border-white/10 bg-slate-50 dark:bg-white/5 backdrop-blur-xl transition-all duration-500"
                 >
-                  {/* IMAGE PART */}
                   <div className="relative h-[220px] overflow-hidden">
-                    <img src={item.image} alt={item.city} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                     <Image
+    src={item.image}
+    alt={item.city}
+    fill
+    className="object-cover transition-transform duration-700 group-hover:scale-110"
+    sizes="(max-width: 768px) 100vw, 50vw"
+  />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                     <div className="absolute right-3 top-3 rounded-full bg-black/40 px-3 py-1 backdrop-blur-md text-white text-[10px] font-bold border border-white/10">
                       {item.price}
                     </div>
                   </div>
-
-                  {/* CONTENT PART - Reduced Text */}
                   <div className="p-5">
                     <div className="mb-2 flex items-center gap-1.5 text-[9px] uppercase tracking-[0.2em] text-[#E68213] font-bold">
                       <MapPin size={10} />

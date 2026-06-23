@@ -2718,7 +2718,7 @@ isFeatured:true,
   madinahHotel: "Crowne Plaza Madinah",
   price: 1580,
   images: {
-    create: [{ url: "imgs/hajj/hajj50.jpg" }]
+    create: [{ url: "imgs/hajj/hajj23.jpg" }]
   },
 },
 
@@ -2735,7 +2735,7 @@ isFeatured:true,
   madinahHotel: "Anwar Al Madinah Movenpick",
   price: 1680,
   images: {
-    create: [{ url: "imgs/hajj/hajj51.jpg" }]
+    create: [{ url: "imgs/hajj/hajj32.jpg" }]
   },
 },
 
@@ -2752,7 +2752,7 @@ isFeatured:true,
   madinahHotel: "Shaza Madinah",
   price: 1750,
   images: {
-    create: [{ url: "imgs/hajj/hajj52.jpg" }]
+    create: [{ url: "imgs/hajj/hajj47.jpg" }]
   },
 },
 
