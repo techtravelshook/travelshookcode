@@ -1,7 +1,8 @@
+import { withSecurity } from "@/lib/withSecurity";
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-export async function POST(request) {
+ async function RamdanPackage(request) {
   try {
     const {
       name,
@@ -68,3 +69,4 @@ export async function POST(request) {
     );
   }
 }
+export const POST=withSecurity(RamdanPackage)

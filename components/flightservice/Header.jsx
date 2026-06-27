@@ -54,21 +54,13 @@ export default function FlightHeroLayout({
             </p>
           </div>
 
-          {/* SEARCH FORM */}
-         {/* SEARCH FORM */}
+       
 <div className="mt-8 w-full px-2 sm:px-0">
 
-  <div className="mx-auto w-full max-w-6xl rounded-3xl bg-white/5 p-2 backdrop-blur-md sm:p-4">
-
+  <div className="mx-auto w-full max-w-12xl p-2">
+ <FlightSearchWidget />
     {/* FIX: remove overflow-x-auto and use responsive scaling */}
-    <div className="w-full">
-
-      {/* KEY FIX: allow internal component to shrink properly */}
-      <div className="w-full min-w-0">
-        <FlightSearchWidget />
-      </div>
-
-    </div>
+   
   </div>
 </div>
 

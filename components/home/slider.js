@@ -170,7 +170,7 @@ function HomeSlider() {
             </p>
 
             {/* SEARCH */}
-            <div className="w-full max-w-12xl">
+            <div className="w-full">
               <FlightSearchWidget />
             </div>
           </div>

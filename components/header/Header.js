@@ -300,10 +300,18 @@ const MobileDestinationCard = React.memo(function MobileDestinationCard({ item, 
       className="group relative overflow-hidden rounded-2xl h-[90px] flex flex-col justify-end will-change-transform"
       style={{ contain: "layout style paint" }}
     >
-      <div
-        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-active:scale-110 will-change-transform"
+      {/* <div
+        className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-active:scale-110 will-change-transform"
         style={{ backgroundImage: `url(${img})` }}
-      />
+      /> */}
+      <Image
+  src={img}
+  alt={item.name}
+  fill
+  sizes="(max-width:768px) 50vw, 200px"
+  className="object-cover"
+  loading="lazy"
+/>
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
       <div className="relative z-10 p-2.5">
         <p className="text-[10px] font-mono text-[#F7931E]">{item.code}</p>

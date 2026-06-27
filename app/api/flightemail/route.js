@@ -1,6 +1,7 @@
+import { withSecurity } from "@/lib/withSecurity";
 import nodemailer from "nodemailer";
 
-export async function POST(req) {
+ async function FlightEmail(req) {
   try {
     const body = await req.json();
 
@@ -17,7 +18,10 @@ export async function POST(req) {
       to: process.env.EMAIL_USER,
       subject: "New Flight Inquiry",
       html: `
+
         <h2>Flight Inquiry</h2>
+        <h3> ${JSON.stringify(body, null, 2)}<br/></h3>
+      
 
         <p><strong>WhatsApp:</strong> ${body.whatsapp || "N/A"}</p>
         <p><strong>Trip Type:</strong> ${body.tripType || "N/A"}</p>
@@ -29,7 +33,7 @@ export async function POST(req) {
 
         <hr>
 
-        <pre>${JSON.stringify(body, null, 2)}</pre>
+      
       `,
     });
 
@@ -51,3 +55,4 @@ export async function POST(req) {
     );
   }
 }
+export const POST= withSecurity(FlightEmail)

@@ -1,6 +1,7 @@
+import { withSecurity } from "@/lib/withSecurity";
 import nodemailer from "nodemailer";
 
-export async function POST(req) {
+ async function FormInquiry(req) {
   try {
     const data = await req.json();
 
@@ -48,3 +49,4 @@ export async function POST(req) {
     );
   }
 }
+export const POST=withSecurity(FormInquiry)

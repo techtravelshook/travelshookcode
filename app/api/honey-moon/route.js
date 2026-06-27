@@ -1,7 +1,8 @@
+import { withSecurity } from "@/lib/withSecurity";
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-export async function POST(request) {
+ async function Honeymoon(request) {
   try {
     const {
   name,
@@ -50,3 +51,4 @@ export async function POST(request) {
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }
+export const POST=withSecurity(Honeymoon)

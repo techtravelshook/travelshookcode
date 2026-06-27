@@ -1,20 +1,5 @@
-// import React from 'react';
-// import HomeSlider from './slider';
-// import DynamicSlider from '../DynamicSlider/DynamicSlider';
-// import FlightsInfo from './FlightsInfo';
-// import UmrahPackage from "../umrah/UmrahPackage";
-// import HolidayDeals from '../Holidays/Holidays';
-// import HolidayCards from '../Holidays/HolidayCards';
-// import HolidayPackages from '../Holidays/HolidayPackages';
-// import HajjCards from '@/components/hajjumrah/HajjCards';
-
-// import BookingProcess from "@/components/hajjumrah/BookingProcess";
-
 import dynamic from "next/dynamic";
-
-// Critical content
 import HomeSlider from "./slider";
-
 // Lazy load everything below the hero
 const DynamicSlider = dynamic(
   () => import("../DynamicSlider/DynamicSlider"),
@@ -22,35 +7,30 @@ const DynamicSlider = dynamic(
     loading: () => <div className="h-40" />,
   }
 );
-
 const UmrahPackage = dynamic(
   () => import("../umrah/UmrahPackage"),
   {
     loading: () => <div className="h-40" />,
   }
 );
-
 const HolidayPackages = dynamic(
   () => import("../Holidays/HolidayPackages"),
   {
     loading: () => <div className="h-40" />,
   }
 );
-
 const FlightsInfo = dynamic(
   () => import("./FlightsInfo"),
   {
     loading: () => <div className="h-40" />,
   }
 );
-
 const BookingProcess = dynamic(
   () => import("@/components/hajjumrah/BookingProcess"),
   {
     loading: () => <div className="h-40" />,
   }
 );
-
 // 1. Destinations Data Array
 const destinations = [
   {
@@ -194,7 +174,6 @@ const destinations = [
     features: ["Flight Included", "Hotel Included", "Mountain Tour"]
   }
 ];
-
 function HomeView() {
   return (
     <div>
