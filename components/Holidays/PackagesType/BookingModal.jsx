@@ -1,12 +1,10 @@
 // components/Holidays/BookingModal.jsx
 "use client";
-
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Star, Clock, Plane, Shield, CheckCircle2, ChevronRight, Users, Calendar } from 'lucide-react';
 import Image from 'next/image';
 import axios from "axios";
-
 function StarRow({ count }) {
   return (
     <div className="flex gap-0.5">
@@ -20,7 +18,6 @@ function StarRow({ count }) {
     </div>
   );
 }
-
 export default function BookingModal({ pkg, onClose }) {
   const [step, setStep] = useState(1);
   const [form, setForm] = useState({ name: '', email: '', phone: '', date: '', guests: '2', message: '' });
