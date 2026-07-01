@@ -33,7 +33,7 @@ const HolidaysInfo = () => {
   }
 
   return (
-    <section className="relative overflow-hidden w-full bg-white dark:bg-[#01080C] py-14 text-slate-900 dark:text-white transition-colors duration-500">
+    <section className="relative overflow-hidden w-full bg-white dark:bg-[#01080C] py-14 text-slate-900 dark:text-white transition-colors duration-500 mx-auto scroll" id="romantic-getaways">
       <div className="container relative z-10 mx-auto px-6">
 
         {/* Header - Same as your original */}

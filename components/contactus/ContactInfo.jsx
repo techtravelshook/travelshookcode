@@ -75,11 +75,11 @@ const ContactInfo = () => {
   />
 </div>
         
-         <div className="flex flex-col justify-between bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+         <div className="flex flex-col justify-between bg-white p-6 rounded-2xl shadow-sm border border-gray-100 ">
           <div>
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h2>
             
-           <form onSubmit={handleSubmit} className="space-y-4">
+           <form onSubmit={handleSubmit} className="space-y-4 dark:text-black">
               {/* Name */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">

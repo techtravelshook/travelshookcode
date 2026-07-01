@@ -30,8 +30,6 @@ export async function GET(req) {
       }));
 
     } else {
-      // 🚀 Bulletproof Raw SQL Path for Holidays
-      // This bypasses Prisma's schema relation names completely
       const rows = await prisma.$queryRaw`
         SELECT 
           hb.*, 

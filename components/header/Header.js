@@ -27,6 +27,7 @@ import {
   Home,
   ChevronRight,
   Search,
+  Earth,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -60,6 +61,35 @@ const destinationImages = {
   "monthly-package": "/imgs/hajj/hajj22.jpg",
   makkah: "/imgs/hajj/makkah_hotel.jpg",
   madinah: "/imgs/hajj/al-kiswah.jpg",
+  // for top destinations...
+
+
+  "australia-sydney": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=400&q=80",
+  "baku-azerbaijan": "https://images.unsplash.com/photo-1621856818321-5b3a11cc6b18?q=80",
+  "turkey-istanbul": "https://plus.unsplash.com/premium_photo-1661963652315-d5a9d26637dd?q=80",
+  "chile-santiago": "https://images.unsplash.com/photo-1500622944204-b135684e99fd?q=80",
+  "bahamas-harbour-island": "https://images.unsplash.com/photo-1589786161184-6d43d20526e2?q=80",
+  "belgium-brussels": "https://images.unsplash.com/photo-1569878165730-a4d34917f3d2?q=80",
+  "bulgaria-burgas": "https://images.unsplash.com/photo-1601152888642-f2f1b5ee0ca2?q=80",
+  "cambodia-kampong-cham": "https://images.unsplash.com/photo-1599283787923-51b965a58b05?q=80",
+  "chile-la-serena": "https://images.unsplash.com/photo-1478827387698-1527781a4887?q=80",
+  "china-beijing": "https://images.unsplash.com/photo-1517309230475-6736d926b979?q=80",
+  "colombia-santa-marta": "https://images.unsplash.com/photo-1539617546058-a8f9510b464e?q=80",
+  "canada-calgary": "https://images.unsplash.com/photo-1698898559329-c84d57e95a23?q=80",
+  "egypt-cairo": "https://images.unsplash.com/photo-1562679299-266edbefd6d7?q=80",
+  
+  "gambia-banjul": "https://plus.unsplash.com/premium_photo-1697729701846-e34563b06d47?q=80",
+  "germany-munich": "https://images.unsplash.com/photo-1501952476817-d7ae22e8ee4e?q=80",
+  "maldives-male": "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?q=80",
+  "malta-valletta": "https://images.unsplash.com/photo-1569311607906-1d8f9e2614b5?q=80",
+  "mauritius-port-louis": "https://images.unsplash.com/photo-1581953636842-74649fd3e004?q=80",
+  "morocco-agadir": "https://images.unsplash.com/photo-1569383746724-6f1b882b8f46?q=80",
+  "singapore-marina-bay": "https://images.unsplash.com/photo-1775306963755-8897be3967bb?q=80",
+  "switzerland-bern": "https://images.unsplash.com/photo-1527668752968-14dc70a27c95?q=80",
+  "uae-dubai": "https://plus.unsplash.com/premium_photo-1661919068698-40e7b78f196a?q=80",
+  "usa-chicago": "https://images.unsplash.com/photo-1581373449483-37449f962b6c?q=80",
+  "india-mumbai": "https://images.unsplash.com/photo-1532375810709-75b1da00537c?q=80",
+  "pakistan-lahore": "https://images.unsplash.com/photo-1633100291356-19e4e0dcb98f?q=80",
 };
 
 function getImage(name) {
@@ -103,10 +133,40 @@ const hajjUmrahPackages = [
   { name: "Monthly Package", code: "RAM", price: "£1,200", tag: "Special" },
 ];
 
-const cityHotels = [
-  { name: "Makkah", code: "MAK", price: "£250", tag: "Saudi Arabia" },
-  { name: "Madinah", code: "MED", price: "£200", tag: "Saudi Arabia" },
+const topdest = [
+  { name: "Australia-Sydney", price: "£650", tag: "Full Guided" },
+  { name: "Baku-Azerbaijan", price: "£450", tag: "Full Guided" },
+  { name: "Chile-Santiago",  price: "£850", tag: "Full Guided" },
+  { name: "Bahamas-Harbour-Island",  price: "£950", tag: "Full Guided" },
+  { name: "Belgium-Brussels",  price: "£400", tag: "Full Guided" },
+  { name: "Bulgaria-Burgas", price: "£380", tag: "Full Guided" },
+  { name: "Cambodia-Kampong-Cham",  price: "£550", tag: "Full Guided" },
+  { name: "Canada-Calgary",  price: "£750", tag: "Full Guided" },
+  { name: "Chile-La-Serena",  price: "£890", tag: "Full Guided" },
+  { name: "China-Beijing",  price: "£680", tag: "Full Guided" },
+  { name: "Colombia-santa-marta",  price: "£820", tag: "Full Guided" },
+  { name: "Egypt-Cairo",  price: "£480", tag: "Full Guided" },
+  { name: "France-Paris",  price: "£450", tag: "Full Guided" },
+  { name: "Gambia-banjul", price: "£520", tag: "Full Guided" },
+  { name: "Germany-munich",  price: "£460", tag: "Full Guided" },
+  { name: "India-mumbai",  price: "£500", tag: "Full Guided" },
+  { name: "Pakistan-lahore",  price: "£350", tag: "Full Guided" },
+  { name: "Maldives-Male",  price: "£900", tag: "Full Guided" },
+  { name: "Malta-valletta",  price: "£410", tag: "Full Guided" },
+  { name: "Mauritius-port-louis",  price: "£850", tag: "Full Guided" },
+  { name: "Morocco-Agadir", price: "£490", tag: "Full Guided" },
+  { name: "Singapore-marina-bay", price: "£620", tag: "Full Guided" },
+  { name: "Switzerland-Bern",  price: "£720", tag: "Full Guided" },
+  { name: "Turkey-Istanbul",  price: "£460", tag: "Full Guided" },
+  { name: "UAE-dubai",  price: "£500", tag: "Full Guided" },
+  { name: "USA-chicago",  price: "£700", tag: "Full Guided" }
 ];
+
+
+// const cityHotels = [
+//   { name: "Makkah", code: "MAK", price: "£250", tag: "Saudi Arabia" },
+//   { name: "Madinah", code: "MED", price: "£200", tag: "Saudi Arabia" },
+// ];
 
 const menuData = {
   flights: {
@@ -127,23 +187,40 @@ const menuData = {
     title: "Hajj & Umrah",
     color: "#E68213",
   },
-  "cities-hotels": {
-    items: cityHotels,
-    icon: User,
-    title: "Cities & Hotels",
-    color: "#3B82F6",
-  },
+  // "cities-hotels": {
+  //   items: cityHotels,
+  //   icon: User,
+  //   title: "Cities & Hotels",
+  //   color: "#3B82F6",
+  // },
+  "topdestinations":{
+ items: topdest,
+    icon: Earth,
+    title: "Top Destinations",
+     color: "#3B82F6",
+  }
 };
 
 // ─── Optimized search hook with debounce ──────────────────────────────────────
+// function useSearch(items, query) {
+//   return useMemo(() => {
+//     if (!query.trim()) return items;
+//     const lowerQuery = query.toLowerCase();
+//     return items.filter(item =>
+//       item.name.toLowerCase().includes(lowerQuery) ||
+//       item.code.toLowerCase().includes(lowerQuery) ||
+//       item.tag.toLowerCase().includes(lowerQuery)
+//     );
+//   }, [items, query]);
+// }
 function useSearch(items, query) {
   return useMemo(() => {
     if (!query.trim()) return items;
     const lowerQuery = query.toLowerCase();
     return items.filter(item =>
-      item.name.toLowerCase().includes(lowerQuery) ||
-      item.code.toLowerCase().includes(lowerQuery) ||
-      item.tag.toLowerCase().includes(lowerQuery)
+      item.name?.toLowerCase().includes(lowerQuery) ||
+      item.code?.toLowerCase().includes(lowerQuery) ||
+      item.tag?.toLowerCase().includes(lowerQuery)
     );
   }, [items, query]);
 }
@@ -165,17 +242,34 @@ function useDebounce(value, delay) {
 
 // ─── Memoized Desktop card with CSS containment ────────────────────────────────
 const DestinationCard = React.memo(function DestinationCard({ item, basePath }) {
+  // const slug = item.name.toLowerCase().replace(/\s+/g, "-");
+  // const img = getImage(item.name);
+  // const [imageLoaded, setImageLoaded] = useState(false);
+
   const slug = item.name.toLowerCase().replace(/\s+/g, "-");
   const img = getImage(item.name);
   const [imageLoaded, setImageLoaded] = useState(false);
 
+  const href =
+    basePath === "topdestinations"
+      ? `/topdestinations/destinations/${slug}`
+      : `/${basePath}/${slug}`;
   return (
+    // <Link
+    //   href={`/${basePath}/${slug}`}
+    //   className="group relative overflow-hidden rounded-2xl h-[110px] flex flex-col justify-end transition-transform duration-200 hover:scale-[1.03] will-change-transform"
+    //   style={{ contain: "layout style paint" }}
+    //   onMouseEnter={() => {
+    //     // Preload image on hover
+    //     const img = new window.Image();
+    //     img.src = getImage(item.name);
+    //   }}
+    // >
     <Link
-      href={`/${basePath}/${slug}`}
+      href={href}
       className="group relative overflow-hidden rounded-2xl h-[110px] flex flex-col justify-end transition-transform duration-200 hover:scale-[1.03] will-change-transform"
       style={{ contain: "layout style paint" }}
       onMouseEnter={() => {
-        // Preload image on hover
         const img = new window.Image();
         img.src = getImage(item.name);
       }}
@@ -290,12 +384,26 @@ const MegaPanel = React.memo(function MegaPanel({ menu }) {
 
 // ─── Memoized Mobile Card ─────────────────────────────────────────────────────
 const MobileDestinationCard = React.memo(function MobileDestinationCard({ item, menuKey, onClose }) {
+  // const slug = item.name.toLowerCase().replace(/\s+/g, "-");
+  // const img = getImage(item.name);
+
+
   const slug = item.name.toLowerCase().replace(/\s+/g, "-");
   const img = getImage(item.name);
 
+  const href =
+    menuKey === "topdestinations"
+      ? `/topdestinations/destinations/${slug}`
+      : `/${menuKey}/${slug}`;
   return (
+    // <Link
+    //   href={`/${menuKey}/${slug}`}
+    //   onClick={onClose}
+    //   className="group relative overflow-hidden rounded-2xl h-[90px] flex flex-col justify-end will-change-transform"
+    //   style={{ contain: "layout style paint" }}
+    // >
     <Link
-      href={`/${menuKey}/${slug}`}
+      href={href}
       onClick={onClose}
       className="group relative overflow-hidden rounded-2xl h-[90px] flex flex-col justify-end will-change-transform"
       style={{ contain: "layout style paint" }}
@@ -572,7 +680,7 @@ export default function Navbar() {
                 {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
               </button>
             )}
-
+{/* BOOK NOW BUTTON */}
             <Link
               href={`https://api.whatsapp.com/send/?phone=${whatsappNumber}&text=Hello%2C+I%27d+like+to+enquire+about+a+booking&type=phone_number&app_absent=0`}
               target="_blank"

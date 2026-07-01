@@ -7,6 +7,7 @@ import { cityBreaksData, inclusiveHolidaysData, BeachHolidays, FamilyHolidays,la
 import flightData from './seeds/flightseed.js';
 import { countryContent } from './seeds/flightcontent.js';
 import travelPackage from './seeds/honeymoonseed.js';
+import { TopDestinations } from './seeds/destinationseed.js';
 
 const prisma = new PrismaClient();
 const mapRatingToEnum = (rating) => {
@@ -292,13 +293,6 @@ if (Array.isArray(countryData) && countryData.length > 0) {
       },
     });
   }
-
-
-
-
-
-
-
 main()
   .catch((e) => { console.error(e); process.exit(1); })
   .finally(async () => { await prisma.$disconnect(); });

@@ -11,7 +11,7 @@ const CATEGORY_OPTIONS = {
     { value: "overwater-villa-holidays", label: "Overwater Villa Holidays" },
     { value: "luxury-holidays", label: "Luxury Holidays" },
     { value: "beach-holidays", label: "Beach Holidays" },
-    { value: "ski-holidays", label: "Ski Holidays" },
+    
     { value: "theme-park-holidays", label: "Theme Park Holidays" },
     { value: "escorted-holidays", label: "Escorted Holidays" },
     { value: "adults-only-holidays", label: "Adults-Only Holidays" },
@@ -20,6 +20,10 @@ const CATEGORY_OPTIONS = {
     { value: "city-breaks", label: "City Breaks" },
     { value: "all-inclusive-holidays", label: "All-Inclusive Holidays" },
     { value: "safari-holidays", label: "Safari Holidays" },
+    {value:"Australia", label: "Visit to sydney"},
+      {value:"azerbaijan", label: "Visit to Cuba"},
+      {value:"azerbaijan", label: "Visit to Baku"},
+      {value:"Bahamas", label: "Visit to Bahamas"},
   ],
   umrah: [
     { value: "economy-umrah", label: "Economy Umrah Packages" },

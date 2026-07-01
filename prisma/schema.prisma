@@ -292,3 +292,22 @@ model Sightseeing {
   packageId           Int     @unique
   package             Package @relation(fields: [packageId], references: [id], onDelete: Cascade)
 }
+
+// for destinations packages...
+model TopDestinations {
+  id              String   @id @default(uuid())
+  title           String   @db.VarChar(255)       // Increased from 191 to 255
+  country         String   @db.VarChar(100)
+  category        String   @db.VarChar(50)
+  image           String   @db.VarChar(500)       // Fits longer image URLs
+  rating          Int
+  duration        String   @db.VarChar(50)
+  features        Json                            // Best way to store arrays in MySQL
+  trustpilotScore Int
+  price           Int
+  location        String   @db.VarChar(255)
+  bestTimeToVisit String   @db.VarChar(255)
+  highlights      Json                            // Best way to store arrays in MySQL
+  shortDesc       String   @db.VarChar(1000)      // Increased for short paragraphs
+  desc            String   @db.LongText           // Up to 4GB of text for long descriptions
+}

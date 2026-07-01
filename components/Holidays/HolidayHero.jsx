@@ -63,6 +63,7 @@ export default function HeroSlider({
             src={current.src}
             alt={current.alt || "Slider Image"}
             fill
+         
             className="object-cover object-center"
             priority
           />

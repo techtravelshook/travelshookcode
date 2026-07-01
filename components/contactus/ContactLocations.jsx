@@ -29,8 +29,8 @@ export default function ContactLocations() {
         <span className="text-xs font-bold uppercase tracking-widest text-white bg-[#FFA500] px-3 py-1.5 rounded-full">
           Find Us
         </span>
-       <h2 className="text-3xl md:text-4xl font-extrabold text-[#111827] mt-3 tracking-tight">
-  Our <span className="text-gradient-to-r from-[#F6931F] via-[#ffb347] to-[#0070A1]">Locations</span>
+       <h2 className="text-3xl md:text-4xl font-extrabold text-[#111827] mt-3 tracking-tight dark:text-orange-400">
+  Our <span className="text-gradient-to-r from-[#F6931F] via-[#ffb347] to-[#0070A1] ">Locations</span>
 </h2>
 
         <p className="text-gray-500 mt-2 text-base max-w-md">
