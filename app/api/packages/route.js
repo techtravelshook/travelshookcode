@@ -56,3 +56,105 @@ export async function GET(request) {
     );
   }
 }
+// TO CREATE PACKAGES 
+export async function POST(request) {
+  try {
+    const body = await request.json();
+
+    const {
+      title,
+      shortDesc,
+      description,
+      star,
+      type,
+      month,
+      duration,
+      makkahHotel,
+      madinahHotel,
+      price,
+      isFeatured,
+      images,
+      inclusions,
+      exclusions,
+    } = body;
+
+    const slug = title
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9\s-]/g, "")
+      .replace(/\s+/g, "-");
+
+    const existingPackage = await prisma.umrahPackage.findUnique({
+      where: { slug },
+    });
+
+    if (existingPackage) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "A package with this title already exists.",
+        },
+        { status: 409 }
+      );
+    }
+
+    const newPackage = await prisma.umrahPackage.create({
+      data: {
+        title,
+        slug,
+        shortDesc,
+        description,
+        star,
+        type,
+        month,
+        duration,
+        makkahHotel,
+        madinahHotel,
+        price,
+        isFeatured,
+
+        images: {
+          create: images.map((url) => ({
+            url,
+          })),
+        },
+
+        inclusions: {
+          create: inclusions.map((title) => ({
+            title,
+          })),
+        },
+
+        exclusions: {
+          create: exclusions.map((title) => ({
+            title,
+          })),
+        },
+      },
+
+      include: {
+        images: true,
+        inclusions: true,
+        exclusions: true,
+      },
+    });
+
+    return NextResponse.json(
+      {
+        success: true,
+        data: newPackage,
+      },
+      { status: 201 }
+    );
+  } catch (error) {
+    console.error(error);
+
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Failed to create package.",
+      },
+      { status: 500 }
+    );
+  }
+}

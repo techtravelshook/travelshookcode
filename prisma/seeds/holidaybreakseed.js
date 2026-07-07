@@ -129,7 +129,6 @@ const cityBreaksData = [
   }
 
   ]
-
 const inclusiveHolidaysData = [
   {
     id: "inc-01",
@@ -260,7 +259,6 @@ const inclusiveHolidaysData = [
   desc: "Escape to the legendary golden sands of the Yucatan Peninsula for seven nights of luxury and outdoor discovery. This custom-tailored package hosts you at a premium, eco-friendly luxury resort surrounded by pristine mangrove forests and clear waters. Indulge in curated wellness routines, gourmet Mexican fusion restaurants, and premium beach concierge service. This special deal includes a guided day excursion to nearby ancient Mayan pyramids and entry into a hidden jungle cenote sinkhole."
   } 
 ]
-
 const BeachHolidays = [
   {
     id: "bch-01",
@@ -650,7 +648,4 @@ const lastMinuteHolidaysData = [
     desc: "Whisk yourself away to experience one of Europe's top-rated winter holiday landscapes. Budapest transforms into a festive wonderland complete with a massive outdoor ice skating rink sitting right below the city's Vajdahunyad Castle towers. Wander past detailed timber kiosks outside St. Stephen’s Basilica to enjoy fresh chimney cakes and craft items. Cap off your chilly winter days by plunging into the outdoor thermal pools at Szechenyi Baths."
   }
 ];
-
-
-
 export { cityBreaksData, inclusiveHolidaysData, BeachHolidays ,FamilyHolidays,lastMinuteHolidaysData};

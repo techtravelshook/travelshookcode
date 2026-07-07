@@ -114,10 +114,10 @@ export default function Footer() {
         >
           {/* Brand Column LOGO*/}
           <motion.div variants={itemVariants} className="lg:col-span-4 flex flex-col justify-start">
-  <div className="w-14 h-14 md:w-[68px] md:h-[68px] rounded-full overflow-hidden shrink-0 mb-3 relative">
+  <div className="w-17 h-17 md:w-[70px] md:h-[70px] rounded-full overflow-hidden shrink-0 mb-3 relative">
   <Link href="/" className="block w-full h-full">
     <Image
-      src="/imgs/logo1.jpeg"
+      src="/imgs/main_logo.png"
       alt="TravelsHook"
       fill
       sizes="(max-width: 768px) 56px, 68px"
