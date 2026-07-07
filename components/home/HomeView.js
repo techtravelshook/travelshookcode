@@ -1,5 +1,8 @@
 import dynamic from "next/dynamic";
 import HomeSlider from "./slider";
+import FlightSearchWidget from "@/components/filter/FlightFilter";
+
+
 // Lazy load everything below the hero
 const DynamicSlider = dynamic(
   () => import("../DynamicSlider/DynamicSlider"),
@@ -178,14 +181,21 @@ function HomeView() {
   return (
     <div>
       <HomeSlider /> 
+       <div className=" w-full px-2 sm:px-0 z-10 relative "> 
+  <FlightSearchWidget /> 
+</div>
+
       <DynamicSlider 
         title="Popular Destinations" 
         italicTitle="Around the World" 
         badge="Top Picks of your choice"
         data={destinations} 
       />
+      
       <UmrahPackage />
-         <HolidayPackages />   
+         <HolidayPackages /> 
+           
+  
       <FlightsInfo/>
       <BookingProcess/>
     </div>

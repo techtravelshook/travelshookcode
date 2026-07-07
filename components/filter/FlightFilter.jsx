@@ -509,7 +509,7 @@ export default function CompactFlightSearch() {
                   onClick={addLeg}
                   className="w-full py-3 border-2 border-dashed border-orange-300 dark:border-orange-700 rounded-lg text-orange-600 dark:text-orange-400 hover:bg-orange-50 dark:hover:bg-slate-800 flex items-center justify-center gap-2 text-sm font-semibold transition-all hover:border-orange-500"
                 >
-                  <Plus size={18} /> Add Leg ({legs.length}/6)
+                  <Plus size={18} /> Add Leg 
                 </button>
               )}
 

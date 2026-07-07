@@ -21,7 +21,7 @@ const CATEGORY_OPTIONS = {
     { value: "all-inclusive-holidays", label: "All-Inclusive Holidays" },
     { value: "safari-holidays", label: "Safari Holidays" },
     {value:"Australia", label: "Visit to sydney"},
-      {value:"azerbaijan", label: "Visit to Cuba"},
+      {value:"azerbaijan1", label: "Visit to Cuba"},
       {value:"azerbaijan", label: "Visit to Baku"},
       {value:"Bahamas", label: "Visit to Bahamas"},
   ],

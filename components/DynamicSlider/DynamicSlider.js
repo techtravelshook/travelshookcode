@@ -393,7 +393,7 @@ const PackageModal = React.memo(function PackageModal({
         onClick={(e) => e.stopPropagation()}
         className="relative w-full sm:max-w-lg max-h-[92dvh] sm:max-h-[88vh] flex flex-col rounded-t-3xl sm:rounded-3xl bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 shadow-2xl overflow-hidden"
       >
-        <div className="sm:hidden w-10 h-1 rounded-full bg-slate-200 dark:bg-zinc-700 mx-auto mt-3 flex-shrink-0" />
+        <div className="sm:hidden w-10 h-1 rounded-full  mx-auto mt-3 flex-shrink-0" />
 
         {/* Image Hero */}
         <div className="relative h-48 sm:h-56 flex-shrink-0 overflow-hidden">

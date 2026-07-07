@@ -1035,7 +1035,7 @@ const TopDestinations = [
   title: "USA Washington DC",
   category: "topdest",
   country: "USA",
-  image: "imgs/holidays/topdes/image50.webp",
+  image: "imgs/holidays/topdes/image50.jpg",
   rating: 5,
   duration: "3 Nights",
   features: ["Flights included", "Airport Transfers", "Premium Accommodation"],

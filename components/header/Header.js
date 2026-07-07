@@ -636,7 +636,7 @@ export default function Navbar() {
             <div className="w-14 h-14 md:w-17 md:h-17 rounded-full overflow-hidden shrink-0">
               <Link href="/">
                 <Image
-                  src="/imgs/logo1.jpeg"
+                  src="/imgs/main_logo.png"
                   alt="TravelsHook"
                   width={68} 
                   height={68} 

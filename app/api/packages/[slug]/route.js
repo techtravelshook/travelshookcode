@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { prisma } from "@/lib/prisma";
-
+// to fetch all packages
 export async function GET(request, { params }) {
   const { slug } = await params;
 
@@ -31,3 +31,4 @@ export async function GET(request, { params }) {
     );
   }
 }
+

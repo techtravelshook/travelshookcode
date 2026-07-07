@@ -74,6 +74,12 @@ isFeatured:true,
         description: "Undertake a spiritually rewarding Umrah from the UK with our 9 Nights 3 Star Umrah Package. Our 10 Days package is expertly crafted to facilitate an Umrah pilgrimage and covers all your essential needs",
         star: "STAR_3", type: "NORMAL", month: null, duration: 9,
         makkahHotel: "Emaar Al Khalil Hotel", madinahHotel: "Al Eiman Ohud", price: 705,
+        images: {
+    create: [
+      { url: "imgs/hajj/hajj26.jpg" },
+     
+    ]
+  },
          inclusions: [
           "Room Type:Quad Room",
           "Umrah Procesing Fees",

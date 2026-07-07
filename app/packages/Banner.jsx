@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 
 export default function Banner({
-  title = "Package ",
+  title = "Umrah Package ",
   highlightText = "Customizer App",
   description = "Discover premium destinations, unbeatable airfare deals, and seamless travel experiences worldwide.",
   bgImage = "/imgs/slider01.webp",
@@ -21,7 +21,7 @@ export default function Banner({
     alt={`${title} ${highlightText} Hero`}
     fill
     priority
-    className="object-cover object-center"
+    className="object-cover object-center "
   />
 </div>
 

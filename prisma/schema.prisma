@@ -311,3 +311,13 @@ model TopDestinations {
   shortDesc       String   @db.VarChar(1000)      // Increased for short paragraphs
   desc            String   @db.LongText           // Up to 4GB of text for long descriptions
 }
+
+
+// modal created for USER who will register on our site for custom packages and other services
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  fullname      String?
+  createdAt DateTime @default(now())
+}
