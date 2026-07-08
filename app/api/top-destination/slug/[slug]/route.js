@@ -1,54 +1,6 @@
-// import { PrismaClient } from "@prisma/client";
-
-// const prisma = new PrismaClient();
-
-// export async function GET(request, { params }) {
-//   const { slug } = await params;
-
-//   try {
-//     const destinations = await prisma.topDestinations.findMany();
-
-//     const destination = destinations.find((d) => {
-//       const generatedSlug = d.title
-//         .toLowerCase()
-//         .replace(/[^a-z0-9\s-]/g, "")
-//         .trim()
-//         .replace(/\s+/g, "-");
-
-//       return generatedSlug === slug;
-//     });
-
-//     if (!destination) {
-//       return Response.json(
-//         { error: "Destination not found" },
-//         { status: 404 }
-//       );
-//     }
-
-//     return Response.json({
-//       ...destination,
-//       features:
-//         typeof destination.features === "string"
-//           ? JSON.parse(destination.features)
-//           : destination.features,
-//       highlights:
-//         typeof destination.highlights === "string"
-//           ? JSON.parse(destination.highlights)
-//           : destination.highlights,
-//       slug,
-//     });
-//   } catch (error) {
-//     console.error(error);
-//     return Response.json(
-//       { error: "Failed to fetch destination" },
-//       { status: 500 }
-//     );
-//   }
-// }
 import { PrismaClient } from "@prisma/client";
-
+import { NextResponse } from "next/server";
 const prisma = new PrismaClient();
-
 const slugify = (title) =>
   title
     .toLowerCase()
@@ -105,6 +57,120 @@ export async function GET(request, { params }) {
     console.error(error);
     return Response.json(
       { error: "Failed to fetch destination" },
+      { status: 500 }
+    );
+  }
+}
+
+// route to update a destination by slug
+export async function PUT(request, { params }) {
+  try {
+    const { slug } = await params;
+
+    // Get all destinations
+    const destinations = await prisma.topDestinations.findMany();
+
+    // Find matching destination using slugify(title)
+    const existing = destinations.find(
+      (d) => slugify(d.title) === slug
+    );
+
+    if (!existing) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: `Destination "${slug}" not found`,
+        },
+        { status: 404 }
+      );
+    }
+
+    const body = await request.json();
+
+    const destination = await prisma.topDestinations.update({
+      where: {
+        id: existing.id, // ✅ Update using ID
+      },
+      data: {
+        ...(body.title && { title: body.title }),
+        ...(body.country && { country: body.country }),
+        ...(body.category && { category: body.category }),
+        ...(body.image && { image: body.image }),
+        ...(body.rating !== undefined && { rating: body.rating }),
+        ...(body.duration && { duration: body.duration }),
+        ...(body.features && { features: body.features }),
+        ...(body.trustpilotScore !== undefined && {
+          trustpilotScore: body.trustpilotScore,
+        }),
+        ...(body.price !== undefined && { price: body.price }),
+        ...(body.location && { location: body.location }),
+        ...(body.bestTimeToVisit && {
+          bestTimeToVisit: body.bestTimeToVisit,
+        }),
+        ...(body.highlights && { highlights: body.highlights }),
+        ...(body.shortDesc && { shortDesc: body.shortDesc }),
+        ...(body.desc && { desc: body.desc }),
+      },
+    });
+
+    return NextResponse.json(
+      {
+        success: true,
+        data: destination,
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("❌ Update Destination Error:", error);
+
+    return NextResponse.json(
+      {
+        success: false,
+        message: error.message,
+      },
+      { status: 500 }
+    );
+  }
+}
+
+// DELETE - Delete destination by id
+export async function DELETE(request, { params }) {
+  try {
+    const { slug } = await params;
+    const destinations = await prisma.topDestinations.findMany();
+    const existing = destinations.find(
+      (d) => slugify(d.title) === slug
+    );
+
+    if (!existing) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: `Destination "${slug}" not found`,
+        },
+        { status: 404 }
+      );
+    }
+
+    // Delete using ID
+    await prisma.topDestinations.delete({
+      where: {
+        id: existing.id,
+      },
+    });
+
+    return NextResponse.json({
+      success: true,
+      message: `Destination "${existing.title}" deleted successfully`,
+    });
+  } catch (error) {
+    console.error("❌ Delete Destination Error:", error);
+
+    return NextResponse.json(
+      {
+        success: false,
+        message: error.message,
+      },
       { status: 500 }
     );
   }

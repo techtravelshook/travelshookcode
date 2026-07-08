@@ -58,3 +58,109 @@ export async function GET(request) {
     );
   }
 }
+// Create a new package
+export async function POST(request) {
+  try {
+    const body = await request.json();
+
+    const travelPackage = await prisma.package.create({
+      data: {
+        title: body.title,
+        slug: body.slug,
+        shortDesc: body.shortDesc,
+        description: body.description,
+        price: body.price,
+        durationDays: body.durationDays,
+        durationNights: body.durationNights,
+        month: body.month,
+        star: body.star,
+        type: body.type,
+        country: body.country,
+        city: body.city,
+        category: body.category,
+        featured: body.featured || false,
+
+        // nested images
+        images: {
+          create: body.images?.map((img) => ({
+            url: img.url,
+          })) || [],
+        },
+
+        // nested hotels
+        hotels: {
+          create: body.hotels?.map((hotel) => ({
+            name: hotel.name,
+            city: hotel.city,
+            durationNights: hotel.durationNights,
+            starRating: hotel.starRating,
+            roomType: hotel.roomType,
+            description: hotel.description,
+          })) || [],
+        },
+
+        // nested flights (single object, not array)
+        ...(body.flights && {
+          flights: {
+            create: {
+              departureCities: body.flights.departureCities, // JSON array
+              destination: body.flights.destination,
+              airlines: body.flights.airlines,               // JSON array
+              classOption: body.flights.classOption,
+            },
+          },
+        }),
+
+        // nested transportation (single object)
+        ...(body.transportation && {
+          transportation: {
+            create: {
+              type: body.transportation.type,
+              routeDetails: body.transportation.routeDetails,
+              extras: body.transportation.extras,
+            },
+          },
+        }),
+
+        // nested visaAssistance (single object)
+        ...(body.visaAssistance && {
+          visaAssistance: {
+            create: {
+              supportedRegion: body.visaAssistance.supportedRegion,
+              agency: body.visaAssistance.agency,
+              requiredDocuments: body.visaAssistance.requiredDocuments, // JSON array
+            },
+          },
+        }),
+
+        // nested sightseeing (single object)
+        ...(body.sightseeing && {
+          sightseeing: {
+            create: {
+              items: body.sightseeing.items,                           // JSON array
+              romanticExperiences: body.sightseeing.romanticExperiences, // JSON array
+              guideIncluded: body.sightseeing.guideIncluded ?? true,
+            },
+          },
+        }),
+      },
+      include: {
+        images: true,
+        hotels: true,
+        flights: true,
+        transportation: true,
+        visaAssistance: true,
+        sightseeing: true,
+      },
+    });
+
+    return NextResponse.json({ success: true, data: travelPackage }, { status: 201 });
+
+  } catch (error) {
+    console.error("❌ Create Package Error:", error);
+    return NextResponse.json(
+      { success: false, message: error.message },
+      { status: 500 }
+    );
+  }
+}

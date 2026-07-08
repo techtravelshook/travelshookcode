@@ -26,16 +26,21 @@ export default function FlightPage() {
   const destination = flightDestinations[slug];
   if (!destination) return;
 
+
+  console.log("Slug:", slug);
+  console.log("Destination:", destination);
+  console.log("apiType:", destination.apiType);
   fetch(`/api/flightroute?type=${destination.apiType}`)
-    .then((res) => res.json())
-    .then((result) => {
-      setLiveDeals(result?.data || []);
-      setLoading(false);
-    })
-    .catch((err) => {
-      console.error(err);
-      setLoading(false);
-    });
+  .then((res) => res.json())
+  .then((result) => {
+    console.log("API Response:", result);
+    setLiveDeals(result?.data || []);
+    setLoading(false);
+  })
+  .catch((err) => {
+    console.error(err);
+    setLoading(false);
+  });
 }, [slug]);
 
   if (!destination) {

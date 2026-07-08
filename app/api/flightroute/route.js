@@ -2,7 +2,6 @@
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
-
 export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
@@ -11,87 +10,45 @@ export async function GET(request) {
     let where = {};
 
     if (type) {
-      const normalized = type.toLowerCase(); // "australia" ✓
-
-      const countryToCitiesMap = {
-        australia: [
-          "Sydney",
-          "Brisbane",
-          "Perth",
-          "Melbourne",
-          "Gold Coast",
-          "Adelaide",
-          "Adelaide",
-        ],
-        ghana: ["Accra"],
-        nigeria: ["Lagos", "Abuja", "Kano", "Port Harcourt", "Enugu"],
-        "south-africa": [
-          "Johannesburg",
-          "Cape Town",
-          "Durban",
-          "Port Elizabeth",
-        ],
-        india: [
-          "Delhi",
-          "Mumbai",
-          "Chennai",
-          "Bangalore",
-          "Kolkata",
-          "Ahmedabad",
-          "Hyderabad",
-          "Goa",
-          "TRV",
-          "Kochi",
-        ],
-        pakistan: [
-          "Islamabad",
-          "Karachi",
-          "Lahore",
-          "Multan",
-          "Sialkot",
-          "Peshawar",
-          "Quetta",
-        ],
-        philippines: ["Manila", "Cebu", "Clark International", "Davao"],
-        canada: ["Toronto", "Vancouver", "Montreal","Ottawa","Edmonton"],
-        brazil: ["Sao Paulo"," Salvador","Recife","Rio De Janeiro","Belem","Porto Alegre","Florianopolis","Fortaleza"],
-        kenya: ["Nairobi"],
-        usa: [
-          "Orlando",
-          "New York",
-          "Boston",
-          "San Francisco",
-          "Tampa",
-          "San Jose",
-          "Atlanta",
-          "Los Angeles",
-        ],
-        zimbabwe: ["Harare", "Victoria Falls", "Bulawayo"],
-        thailand:["Bangkok","Phuket","Koh Samui","Krabi","Phuket","Trat","Chiang Mai","Chiang Rai","Udon Thani","Trat"],
-      };
-
-      if (countryToCitiesMap[normalized]) {
-        where.destinationCity = {
-          in: countryToCitiesMap[normalized],
-        };
-      } else {
-        where.destinationCity = {
-          equals: type,
-          mode: "insensitive",
-        };
-      }
+      where.apiType = type.toLowerCase(); // works perfectly with SQLite
     }
 
-    const flights = await prisma.flight.findMany({
-      where,
-    });
-
+    const flights = await prisma.flight.findMany({ where });
     return Response.json({ success: true, data: flights });
+
   } catch (error) {
-    console.error("FLIGHT API ERROR:", error); // 🔥 IMPORTANT
+    console.error("FLIGHT API ERROR:", error);
     return Response.json(
       { success: false, message: error.message },
-      { status: 500 },
+      { status: 500 }
     );
+  }
+}
+// create
+export async function POST(request) {
+  try {
+    const body = await request.json();
+
+    const flight = await prisma.flight.create({
+      data: {
+        slug: body.slug,
+        tripType: body.tripType,
+        airlineName: body.airlineName,
+        apiType: body.apiType.toLowerCase(),
+        airlineLogo: body.airlineLogo,
+        departureCode: body.departureCode,
+        departureCity: body.departureCity,
+        destinationCode: body.destinationCode,
+        destinationCity: body.destinationCity,
+        price: body.price,
+        dates: body.dates,
+      },
+    });
+
+    return Response.json({ success: true, data: flight }, { status: 201 });
+
+  } catch (error) {
+    console.error(error);
+    return Response.json({ success: false, message: error.message }, { status: 500 });
   }
 }
