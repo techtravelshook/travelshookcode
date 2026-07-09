@@ -99,3 +99,28 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
+// import LayoutWrapper from "@/components/LayoutWrapper";
+
+// export default function RootLayout({ children }) {
+//   return (
+//     <html
+//       lang="en"
+//       className={`${jakarta.variable} ${mulish.variable} ${jost.variable}`}
+//       suppressHydrationWarning
+//     >
+//       <body
+//         className="bg-white dark:bg-[#01080C] text-slate-900 dark:text-white antialiased"
+//         suppressHydrationWarning
+//       >
+//         <Providers>
+//           <SmoothScroll>
+//             <LayoutWrapper>
+//               {children}
+//             </LayoutWrapper>
+//           </SmoothScroll>
+//         </Providers>
+//       </body>
+//     </html>
+//   );
+// }
