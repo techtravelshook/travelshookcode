@@ -9,12 +9,14 @@ import {
   Settings,
   LogOut,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function AdminNavbar({ admin }) {
   const [dark, setDark] = useState(true);
   const [showDropdown, setShowDropdown] = useState(false);
 
   const dropdownRef = useRef(null);
+  const router = useRouter();
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -32,9 +34,27 @@ export default function AdminNavbar({ admin }) {
       document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleLogout = () => {
-    console.log("Logout");
-    // Add your logout logic here
+  const handleLogout = async () => {
+    try {
+      const res = await fetch("/api/admin/logout", {
+        method: "POST",
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        alert(data.message || "Logout failed");
+        return;
+      }
+
+      setShowDropdown(false);
+
+      router.replace("/admin/login");
+      router.refresh();
+    } catch (error) {
+      console.error("Logout error:", error);
+      alert("Something went wrong while logging out.");
+    }
   };
 
   return (
@@ -42,6 +62,7 @@ export default function AdminNavbar({ admin }) {
       {/* Search */}
       <div className="flex items-center gap-2 bg-slate-100 rounded-lg px-3 py-2 w-72">
         <Search className="w-4 h-4 text-slate-400" />
+
         <input
           type="text"
           placeholder="Search..."
@@ -83,9 +104,8 @@ export default function AdminNavbar({ admin }) {
 
             <div className="hidden md:block">
               <p className="text-sm font-semibold text-slate-700">
-                {admin?.name}
+                {admin?.name || "Admin"}
               </p>
-             
             </div>
           </div>
 

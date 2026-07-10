@@ -195,7 +195,7 @@ model CountryContent {
   id              Int    @id @default(autoincrement())
   slug            String @unique
    apiType          String
-  section1Title   String
+  section1Title   String 
   section1img     String
   section2img     String
   section1Content String @db.Text
