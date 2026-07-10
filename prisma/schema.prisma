@@ -321,3 +321,20 @@ model User {
   fullname      String?
   createdAt DateTime @default(now())
 }
+
+model admin {
+  id        String   @id @default(cuid())
+  name      String
+  emails     String   @unique
+  password  String
+  role      Role     @default(ADMIN)
+  isActive  Boolean  @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Role {
+  SUPER_ADMIN
+  ADMIN
+}

@@ -1,15 +1,17 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
+import { usePathname } from "next/navigation"; // Automatically tracks active link
+import Link from "next/link"; // Required for routing
 import { Plane, Calendar, Heart, ShieldCheck, ChevronRight, Compass } from "lucide-react";
 
-export default function Sidebar() {
-  const [activeIndex, setActiveIndex] = useState(0);
+export default function Sidebar({ admin }) {
+  const pathname = usePathname(); // Get current browser route
 
   const menuItems = [
-    { label: "Flights", icon: Plane },
-    { label: "Holidays", icon: Calendar },
-    { label: "Romantic Packages", icon: Heart },
-    { label: "Umrah Packages", icon: ShieldCheck },
+    { label: "Flights", icon: Plane, href: "/admin/flights" },
+    { label: "Holidays", icon: Calendar, href: "/admin/holidays" },
+    { label: "Romantic Packages", icon: Heart, href: "/admin/honeymoon" },
+    { label: "Umrah Packages", icon: ShieldCheck, href: "/admin/umrah" },
   ];
 
   return (
@@ -21,9 +23,12 @@ export default function Sidebar() {
             <Compass className="w-6 h-6" />
           </div>
           <div>
-            <h1 className="text-base font-bold tracking-tight text-white">
+            <Link href="/admin/dashboard">
+             <h1 className="text-base font-bold tracking-tight text-white">
               TravelsHook
             </h1>
+            </Link>
+           
             <p className="text-xs text-slate-500 font-medium">Dashboard</p>
           </div>
         </div>
@@ -32,11 +37,13 @@ export default function Sidebar() {
         <nav className="p-4 space-y-1.5">
           {menuItems.map((item, index) => {
             const Icon = item.icon;
-            const isActive = activeIndex === index;
+            // Checks if the current page match or starts with this link
+            const isActive = pathname === item.href; 
+            
             return (
-              <button
+              <Link
                 key={index}
-                onClick={() => setActiveIndex(index)}
+                href={item.href}
                 className={`w-full flex items-center justify-between px-4 py-3 rounded-xl transition-all duration-200 group text-left ${
                   isActive
                     ? "bg-indigo-600 text-white font-medium shadow-lg shadow-indigo-600/10"
@@ -60,7 +67,7 @@ export default function Sidebar() {
                       : "text-slate-600 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5"
                   }`}
                 />
-              </button>
+              </Link>
             );
           })}
         </nav>
@@ -69,12 +76,13 @@ export default function Sidebar() {
       {/* Footer / User */}
       <div className="p-4 border-t border-slate-800 bg-slate-950/40">
         <div className="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-800/40 transition-colors cursor-pointer">
-          <div className="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
-            M
+          {/* First letter added inside user avatar circle */}
+          <div className="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0 uppercase">
+            {admin?.name?.charAt(0)}
           </div>
           <div className="truncate">
-            <p className="text-sm font-medium text-slate-200 truncate">Morgan</p>
-            <p className="text-xs text-slate-500 truncate">morgan@example.com</p>
+            <p className="text-sm font-medium text-slate-200 truncate">{admin?.name}</p>
+            <p className="text-xs text-slate-500 truncate">{admin?.email}</p>
           </div>
         </div>
       </div>
