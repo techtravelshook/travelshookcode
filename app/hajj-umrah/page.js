@@ -7,7 +7,18 @@ import BookingProcess from '@/components/hajjumrah/BookingProcess';
 import HeroSlider from '@/components/Holidays/HolidayHero';
 import HolidayInquiryForms from '@/components/Holidays/HolidayInquryForms';
 import { ImSpinner9 } from "react-icons/im";
+import CustomSlider from '@/components/CustomSlider';
+const flayers=[
+ "imgs/lastash.jpg",
+ "imgs/lastash.jpg",
+ "imgs/lastash.jpg",
+ "imgs/lastash.jpg",
 
+  "imgs/lastash.jpg",
+ "imgs/lastash.jpg",
+ "imgs/lastash.jpg",
+ "imgs/lastash.jpg",
+]
 function Page() {
   const sliderImages = [
     {
@@ -100,8 +111,12 @@ function Page() {
         description="Experience peak blessings with luxury stays near the holy sanctuaries..."
         whatsappNumber="923124928496"
       />
+
 {/* BOOKING PROCESS */}
+
+ <CustomSlider images={flayers}/>
       <BookingProcess />
+     
     </div>
   );
 }

@@ -42,134 +42,154 @@ export async function GET(request, context) {
   }
 }
 // UPDATE A PACKAGE
-export async function PUT(request, context) {
+
+
+export async function PUT(request, { params }) {
   try {
-    const { slug } = await context.params;
+    const { slug } = await params; // ← ADD await
     const body = await request.json();
 
-    const existing = await prisma.package.findUnique({ where: { slug } });
+    console.log("Updating Slug:", slug);
+    console.log("Request Body:", body);
+
+    const existing = await prisma.package.findUnique({
+      where: { slug },
+    });
+
     if (!existing) {
       return NextResponse.json(
-        { success: false, message: "Package not found" },
+        {
+          success: false,
+          message: "Package not found",
+        },
         { status: 404 }
       );
     }
 
-    const travelPackage = await prisma.package.update({
-      where: { slug },
+    const updatedPackage = await prisma.package.update({
+      where: {
+        slug,
+      },
+
       data: {
-        ...(body.title && { title: body.title }),
-        ...(body.slug && { slug: body.slug }),
-        ...(body.shortDesc && { shortDesc: body.shortDesc }),
-        ...(body.description && { description: body.description }),
-        ...(body.price && { price: body.price }),
-        ...(body.durationDays && { durationDays: body.durationDays }),
-        ...(body.durationNights && { durationNights: body.durationNights }),
-        ...(body.month && { month: body.month }),
-        ...(body.star && { star: body.star }),
-        ...(body.type && { type: body.type }),
-        ...(body.country && { country: body.country }),
-        ...(body.city && { city: body.city }),
-        ...(body.category && { category: body.category }),
-        ...(body.featured !== undefined && { featured: body.featured }),
+        title: body.title,
+     
+        shortDesc: body.shortDesc,
+        description: body.description,
 
-        // replace all images if provided
-        ...(body.images && {
-          images: {
-            deleteMany: {},
-            create: body.images.map((img) => ({ url: img.url })),
-          },
-        }),
+        price: Number(body.price),
+        durationDays: Number(body.durationDays),
+        durationNights: Number(body.durationNights),
+        star: Number(body.star),
 
-        // replace all hotels if provided
-        ...(body.hotels && {
-          hotels: {
-            deleteMany: {},
-            create: body.hotels.map((hotel) => ({
+        month: body.month,
+        type: body.type,
+        country: body.country,
+        city: body.city,
+        category: body.category,
+        featured: body.featured,
+images: {
+  deleteMany: {},
+  create:
+    body.images
+      ?.filter((img) => img.url) // ← ADD THIS: skip empty images
+      .map((img) => ({
+        url: img.url,
+      })) || [],
+},
+
+        hotels: {
+          deleteMany: {},
+          create:
+            body.hotels?.map((hotel) => ({
               name: hotel.name,
               city: hotel.city,
-              durationNights: hotel.durationNights,
-              starRating: hotel.starRating,
+              durationNights: Number(hotel.durationNights),
+              starRating: Number(hotel.starRating),
               roomType: hotel.roomType,
               description: hotel.description,
-            })),
-          },
-        }),
+            })) || [],
+        },
 
-        // replace flights if provided
-        ...(body.flights && {
-          flights: {
-            upsert: {
-              create: {
-                departureCities: body.flights.departureCities,
-                destination: body.flights.destination,
-                airlines: body.flights.airlines,
-                classOption: body.flights.classOption,
+        flights: body.flights
+          ? {
+              upsert: {
+                update: {
+                  departureCities: body.flights.departureCities || [],
+                  destination: body.flights.destination,
+                  airlines: body.flights.airlines || [],
+                  classOption: body.flights.classOption,
+                },
+                create: {
+                  departureCities: body.flights.departureCities || [],
+                  destination: body.flights.destination,
+                  airlines: body.flights.airlines || [],
+                  classOption: body.flights.classOption,
+                },
               },
-              update: {
-                departureCities: body.flights.departureCities,
-                destination: body.flights.destination,
-                airlines: body.flights.airlines,
-                classOption: body.flights.classOption,
-              },
-            },
-          },
-        }),
+            }
+          : undefined,
 
-        // replace transportation if provided
-        ...(body.transportation && {
-          transportation: {
-            upsert: {
-              create: {
-                type: body.transportation.type,
-                routeDetails: body.transportation.routeDetails,
-                extras: body.transportation.extras,
+        transportation: body.transportation
+          ? {
+              upsert: {
+                update: {
+                  type: body.transportation.type,
+                  routeDetails: body.transportation.routeDetails,
+                  extras: body.transportation.extras,
+                },
+                create: {
+                  type: body.transportation.type,
+                  routeDetails: body.transportation.routeDetails,
+                  extras: body.transportation.extras,
+                },
               },
-              update: {
-                type: body.transportation.type,
-                routeDetails: body.transportation.routeDetails,
-                extras: body.transportation.extras,
-              },
-            },
-          },
-        }),
+            }
+          : undefined,
 
-        // replace visaAssistance if provided
-        ...(body.visaAssistance && {
-          visaAssistance: {
-            upsert: {
-              create: {
-                supportedRegion: body.visaAssistance.supportedRegion,
-                agency: body.visaAssistance.agency,
-                requiredDocuments: body.visaAssistance.requiredDocuments,
+        visaAssistance: body.visaAssistance
+          ? {
+              upsert: {
+                update: {
+                  supportedRegion:
+                    body.visaAssistance.supportedRegion,
+                  agency: body.visaAssistance.agency,
+                  requiredDocuments:
+                    body.visaAssistance.requiredDocuments || [],
+                },
+                create: {
+                  supportedRegion:
+                    body.visaAssistance.supportedRegion,
+                  agency: body.visaAssistance.agency,
+                  requiredDocuments:
+                    body.visaAssistance.requiredDocuments || [],
+                },
               },
-              update: {
-                supportedRegion: body.visaAssistance.supportedRegion,
-                agency: body.visaAssistance.agency,
-                requiredDocuments: body.visaAssistance.requiredDocuments,
-              },
-            },
-          },
-        }),
+            }
+          : undefined,
 
-        // replace sightseeing if provided
-        ...(body.sightseeing && {
-          sightseeing: {
-            upsert: {
-              create: {
-                items: body.sightseeing.items,
-                romanticExperiences: body.sightseeing.romanticExperiences,
-                guideIncluded: body.sightseeing.guideIncluded ?? true,
+        sightseeing: body.sightseeing
+          ? {
+              upsert: {
+                update: {
+                  items: body.sightseeing.items || [],
+                  romanticExperiences:
+                    body.sightseeing.romanticExperiences || [],
+                  guideIncluded:
+                    body.sightseeing.guideIncluded,
+                },
+                create: {
+                  items: body.sightseeing.items || [],
+                  romanticExperiences:
+                    body.sightseeing.romanticExperiences || [],
+                  guideIncluded:
+                    body.sightseeing.guideIncluded,
+                },
               },
-              update: {
-                items: body.sightseeing.items,
-                romanticExperiences: body.sightseeing.romanticExperiences,
-                guideIncluded: body.sightseeing.guideIncluded ?? true,
-              },
-            },
-          },
-        }),
+            }
+          : undefined,
       },
+
       include: {
         images: true,
         hotels: true,
@@ -180,13 +200,23 @@ export async function PUT(request, context) {
       },
     });
 
-    return NextResponse.json({ success: true, data: travelPackage }, { status: 200 });
+    console.log("Updated Package:", updatedPackage);
 
+    return NextResponse.json({
+      success: true,
+      data: updatedPackage,
+    });
   } catch (error) {
-    console.error("❌ Update Package Error:", error);
+    console.error("UPDATE ERROR:", error);
+
     return NextResponse.json(
-      { success: false, message: error.message },
-      { status: 500 }
+      {
+        success: false,
+        message: error.message,
+      },
+      {
+        status: 500,
+      }
     );
   }
 }

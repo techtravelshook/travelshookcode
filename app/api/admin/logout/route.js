@@ -6,13 +6,7 @@ export async function POST() {
     message: "Logged out successfully",
   });
 
-  response.cookies.set("adminToken", "", {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    path: "/",
-    expires: new Date(0), 
-  });
+  response.cookies.delete("admin-token");
 
   return response;
 }

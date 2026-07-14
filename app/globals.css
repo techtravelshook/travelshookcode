@@ -190,3 +190,23 @@
 *::-webkit-scrollbar-thumb:hover {
   background-color: var(--foreground);
 }
+
+@keyframes moveRight {
+  0% { left: 0; }
+  50% { left: calc(100% - 12px); }
+  100% { left: 0; }
+}
+
+@keyframes moveLeft {
+  0% { right: 0; }
+  50% { right: calc(100% - 12px); }
+  100% { right: 0; }
+}
+
+.animate-move-right {
+  animation: moveRight 3s ease-in-out infinite;
+}
+
+.animate-move-left {
+  animation: moveLeft 3s ease-in-out infinite;
+}
