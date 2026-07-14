@@ -1,6 +1,54 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
+export async function GET(request, { params }) {
+  try {
+    const id = parseInt(params.id);
+
+    if (isNaN(id)) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Invalid ID",
+        },
+        { status: 400 }
+      );
+    }
+
+    const holiday = await prisma.holidayBreaks.findUnique({
+      where: { id },
+      include: {
+        images: true,
+        features: true,
+      },
+    });
+
+    if (!holiday) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Holiday not found",
+        },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({
+      success: true,
+      data: holiday,
+    });
+  } catch (error) {
+    console.error(error);
+
+    return NextResponse.json(
+      {
+        success: false,
+        message: error.message,
+      },
+      { status: 500 }
+    );
+  }
+}
 // PUT - Update holiday by id
 export async function PUT(request, { params }) {
   try {

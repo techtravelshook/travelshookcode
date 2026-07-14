@@ -64,6 +64,7 @@ export async function GET(request) {
     );
   }
 }
+// route to get all holidays
 
 // POST - Create new holiday
 export async function POST(request) {

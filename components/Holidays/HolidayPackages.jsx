@@ -351,34 +351,7 @@ const ListCard = memo(function ListCard({ pkg, onSelect }) {
 /* ================= MODAL TAB CONTENT ================= */
 
 // Overview Tab
-const OverviewTab = memo(function OverviewTab({ selected }) {
-  return (
-    <div className="space-y-8">
-      <div>
-        <p className="uppercase text-xs tracking-[2px] font-bold text-slate-400 dark:text-slate-500 mb-4">Highlights</p>
-        <div className="space-y-3">
-          {selected.highlights.map((h, i) => (
-            <div key={i} className="flex items-start gap-3 bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-2xl p-4">
-              <div className="w-2 h-2 rounded-full bg-[#F6931F] mt-2.5 shrink-0" />
-              <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">{h}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-      <InclusionBadges inclusions={selected.inclusions} />
-      <div className="grid grid-cols-2 gap-4">
-        <div className="bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-2xl p-5">
-          <p className="text-xs uppercase tracking-widest text-slate-400">Tier</p>
-          <p className="font-bold text-xl mt-1 text-slate-800 dark:text-white">{selected.tier}</p>
-        </div>
-        <div className="bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-2xl p-5">
-          <p className="text-xs uppercase tracking-widest text-slate-400">Plan</p>
-          <p className="font-bold text-xl mt-1 text-slate-800 dark:text-white">{selected.plan}</p>
-        </div>
-      </div>
-    </div>
-  );
-});
+
 
 // Itinerary Tab
 const ItineraryTab = memo(function ItineraryTab({ selected }) {
@@ -586,7 +559,7 @@ const ContactTab = memo(function ContactTab({ selected, form, handleChange, hand
 export default function HolidayPackages() {
   const [selected, setSelected] = useState(null);
   const [viewMode, setViewMode] = useState("grid");
-  const [activeTab, setActiveTab] = useState("Overview");
+  const [activeTab, setActiveTab] = useState("itinery");
   const [form, setForm] = useState({ name: "", phone: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -594,7 +567,7 @@ export default function HolidayPackages() {
   const [touchEnd, setTouchEnd] = useState(null);
 
   const TABS = [
-    { id: "Overview",     icon: <LayoutGrid size={13} /> },
+   
     { id: "Itinerary",    icon: <CalendarDays size={13} /> },
     { id: "Inclusions",   icon: <CheckCircle2 size={13} /> },
    
@@ -604,7 +577,7 @@ export default function HolidayPackages() {
 
   const handleSelect = useCallback((pkg) => {
     setSelected(pkg);
-    setActiveTab("Overview");
+    setActiveTab("Itinerary");
   }, []);
 
   const prevCard = useCallback(() => setCurrentIndex((i) => Math.max(0, i - 1)), []);
@@ -804,7 +777,7 @@ export default function HolidayPackages() {
                       exit={{ opacity: 0, y: -8 }}
                       transition={{ duration: 0.18 }}
                     >
-                      {activeTab === "Overview"      && <OverviewTab selected={selected} />}
+                   
                       {activeTab === "Itinerary"     && <ItineraryTab selected={selected} />}
                       {activeTab === "Inclusions"    && <InclusionsTab selected={selected} />}
                 

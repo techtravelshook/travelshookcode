@@ -114,8 +114,9 @@ function Page() {
 
 {/* BOOKING PROCESS */}
 
- <CustomSlider images={flayers}/>
+ 
       <BookingProcess />
+      <CustomSlider images={flayers}/>
      
     </div>
   );

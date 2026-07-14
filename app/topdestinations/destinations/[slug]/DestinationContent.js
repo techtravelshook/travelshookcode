@@ -109,7 +109,7 @@ const relatedImageSrc = (img) =>
                     
                     <div className="flex items-baseline gap-2 mb-6 relative z-10">
                       <span className="text-5xl font-black tracking-tight dark:text-white text-zinc-950 transition-all duration-300">£{dest.price || '0'}</span>
-                      <span className="text-zinc-400 text-sm font-medium">/ person total</span>
+                      <span className="text-zinc-400 text-sm font-medium">/ per person</span>
                     </div>
       
                     {/* Pricing breakdown rows */}

@@ -198,7 +198,7 @@ const AirportSearch = ({ value, onChange, onSelect, label, placeholder = "Type t
       </div>
 
       {isOpen && (
-        <div className="absolute bottom-full mb-2 left-0 right-0 z-40 mt-2 bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+        <div className="absolute top-full mb-2 left-0 right-0 z-40 mt-2 bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
           {searchValue.trim() === "" ? (
             <div className="px-4 py-3 text-xs text-slate-500 dark:text-slate-400 text-center">
               Start typing to search airports
@@ -429,17 +429,20 @@ export default function CompactFlightSearch() {
                 </button>
               </div>
 
-              <div className="flex-1 min-w-[150px]">
-                <label className="block text-xs font-semibold text-orange-600 dark:text-orange-400 mb-1">WHATSAPP</label>
-                <input
-                  type="tel"
-                  value={whatsapp}
-                  onChange={(e) => setWhatsapp(e.target.value)}
-                  placeholder="+92 3001234567"
-                  className="w-full h-10 px-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-sm focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-300 dark:focus:ring-orange-600 transition-all"
-                  required
-                />
-              </div>
+             <div className="flex-1 min-w-[150px]">
+  <label className="block text-xs font-semibold text-orange-600 dark:text-orange-400 mb-1">
+    WHATSAPP <span className="text-red-500">*</span> {/* Visual indicator for required fields */}
+  </label>
+  <input
+    type="tel"
+    value={whatsapp}
+    onChange={(e) => setWhatsapp(e.target.value)}
+    placeholder="+44 3001234567"
+    className="w-full h-10 px-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-sm focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-300 dark:focus:ring-orange-600 transition-all text-slate-900 dark:text-white"
+    required // Keeps the HTML5 browser validation active
+  />
+</div>
+
 
               <button
                 type="submit"
@@ -527,17 +530,20 @@ export default function CompactFlightSearch() {
                   </button>
                 </div>
 
-                <div className="flex-1 min-w-[100px]">
-                  <label className="block text-xs font-semibold text-orange-600 dark:text-orange-400 mb-1">WHATSAPP</label>
-                  <input
-                    type="tel"
-                    value={whatsapp}
-                    onChange={(e) => setWhatsapp(e.target.value)}
-                    placeholder="+92 3001234567"
-                    className="w-full h-10 px-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-sm focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-300 dark:focus:ring-orange-600 transition-all"
-                    required
-                  />
-                </div>
+              <div className="flex-1 min-w-[100px]">
+  <label className="block text-xs font-semibold text-orange-600 dark:text-orange-400 mb-1">
+    WHATSAPP <span className="text-red-500 dark:text-red-400">*</span>
+  </label>
+  <input
+    type="tel"
+    value={whatsapp}
+    onChange={(e) => setWhatsapp(e.target.value)}
+    placeholder="+44 3001234567"
+    className="w-full h-10 px-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-sm focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-300 dark:focus:ring-orange-600 transition-all text-slate-900 dark:text-white"
+    required
+  />
+</div>
+
 
                 <button
                   type="submit"
