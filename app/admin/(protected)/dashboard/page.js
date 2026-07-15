@@ -5,21 +5,21 @@ import Link from "next/link";
 const stats = [
   {
     label: "Total Flights",
-    value: "1,284",
+    value: "600",
     change: "+12%",
     color: "bg-indigo-50 text-indigo-600",
     href: "/admin/flights",
   },
   {
     label: "Holiday Packages",
-    value: "340",
+    value: "150",
     change: "+5%",
     color: "bg-emerald-50 text-emerald-600",
     href: "/admin/holidays",
   },
   {
     label: "Romantic Packages",
-    value: "98",
+    value: "135",
     change: "+3%",
     color: "bg-rose-50 text-rose-600",
     href: "/admin/honeymoon",

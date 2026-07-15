@@ -9,15 +9,17 @@ import HolidayInquiryForms from '@/components/Holidays/HolidayInquryForms';
 import { ImSpinner9 } from "react-icons/im";
 import CustomSlider from '@/components/CustomSlider';
 const flayers=[
- "imgs/lastash.jpg",
- "imgs/lastash.jpg",
- "imgs/lastash.jpg",
- "imgs/lastash.jpg",
+ "imgs/sliderimgs/u03.webp",
+    "imgs/sliderimgs/u02.webp",
+    
+     "imgs/sliderimgs/u01.webp",
+    "imgs/sliderimgs/u04.webp",
 
-  "imgs/lastash.jpg",
- "imgs/lastash.jpg",
- "imgs/lastash.jpg",
- "imgs/lastash.jpg",
+    "imgs/sliderimgs/u05.webp",
+    
+    "imgs/sliderimgs/u07.webp",
+    "imgs/sliderimgs/u06.webp",
+    "imgs/sliderimgs/u008.webp",
 ]
 function Page() {
   const sliderImages = [

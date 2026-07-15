@@ -143,9 +143,9 @@ model HolidayBreaks {
   month     String?
   duration  Int
   price     Float
-  desc            String?             // 🆕 Added (use String @db.Text if using MySQL/Postgres for long text)
-  location        String?             // 🆕 Added
-  bestTimeToVisit String?             // 🆕 Added
+  desc            String?             
+  location        String?            
+  bestTimeToVisit String?            
 
   images   HolidayBreakImage[]
   highlights      Highlight[] 

@@ -191,7 +191,7 @@ export default function CustomSlider({ images = [] }) {
                       alt={`Flyer ${index + 1}`}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                     className="object-cover transition-all duration-500 ease-out group-hover:scale-130" 
                       priority={index < 4}
                     />
 
@@ -213,7 +213,7 @@ export default function CustomSlider({ images = [] }) {
                     </div>
                   </div>
 
-                  {/* Index badge */}
+                  {/* Index badge
                   <div
                     className={`
                       absolute top-3 left-3 text-[10px] font-black tracking-widest px-2.5 py-1 rounded-lg
@@ -225,7 +225,7 @@ export default function CustomSlider({ images = [] }) {
                     `}
                   >
                     0{index + 1}
-                  </div>
+                  </div> */}
 
                   {/* "Current" label badge on active slides */}
                   {isCurrent && (

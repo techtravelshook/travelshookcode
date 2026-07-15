@@ -180,14 +180,15 @@ const destinations = [
 ];
 function HomeView() {
   const flayers=[
-    "imgs/fl1.jpg",
-     "imgs/fl2.jpg",
-      "imgs/fl3.jpg",
-       "imgs/fl4.jpg",
-        "imgs/fl3.jpg",
-         "imgs/fl2.jpg",
-          "imgs/fl1.jpg",
-           "imgs/fl4.jpg",
+    "imgs/sliderimgs/f001.webp",
+    "imgs/sliderimgs/f002.webp",
+    "imgs/sliderimgs/f003.webp",
+    "imgs/sliderimgs/f004.webp",
+   
+    "imgs/sliderimgs/f005.webp",
+    "imgs/sliderimgs/f006.webp",
+    "imgs/sliderimgs/f007.webp",
+    "imgs/sliderimgs/f008.webp",
   ]
   return (
     <div>

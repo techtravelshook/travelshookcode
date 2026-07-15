@@ -28,7 +28,7 @@ export async function POST(request) {
       process.cwd(),
       "public",
       "imgs",
-      "airlines"
+      "uploads"
     );
 
     // Create folder if it doesn't exist
@@ -43,7 +43,7 @@ export async function POST(request) {
 
     return NextResponse.json({
       success: true,
-      path: `imgs/airlines/${fileName}`,
+      path: `imgs/uploads/${fileName}`,
     });
   } catch (error) {
     console.error(error);
