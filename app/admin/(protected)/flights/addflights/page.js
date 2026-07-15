@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 
 export default function AddFlightPage() {
@@ -161,13 +162,25 @@ export default function AddFlightPage() {
     className="w-full border rounded-lg p-3"
   />
 
-  {formData.airlineLogo && (
+  {/* {formData.airlineLogo && (
     <img
       src={`/${formData.airlineLogo}`}
       alt="Preview"
       className="mt-3 h-20 object-contain"
     />
-  )}
+  )} */}
+  {formData.airlineLogo && (
+  <div className="relative h-20 w-full mt-3">
+    <Image
+      src={`/${formData.airlineLogo}`}
+      alt="Airline company logo preview"
+      fill
+      sizes="(max-width: 768px) 100vw, 300px"
+      className="object-contain object-left"
+      priority={false}
+    />
+  </div>
+)}
 </div>
 
           <Input

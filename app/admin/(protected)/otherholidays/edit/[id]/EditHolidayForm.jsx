@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function EditHolidayForm({ holiday }) {
   const router = useRouter();
@@ -196,12 +197,24 @@ export default function EditHolidayForm({ holiday }) {
 
             {uploading && <p className="mt-2 text-sm text-blue-500">Uploading...</p>}
 
-            {img.url && !uploading && (
-              <div className="mt-3 flex items-center gap-3">
-                <img src={`/${img.url}`} alt="preview" className="h-32 w-48 rounded border object-cover" />
-                <span className="text-sm text-green-600">✓ Uploaded</span>
-              </div>
-            )}
+           
+{img.url && !uploading && (
+  <div className="mt-3 flex items-center gap-3">
+    <div className="relative h-32 w-48 rounded border overflow-hidden shrink-0">
+      <Image
+        src={`/${img.url}`}
+        alt={img.slideTitle || "Uploaded image confirmation preview"}
+        fill
+        sizes="192px"
+        className="object-cover"
+        loading="lazy"
+      />
+    </div>
+    <span className="text-sm font-medium text-green-600 flex items-center gap-1">
+      ✓ Uploaded
+    </span>
+  </div>
+)}
 
             {/* ✅ Remove button added */}
             <button

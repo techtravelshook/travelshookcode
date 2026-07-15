@@ -4,6 +4,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Plus } from "lucide-react";
+import Image from "next/image";
 
 export default function AllHolidays({
  
@@ -99,11 +100,16 @@ export default function AllHolidays({
                     <div className="flex items-center gap-4">
                       <div className="relative w-24 h-16 rounded-lg overflow-hidden border">
                         {pkg.images?.length ? (
-                          <img
-                            src={`/${pkg.images[0].url}`}
-                            alt={pkg.title}
-                            className="w-full h-full object-cover"
-                          />
+                          <div className="relative w-full h-full overflow-hidden">
+  <Image
+    src={`/${pkg.images[0].url}`}
+    alt={pkg.title || "Package image preview"}
+    fill
+    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+    className="object-cover"
+    loading="lazy"
+  />
+</div>
                         ) : (
                           <div className="flex items-center justify-center w-full h-full text-xs text-gray-400">
                             No Image

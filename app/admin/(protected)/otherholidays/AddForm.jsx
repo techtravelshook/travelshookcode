@@ -330,6 +330,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 // ✅ From your Prisma schema
 const HOLIDAY_TYPES = [
@@ -635,14 +636,16 @@ export default function AddHolidayForm() {
             )}
 
             {img.url && !uploading && (
-              <div className="mt-3 flex items-center gap-3">
-                <img
-                  src={`/${img.url}`}
-                  alt="preview"
-                  className="h-28 w-40 rounded-lg border object-cover"
-                />
-                <span className="text-sm text-green-600">✓ Uploaded</span>
-              </div>
+              <div className="relative h-28 w-40 rounded-lg border overflow-hidden shrink-0">
+  <Image
+    src={`/${img.url}`}
+    alt={img.slideTitle || "Image preview confirmation"}
+    fill
+    sizes="160px"
+    className="object-cover"
+    loading="lazy"
+  />
+</div>
             )}
 
             <button

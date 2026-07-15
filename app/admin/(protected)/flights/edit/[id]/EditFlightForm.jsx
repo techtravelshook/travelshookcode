@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function EditFlightForm({ flight }) {  
   const router = useRouter();
@@ -156,13 +157,19 @@ export default function EditFlightForm({ flight }) {
               className="w-full border rounded-lg p-3"
             />
 
-            {formData.airlineLogo && (
-              <img
-                src={`/${formData.airlineLogo}`}
-                alt="Logo"
-                className="w-20 mt-3"
-              />
-            )}
+           
+{formData.airlineLogo && (
+  <div className="relative w-20 h-20 mt-3">
+    <Image
+      src={`/${formData.airlineLogo}`}
+      alt="Airline company logo"
+      fill
+      sizes="80px"
+      className="object-contain object-left"
+      priority={false}
+    />
+  </div>
+)}
           </div>
 
           <Input

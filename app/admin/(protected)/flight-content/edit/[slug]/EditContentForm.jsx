@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function EditContentForm({ content }) {
   const router = useRouter();
@@ -175,13 +176,19 @@ export default function EditContentForm({ content }) {
               }
             />
 
-            {formData.section1img && (
-              <img
-                src={`/${formData.section1img}`}
-                className="w-40 mt-4 rounded"
-              />
-            )}
-
+       
+{formData.section1img && (
+  <div className="relative w-40 h-40 mt-4 rounded overflow-hidden">
+    <Image
+      src={`/${formData.section1img}`}
+      alt="Section 1 visual content"
+      fill
+      sizes="160px"
+      className="object-cover"
+      priority={false}
+    />
+  </div>
+)}
           </div>
 
           <Textarea
@@ -217,12 +224,18 @@ export default function EditContentForm({ content }) {
               }
             />
 
-            {formData.section2img && (
-              <img
-                src={`/${formData.section2img}`}
-                className="w-40 mt-4 rounded"
-              />
-            )}
+           {formData.section2img && (
+  <div className="relative w-40 h-40 mt-4 rounded overflow-hidden">
+    <Image
+      src={`/${formData.section2img}`}
+      alt="Section 2 visual content"
+      fill
+      sizes="160px"
+      className="object-cover"
+      loading="lazy"
+    />
+  </div>
+)}
 
           </div>
 

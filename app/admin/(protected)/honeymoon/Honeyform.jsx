@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export default function Form({
   form,
   setForm,
@@ -228,13 +230,19 @@ export default function Form({
   <div key={index} className="mt-4 border rounded-xl p-4 space-y-3">
 
     {/* Show existing image preview if url exists */}
-    {img.url && (
-      <img
-        src={`/${img.url}`}
-        alt="Preview"
-        className="w-40 h-28 object-cover rounded-lg border"
-      />
-    )}
+   
+{img.url && (
+  <div className="relative w-40 h-28 rounded-lg border overflow-hidden shrink-0">
+    <Image
+      src={`/${img.url}`}
+      alt={img.slideTitle || "Uploaded holiday preview image"}
+      fill
+      sizes="160px"
+      className="object-cover"
+      loading="lazy"
+    />
+  </div>
+)}
 
     {/* Upload replaces existing */}
     <label className="block text-sm text-gray-500">

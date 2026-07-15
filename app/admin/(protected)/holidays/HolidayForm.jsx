@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React from "react";
 
 export default function HolidayForm({
@@ -290,13 +291,26 @@ export default function HolidayForm({
     className="w-full border rounded-lg p-3"
   />
 
-  {img.url && (
+  {/* {img.url && (
     <img
       src={`/${img.url}`}
       alt="Preview"
       className="w-48 h-32 object-cover rounded-lg border"
     />
-  )}
+  )} */}
+
+  {img.url && (
+  <div className="relative w-48 h-32 mt-2 rounded-lg border overflow-hidden">
+    <Image
+      src={`/${img.url}`}
+      alt={img.slideTitle || "Uploaded image banner preview"}
+      fill
+      sizes="192px"
+      className="object-cover"
+      priority={false}
+    />
+  </div>
+)}
 </div>
 
                 <input
@@ -396,13 +410,18 @@ export default function HolidayForm({
         className="w-full border rounded-lg p-3"
       />
 
-      {item.image && (
-        <img
-          src={`/${item.image}`}
-          alt="Card Preview"
-          className="w-48 h-32 rounded-lg object-cover border"
-        />
-      )}
+    {item.image && (
+  <div className="relative w-48 h-32 rounded-lg border overflow-hidden">
+    <Image
+      src={`/${item.image}`}
+      alt={item.title || "Card preview visual content"}
+      fill
+      sizes="192px"
+      className="object-cover"
+      loading="lazy"
+    />
+  </div>
+)}
     </div>
 
     <input

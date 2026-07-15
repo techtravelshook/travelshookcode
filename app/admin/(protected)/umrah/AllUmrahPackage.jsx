@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { Plus, Search } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function AllUmrahPackage({ packages, onEdit, onDelete }) {
     const router=useRouter();
@@ -123,7 +124,7 @@ const handleDelete = async (slug) => {
                 {/* Package Column (Image + Title) */}
                 <td className="py-4 px-6">
                   <div className="flex items-center gap-4">
-                    <div className="relative h-16 w-24 flex-shrink-0 rounded-lg overflow-hidden border border-gray-100">
+                    {/* <div className="relative h-16 w-24 flex-shrink-0 rounded-lg overflow-hidden border border-gray-100">
                       <img
                         src={`/${pkg.images?.[0]?.url}`}
                         alt={pkg.title}
@@ -134,7 +135,33 @@ const handleDelete = async (slug) => {
                           ⭐
                         </div>
                       )}
-                    </div>
+                    </div> */}
+                  
+
+<div className="relative h-16 w-24 flex-shrink-0 rounded-lg overflow-hidden border border-gray-100 bg-gray-50">
+  {pkg.images?.[0]?.url ? (
+    <Image
+      src={`/${pkg.images[0].url}`}
+      alt={pkg.title || "Package thumbnail overview"}
+      fill
+      sizes="96px"
+      className="object-cover"
+      loading="lazy"
+    />
+  ) : (
+    // Fallback UI to prevent an empty box if the image array is empty
+    <div className="w-full h-full flex items-center justify-center bg-gray-100 text-[10px] text-gray-400 font-medium">
+      No Image
+    </div>
+  )}
+  
+  {pkg.isFeatured && (
+    <div className="absolute top-1 left-1 bg-amber-500 text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full shadow-sm z-10">
+      ⭐
+    </div>
+  )}
+</div>
+
                     <div>
                       <h3 className="font-semibold text-gray-900 line-clamp-1 max-w-xs">
                         {pkg.title}

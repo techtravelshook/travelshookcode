@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Plus } from "lucide-react";
+import Image from "next/image";
 
 export default function AllPackages({ packages = [] }) {
   const router = useRouter();
@@ -77,11 +78,19 @@ export default function AllPackages({ packages = [] }) {
                 >
                   <td className="p-4">
                     <div className="flex items-center gap-4">
-                      <img
-                        src={`/${pkg.images?.[0]?.url}`}
-                        alt={pkg.title}
-                        className="w-24 h-16 rounded-lg object-cover border"
-                      />
+                     
+{pkg.images?.[0]?.url && (
+  <div className="relative w-24 h-16 rounded-lg border overflow-hidden shrink-0">
+    <Image
+      src={`/${pkg.images[0].url}`}
+      alt={pkg.title || "Package preview summary"}
+      fill
+      sizes="96px"
+      className="object-cover"
+      loading="lazy"
+    />
+  </div>
+)}
 
                       <div>
                         <h3 className="font-semibold">
