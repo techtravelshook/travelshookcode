@@ -2,53 +2,90 @@ import { withSecurity } from "@/lib/withSecurity";
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
- async function Honeymoon(request) {
+async function Honeymoon(request) {
   try {
     const {
-  name,
-  phone,
-  email,
-  message,
-  packageTitle
-} = await request.json();
+      name,
+      phone,
+      email,
+      message,
+      packageTitle,
+    } = await request.json();
 
-    // 1. Configure the SMTP transport layer
     const transporter = nodemailer.createTransport({
-      host: process.env.EMAIL_HOST || "://gmail.com",
-      port: parseInt(process.env.EMAIL_PORT || "465"),
-      secure: true, // true for 465, false for other ports
+      host: process.env.EMAIL_HOST,
+      port: Number(process.env.EMAIL_PORT) || 465,
+      secure: true,
       auth: {
-        user: process.env.EMAIL_USER, // Your email address
-        pass: process.env.EMAIL_PASS, // Your secure App Password
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
       },
     });
 
-    // 2. Draft the email contents layout
     const mailOptions = {
-      from: `"TravelHooks Platform" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_RECEIVER || process.env.EMAIL_USER, 
-      subject: `New Honemoon Inquiry: ${packageTitle}`,
+    from: `"${name || "Customer"} via Travel Hooks" <${process.env.EMAIL_USER}>`,
+to: process.env.EMAIL_RECEIVER || process.env.EMAIL_USER,
+replyTo: email || process.env.EMAIL_USER,
+      subject: `New Honeymoon Inquiry - ${packageTitle}`,
       html: `
-        <div style="font-family: sans-serif; padding: 20px; color: #333;">
-          <h2 style="color: #0070A1;">New Booking Inquiry</h2>
-          <p><strong>Package:</strong> ${packageTitle} (${packageTitle})</p>
-          <hr style="border: 1px solid #eee;" />
-          <p><strong>Client Name:</strong> ${name}</p>
-           <p><strong>Client Email:</strong> ${email}</p>
-          <p><strong>Phone Number:</strong> ${phone}</p>
-          <p><strong>Custom Message:</strong></p>
-          <p style="background: #f9f9f9; padding: 15px; border-left: 4px solid #F6931F;">${message}</p>
+        <div style="font-family:Arial,sans-serif;max-width:650px;margin:auto;border:1px solid #e5e5e5;border-radius:8px;padding:20px;">
+          
+          <h2 style="color:#0070A1;margin-top:0;">
+            New Honeymoon Inquiry
+          </h2>
+
+          <table style="width:100%;border-collapse:collapse;">
+            <tr>
+              <td style="padding:8px;border-bottom:1px solid #eee;"><strong>Package</strong></td>
+              <td style="padding:8px;border-bottom:1px solid #eee;">${packageTitle || "N/A"}</td>
+            </tr>
+
+            <tr>
+              <td style="padding:8px;border-bottom:1px solid #eee;"><strong>Name</strong></td>
+              <td style="padding:8px;border-bottom:1px solid #eee;">${name || "N/A"}</td>
+            </tr>
+
+            <tr>
+              <td style="padding:8px;border-bottom:1px solid #eee;"><strong>Email</strong></td>
+              <td style="padding:8px;border-bottom:1px solid #eee;">${email || "N/A"}</td>
+            </tr>
+
+            <tr>
+              <td style="padding:8px;border-bottom:1px solid #eee;"><strong>Phone</strong></td>
+              <td style="padding:8px;border-bottom:1px solid #eee;">${phone || "N/A"}</td>
+            </tr>
+          </table>
+
+          <h3 style="margin-top:25px;">Customer Message</h3>
+
+          <div style="background:#f8f8f8;padding:15px;border-left:4px solid #F6931F;border-radius:4px;">
+            ${message || "No message provided."}
+          </div>
+
         </div>
       `,
     };
 
-    // 3. Dispatch the transmission
     await transporter.sendMail(mailOptions);
 
-    return NextResponse.json({ success: true, message: "Email dispatched successfully" }, { status: 200 });
+    return NextResponse.json(
+      {
+        success: true,
+        message: "Email sent successfully.",
+      },
+      { status: 200 }
+    );
   } catch (error) {
     console.error("Mail Transmission Error:", error);
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+
+    return NextResponse.json(
+      {
+        success: false,
+        error: error.message,
+      },
+      { status: 500 }
+    );
   }
 }
-export const POST=withSecurity(Honeymoon)
+
+export const POST = withSecurity(Honeymoon);

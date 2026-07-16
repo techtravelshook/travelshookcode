@@ -1,7 +1,7 @@
 import { withSecurity } from "@/lib/withSecurity";
 import nodemailer from "nodemailer";
 
- async function FormInquiry(req) {
+async function FormInquiry(req) {
   try {
     const data = await req.json();
 
@@ -14,22 +14,57 @@ import nodemailer from "nodemailer";
     });
 
     await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER, 
+      from: `"Travel Hooks" <${process.env.EMAIL_USER}>`,
+      to: process.env.EMAIL_RECEIVER,
+      replyTo: data.email,
       subject: `New ${data.formType} Inquiry`,
       html: `
-        <h2>New Inquiry Received</h2>
+        <div style="font-family: Arial, sans-serif; line-height:1.6; color:#333;">
+          <h2 style="color:#0070A1;">New Inquiry Received</h2>
 
-        <p className='text-4xl'><strong>Form Type:</strong> ${data.formType}</p>
-        <p><strong>Name:</strong> ${data.name}</p>
-        <p><strong>Email:</strong> ${data.email}</p>
-        <p><strong>Phone:</strong> ${data.phone}</p>
-        <p><strong>Destination:</strong> ${data.destination}</p>
-        <p><strong>Days:</strong> ${data.days}</p>
-        <p><strong>Current Location:</strong> ${data.currentLocation}</p>
-        <p><strong>Category:</strong> ${data.category}</p>
-        <p><strong>Rooms:</strong> ${data.rooms}</p>
-        <p><strong>Travellers:</strong> ${data.travellers}</p>
+          <table cellpadding="8" cellspacing="0" border="1" style="border-collapse:collapse;width:100%;">
+            <tr>
+              <td><strong>Form Type</strong></td>
+              <td>${data.formType || "N/A"}</td>
+            </tr>
+            <tr>
+              <td><strong>Name</strong></td>
+              <td>${data.name || "N/A"}</td>
+            </tr>
+            <tr>
+              <td><strong>Email</strong></td>
+              <td>${data.email || "N/A"}</td>
+            </tr>
+            <tr>
+              <td><strong>Phone</strong></td>
+              <td>${data.phone || "N/A"}</td>
+            </tr>
+            <tr>
+              <td><strong>Destination</strong></td>
+              <td>${data.destination || "N/A"}</td>
+            </tr>
+            <tr>
+              <td><strong>Days</strong></td>
+              <td>${data.days || "N/A"}</td>
+            </tr>
+            <tr>
+              <td><strong>Current Location</strong></td>
+              <td>${data.currentLocation || "N/A"}</td>
+            </tr>
+            <tr>
+              <td><strong>Category</strong></td>
+              <td>${data.category || "N/A"}</td>
+            </tr>
+            <tr>
+              <td><strong>Rooms</strong></td>
+              <td>${data.rooms || "N/A"}</td>
+            </tr>
+            <tr>
+              <td><strong>Travellers</strong></td>
+              <td>${data.travellers || "N/A"}</td>
+            </tr>
+          </table>
+        </div>
       `,
     });
 
@@ -49,4 +84,5 @@ import nodemailer from "nodemailer";
     );
   }
 }
-export const POST=withSecurity(FormInquiry)
+
+export const POST = withSecurity(FormInquiry);

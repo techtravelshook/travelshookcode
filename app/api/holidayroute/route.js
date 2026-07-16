@@ -17,7 +17,7 @@ export async function POST(request) {
 
     const transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST,
-      port: Number(process.env.EMAIL_PORT || 465),
+      port: Number(process.env.EMAIL_PORT) || 465,
       secure: true,
       auth: {
         user: process.env.EMAIL_USER,
@@ -26,37 +26,38 @@ export async function POST(request) {
     });
 
     await transporter.sendMail({
-      from: `"TravelHooks Website" <${process.env.EMAIL_USER}>`,
+      from: `"Travel Hooks" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_RECEIVER || process.env.EMAIL_USER,
+      replyTo: email,
       subject: `New Holiday Booking Request - ${packageName}`,
       html: `
-        <div style="font-family:Arial,sans-serif;padding:20px">
-          <h2 style="color:#F6931F">
+        <div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;border:1px solid #e5e5e5;border-radius:8px;padding:20px;">
+          
+          <h2 style="margin-top:0;color:#0070A1;">
             New Holiday Booking Request
           </h2>
 
-          <table cellpadding="8" cellspacing="0" style="border-collapse:collapse;">
+          <table style="width:100%;border-collapse:collapse;">
             <tr>
-              <td><strong>Name</strong></td>
-              <td>${name}</td>
+              <td style="padding:8px;border-bottom:1px solid #eee;"><strong>Name</strong></td>
+              <td style="padding:8px;border-bottom:1px solid #eee;">${name}</td>
             </tr>
 
             <tr>
-              <td><strong>Email</strong></td>
-              <td>${email}</td>
+              <td style="padding:8px;border-bottom:1px solid #eee;"><strong>Email</strong></td>
+              <td style="padding:8px;border-bottom:1px solid #eee;">${email}</td>
             </tr>
 
             <tr>
-              <td><strong>Package</strong></td>
-              <td>${packageName}</td>
+              <td style="padding:8px;border-bottom:1px solid #eee;"><strong>Holiday Package</strong></td>
+              <td style="padding:8px;border-bottom:1px solid #eee;">${packageName}</td>
             </tr>
           </table>
 
-          <br/>
-
-          <p>
+          <p style="margin-top:20px;">
             A customer has requested information about this holiday package.
           </p>
+
         </div>
       `,
     });

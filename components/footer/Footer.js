@@ -10,11 +10,7 @@ import {
   Phone,
   MapPin,
   ArrowUpRight,
-  ArrowUp,
-  Globe,
-  Share2,
-  Video,
-  Send
+  ArrowUp
 } from "lucide-react";
 // Custom SVG icon component matching lucide-react's style
 const IconInstagram = ({ size = 24, ...props }) => (
@@ -46,7 +42,7 @@ const IconTikTok = ({ size = 24, ...props }) => (
 const footerLinks = {
   company: [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "/Aboutus" },
+    { name: "About Us", href: "/about-us" },
     { name: "Contact Us", href: "/contact" },
     { name: "WhatsApp Us", href: "https://wa.me/923124928496?text=Hello%2C%20I%27d%20like%20to%20enquire%20about%20a%20booking" },   
   ],

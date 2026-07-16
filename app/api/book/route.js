@@ -13,10 +13,11 @@ export async function POST(req) {
     });
 
     await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER, 
-      subject: `New Booking Request - ${data.hotel || 'Custom Package'}`,
-      html: `
+      from: `"Travel Hooks" <${process.env.EMAIL_USER}>`,
+  to: process.env.EMAIL_USER,
+  replyTo: data.email, 
+  subject: `New Booking Request - ${data.hotel || "Custom Package"}`,
+      html:`
         <h2>New Booking Request</h2>
         <p><strong>Hotel:</strong> ${data.hotel}</p>
         <p><strong>Room:</strong> ${data.room}</p>

@@ -13,29 +13,28 @@ import nodemailer from "nodemailer";
       },
     });
 
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER,
-      subject: "New Flight Inquiry",
-      html: `
+   await transporter.sendMail({
+  from: `"Travel Hooks Flights" <${process.env.EMAIL_USER}>`,
+  to: process.env.EMAIL_RECEIVER,
+  replyTo: body.email, 
+  subject: "New Flight Inquiry",
 
-        <h2>Flight Inquiry</h2>
-        <h3> ${JSON.stringify(body, null, 2)}<br/></h3>
-      
+  html: `
+    <h2>New Flight Inquiry</h2>
 
-        <p><strong>WhatsApp:</strong> ${body.whatsapp || "N/A"}</p>
-        <p><strong>Trip Type:</strong> ${body.tripType || "N/A"}</p>
-        <p><strong>From:</strong> ${body.fromAirport || "N/A"}</p>
-        <p><strong>To:</strong> ${body.toAirport || "N/A"}</p>
-        <p><strong>Departure:</strong> ${body.departDate || "N/A"}</p>
-        <p><strong>Return:</strong> ${body.returnDate || "N/A"}</p>
-        <p><strong>Cabin:</strong> ${body.cabin || "Economy"}</p>
+    
 
-        <hr>
+    <hr>
 
-      
-      `,
-    });
+    <p><strong>WhatsApp:</strong> ${body.whatsapp || "N/A"}</p>
+    <p><strong>Trip Type:</strong> ${body.tripType || "N/A"}</p>
+    <p><strong>From:</strong> ${body.fromAirport || "N/A"}</p>
+    <p><strong>To:</strong> ${body.toAirport || "N/A"}</p>
+    <p><strong>Departure:</strong> ${body.departDate || "N/A"}</p>
+    <p><strong>Return:</strong> ${body.returnDate || "N/A"}</p>
+    <p><strong>Cabin:</strong> ${body.cabin || "Economy"}</p>
+  `,
+});
 
     return Response.json({
       success: true,

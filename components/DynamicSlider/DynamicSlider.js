@@ -485,7 +485,7 @@ const PackageModal = React.memo(function PackageModal({
             {[
               { Icon: Calendar, label: "Duration", value: item.duration || "7 Nights", color: "text-[#E68213]" },
               { Icon: Users, label: "Per Person", value: item.price, color: "text-[#0070A1]" },
-              { Icon: Clock, label: "Flight Time", value: item.duration_flight, color: "text-emerald-500" },
+              { Icon: Clock, label: "Flight Time", value: item.time, color: "text-emerald-500" },
             ].map(({ Icon, label, value, color }) => (
               <div key={label} className="rounded-xl border border-slate-100 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-800 p-3 text-center">
                 <Icon size={16} className={`${color} mx-auto mb-1`} />

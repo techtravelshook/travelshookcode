@@ -40,7 +40,7 @@ const destinations = [
   {
     city: "Dubai",
     country: "UAE",
-    price: "$320",
+    price: "£320",
     image: "/imgs/dubai.jpg",
     time: "1hr",
     airline: "Emirates",
@@ -54,7 +54,7 @@ const destinations = [
   {
     city: "Istanbul",
     country: "Turkey",
-    price: "$450",
+    price: "£450",
     image: "/imgs/turkey.jpg",
     time: "5hr",
     airline: "Turkish Airlines",
@@ -68,7 +68,7 @@ const destinations = [
   {
     city: "Makkah",
     country: "Saudi Arabia",
-    price: "$280",
+    price: "£280",
     image: "/imgs/hajj/hajj32.jpg",
     time: "4hr",
     airline: "Saudia",
@@ -82,7 +82,7 @@ const destinations = [
   {
     city: "Paris",
     country: "France",
-    price: "$650",
+    price: "£650",
     image: "/imgs/paris.jpg",
     time: "8hr",
     airline: "Qatar Airways",
@@ -96,7 +96,7 @@ const destinations = [
   {
     city: "Cape Town",
     country: "S. Africa",
-    price: "$590",
+    price: "£590",
     image: "/imgs/capetown.jpg",
     time: "11hr",
     airline: "Qatar Airways",
@@ -110,7 +110,7 @@ const destinations = [
   {
     city: "Dubai",
     country: "UAE",
-    price: "$320",
+    price: "£320",
     image: "/imgs/dubai.jpg",
     time: "1hr",
     airline: "FlyDubai",
@@ -124,7 +124,7 @@ const destinations = [
   {
     city: "Istanbul",
     country: "Turkey",
-    price: "$450",
+    price: "£450",
     image: "/imgs/turkey.jpg",
     time: "5hr",
     airline: "Pegasus Airlines",
@@ -138,7 +138,7 @@ const destinations = [
   {
     city: "Makkah",
     country: "Saudi Arabia",
-    price: "$280",
+    price: "£280",
     image: "/imgs/makkah.jpg",
     time: "4hr",
     airline: "Pakistan International Airlines",
@@ -152,7 +152,7 @@ const destinations = [
   {
     city: "Paris",
     country: "France",
-    price: "$650",
+    price: "£650",
     image: "/imgs/paris.jpg",
     time: "8hr",
     airline: "Emirates",
@@ -166,7 +166,7 @@ const destinations = [
   {
     city: "Cape Town",
     country: "S. Africa",
-    price: "$590",
+    price: "£590",
     image: "/imgs/capetown.jpg",
     time: "11hr",
     airline: "Emirates",
