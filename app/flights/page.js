@@ -21,14 +21,14 @@ const BookingProcess = dynamic(() => import('@/components/hajjumrah/BookingProce
 
 export default function FlightClientWrapper() {
   const flights=[
-    "imgs/fl1.jpg",
-    "imgs/fl2.jpg",
-    "imgs/fl3.jpg",
-    "imgs/fl4.jpg",
-     "imgs/fl1.jpg",
-    "imgs/fl2.jpg",
-    "imgs/fl3.jpg",
-    "imgs/fl4.jpg",
+    "imgs/sliderimgs/fl1.webp",
+    "imgs/sliderimgs/fl2.webp",
+    "imgs/sliderimgs/fl3.webp",
+    "imgs/sliderimgs/fl4.webp",
+     "imgs/sliderimgs/f007.webp",
+    "imgs/sliderimgs/f008.webp",
+    "imgs/sliderimgs/fl5.webp",
+    "imgs/sliderimgs/fl1.webp",
   ]
   return (
     <>
@@ -36,9 +36,10 @@ export default function FlightClientWrapper() {
       <FlightContent/>
       <FlightRates/>
       <FlightsInfo/>
-      
+     
       <BookingProcess/>
       <CustomSlider images={flights}/>
+      
     </>
   )
 }

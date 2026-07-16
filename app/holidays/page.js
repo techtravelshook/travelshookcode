@@ -1,5 +1,6 @@
 "use client";
 
+import CustomSlider from '@/components/CustomSlider';
 import BookingProcess from '@/components/hajjumrah/BookingProcess';
 import HolidayCards from '@/components/Holidays/HolidayCards';
 import HeroSlider from '@/components/Holidays/HolidayHero';
@@ -42,6 +43,12 @@ const sliderImages = [
 ];
 
 export default function HolidaysPage() {
+  const holidays=[
+    "imgs/sliderimgs/f005.webp",
+    "imgs/sliderimgs/f006.webp",
+    "imgs/sliderimgs/h001.webp",
+   "imgs/sliderimgs/h002.jpg",
+  ]
   return (
     <main>
       <HeroSlider 
@@ -66,6 +73,7 @@ export default function HolidaysPage() {
     /> 
          <HolidaysInfo />  
          <BookingProcess/>    
+         <CustomSlider images={holidays}/>
       </div>
     </main>
   );
