@@ -597,7 +597,7 @@ export default function HolidayPackages() {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
   }, []);
 
-  const whatsappNumber = "923124928496";
+  const whatsappNumber = "+442038766846";
   const handleWhatsApp = useCallback(() => {
     if (!selected) return;
     const msg = `Hi, I am interested in the *${selected.title}* package priced at £${selected.discountedPrice}.\nName: ${form.name}\nPhone: ${form.phone}\n\n${form.message}`;

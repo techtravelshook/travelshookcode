@@ -210,7 +210,7 @@ function Page() {
           </div>
           <div>
             <Link href="cities-hotels/madinah">
-             <button className=' bg-orange-400 hover:bg-orange-300 hover:cursor-pointer text-white rounded-lg p-3'>Explore Madhnah Hotels</button></Link>
+             <button className=' bg-orange-400 hover:bg-orange-300 hover:cursor-pointer text-white rounded-lg p-3'>Explore Madinah Hotels</button></Link>
            
           </div>
         </div>

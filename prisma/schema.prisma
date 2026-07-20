@@ -1,7 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,7 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// model for umrah
 model UmrahPackage {
   id           Int                @id @default(autoincrement())
   title        String
@@ -28,22 +23,22 @@ model UmrahPackage {
   isFeatured   Boolean            @default(false)
   createdAt    DateTime           @default(now())
   updatedAt    DateTime           @updatedAt
+  exclusions   PackageExclusion[]
   images       PackageImage[]
   inclusions   PackageInclusion[]
-  exclusions   PackageExclusion[]
 
-  
   @@index([type])
   @@index([star])
   @@index([type, star])
 }
 
-// aother model
 model PackageImage {
   id        Int          @id @default(autoincrement())
   url       String
   packageId Int
   package   UmrahPackage @relation(fields: [packageId], references: [id])
+
+  @@index([packageId], map: "PackageImage_packageId_fkey")
 }
 
 model PackageInclusion {
@@ -51,6 +46,8 @@ model PackageInclusion {
   title     String
   packageId Int
   package   UmrahPackage @relation(fields: [packageId], references: [id])
+
+  @@index([packageId], map: "PackageInclusion_packageId_fkey")
 }
 
 model PackageExclusion {
@@ -58,35 +55,10 @@ model PackageExclusion {
   title     String
   packageId Int
   package   UmrahPackage @relation(fields: [packageId], references: [id])
+
+  @@index([packageId], map: "PackageExclusion_packageId_fkey")
 }
 
-enum PackageStar {
-  STAR_1
-  STAR_2
-  STAR_3
-  STAR_4
-  STAR_5
-}
-
-enum PackageType {
-  RAMADAN
-  MONTHLY
-  NORMAL
-  WOMEN
-  LUXURY
-  CHEAP
-  
-}
-
-enum HolidayType {
- HOLIDAY
-  CITY_BREAK
-  INCLUSIVE_HOLIDAY
-  BEACH_HOLIDAY
-  FAMILY_HOLIDAY
-  Last_Minute_Holidays
-}
-// FOR HOLIDAY'S
 model HolidayPackage {
   id           Int                   @id @default(autoincrement())
   title        String
@@ -103,11 +75,10 @@ model HolidayPackage {
   isFeatured   Boolean               @default(false)
   createdAt    DateTime              @default(now())
   updatedAt    DateTime              @updatedAt
-  packages     HolidayPackageItem[]
   images       HolidayPackageImage[]
+  packages     HolidayPackageItem[]
 }
 
-// model for Holiday Images
 model HolidayPackageImage {
   id               Int            @id @default(autoincrement())
   url              String
@@ -115,12 +86,13 @@ model HolidayPackageImage {
   slideDesc        String?
   holidayPackageId Int
   holidayPackage   HolidayPackage @relation(fields: [holidayPackageId], references: [id])
+
+  @@index([holidayPackageId], map: "HolidayPackageImage_holidayPackageId_fkey")
 }
 
 model HolidayPackageItem {
   id               Int            @id @default(autoincrement())
   holidayPackageId Int
-  holidayPackage   HolidayPackage @relation(fields: [holidayPackageId], references: [id])
   title            String
   subtitle         String?
   description      String?        @db.Text
@@ -131,39 +103,45 @@ model HolidayPackageItem {
   reviews          Int?
   duration         String?
   accent           String?
+  holidayPackage   HolidayPackage @relation(fields: [holidayPackageId], references: [id])
+
+  @@index([holidayPackageId], map: "HolidayPackageItem_holidayPackageId_fkey")
 }
 
 model HolidayBreaks {
-  id        Int         @id @default(autoincrement())
-  title     String
-  category  String
-  shortDesc String      @db.Text
-  rating    PackageStar
-  type      HolidayType
-  month     String?
-  duration  Int
-  price     Float
-  desc            String?             
-  location        String?            
-  bestTimeToVisit String?            
-
-  images   HolidayBreakImage[]
-  highlights      Highlight[] 
-  features HolidayBreakFeatures[]
+  id              Int                    @id @default(autoincrement())
+  title           String
+  category        String
+  shortDesc       String                 @db.Text
+  rating          PackageStar
+  type            HolidayType
+  month           String?
+  duration        Int
+  price           Float
+  bestTimeToVisit String?
+  desc            String?
+  location        String?
+  highlights      Highlight[]
+  features        HolidayBreakFeatures[]
+  images          HolidayBreakImage[]
 }
+
 model Highlight {
   id             Int           @id @default(autoincrement())
   name           String
   holidayBreakId Int
   holidayBreak   HolidayBreaks @relation(fields: [holidayBreakId], references: [id], onDelete: Cascade)
+
+  @@index([holidayBreakId], map: "Highlight_holidayBreakId_fkey")
 }
 
 model HolidayBreakImage {
-  id  Int    @id @default(autoincrement())
-  url String
-
+  id             Int           @id @default(autoincrement())
+  url            String
   holidayBreakId Int
   holidayBreak   HolidayBreaks @relation(fields: [holidayBreakId], references: [id])
+
+  @@index([holidayBreakId], map: "HolidayBreakImage_holidayBreakId_fkey")
 }
 
 model HolidayBreakFeatures {
@@ -171,43 +149,38 @@ model HolidayBreakFeatures {
   name           String
   holidayBreakId Int
   holidayBreak   HolidayBreaks @relation(fields: [holidayBreakId], references: [id])
-}
 
-//*********FLIGHTS SCHEMA*************//
+  @@index([holidayBreakId], map: "HolidayBreakFeatures_holidayBreakId_fkey")
+}
 
 model Flight {
   id              Int      @id @default(autoincrement())
-  slug         String             @unique
-  tripType        String   // "one-way" or "return"
+  slug            String   @unique
+  tripType        String
   airlineName     String
-  apiType          String
-  airlineLogo     String   // Path or URL to logo
-  departureCode   String   // e.g., "MAN", "LHR"
-  departureCity   String   // e.g., "Manchester", "London"
-  destinationCode String   // e.g., "ACC"
-  destinationCity String   // e.g., "Accra"
+  apiType         String
+  airlineLogo     String
+  departureCode   String
+  departureCity   String
+  destinationCode String
+  destinationCity String
   price           Float
-  dates           String   // e.g., "17 Oct 2026" or "11 Jun - 10 Jul"
+  dates           String
   createdAt       DateTime @default(now())
 }
-// for Flight content
+
 model CountryContent {
   id              Int    @id @default(autoincrement())
   slug            String @unique
-   apiType          String
-  section1Title   String 
+  apiType         String
+  section1Title   String
   section1img     String
   section2img     String
   section1Content String @db.Text
   section2Title   String
   section2Content String @db.Text
-  faqs            Json   // Stores the entire FAQ list as a clean array
+  faqs            String @db.LongText
 }
-////////////////////////
-////****HONEYMOON SEED*******
-/////////////////////////
-
-
 
 model Package {
   id             Int             @id @default(autoincrement())
@@ -227,14 +200,12 @@ model Package {
   featured       Boolean         @default(false)
   createdAt      DateTime        @default(now())
   updatedAt      DateTime        @updatedAt
-
-  // Relationships
+  flights        FlightDetail?
   hotels         Hotel[]
   images         Image[]
-  flights        FlightDetail ?
+  sightseeing    Sightseeing?
   transportation Transportation?
   visaAssistance VisaAssistance?
-  sightseeing    Sightseeing?
 }
 
 model Hotel {
@@ -247,6 +218,8 @@ model Hotel {
   description    String  @db.Text
   packageId      Int
   package        Package @relation(fields: [packageId], references: [id], onDelete: Cascade)
+
+  @@index([packageId], map: "Hotel_packageId_fkey")
 }
 
 model Image {
@@ -254,13 +227,15 @@ model Image {
   url       String
   packageId Int
   package   Package @relation(fields: [packageId], references: [id], onDelete: Cascade)
+
+  @@index([packageId], map: "Image_packageId_fkey")
 }
 
-model FlightDetail  {
+model FlightDetail {
   id              Int     @id @default(autoincrement())
-  departureCities Json    // Saves array: ["Lahore", "Islamabad", "Karachi"]
+  departureCities String  @db.LongText
   destination     String
-  airlines        Json    // Saves array: ["Emirates", "Qatar Airways"]
+  airlines        String  @db.LongText
   classOption     String
   packageId       Int     @unique
   package         Package @relation(fields: [packageId], references: [id], onDelete: Cascade)
@@ -279,59 +254,81 @@ model VisaAssistance {
   id                Int     @id @default(autoincrement())
   supportedRegion   String
   agency            String
-  requiredDocuments Json    // Saves array: ["Valid passport", "Photos"]
+  requiredDocuments String  @db.LongText
   packageId         Int     @unique
   package           Package @relation(fields: [packageId], references: [id], onDelete: Cascade)
 }
 
 model Sightseeing {
   id                  Int     @id @default(autoincrement())
-  items               Json    // Saves array of activities
-  romanticExperiences Json    // Saves array of romantic options
+  items               String  @db.LongText
+  romanticExperiences String  @db.LongText
   guideIncluded       Boolean @default(true)
   packageId           Int     @unique
   package             Package @relation(fields: [packageId], references: [id], onDelete: Cascade)
 }
 
-// for destinations packages...
 model TopDestinations {
-  id              String   @id @default(uuid())
-  title           String   @db.VarChar(255)       // Increased from 191 to 255
-  country         String   @db.VarChar(100)
-  category        String   @db.VarChar(50)
-  image           String   @db.VarChar(500)       // Fits longer image URLs
+  id              String @id @default(uuid())
+  title           String @db.VarChar(255)
+  country         String @db.VarChar(100)
+  category        String @db.VarChar(50)
+  image           String @db.VarChar(500)
   rating          Int
-  duration        String   @db.VarChar(50)
-  features        Json                            // Best way to store arrays in MySQL
+  duration        String @db.VarChar(50)
+  features        String @db.LongText
   trustpilotScore Int
   price           Int
-  location        String   @db.VarChar(255)
-  bestTimeToVisit String   @db.VarChar(255)
-  highlights      Json                            // Best way to store arrays in MySQL
-  shortDesc       String   @db.VarChar(1000)      // Increased for short paragraphs
-  desc            String   @db.LongText           // Up to 4GB of text for long descriptions
+  location        String @db.VarChar(255)
+  bestTimeToVisit String @db.VarChar(255)
+  highlights      String @db.LongText
+  shortDesc       String @db.VarChar(1000)
+  desc            String @db.LongText
 }
 
-
-// modal created for USER who will register on our site for custom packages and other services
 model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
   password  String
-  fullname      String?
+  fullname  String?
   createdAt DateTime @default(now())
 }
 
 model admin {
   id        String   @id @default(cuid())
   name      String
-  emails     String   @unique
+  emails    String   @unique
   password  String
   role      Role     @default(ADMIN)
   isActive  Boolean  @default(true)
-
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+enum PackageStar {
+  STAR_1
+  STAR_2
+  STAR_3
+  STAR_4
+  STAR_5
+}
+
+enum PackageType {
+  RAMADAN
+  MONTHLY
+  NORMAL
+  WOMEN
+  LUXURY
+  CHEAP
+}
+
+enum HolidayType {
+  HOLIDAY
+  CITY_BREAK
+  INCLUSIVE_HOLIDAY
+  BEACH_HOLIDAY
+  FAMILY_HOLIDAY
+  Last_Minute_Holidays
 }
 
 enum Role {

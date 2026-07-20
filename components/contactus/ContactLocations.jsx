@@ -4,20 +4,20 @@ import { MapPin, Phone, Mail, ArrowUpRight } from "lucide-react";
 
 const locations = [
   {
-    city: "Birmingham",
-    name: "UK Main Office",
-    address: "802-804 Stratford Road, Birmingham, B11 4BS",
-    phone: "0203-876-6846",
+    city: "West Drayton",
+    name: "UK West Drayton Office",
+    address: "9 Station Rd, West Drayton UB7 7BT",
+    phone: "+44 20 3876 6846",
     email: "info@travelshook.co.uk",
-    mapUrl: "https://google.com",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=9+Station+Rd,+West+Drayton+UB7+7BT",
   },
   {
     city: "UK  Office",
-    name: "Travelshook UK Office",
+    name: " UK  Birmingham Office",
     address: "802-804 Stratford Road, Birmingham B11 4BS",
-    phone: "0203-876-6846",
+    phone: "+44 20 3876 6846",
     email: "info@travelshook.co.uk",
-    mapUrl: "https://google.com",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=802-804+Stratford+Road,+Birmingham+B11+4BS",
   },
 ];
 

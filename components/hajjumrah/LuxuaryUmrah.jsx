@@ -31,7 +31,7 @@ export default function PackageGrid({
   mainTitlePrefix = "Luxury Premium",
   mainTitleGradient = "Umrah Packages 2026",
   description = "Discover our handpicked premium and luxury travel packages tailored just for your spiritual comfort.",
-  whatsappNumber = "923124928496",
+  whatsappNumber = "442038766846",
 }) {
   const [selected, setSelected] = useState(null);
   const [isHovered, setIsHovered] = useState(false);

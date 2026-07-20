@@ -42,7 +42,7 @@ export default function PackageBanner({
   onContactClick,
 
 }) {
-  const whatsappNumber = "923124928496";
+  const whatsappNumber = "442038766846";
   const whatsappMsg = encodeURIComponent(
     "As-salamu alaykum! I am interested in your Umrah Packages."
   );

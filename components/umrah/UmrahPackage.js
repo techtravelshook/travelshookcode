@@ -13,7 +13,8 @@ const services = [
     desc: "A premium 14-night Ramadan Umrah experience featuring 5-star accommodations: 7 nights at Pullman ZamZam Makkah and 7 nights at Crowne Plaza.",
     tags: ["Meals", "Transport", "Guide", "Flights"],
     image: "/imgs/hajj/hajj1.jpg",
-    link:"/hajj-umrah/5-star-umrah/14-nights-5-star"
+    alt: "Pullman ZamZam Makkah hotel exterior near the Grand Mosque for 5-star Ramadan Umrah package",
+    link: "/hajj-umrah/5-star-umrah/14-nights-5-star"
   },
   {
     id: "(02)",
@@ -21,7 +22,8 @@ const services = [
     desc: "Experience ultimate comfort with 7 nights at the Dorrar Aleiman Royal in Makkah and 7 nights at the Madinah Hilton, both premium 5-star hotels.",
     tags: ["Meals", "Transport", "Guide", "Flights"],
     image: "/imgs/hajj/hajj2.jpg",
-    link:"/hajj-umrah/luxury/14-nights-luxury"
+    alt: "Dorrar Aleiman Royal Makkah luxury hotel room for 14-night Umrah package",
+    link: "/hajj-umrah/luxury/14-nights-luxury"
   },
   {
     id: "(03)",
@@ -29,7 +31,8 @@ const services = [
     desc: "An affordable 7-night journey including 4 nights at Emaar Al Khalil Hotel in Makkah and 3 nights at Emaar Taibah Hotel in Madinah.",
     tags: ["Meals", "Transport", "Guide", "Flights"],
     image: "/imgs/hajj/hajj3.jpg",
-    link:"/hajj-umrah/3-star-umrah/7-nights-3-star"
+    alt: "Emaar Al Khalil Hotel Makkah budget accommodation for 3-star 7-night Umrah package",
+    link: "/hajj-umrah/3-star-umrah/7-nights-3-star"
   }
 ];
 
@@ -80,6 +83,7 @@ const ServiceRow = React.memo(function ServiceRow({
         <Image
           src={service.image}
           alt={service.title}
+           
           fill
           priority={index === 0}
           sizes="100vw"

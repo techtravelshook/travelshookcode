@@ -36,7 +36,7 @@ export default function FlightDealsGrid({ cityName, dealsData = [] }) {
 
   // WhatsApp link generator
   const getWhatsAppLink = useCallback((route, price) => {
-    const baseNumber = "923124928496";
+    const baseNumber = "442038766846";
     const text = encodeURIComponent(
       `Hi Travel Hooks, I would like to book: ${route} for ${price}. Please check availability.`
     );
@@ -480,7 +480,7 @@ export default function FlightDealsGrid({ cityName, dealsData = [] }) {
                           name="phone"
                           value={bookingData.phone}
                           onChange={handleBookingInputChange}
-                          placeholder="+92 300 1234567"
+                          placeholder="442038766846"
                           className="w-full px-4 py-2.5 border border-slate-200 dark:border-zinc-800 rounded-lg bg-slate-50 dark:bg-zinc-900/50 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-600 focus:border-[#0070A1] dark:focus:border-[#E68213] outline-none transition-colors"
                           required
                         />

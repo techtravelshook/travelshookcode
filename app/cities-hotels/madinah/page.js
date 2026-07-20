@@ -287,9 +287,7 @@ export default function MakkahHotelsPage() {
         <div className="absolute -bottom-20 -right-20 w-72 h-72 rounded-full border border-[#E68213]/20 opacity-40" style={{ boxShadow: "0 0 80px 10px rgba(230,130,19,0.12)" }} />
 
         <div className="relative z-10 h-full flex flex-col justify-end pb-8 px-6 sm:px-10 max-w-7xl mx-auto">
-          <Link href="/umrah" className="mb-4 flex items-center gap-2 text-white/60 hover:text-white text-xs font-semibold uppercase tracking-widest transition-colors w-fit">
-            <ArrowLeft size={13} /> View Umrah Packages
-          </Link>
+          
           <div className="flex items-end gap-4 flex-wrap">
             <div>
               <p className="text-[#E68213] text-xs font-bold uppercase tracking-widest mb-1">Saudi Arabia</p>

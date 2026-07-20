@@ -16,16 +16,16 @@ const ChevronRight = () => (
 );
 
 const DESKTOP_SLIDES = [
-  '/imgs/p1.webp',
-  '/imgs/p3.webp',
-  '/imgs/p04.webp',
-  '/imgs/p5.webp',
+  { src: '/imgs/p1.webp', alt: 'Traveler relaxing on a luxury beach resort with turquoise water' },
+  { src: '/imgs/p3.webp', alt: 'Family enjoying a European city holiday with historic architecture' },
+  { src: '/imgs/p04.webp', alt: 'Aerial view of the Kaaba in Makkah during Umrah pilgrimage' },
+  { src: '/imgs/p5.webp', alt: 'Airplane flying over clouds representing worldwide flight deals' },
 ];
 const MOBILE_SLIDES = [
-  '/imgs/mb010.webp',
-  '/imgs/mb111.png',
-  '/imgs/mb4.webp',
-  '/imgs/mb060.webp',
+  { src: '/imgs/mb010.webp', alt: 'Traveler relaxing on a luxury beach resort with turquoise water' },
+  { src: '/imgs/mb111.png', alt: 'Family enjoying a European city holiday with historic architecture' },
+  { src: '/imgs/mb4.webp', alt: 'Aerial view of the Kaaba in Makkah during Umrah pilgrimage' },
+  { src: '/imgs/mb060.webp', alt: 'Airplane flying over clouds representing worldwide flight deals' },
 ];
 
 const INTERVAL_MS = 3000;
@@ -148,23 +148,23 @@ export default function TravelSlider() {
             willChange: 'transform',
           }}
         >
-          {slides.map((src, index) => (
-            <div
-              key={src}
-              className="relative min-w-full"
-              style={{ aspectRatio: '9 / 16' }} // ← match your mobile image ratio; adjust if needed (e.g. '3/4', '1/1')
-            >
-              <Image
-                src={src}
-                alt={`Travel slide ${index + 1}`}
-                fill
-                priority={index === 0}
-                loading={index === 0 ? 'eager' : 'lazy'}
-                sizes="100vw"
-                className="object-cover" // ← cover instead of fill; no stretching
-              />
-            </div>
-          ))}
+         {slides.map((slide, index) => (
+  <div
+    key={slide.src}
+    className="relative min-w-full"
+    style={{ aspectRatio: '9 / 16' }}
+  >
+    <Image
+      src={slide.src}
+      alt={slide.alt}
+      fill
+      priority={index === 0}
+      loading={index === 0 ? 'eager' : 'lazy'}
+      sizes="100vw"
+      className="object-cover"
+    />
+  </div>
+))}
         </div>
 
         {/* Gradient overlay */}
@@ -186,12 +186,16 @@ export default function TravelSlider() {
             />
           ))}
         </div>
+        <h1 className="sr-only">
+          Premium Travel, Flights & Umrah Packages
+        </h1>
       </div>
     );
   }
 
   // ── Desktop slider: original behaviour, unchanged ──
   return (
+    
     <div
       className="relative w-full overflow-hidden"
       style={{ paddingBottom: '45.458%', height: 0 }}
@@ -212,19 +216,19 @@ export default function TravelSlider() {
           willChange: 'transform',
         }}
       >
-        {slides.map((src, index) => (
-          <div key={src} className="relative min-w-full h-full flex-shrink-0">
-            <Image
-              src={src}
-              alt={`Travel slide ${index + 1}`}
-              fill
-              priority={index === 0}
-              loading={index === 0 ? 'eager' : 'lazy'}
-              sizes="100vw"
-              className="object-fill"
-            />
-          </div>
-        ))}
+        {slides.map((slide, index) => (
+  <div key={slide.src} className="relative min-w-full h-full flex-shrink-0">
+    <Image
+      src={slide.src}
+      alt={slide.alt}
+      fill
+      priority={index === 0}
+      loading={index === 0 ? 'eager' : 'lazy'}
+      sizes="100vw"
+      className="object-fill"
+    />
+  </div>
+))}
       </div>
 
       {/* Gradient overlay */}
@@ -246,6 +250,9 @@ export default function TravelSlider() {
           />
         ))}
       </div>
+  <h1 className="sr-only">
+  Premium Travel, Flights & Umrah Packages
+</h1>
 
       {/* Arrows — desktop only */}
       <button
@@ -295,6 +302,7 @@ export default function TravelSlider() {
           <ChevronRight />
         </span>
       </button>
+      
     </div>
   );
 }

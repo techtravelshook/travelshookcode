@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
-  PlaneTakeoff,
   Mail,
   Phone,
   MapPin,
@@ -44,7 +43,7 @@ const footerLinks = {
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about-us" },
     { name: "Contact Us", href: "/contact" },
-    { name: "WhatsApp Us", href: "https://wa.me/923124928496?text=Hello%2C%20I%27d%20like%20to%20enquire%20about%20a%20booking" },   
+    { name: "WhatsApp Us", href: "https://wa.me/442038766846?text=Hello%2C%20I%27d%20like%20to%20enquire%20about%20a%20booking" },   
   ],
    links: [
     { name: "Flights", href: "/flights" },
@@ -55,8 +54,8 @@ const footerLinks = {
   legal: [
     { name: "Privacy Policy", href: "/privacy" },
     { name: "Terms of Service", href: "/terms" },
-    { name: "Our Responsibility", href: "/#" },
-    { name: "FAQ'S", href: "/#" },
+     { name: "Our Responsibility", href: "/responsibility" },
+    { name: "FAQ'S", href: "/faq" },
   ],
 };
 
@@ -139,11 +138,11 @@ export default function Footer() {
                 <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity text-[#0070A1]" />
               </a>
               <a
-                href="mailto:support@travelshook.com"
+                href="mailto:info@travelshook.co.uk"
                 className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400 hover:text-[#F6931F] transition-colors group w-fit font-semibold"
               >
                 <Mail size={16} className="text-[#F6931F]" />
-                <span>support@travelshook.com</span>
+                <span>info@travelshook.co.uk</span>
                 <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity text-[#0070A1]" />
               </a>
               <div className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-semibold">

@@ -217,7 +217,7 @@ export default function PackageInformations({
   titlePartOne = "Our Featured",
   titlePartTwo = "Packages 2026 - 2027",
   descriptionText = "At Travelshook, we design custom travel packages with flights, hotel accommodations, convenient transfers, expert advice and more for your ultimate convenience.",
-  whatsappNumber = "923124928496",
+  whatsappNumber = "442038766846",
 }) {
   // Normalise raw API packages once
   const packages = React.useMemo(

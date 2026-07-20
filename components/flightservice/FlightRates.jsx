@@ -129,7 +129,7 @@ export default function FlightRates() {
   const handleWhatsApp = (flight) => {
     const message = `Hi! I'm interested in the ${flight.airlineName} flight from ${flight.departureCode} to ${flight.arrivalCode} (${flight.flightNumber}). Can you provide more details?`;
     const encodedMessage = encodeURIComponent(message);
-    const whatsappNumber = '03124928496'; 
+    const whatsappNumber = '442038766846'; 
     window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
   };
 

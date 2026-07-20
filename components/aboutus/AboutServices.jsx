@@ -32,7 +32,7 @@ const services = [
 export default function AboutServices() {
   const containerRef = useRef(null);
   const isContainerInView = useInView(containerRef, { once: true, margin: "-100px" });
-  const whatsappNumber = "923124928496";
+  const whatsappNumber = "442038766846";
 
   return (
     <section 

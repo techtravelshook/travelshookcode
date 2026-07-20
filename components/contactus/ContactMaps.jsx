@@ -7,7 +7,8 @@ export default function OfficeMap() {
   const [isLoading, setIsLoading] = useState(true);
 
   // The embed URL remains safely inside the <iframe> wrapper
-  const mapEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19882.407880979234!2d-0.46599834999999995!3d51.47098935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48767234cdc56de9%3A0x8fe7535543f64167!2sHeathrow%20Airport!5e0!3m2!1sen!2s!4v1780142578118!5m2!1sen!2s";
+  const mapEmbedUrl =
+  "https://www.google.com/maps?q=9+Station+Rd,+West+Drayton+UB7+7BT&output=embed";
 
   return (
     <section className="w-full max-w-6xl mx-auto px-4 py-8">
@@ -37,7 +38,7 @@ export default function OfficeMap() {
                 </div>
                 <div>
                   <h4 className="text-sm font-semibold text-gray-900">Main Office</h4>
-                  <p className="text-xs text-gray-500 mt-0.5">802-804 Stratford Road, Birmingham B11 4BS</p>
+                  <p className="text-xs text-gray-500 mt-0.5"> 9 Station Rd, West Drayton UB7 7BT</p>
                 </div>
               </div>
             </div>
@@ -46,15 +47,15 @@ export default function OfficeMap() {
           {/* External Action Button */}
           <div className="mt-8 pt-6 border-t border-gray-100">
             {/* FIXED: Replaced embed URL with a clean, browser-compatible Google Maps search query link */}
-            <a 
-              href="https://www.google.com/maps/place/Heathrow+Airport/@51.4710143,-0.4865979,14z/data=!3m1!4b1!4m6!3m5!1s0x48767234cdc56de9:0x8fe7535543f64167!8m2!3d51.4679903!4d-0.4550471!16zL20vMDNqbjQ?entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="w-full inline-flex items-center justify-center gap-2 bg-gray-900 hover:bg-indigo-600 text-white text-sm font-semibold py-3 px-4 rounded-xl transition-all duration-300 shadow-sm shadow-gray-900/10 hover:shadow-indigo-600/20"
-            >
-              Open in Google Maps
-              <Maximize2 className="w-4 h-4" />
-            </a>
+           <a
+  href="https://www.google.com/maps/search/?api=1&query=9+Station+Rd,+West+Drayton+UB7+7BT"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Open Travel Hooks West Drayton office in Google Maps"
+  className="w-full inline-flex items-center justify-center gap-2 bg-gray-900 hover:bg-indigo-600 text-white text-sm font-semibold py-3 px-4 rounded-xl transition-all duration-300 shadow-sm shadow-gray-900/10 hover:shadow-indigo-600/20"
+>
+  View Maps
+</a>
           </div>
         </div>
 

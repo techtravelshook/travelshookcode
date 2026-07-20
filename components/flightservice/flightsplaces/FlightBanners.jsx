@@ -15,7 +15,7 @@ export default function BookNowPayLaterBanner({
    // { label: "Accra", price: "£29", color: "#0070A1", left: "75%", top: "top-24", animY: [0, -4, 0], delay: 1.1, duration: 4.2 }
   ]
 }) {
- const whatsappNumber = "923124928496";
+ const whatsappNumber = "442038766846";
   
   // Dynamically injects the destination name into your message string safely
   const whatsappMessage = encodeURIComponent(

@@ -49,7 +49,7 @@ export default function HolidayCards() {
   };
 
 
-  const whatsappNumber = "923124928496"; 
+  const whatsappNumber = "442038766846"; 
 
   const handleWhatsApp = () => {
     if (!selected) return;

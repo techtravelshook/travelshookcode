@@ -19,9 +19,9 @@ const ROOM_META = {
 
 // FROM HERE WHATSAPP AGENTS NUMBER WILL GET CHANGED...
 const AGENTS = [
-  { name: "Mr. Faizee ", number: "+923064846431", avatar: "👨‍💼", specialty: "Umrah Specialist" },
-  { name: "Ms.Maryam", number: "+923064846431", avatar: "👩‍💼", specialty: "Hajj & Umrah Advisor" },
-  { name: "Mr. Touseef", number: "+923064846431", avatar: "👨‍💼", specialty: "VIP Travel Consultant" },
+  { name: "Mr. Faizee ", number: "+442038766846", avatar: "👨‍💼", specialty: "Umrah Specialist" },
+  { name: "Ms.Maryam", number: "+442038766846", avatar: "👩‍💼", specialty: "Hajj & Umrah Advisor" },
+  { name: "Ms Aima", number: "+442038766846", avatar: "👨‍💼", specialty: "VIP Travel Consultant" },
 ];
 
 const hotels = [
@@ -81,7 +81,7 @@ const STEPS = [
   { num: 4, label: "Room" },
   { num: 5, label: "Details" },
 ];
-const waNum=+923124928496
+const waNum=+442038766846
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 function Stars({ count }) {
   return (

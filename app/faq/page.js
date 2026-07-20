@@ -1,8 +1,10 @@
-export default function FAQ() {
+import React from 'react'
+import FAQ from './faqview'
+
+export default function page() {
   return (
-    <div style={{ padding: '40px' }}>
-      <h1>FAQs</h1>
-      <p>Your FAQ content here...</p>
+    <div>
+      <FAQ/>
     </div>
-  );
+  )
 }

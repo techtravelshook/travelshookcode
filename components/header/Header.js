@@ -616,8 +616,8 @@ export default function Navbar() {
     setTheme(theme === "dark" ? "light" : "dark");
   }, [theme, setTheme]);
 
-  const phoneNumber = "02038766846";
-  const whatsappNumber = "02038766846";
+  const phoneNumber = "+442038766846";
+  const whatsappNumber = "+442038766846";
 
   return (
     <>

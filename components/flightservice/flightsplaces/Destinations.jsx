@@ -8,7 +8,7 @@ export default function FlightsPlacesCards({ cityName, cardsData = [] }) {
   
   // Dynamic WhatsApp Message generator helper function
   const getWhatsAppLink = (destination, title) => {
-    const baseNumber = "923124928496";
+    const baseNumber = "442038766846";
     const text = encodeURIComponent(
       `Hi there, I would like to make an inquiry regarding: "${title}" flight package to ${destination}. Please share the current pricing and availability.`
     );
