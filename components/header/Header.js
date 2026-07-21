@@ -114,15 +114,17 @@ const africanDestinations = [
 ];
 
 const holidayDeals = [
-  { name: "umrah-birmingham", price: "£836", code: "BHM", tag: "Europe" },
-  { name: "umrah-london", price: "£753", code: "LON", tag: "Europe" },
-  { name: "umrah-bolton", price: "£1140", code: "BOL", tag: "Europe" },
-  { name: "umrah-manchester", price: "£836", code: "MAN", tag: "Europe" },
+ 
   { name: "Inclusive Holidays", price: "£699", code: "MAN", tag: "Europe" },
   { name: "Beach Holidays", price: "£1350", code: "MAN", tag: "Europe" },
   { name: "City Breaks", price: "£940", code: "MAN", tag: "Europe" },
   { name: "Family Holidays", price: "£940", code: "MAN", tag: "Europe" },
   { name: "Last Minute Holidays", price: "£1280", code: "MAN", tag: "Europe" },
+ 
+  //  { name: "umrah-birmingham", price: "£836", code: "BHM", tag: "Europe" },
+  // { name: "umrah-london", price: "£753", code: "LON", tag: "Europe" },
+  // { name: "umrah-bolton", price: "£1140", code: "BOL", tag: "Europe" },
+  // { name: "umrah-manchester", price: "£836", code: "MAN", tag: "Europe" },
 ];
 
 const hajjUmrahPackages = [
@@ -131,6 +133,7 @@ const hajjUmrahPackages = [
   { name: "4 Star Umrah", code: "4ST", price: "£799", tag: "Standard" },
   { name: "5 Star Umrah", code: "5ST", price: "£1,050", tag: "Luxury" },
   { name: "Monthly Package", code: "RAM", price: "£1,200", tag: "Special" },
+  
 ];
 
 const topdest = [

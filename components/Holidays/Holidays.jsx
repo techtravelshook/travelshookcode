@@ -630,50 +630,52 @@ export default function HolidayDeals() {
   const gridDeals = deals.slice(0, 4);
 
   return (
-    <div
-      ref={sectionRef}
-      className="bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900 transition-colors duration-500 overflow-hidden py-12"
-    >
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section
+    id="holiday-deals"
+    ref={sectionRef}
+    className="bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900 transition-colors duration-500 overflow-hidden py-12 scroll-mt-24"
+  >
+    <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* ── Featured Slider ── */}
-        <FeaturedSlider
-          deals={featured}
-          onOpen={setSelected}
-          onBook={setBookingDeal}
-        />
-
-        {/* ── Grid section label ── */}
-       
-
-        {/* ── Cards Grid ── */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "show" : "hidden"}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
-          {gridDeals.map((deal) => (
-            <PackageCard
-              key={deal.id ?? deal.slug}
-              deal={deal}
-              onOpen={() => setSelected(deal)}
-              onBook={setBookingDeal}
-            />
-          ))}
-        </motion.div>
-      </div>
-
-      {/* ── Modals ── */}
-      <PackageModal
-        deal={selected}
-        onClose={() => setSelected(null)}
-        onBook={(d) => { setSelected(null); setBookingDeal(d); }}
+      {/* ── Featured Slider ── */}
+      <FeaturedSlider
+        deals={featured}
+        onOpen={setSelected}
+        onBook={setBookingDeal}
       />
-      <BookingModal
-        deal={bookingDeal}
-        onClose={() => setBookingDeal(null)}
-      />
+
+      {/* ── Cards Grid ── */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate={isInView ? "show" : "hidden"}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+      >
+        {gridDeals.map((deal) => (
+          <PackageCard
+            key={deal.id ?? deal.slug}
+            deal={deal}
+            onOpen={() => setSelected(deal)}
+            onBook={setBookingDeal}
+          />
+        ))}
+      </motion.div>
     </div>
-  );
+
+    {/* ── Modals ── */}
+    <PackageModal
+      deal={selected}
+      onClose={() => setSelected(null)}
+      onBook={(d) => {
+        setSelected(null);
+        setBookingDeal(d);
+      }}
+    />
+
+    <BookingModal
+      deal={bookingDeal}
+      onClose={() => setBookingDeal(null)}
+    />
+  </section>
+);
 }

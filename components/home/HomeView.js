@@ -4,6 +4,11 @@ import FlightSearchWidget from "@/components/filter/FlightFilter";
 import CustomSlider from "../CustomSlider";
 import ReviewsPage from "./googleReviews";
 import GoogleReviews from "./googleReviews";
+import AboutUs from "./AboutUs";
+import BookDreamJourney from "./Journey";
+import DynamicFaqs from "../flightservice/flightsplaces/DynamicFaqs";
+import HomeFaq from "./faq/HomeFaq";
+import FaqSchema from "./faq/page";
 
 
 // Lazy load everything below the hero
@@ -207,9 +212,13 @@ function HomeView() {
       />
       <UmrahPackage />
          <HolidayPackages />   
-      <FlightsInfo/>
+      {/* <FlightsInfo/> */}
+      <AboutUs/>
+      <BookDreamJourney/>
       <BookingProcess/>
       <GoogleReviews/>
+      {/* <DynamicFaqs/> */}
+      <FaqSchema/>
       <CustomSlider images={flayers}/>
     </div>
   );
