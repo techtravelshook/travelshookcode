@@ -673,12 +673,14 @@ export default function Navbar() {
 
           <div className="flex items-center gap-2">
             {mounted && (
-              <button
-                onClick={handleThemeToggle}
-                className="p-2.5 rounded-2xl bg-black/5 dark:bg-white/5 will-change-transform"
-              >
-                {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-              </button>
+             <button
+  onClick={handleThemeToggle}
+  className="p-2.5 rounded-2xl bg-black/5 dark:bg-white/5 will-change-transform"
+  aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+  title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+>
+  {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+</button>
             )}
 {/* BOOK NOW BUTTON */}
             <Link

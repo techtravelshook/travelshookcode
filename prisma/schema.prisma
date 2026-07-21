@@ -335,3 +335,43 @@ enum Role {
   SUPER_ADMIN
   ADMIN
 }
+
+model Blog {
+  id          Int       @id @default(autoincrement())
+  title       String
+  slug        String    @unique
+  excerpt     String    @db.Text
+  content     String    @db.LongText
+  coverImage  String                    // hero/background image
+  category    String
+  author      String
+  published   Boolean   @default(false)
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  faqs        BlogFaq[]
+  images      BlogImage[]
+}
+
+model BlogImage {
+  id        Int      @id @default(autoincrement())
+  url       String
+  alt       String   @default("")       // SEO — always fill this
+  caption   String?                     // optional caption under image
+  paragraph Int      @default(0)        // which paragraph this image belongs to (0 = general)
+  order     Int      @default(0)        // display order within that paragraph
+  blogId    Int
+  blog      Blog     @relation(fields: [blogId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+}
+
+model BlogFaq {
+  id        Int      @id @default(autoincrement())
+  question  String
+  answer    String   @db.Text
+  order     Int      @default(0)
+  blogId    Int
+  blog      Blog     @relation(fields: [blogId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+}

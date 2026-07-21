@@ -2,6 +2,8 @@ import dynamic from "next/dynamic";
 import HomeSlider from "./slider";
 import FlightSearchWidget from "@/components/filter/FlightFilter";
 import CustomSlider from "../CustomSlider";
+import ReviewsPage from "./googleReviews";
+import GoogleReviews from "./googleReviews";
 
 
 // Lazy load everything below the hero
@@ -207,6 +209,7 @@ function HomeView() {
          <HolidayPackages />   
       <FlightsInfo/>
       <BookingProcess/>
+      <GoogleReviews/>
       <CustomSlider images={flayers}/>
     </div>
   );

@@ -22,12 +22,23 @@ async function getPackageData(slug) {
   }
 }
 
+
 export default async function SinglePackagePage(context) {
   const { slug } = await context.params;
   const pkg = await getPackageData(slug);
 
   if (!pkg) notFound();
+const sightseeingItems = Array.isArray(pkg.sightseeing?.items)
+  ? pkg.sightseeing.items
+  : typeof pkg.sightseeing?.items === "string"
+    ? pkg.sightseeing.items.split(",")
+    : [];
 
+    const departureCities = Array.isArray(pkg.flights?.departureCities)
+  ? pkg.flights.departureCities
+  : typeof pkg.flights?.departureCities === "string"
+    ? pkg.flights.departureCities.split(",")
+    : [];
   return (
 
     
@@ -152,7 +163,7 @@ export default async function SinglePackagePage(context) {
                 </h3>
               </div>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                {pkg.sightseeing.items?.map((item, idx) => (
+                {sightseeingItems.map((item, idx) => (
                   <li
                     key={idx}
                     className="text-xs md:text-sm text-slate-700 flex items-start gap-2.5 bg-[#F7F5F0] p-3 rounded-2xl"
@@ -210,7 +221,7 @@ export default async function SinglePackagePage(context) {
                     Destination: {pkg.flights.destination}
                   </p>
                   <p className="text-slate-400 mt-0.5">
-                    Departing from: {pkg.flights.departureCities?.join(", ")}
+                    Departing from: {departureCities.join(", ")}
                   </p>
                 </div>
               </div>

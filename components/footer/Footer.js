@@ -142,7 +142,7 @@ export default function Footer() {
             </p>
 
             {/* Contact Info */}
-            <div className="mt-6 space-y-3">
+            {/* <div className="mt-6 space-y-3">
               <a
                 href="tel:0203-876-6846"
                 className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400 hover:text-[#F6931F] transition-colors group w-fit font-semibold"
@@ -162,8 +162,54 @@ export default function Footer() {
               <div className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-semibold">
                 <MapPin size={16} className="text-[#F6931F] mt-0.5 shrink-0" />
                 <span>9 Station Rd, West Drayton UB7 7BT</span>
+                <Image
+                src="imgs/iata.webp"
+                />
               </div>
-            </div>
+            </div> */}
+            <div className="mt-6 space-y-3">
+  {/* Phone Link */}
+  <a
+    href="tel:0203-876-6846"
+    className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400 hover:text-[#F6931F] transition-colors group w-fit font-semibold"
+  >
+    <Phone size={16} className="text-[#F6931F]" />
+    <span>0203-876-6846</span>
+    <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity text-[#0070A1]" />
+  </a>
+
+  {/* Email Link */}
+  <a
+    href="mailto:info@travelshook.co.uk"
+    className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400 hover:text-[#F6931F] transition-colors group w-fit font-semibold"
+  >
+    <Mail size={16} className="text-[#F6931F]" />
+    <span>info@travelshook.co.uk</span>
+    <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity text-[#0070A1]" />
+  </a>
+
+  {/* Address & Trust Badges Section */}
+{/* Container for Trust Images / Badges */}
+<div className="flex flex-wrap items-center gap-3 mt-1">
+  <Image 
+  src="/imgs/atol.png" 
+  alt="ATOL Logo"
+  width={60} 
+  height={40} 
+  className="mt-4 dark:invert"
+/>
+
+<Image 
+  src="/imgs/iata.png" 
+  alt="IATA Logo"
+  width={70} 
+  height={40} 
+  className="dark:invert"
+/>
+</div>
+
+</div>
+
           </motion.div>
 
           {/* Links Grid */}

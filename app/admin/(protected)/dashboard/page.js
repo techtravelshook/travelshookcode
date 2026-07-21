@@ -31,6 +31,7 @@ const stats = [
     color: "bg-amber-50 text-amber-600",
     href: "/admin/umrah",
   },
+  
 ];
 export default async function DashboardPage() {
    const admin = await getAdmin();

@@ -2,7 +2,7 @@
 import React from "react";
 import { usePathname } from "next/navigation"; // Automatically tracks active link
 import Link from "next/link"; // Required for routing
-import { Plane, Calendar, Heart, ShieldCheck, ChevronRight, Compass,PlaneLanding, SunIcon } from "lucide-react";
+import { Plane, Calendar, Heart, ShieldCheck, ChevronRight, Compass,PlaneLanding, SunIcon,ChartSpline } from "lucide-react";
 
 export default function Sidebar({ admin }) {
   const pathname = usePathname(); // Get current browser route
@@ -14,6 +14,7 @@ export default function Sidebar({ admin }) {
     { label: "Romantic Packages", icon: Heart, href: "/admin/honeymoon" },
      { label: "Other Holidays", icon:SunIcon, href: "/admin/otherholidays" },
     { label: "Umrah Packages", icon: ShieldCheck, href: "/admin/umrah" },
+     { label: "Blogs", icon: ChartSpline, href: "/admin/blogs" },
   ];
 
   return (
