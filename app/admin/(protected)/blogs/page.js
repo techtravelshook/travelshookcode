@@ -209,7 +209,7 @@ export default async function BlogsPage() {
 
                 <td className="p-4 flex gap-4 items-center">
                   <Link
-                    href={`/admin/blogs/edit/${blog.id}`}
+                    href={`/admin/blogs/edit/${blog.slug}`}
                     className="text-blue-600 hover:underline"
                   >
                     Edit
